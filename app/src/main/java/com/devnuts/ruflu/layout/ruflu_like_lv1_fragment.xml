@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ruflu.fragment.RufluLikeLv1Fragment"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="나를 좋아요한 이성"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/leesunsin_dotum"
+        android:id="@+id/s_like_lv1_title01"
+        android:layout_marginBottom="10dp"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ruflu_se_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/s_like_lv1_title01"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/user_detail_container"
+        android:background="@color/white"
+        android:visibility="gone"
+        >
+
+    </RelativeLayout>
+
+</RelativeLayout>

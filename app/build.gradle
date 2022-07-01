@@ -1,0 +1,183 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+    //id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def kakaoLoginKey = properties.getProperty('kakao.login.key')
+
+android {
+
+    packagingOptions {
+        //resources.excludes.add("META-INF/*")
+    }
+
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.devnuts.ruflu"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildFeatures {
+            dataBinding = true
+        }
+        manifestPlaceholders = [kakaoLoginKey: kakaoLoginKey]
+        buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
+    }
+
+    buildTypes {
+        debug {
+            splits.abi.enable = false
+            splits.density.enable = false
+            resValue "string", "kakaoLoginKey", kakaoLoginKey
+        }
+        release {
+            resValue "string", "kakaoLoginKey", kakaoLoginKey
+            crunchPngs false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "default"
+    productFlavors{
+        create("dev") {
+            minSdkVersion(21)
+            versionNameSuffix = "-dev"
+            //applicationIdSuffix = ".dev"
+        }
+
+        create("prod") {
+        }
+        dev {
+            resConfigs "ko", "xxxhdpi"
+        }
+    }
+
+    buildFeatures {
+       viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+
+}
+
+dependencies {
+
+    def room_version = "2.3.0"
+    def nav_version = "2.3.5"
+    def lifecycle_version = "2.3.1"
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'me.relex:circleindicator:2.1.4'
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:28.0.0-alpha3'
+
+    implementation 'androidx.activity:activity-ktx:1.2.2'
+    implementation 'androidx.fragment:fragment-ktx:1.3.3'
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+    /* Retrofit2 */
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+
+
+    implementation 'com.android.databinding:compiler:3.5.3'
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    /* RxKotlin */
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+
+    //coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // kakao API
+    implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+    implementation "com.kakao.sdk:v2-user:2.3.0" // 카카오 로그인
+    implementation "com.kakao.sdk:v2-talk:2.3.0" // 친구, 메시지(카카오톡)
+    implementation "com.kakao.sdk:v2-story:2.3.0" // 카카오스토리
+    implementation "com.kakao.sdk:v2-link:2.3.0" // 메시지(카카오링크)
+    implementation "com.kakao.sdk:v2-navi:2.3.0" // 카카오내비
+    implementation 'com.kakao.sdk:usermgmt:1.27.0' // 카카오 로그인 버튼 만들 때 사용
+
+    // Card View Module
+    implementation 'com.yuyakaido.android:card-stack-view:2.3.4'
+
+    // Data Binding
+    //kapt 'com.antroid.databinding:compiler:3.5.3'
+
+
+    // push notification
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0' //Circle ImageView
+
+
+    // chat Socket
+    implementation 'com.github.nkzawa:socket.io-client:0.3.0'
+
+    // Glide Library
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+
+    // picasso Library
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+}

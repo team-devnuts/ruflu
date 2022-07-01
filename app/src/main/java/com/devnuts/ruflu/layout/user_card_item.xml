@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.devnuts.ruflu.home.model.UserCard"
+            />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="@drawable/user_card_style"
+        android:elevation="10dp"
+        android:layout_margin="5dp"
+        >
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imgviewpager"
+
+            />
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:elevation="2dp"
+            >
+
+            <ScrollView
+                android:id="@+id/user_card_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/drawer_bar"
+                android:background="@color/white"
+                android:clickable="true"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/scroll_in_layout"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    >
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/PROFILE_Q_GENDER"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.gender}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_WEI"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.wei}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_WEI"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.hei}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_OCCU"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.occu}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_OCCU_DTL"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.occu_dtl}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_RLGN"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.rign}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_ALCH"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.alch}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_SMK_YN"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.smk_yn}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_SMK_YN"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.mbti}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_FANCY"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.fancy}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_MBTI"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.intd}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_FANCY"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.hob}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_INTD"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.qa1}"
+                        />
+
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_HOB"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{user.qa2}"
+                        />
+
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/drawer_bar"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="80dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/card_view_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hello"
+                    android:textColor="@color/white"
+                    android:textSize="45dp"
+                    android:layout_marginRight="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/card_view_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="age"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
+</layout>

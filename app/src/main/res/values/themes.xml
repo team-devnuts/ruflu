@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Ruflu" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#FFF86F</item>
+        <item name="colorPrimaryVariant">#FFF86F</item>
+        <item name="colorOnPrimary">#FFF86F</item>
+
+        <!-- Customize your theme here. -->
+
+
+    </style>
+
+    <style name="ProfileTextTitleStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/ic_baseline_autorenew_24</item>
+    </style>
+</resources>

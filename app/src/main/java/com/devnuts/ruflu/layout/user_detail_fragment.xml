@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+    <data>
+        <variable
+            name="nbUser"
+            type="com.devnuts.ruflu.home.model.UserDtl"
+            />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/nbUser_detail_frag"
+        android:background="@color/white">
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/home_nb_indicator"
+            android:layout_width="match_parent"
+            android:layout_gravity="top"
+            android:layout_height="48dp"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/home_nb_viewpage2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/drawer_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        >
+                        <TextView
+                            android:id="@+id/card_view_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hello"
+                            android:textColor="@color/black"
+                            android:textSize="45dp"
+                            android:layout_marginRight="8dp"
+                            />
+j
+                        <TextView
+                            android:id="@+id/card_view_age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="age"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+
+                            />
+                    </LinearLayout>
+
+                    <RatingBar
+                        android:id="@+id/home_nb_ratingBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/PROFILE_Q_GENDER"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.gender}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_WEI"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.wei}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_WEI"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.hei}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_OCCU"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.occu}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_OCCU_DTL"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.occu_dtl}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_RLGN"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.rign}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_ALCH"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.alch}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_SMK_YN"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.smk_yn}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_SMK_YN"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.mbti}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_FANCY"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.fancy}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_MBTI"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.intd}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_FANCY"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.hob}"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_INTD"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.qa1}"
+                        />
+
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@string/PROFILE_Q_HOB"
+                        />
+
+                    <TextView
+                        style="@style/ProfileTextTitleStyle"
+                        android:text="@{nbUser.qa2}"
+                        />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+    </FrameLayout>
+
+
+</layout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_autorenew_24.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.1359375" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.1359375" />
+        <entry key="app/src/main/res/drawable/onboard_button_selected.xml" value="0.2657407407407407" />
+        <entry key="app/src/main/res/drawable/onboard_button_selector.xml" value="0.2657407407407407" />
+        <entry key="app/src/main/res/drawable/onboard_button_unselected.xml" value="0.2657407407407407" />
+        <entry key="app/src/main/res/drawable/style_progressbar.xml" value="0.2657407407407407" />
+        <entry key="app/src/main/res/font/noto_sans_kr.xml" value="0.18854166666666666" />
+        <entry key="app/src/main/res/layout/activity_loading.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/alcoh_fragment.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/birth_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/chat_fragment.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/chat_sub_se_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/edu_fragment.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/form_fragment.xml" value="0.20327868852459016" />
+        <entry key="app/src/main/res/layout/fragment_birth.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/gender_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/height_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/home_sub_nb_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/home_sub_se_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/like_lv1_user.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/location_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/mypage_fragment.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/near_by_item.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/nick_name_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/occup_fragment.xml" value="0.22545454545454546" />
+        <entry key="app/src/main/res/layout/photo_upld_fragment.xml" value="0.22545454545454546" />
+        <entry key="app/src/main/res/layout/register_home_fragment.xml" value="0.9193548387096774" />
+        <entry key="app/src/main/res/layout/relig_fragment.xml" value="0.22545454545454546" />
+        <entry key="app/src/main/res/layout/ruflu_fragment.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/layout/ruflu_like_lv1_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/ruflu_sub_nb_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/ruflu_sub_se_fragment.xml" value="0.18125" />
+        <entry key="app/src/main/res/layout/terms_of_use_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/user_card_item.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/user_detail_fragment.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/user_img_layout.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/user_img_layout2.xml" value="0.2545289855072464" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

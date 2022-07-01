@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "412929489380",
+    "project_id": "ruflu-e48f5",
+    "storage_bucket": "ruflu-e48f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412929489380:android:bee3d782c39df540026ff1",
+        "android_client_info": {
+          "package_name": "com.devnuts.ruflu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412929489380-5o07ftdd4ki7e3ste9mmp57p4tqd7bv3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC35B0LvLAlXi5dkbFuj0OyUKdny3_J66o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412929489380-5o07ftdd4ki7e3ste9mmp57p4tqd7bv3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

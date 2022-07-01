@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Ruflu</string>
+    <string name="channel_name">Ruflu</string>
+    <string name="channel_id">RUFLU_NOTIFICATION_CHANNEL_ID</string>
+    <string name="channel_description">ruflue app channel</string>
+
+    <!--retrofit 2 baseUrl-->
+    <string name="home_url">/home</string>
+
+    <string name="MAIN_TABNAME1">ruflu</string>
+    <string name="MAIN_TABNAME2">NearBy</string>
+    <string name="PROFILE_Q_GENDER">성별</string>
+    <string name="PROFILE_Q_WEI">키</string>
+    <string name="PROFILE_Q_HEI">몸무게</string>
+    <string name="PROFILE_Q_OCCU">직업</string>
+    <string name="PROFILE_Q_OCCU_DTL">직업상세</string>
+    <string name="PROFILE_Q_RLGN">종교</string>
+    <string name="PROFILE_Q_ALCH">음주</string>
+    <string name="PROFILE_Q_SMK_YN">흡연여부</string>
+    <string name="PROFILE_Q_MBTI">MBTI</string>
+    <string name="PROFILE_Q_FANCY">매력</string>
+    <string name="PROFILE_Q_INTD">소개</string>
+    <string name="PROFILE_Q_HOB">취미</string>
+    <string name="FirstNameText">First Name :</string>
+    <string name="FirstNameTextField">Enter First Name</string>
+    <string name="SecondNameTextField">Enter Second Name</string>
+    <string name="LastNameText">Last Name :</string>
+    <string name="EmailText">Email :</string>
+    <string name="UserMailId">Enter Email</string>
+    <string name="submitButton">Register</string>
+    <string name="List_of_Users_text">List Of Registered Users</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="PasswordText">Password:</string>
+    <string name="PasswordTextFiels">Enter Password</string>
+    <string name="UserNameTextView">User Name:</string>
+    <string name="UsernameTextField">Enter User Name</string>
+    <string name="backButton">Back</string>
+    <string name="logoNm">Silloe</string>
+    <string name="Login_button">로그인</string>
+    <string name="signupText">회원가입</string>
+    <string name="forgottenText">비밀번호 찾기</string>
+    <string name="kakao_app_key">237c80b789b0c2a5beeac1edc09c5d77</string>
+
+</resources>

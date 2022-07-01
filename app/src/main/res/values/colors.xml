@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!-- MAIN LOGIN / SIGN UP COLOR -->
+    <color name="mainBackground">#FFA86E</color>
+
+    <color name="om_main_orange">#ff9a24</color>
+    <color name="om_third_gray">#898989</color>
+    <color name="om_second_gray">#636363</color>
+    <color name="om_main_green">#6ad255</color>
+    <color name="om_fifth_gray">#f0f0f0</color>
+    <color name="om_main_red">#d7260d</color>
+    <color name="om_main_black">#3e3e3e</color>
+    <color name="om_almostwhite">#fbfbfb</color>
+    <color name="om_fourth_gray">#cacaca</color>
+    <color name="om_white">#ffffff</color>
+    <color name="progressbar_grey">#e5e5e5</color>
+    <color name="coral">#fa6550</color>
+    <color name="om_main_orange10">#1Aff9a24</color>
+
+
+    <color name="lens_color_transparent">#e8efff</color>
+    <color name="lens_color_black">#4f4f4f</color>
+    <color name="lens_color_grey">#6a6f88</color>
+    <color name="lens_color_choco">#524836</color>
+    <color name="lens_color_green">#65bd79</color>
+    <color name="lens_color_brown">#958057</color>
+    <color name="lens_color_purple">#c76be7</color>
+    <color name="lens_color_blue">#7595e8</color>
+    <color name="lens_color_gold">#eab86e</color>
+    <color name="lens_color_pink">#f372a1</color>
+    <color name="lens_color_etc">#fbfbfb</color>
+
+    <color name="trans">#00000000 </color>
+</resources>
