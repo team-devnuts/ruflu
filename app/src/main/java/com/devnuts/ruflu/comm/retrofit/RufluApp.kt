@@ -26,7 +26,7 @@ class RufluApp : Application() {
         lateinit var retrofit: Retrofit
         lateinit var appNotification: AppNotification
         lateinit var sharedPreference: CustomSharedPreference
-        val url = "http://172.30.1.57"
+        val url = "http://192.168.0.15"
         val port = 8005
     }
 
