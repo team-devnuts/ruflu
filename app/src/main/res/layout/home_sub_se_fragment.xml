@@ -22,23 +22,43 @@
         android:weightSum="1"
         >
 
-        <Button
+        <ImageButton
             android:id="@+id/card_hate_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:text=""
-            android:layout_weight="0.25"
-            android:background="@drawable/ruflu_se_btn_style"
             android:layout_marginLeft="21dp"
-            android:layout_marginRight="21dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="21dp"
             android:layout_marginBottom="10dp"
+            android:layout_weight="0.25"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ruflu_se_btn_style"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_btn_hate"
+            android:text=""
             style="?android:attr/borderlessButtonStyle"
             />
 
-        <Button
+        <ImageButton
             android:id="@+id/card_skip_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_weight="0.25"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ruflu_se_btn_style"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_btn_skip"
+            style="?android:attr/borderlessButtonStyle"
+            />
+
+        <ImageButton
+            android:id="@+id/card_like_btn"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:text=""
             android:layout_weight="0.25"
@@ -47,25 +67,15 @@
             android:layout_marginRight="21dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_btn_like"
             style="?android:attr/borderlessButtonStyle"
             />
 
-        <Button
-            android:id="@+id/card_like_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="aaa"
-            android:layout_weight="0.25"
-            android:background="@drawable/ruflu_se_btn_style"
-            android:layout_marginLeft="21dp"
-            android:layout_marginRight="21dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            style="?android:attr/borderlessButtonStyle"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/card_chat_btn"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
             android:background="@drawable/ruflu_se_btn_style"
@@ -73,6 +83,9 @@
             android:layout_marginRight="21dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_btn_chat"
             style="?android:attr/borderlessButtonStyle"
             />
     </LinearLayout>
