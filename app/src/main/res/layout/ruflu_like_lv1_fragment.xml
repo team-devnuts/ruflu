@@ -5,17 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".ruflu.fragment.RufluLikeLv1Fragment"
     >
+
     <TextView
+        android:id="@+id/s_like_lv1_title01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="나를 좋아요한 이성"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
-        android:id="@+id/s_like_lv1_title01"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
-        />
+        android:text="나를 좋아요한 이성"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
 
 
     <androidx.recyclerview.widget.RecyclerView

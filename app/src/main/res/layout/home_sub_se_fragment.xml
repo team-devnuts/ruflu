@@ -36,6 +36,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_btn_hate"
             android:text=""
+            android:elevation="3dp"
             style="?android:attr/borderlessButtonStyle"
             />
 
@@ -53,6 +54,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_btn_skip"
+            android:elevation="3dp"
             style="?android:attr/borderlessButtonStyle"
             />
 
@@ -70,6 +72,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_btn_like"
+            android:elevation="3dp"
             style="?android:attr/borderlessButtonStyle"
             />
 
@@ -86,6 +89,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_btn_chat"
+            android:elevation="3dp"
             style="?android:attr/borderlessButtonStyle"
             />
     </LinearLayout>
