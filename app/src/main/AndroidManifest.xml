@@ -31,10 +31,15 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                Redirect URI: "kakao{NATIVE_APP_KEY}://oauth"
+
+                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
                 <data
                     android:host="oauth"
-                    android:scheme="${kakaoLoginKey}" />
+                    android:scheme="kakao${kakaoLoginKey}" />
+
+
+
+
             </intent-filter>
         </activity>
         <activity android:name=".login.LoginActivity" />
@@ -57,7 +62,7 @@
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="@string/kakao_app_key" />
+            android:value="${kakaoLoginKey}" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
