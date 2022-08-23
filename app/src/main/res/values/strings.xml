@@ -41,5 +41,4 @@
     <string name="signupText">회원가입</string>
     <string name="forgottenText">비밀번호 찾기</string>
     <string name="kakao_app_key">237c80b789b0c2a5beeac1edc09c5d77</string>
-
 </resources>
