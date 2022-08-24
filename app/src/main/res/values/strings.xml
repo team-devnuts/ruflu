@@ -42,4 +42,9 @@
     <string name="forgottenText">비밀번호 찾기</string>
     <string name="kakao_app_key">237c80b789b0c2a5beeac1edc09c5d77</string>
 
+    <!--ruflue Like lv1-->
+
+    <string name="lv1TitleName">당신에게 호감을 표시한 이성</string>
+    <string name="lv2TitleName">당신이 좋아하는 이성</string>
+
 </resources>

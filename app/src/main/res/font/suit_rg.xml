@@ -15,5 +15,5 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="300"
-        android:font="@font/suit_regular`" />
+        android:font="@font/suit_regular" />
 </font-family>

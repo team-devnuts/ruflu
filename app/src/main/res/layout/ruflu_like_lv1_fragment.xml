@@ -13,9 +13,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
-        android:text="나를 좋아요한 이성"
+        android:text="@string/lv1TitleName"
         android:textColor="@color/black"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
 
     <androidx.recyclerview.widget.RecyclerView
