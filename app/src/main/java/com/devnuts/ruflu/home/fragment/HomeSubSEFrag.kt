@@ -76,7 +76,6 @@ class HomeSubSEFrag() : Fragment() {
     private fun changeCardView() {
         if(cardStackView.adapter == null) {
             userCardViewAdapter = UserCardViewAdapter(viewModel, this, cardStackView)
-
         }
         cardStackView.adapter = userCardViewAdapter
 

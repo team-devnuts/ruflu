@@ -17,15 +17,14 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:background="@drawable/user_card_style"
-        android:elevation="10dp"
         android:layout_margin="5dp"
+        android:elevation="10dp"
         >
 
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imgviewpager"
-
             />
 
         <me.relex.circleindicator.CircleIndicator3
