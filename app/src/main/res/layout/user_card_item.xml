@@ -46,190 +46,156 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/drawer_bar"
                 android:background="@color/white"
-                android:clickable="true"
-                >
+                android:clickable="true">
 
                 <LinearLayout
+                    android:id="@+id/scroll_in_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/scroll_in_layout"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    >
+                    android:padding="10dp">
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
                         android:layout_marginTop="10dp"
-                        android:text="@string/PROFILE_Q_GENDER"
-                        />
+                        android:text="@string/PROFILE_Q_GENDER" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.gender}"
-                        />
+                        android:text="@{user.gender}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_WEI"
-                        />
+                        android:text="@string/PROFILE_Q_WEI" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.wei}"
-                        />
+                        android:text="@{user.wei}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_WEI"
-                        />
+                        android:text="@string/PROFILE_Q_WEI" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.hei}"
-                        />
+                        android:text="@{user.hei}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_OCCU"
-                        />
+                        android:text="@string/PROFILE_Q_OCCU" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.occu}"
-                        />
+                        android:text="@{user.occu}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_OCCU_DTL"
-                        />
+                        android:text="@string/PROFILE_Q_OCCU_DTL" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.occu_dtl}"
-                        />
+                        android:text="@{user.occu_dtl}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_RLGN"
-                        />
+                        android:text="@string/PROFILE_Q_RLGN" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.rign}"
-                        />
+                        android:text="@{user.rign}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_ALCH"
-                        />
+                        android:text="@string/PROFILE_Q_ALCH" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.alch}"
-                        />
+                        android:text="@{user.alch}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_SMK_YN"
-                        />
+                        android:text="@string/PROFILE_Q_SMK_YN" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.smk_yn}"
-                        />
+                        android:text="@{user.smk_yn}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_SMK_YN"
-                        />
+                        android:text="@string/PROFILE_Q_SMK_YN" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.mbti}"
-                        />
+                        android:text="@{user.mbti}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_FANCY"
-                        />
+                        android:text="@string/PROFILE_Q_FANCY" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.fancy}"
-                        />
+                        android:text="@{user.fancy}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_MBTI"
-                        />
+                        android:text="@string/PROFILE_Q_MBTI" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.intd}"
-                        />
+                        android:text="@{user.intd}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_FANCY"
-                        />
+                        android:text="@string/PROFILE_Q_FANCY" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.hob}"
-                        />
+                        android:text="@{user.hob}" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_INTD"
-                        />
+                        android:text="@string/PROFILE_Q_INTD" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.qa1}"
-                        />
+                        android:text="@{user.qa1}" />
 
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@string/PROFILE_Q_HOB"
-                        />
+                        android:text="@string/PROFILE_Q_HOB" />
 
                     <TextView
                         style="@style/ProfileTextTitleStyle"
-                        android:text="@{user.qa2}"
-                        />
-
+                        android:text="@{user.qa2}" />
                 </LinearLayout>
             </ScrollView>
 
             <LinearLayout
                 android:id="@+id/drawer_bar"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="80dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/home_user_card_info_style"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                >
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:id="@+id/card_view_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hello"
-                    android:textColor="@color/white"
-                    android:textSize="45dp"
                     android:layout_marginRight="8dp"
-                    />
+                    android:text="Hello"
+                    android:textColor="@color/black"
+                    android:textSize="45dp" />
 
                 <TextView
                     android:id="@+id/card_view_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="age"
-                    android:textColor="@color/white"
-                    android:textSize="25dp"
-
-                    />
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
 
             </LinearLayout>
         </RelativeLayout>
