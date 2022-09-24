@@ -8,19 +8,17 @@ import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.comm.utill.UserUtill
+import com.devnuts.ruflu.home.CustomCardStackView
 import com.devnuts.ruflu.home.fragment.HomeSubSEFrag
 import com.devnuts.ruflu.home.fragment.viewmodel.HomeSubSEViewModel
 import com.devnuts.ruflu.home.model.UserCard
-import com.yuyakaido.android.cardstackview.CardStackView
 import me.relex.circleindicator.CircleIndicator3
-import retrofit2.http.Tag
 
-class UserCardViewAdapter(private val viewModel: HomeSubSEViewModel, val fragment: HomeSubSEFrag, val cardStackView: CardStackView)
+class UserCardViewAdapter(private val viewModel: HomeSubSEViewModel, val fragment: HomeSubSEFrag, val cardStackView: CustomCardStackView)
     : RecyclerView.Adapter<UserCardViewAdapter.PagerViewHoler>(){
 
     private lateinit var view: View
@@ -58,6 +56,8 @@ class UserCardViewAdapter(private val viewModel: HomeSubSEViewModel, val fragmen
 
             }
         })
+
+
 
         drawer_bar.setOnClickListener(View.OnClickListener {
 

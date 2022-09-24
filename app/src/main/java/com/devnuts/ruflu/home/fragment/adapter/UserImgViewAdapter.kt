@@ -31,9 +31,9 @@ class UserImgViewAdapter( val pager2: ViewPager2, val indicator: CircleIndicator
 
                 imgView.clipToOutline = true
             }
-            //UserUtill.setImageWithGlide(view, img, imgView)
+            UserUtill.setImageWithGlide(view, img, imgView)
             Log.d("UserCardViewAdapter", "onCreateViewHolder ${img} ")
-            UserUtill.setImageWithPiccaso(view, img, imgView)
+            //UserUtill.setImageWithPiccaso(view, img, imgView)
             //UserUtill.setImageBitmap(img, imgView)
         }
     }

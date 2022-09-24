@@ -1,25 +1,28 @@
 package com.devnuts.ruflu.home.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
-import android.widget.Button
+import android.view.animation.DecelerateInterpolator
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.databinding.HomeSubSeFragmentBinding
 import com.devnuts.ruflu.home.fragment.adapter.UserCardViewAdapter
 import com.devnuts.ruflu.home.fragment.viewmodel.HomeSubSEViewModel
 import com.devnuts.ruflu.home.model.UserCard
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.home.CustomCardStackView
 import com.yuyakaido.android.cardstackview.*
-import okhttp3.internal.notifyAll
 
 class HomeSubSEFrag() : Fragment() {
 
@@ -27,7 +30,9 @@ class HomeSubSEFrag() : Fragment() {
 
     private lateinit var cardStackLayoutManager: CardStackLayoutManager
     lateinit var userCardViewAdapter: UserCardViewAdapter
-    lateinit var cardStackView: CardStackView
+    lateinit var cardStackView: CustomCardStackView
+    private var touchDwX : Float = 0f
+    private var touchDwY : Float = 0f
 
     private val binding get() = _binding!!
     private var _binding : HomeSubSeFragmentBinding? = null
@@ -51,18 +56,34 @@ class HomeSubSEFrag() : Fragment() {
     }
 
     // 카트스택 뷰와 레이아웃 매니저 생성 메소드
+    @SuppressLint("ClickableViewAccessibility")
     private fun init(view:View) {
-        cardStackView = view.findViewById<CardStackView>(R.id.user_card_recycler)
+        cardStackView = view.findViewById<CustomCardStackView>(R.id.user_card_recycler)
+        cardStackView.overScrollMode = RecyclerView.OVER_SCROLL_ALWAYS
+        cardStackView.setOnCustomSwipeTouchEvent(object : CustomCardStackView.OnCustomSwipeTouchEvent {
+            override fun onCustomizedSwipe(event: MotionEvent?) {
+                onControlDirectionCardStackSwipe(event)
+            }
+        })
         cardStackLayoutManager = getInitCardStackManager()
+        binding.cardHateBtn.visibility = View.GONE
+        binding.cardSkipBtn.visibility = View.GONE
+        binding.cardLikeBtn.visibility = View.GONE
+        binding.cardChatBtn.visibility = View.GONE
+
         setBtnClick(binding.cardHateBtn, Direction.Left)
         setBtnClick(binding.cardSkipBtn, Direction.Bottom)
         setBtnClick(binding.cardLikeBtn, Direction.Right)
+
     }
+
+
 
     private fun setBtnClick(btn : ImageButton, direction : Direction) {
         btn.setOnClickListener {
-            cardStackLayoutManager.setSwipeAnimationSetting(getSetting(direction))
+            cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(direction))
             cardStackView.swipe()
+
         }
 
     }
@@ -79,18 +100,22 @@ class HomeSubSEFrag() : Fragment() {
         }
         cardStackView.adapter = userCardViewAdapter
 
-        //userCardViewAdapter.notifyDataSetChanged()
+        userCardViewAdapter.notifyDataSetChanged()
     }
 
     // 카드뷰 초기 셋팅
     private fun setUpCardStack() {
-        val setting = getSetting(Direction.Right)
+        val setting = getSwipeSetting(Direction.Right)
 
         cardStackLayoutManager.setSwipeAnimationSetting(setting)
-        cardStackLayoutManager.setDirections(Direction.HORIZONTAL)
+        cardStackLayoutManager.setDirections(Direction.FREEDOM)
         cardStackLayoutManager.setSwipeThreshold(0.3f)
-        cardStackLayoutManager.setVisibleCount(2)
-        cardStackLayoutManager.setTranslationInterval(8.0f)
+        cardStackLayoutManager.setVisibleCount(1)
+        cardStackLayoutManager.setTranslationInterval(0.0f)
+        cardStackLayoutManager.setScaleInterval(0.0f)
+        cardStackLayoutManager.setMaxDegree(0.0f)
+        cardStackLayoutManager.setCanScrollHorizontal(false)
+        cardStackLayoutManager.setCanScrollVertical(false)
 
         // card view를 만들어서 생성
         cardStackView.layoutManager = cardStackLayoutManager
@@ -98,11 +123,20 @@ class HomeSubSEFrag() : Fragment() {
 
     }
 
-    private fun getSetting(direction : Direction): SwipeAnimationSetting {
+    private fun getSwipeSetting(direction : Direction): SwipeAnimationSetting {
         val setting = SwipeAnimationSetting.Builder()
             .setDirection(direction)
             .setDuration(Duration.Normal.duration)
             .setInterpolator(AccelerateInterpolator())
+            .build()
+        return setting
+    }
+
+    private fun getRewindSetting(direction: Direction): RewindAnimationSetting {
+        val setting = RewindAnimationSetting.Builder()
+            .setDirection(direction)
+            .setDuration(Duration.Normal.duration)
+            .setInterpolator(DecelerateInterpolator())
             .build()
         return setting
     }
@@ -118,14 +152,17 @@ class HomeSubSEFrag() : Fragment() {
             override fun onCardSwiped(direction: Direction?) {
                 Log.d("CardStackView", "onCardSwiped: p = ${cardStackLayoutManager.topPosition}, d = $direction")
 
-                if(direction == Direction.Right) {
-                    ///viewModel.likeYourUserCard(cardPosition)
-                } else if (direction == Direction.Left){
-                    ///viewModel.hateYourUserCard(cardPosition)
+                when (direction) {
+                    Direction.Right -> {
+                        viewModel.likeYourUserCard(cardPosition)
+                    }
+                    Direction.Left -> {
+                        //viewModel.hateYourUserCard(cardPosition)
+                    }
                 }
-
+                Log.d("CardStackView", "refreshUserCard : topPos[${cardStackLayoutManager.topPosition}], itemCnt[${cardStackLayoutManager.itemCount}] ")
                 if(cardStackLayoutManager.topPosition == cardStackLayoutManager.itemCount) {
-                    Log.d("CardStackView", "refreshUserCard : topPos[${cardStackLayoutManager.topPosition}], itemCnt[${cardStackLayoutManager.itemCount}] ")
+
                     Thread.sleep(1000)
                     viewModel.loadUserCard()
                 }
@@ -150,6 +187,46 @@ class HomeSubSEFrag() : Fragment() {
             }
         })
     }
+
+    private fun onControlDirectionCardStackSwipe(event: MotionEvent?) {
+        val action = event?.action
+        Log.d("CARDVIEW ACTION", " : ${action}")
+        when (action) {
+            MotionEvent.ACTION_DOWN -> {
+                touchDwX = event.x
+                touchDwY = event.y
+                Log.d("CARDVIEW ACTIONDOWN", "x = ${touchDwX}, y = ${touchDwY}")
+            }
+            MotionEvent.ACTION_UP -> {
+                var touchUpX = event.x
+                var touchUpY = event.y
+                var moveTouchX = touchDwX - touchUpX
+                var moveTouchY = touchDwY - touchUpY
+                Log.d("CARDVIEWTOUCH_Y", "${moveTouchY}")
+
+                if (moveTouchY < -100) {
+                    val setting = getRewindSetting(Direction.Top)
+                    cardStackLayoutManager.setRewindAnimationSetting(setting)
+                    cardStackView.rewind()
+
+                } else if (moveTouchY > 100) {
+                    cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(Direction.Top))
+                    cardStackView.swipe()
+                }
+
+                if(moveTouchX < -100) {
+                    cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(Direction.Left))
+                    cardStackView.swipe()
+                } else if (moveTouchX > 100) {
+                    cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(Direction.Right))
+                    cardStackView.swipe()
+                }
+
+            }
+        }
+    }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

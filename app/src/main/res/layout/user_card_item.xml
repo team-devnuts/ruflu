@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/drawer_bar"
-                android:background="@color/white"
+                android:background="@drawable/home_user_card_info_style_bottom"
                 android:clickable="true">
 
                 <LinearLayout
@@ -175,30 +175,33 @@
                 android:id="@+id/drawer_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/home_user_card_info_style"
+                android:background="@drawable/home_user_card_info_style_top"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp">
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="5dp"
                     android:id="@+id/card_view_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:text="Hello"
-                    android:textColor="@color/black"
-                    android:textSize="45dp" />
+                    android:textColor="@color/white"
+                    android:textSize="35dp" />
 
                 <TextView
                     android:id="@+id/card_view_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="age"
-                    android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
             </LinearLayout>
         </RelativeLayout>
+
     </FrameLayout>
 
 </layout>

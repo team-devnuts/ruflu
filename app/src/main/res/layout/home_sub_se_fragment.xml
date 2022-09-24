@@ -7,14 +7,14 @@
     tools:context=".home.fragment.HomeSubSEFrag"
     android:orientation="vertical">
 
-    <com.yuyakaido.android.cardstackview.CardStackView
+    <com.devnuts.ruflu.home.CustomCardStackView
         android:id="@+id/user_card_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
-        android:paddingBottom="100dp"
         android:clipToPadding="false"
-        tools:layout_editor_absoluteX="0dp" />
+        android:paddingBottom="30dp"
+        />
 
     <LinearLayout
         android:id="@+id/se_btn_layout"

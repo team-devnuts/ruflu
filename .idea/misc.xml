@@ -3,14 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/drawable/home_user_card_info_style.xml" value="0.2365" />
+        <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/drawable/home_user_card_info_style_bottom.xml" value="0.274" />
+        <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/drawable/home_user_card_info_style_top.xml" value="0.274" />
         <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/drawable/ruflu_se_btn_style.xml" value="0.2875" />
         <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/drawable/user_card_style.xml" value="0.2875" />
         <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/drawable/user_nb_style.xml" value="0.2875" />
+        <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/alcoh_fragment.xml" value="0.328125" />
         <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/chat_sub_se_fragment.xml" value="0.2916666666666667" />
+        <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/home_fragment.xml" value="0.328125" />
         <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/home_sub_se_fragment.xml" value="0.2222222222222222" />
         <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/ruflu_fragment.xml" value="0.2916666666666667" />
+        <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/ruflu_like_lv1_fragment.xml" value="0.328125" />
         <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/ruflu_sub_se_fragment.xml" value="0.2222222222222222" />
         <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/user_card_item.xml" value="0.2916666666666667" />
+        <entry key="..\:/01.kys/devnuts/ruflu/app/src/main/res/layout/user_img_layout.xml" value="0.2916666666666667" />
         <entry key="..\:/kys/devnuts/ruflu/app/src/main/res/drawable/ic_chat.xml" value="0.173" />
         <entry key="..\:/kys/devnuts/ruflu/app/src/main/res/drawable/ruflu_se_btn_style.xml" value="0.173" />
         <entry key="..\:/kys/devnuts/ruflu/app/src/main/res/drawable/selector_icon_color.xml" value="0.173" />
