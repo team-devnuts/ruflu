@@ -23,6 +23,7 @@ import com.devnuts.ruflu.home.model.UserCard
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.home.CustomCardStackView
 import com.yuyakaido.android.cardstackview.*
+import kotlin.math.abs
 
 class HomeSubSEFrag() : Fragment() {
 
@@ -83,7 +84,6 @@ class HomeSubSEFrag() : Fragment() {
         btn.setOnClickListener {
             cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(direction))
             cardStackView.swipe()
-
         }
 
     }
@@ -96,12 +96,13 @@ class HomeSubSEFrag() : Fragment() {
     // 카드뷰 update 메소드
     private fun changeCardView() {
         if(cardStackView.adapter == null) {
-            userCardViewAdapter = UserCardViewAdapter(viewModel, this, cardStackView)
+            userCardViewAdapter = UserCardViewAdapter(viewModel.userCard.value!!, this, cardStackView)
         }
         cardStackView.adapter = userCardViewAdapter
 
         userCardViewAdapter.notifyDataSetChanged()
     }
+
 
     // 카드뷰 초기 셋팅
     private fun setUpCardStack() {
@@ -110,7 +111,7 @@ class HomeSubSEFrag() : Fragment() {
         cardStackLayoutManager.setSwipeAnimationSetting(setting)
         cardStackLayoutManager.setDirections(Direction.FREEDOM)
         cardStackLayoutManager.setSwipeThreshold(0.3f)
-        cardStackLayoutManager.setVisibleCount(1)
+        cardStackLayoutManager.setVisibleCount(2)
         cardStackLayoutManager.setTranslationInterval(0.0f)
         cardStackLayoutManager.setScaleInterval(0.0f)
         cardStackLayoutManager.setMaxDegree(0.0f)
@@ -198,30 +199,24 @@ class HomeSubSEFrag() : Fragment() {
                 Log.d("CARDVIEW ACTIONDOWN", "x = ${touchDwX}, y = ${touchDwY}")
             }
             MotionEvent.ACTION_UP -> {
-                var touchUpX = event.x
-                var touchUpY = event.y
-                var moveTouchX = touchDwX - touchUpX
-                var moveTouchY = touchDwY - touchUpY
-                Log.d("CARDVIEWTOUCH_Y", "${moveTouchY}")
+                var moveTouchX = touchDwX - event.x
+                var moveTouchY = touchDwY - event.y
 
-                if (moveTouchY < -100) {
-                    val setting = getRewindSetting(Direction.Top)
-                    cardStackLayoutManager.setRewindAnimationSetting(setting)
-                    cardStackView.rewind()
+                var direction : Direction? = null
 
-                } else if (moveTouchY > 100) {
-                    cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(Direction.Top))
-                    cardStackView.swipe()
+                if(abs(moveTouchX) > abs(moveTouchY)) {
+                    Log.d("CARDVIEWTOUCH_X", "${moveTouchX}")
+                    if(moveTouchX < -100)  direction = Direction.Right
+                    else if(moveTouchX > 100)  direction = Direction.Left
+                } else  {
+                    Log.d("CARDVIEWTOUCH_Y", "${moveTouchY}")
+                    if (moveTouchY < -100) else if (moveTouchY > 100) direction = Direction.Top
                 }
 
-                if(moveTouchX < -100) {
-                    cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(Direction.Left))
-                    cardStackView.swipe()
-                } else if (moveTouchX > 100) {
-                    cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(Direction.Right))
+                if(direction != null) {
+                    cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(direction))
                     cardStackView.swipe()
                 }
-
             }
         }
     }
