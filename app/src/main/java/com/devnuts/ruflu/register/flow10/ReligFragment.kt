@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.ReligFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegReligBinding
 
 class ReligFragment : Fragment() {
-    private var _binding : ReligFragmentBinding? = null
+    private var _binding : FragmentRegReligBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : ReligViewModel by viewModels()
 
@@ -20,7 +20,7 @@ class ReligFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = ReligFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegReligBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root

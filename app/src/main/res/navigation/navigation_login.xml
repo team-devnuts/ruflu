@@ -5,10 +5,88 @@
     android:id="@+id/navigation_login"
     app:startDestination="@id/loginFragment">
 
+    <!-- 스타트 -->
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.devnuts.ruflu.login.loginAPI.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
+
+        <action
+            android:id="@+id/action_loginFragment_to_accountRestoreFragment"
+            app:destination="@+id/accountRestoreFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_smsFragment"
+            app:destination="@+id/smsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <!-- 계정 복구 navigation -->
+    <fragment
+        android:id="@+id/accountRestoreFragment"
+        android:name="com.devnuts.ruflu.login.accountRestore.AccountRestoreFragment"
+        android:label="account_restore_fragment"
+        tools:layout="@layout/fragment_account_restore">
+
+            <action
+                android:id="@+id/action_accountRestoreFragment_to_accountRestoreAuthFragment"
+                app:destination="@+id/accountRestoreAuthFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accountRestoreAuthFragment"
+        android:name="com.devnuts.ruflu.login.accountRestore.AccountRestoreAuthFragment"
+        android:label="account_restore_auth_fragment"
+        tools:layout="@layout/fragment_account_restore_auth" />
+
+
+    <!-- SMS 문자 navigation -->
+    <fragment
+        android:id="@+id/smsFragment"
+        android:name="com.devnuts.ruflu.login.smsAPI.SMSFragment"
+        android:label="sms_fragment"
+        tools:layout="@layout/fragment_sms">
+
+        <action
+            android:id="@+id/action_smsFragment_to_smsAuthFragment"
+            app:destination="@+id/smsAuthFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/smsAuthFragment"
+        android:name="com.devnuts.ruflu.login.smsAPI.SMSAuthFragment"
+        android:label="sms_auth_fragment"
+        tools:layout="@layout/fragment_sms_auth">
+        <action
+            android:id="@+id/action_smsAuthFragment_to_registerEmailFragment"
+            app:destination="@+id/registerEmailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerEmailFragment"
+        android:name="com.devnuts.ruflu.login.registerEmail.EmailRegistrationFragment"
+        android:label="register_fragment"
+        tools:layout="@layout/fragment_email_registration">
     </fragment>
 </navigation>

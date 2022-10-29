@@ -4,42 +4,73 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_baseline_autorenew_24.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/button_round.xml" value="0.21927083333333333" />
+        <entry key="app/src/main/res/drawable/email_edittext_border.xml" value="0.20555555555555555" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.1359375" />
+        <entry key="app/src/main/res/drawable/ic_chat.xml" value="0.215625" />
         <entry key="app/src/main/res/drawable/ic_close.xml" value="0.1359375" />
+        <entry key="app/src/main/res/drawable/ic_dropdown.xml" value="0.1388888888888889" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/ic_love.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/ic_ruflu_splash.xml" value="0.75" />
+        <entry key="app/src/main/res/drawable/ic_user.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/drawable/onboard_button_selected.xml" value="0.2657407407407407" />
         <entry key="app/src/main/res/drawable/onboard_button_selector.xml" value="0.2657407407407407" />
         <entry key="app/src/main/res/drawable/onboard_button_unselected.xml" value="0.2657407407407407" />
+        <entry key="app/src/main/res/drawable/rufluSplash.xml" value="0.15648148148148147" />
+        <entry key="app/src/main/res/drawable/ruflu_se_btn_style.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/selector_icon_color.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/splash_background.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/drawable/style_progressbar.xml" value="0.2657407407407407" />
+        <entry key="app/src/main/res/drawable/user_card_img_style.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/user_card_style.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/user_nb_style.xml" value="0.215625" />
         <entry key="app/src/main/res/font/noto_sans_kr.xml" value="0.18854166666666666" />
-        <entry key="app/src/main/res/layout/activity_loading.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/account_restore_auth_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/account_restore_fragment.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_loading.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19672131147540983" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.13728470111448834" />
-        <entry key="app/src/main/res/layout/alcoh_fragment.xml" value="0.2545289855072464" />
-        <entry key="app/src/main/res/layout/birth_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.24348125179736113" />
+        <entry key="app/src/main/res/layout/alcoh_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/birth_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/chat_fragment.xml" value="0.2545289855072464" />
         <entry key="app/src/main/res/layout/chat_sub_se_fragment.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/edu_fragment.xml" value="0.2545289855072464" />
-        <entry key="app/src/main/res/layout/form_fragment.xml" value="0.20327868852459016" />
+        <entry key="app/src/main/res/layout/edu_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/form_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_account_restore.xml" value="0.24479166666666666" />
+        <entry key="app/src/main/res/layout/fragment_account_restore_auth.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_birth.xml" value="0.13728470111448834" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_email_registration.xml" value="0.2971014492753623" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_nick_name.xml" value="0.18229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_register_email.xml" value="0.3208417956840172" />
+        <entry key="app/src/main/res/layout/fragment_sms.xml" value="0.1686046511627907" />
+        <entry key="app/src/main/res/layout/fragment_sms_auth.xml" value="0.335" />
         <entry key="app/src/main/res/layout/gender_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/height_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/home_sub_nb_fragment.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/home_sub_se_fragment.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/like_lv1_user.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/like_lv2_user.xml" value="0.25" />
         <entry key="app/src/main/res/layout/location_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mypage_fragment.xml" value="0.2545289855072464" />
         <entry key="app/src/main/res/layout/near_by_item.xml" value="0.2545289855072464" />
-        <entry key="app/src/main/res/layout/nick_name_fragment.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/occup_fragment.xml" value="0.22545454545454546" />
-        <entry key="app/src/main/res/layout/photo_upld_fragment.xml" value="0.22545454545454546" />
+        <entry key="app/src/main/res/layout/nick_name_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/occup_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/phone_auth_country.xml" value="0.2957427536231884" />
+        <entry key="app/src/main/res/layout/photo_upld_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/register_home_fragment.xml" value="0.9193548387096774" />
-        <entry key="app/src/main/res/layout/relig_fragment.xml" value="0.22545454545454546" />
+        <entry key="app/src/main/res/layout/relig_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/ruflu_fragment.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/layout/ruflu_like_lv1_fragment.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/ruflu_sub_nb_fragment.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/ruflu_sub_se_fragment.xml" value="0.18125" />
+        <entry key="app/src/main/res/layout/sms_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/spinner_country.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/layout/terms_of_use_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/user_card_item.xml" value="0.2545289855072464" />
         <entry key="app/src/main/res/layout/user_detail_fragment.xml" value="0.2545289855072464" />

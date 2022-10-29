@@ -21,8 +21,8 @@ class RufluApp : Application() {
         lateinit var retrofit: Retrofit
         lateinit var appNotification: AppNotification
         lateinit var sharedPreference: CustomSharedPreference
-        //val url = "http://172.30.1.3"
-        val url = "http://192.168.0.105"
+        val url = "http://192.168.0.6"
+        //192.168.123.103
         val port = 8005
     }
 
@@ -30,8 +30,6 @@ class RufluApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Log.d("Global", "come in here (global)")
-        // 네이티브앱 인증번호
-        //237c80b789b0c2a5beeac1edc09c5d77
         KakaoSdk.init(this, getString(R.string.kakao_app_key))
         appNotification = AppNotification(this)
         sharedPreference = CustomSharedPreference(this)

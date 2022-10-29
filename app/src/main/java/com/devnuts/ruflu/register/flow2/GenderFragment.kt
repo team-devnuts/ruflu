@@ -5,16 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.GenderFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegGenderBinding
 
 @Suppress("UseExpressionBody")
 class GenderFragment : Fragment() {
     //UI binding
-    private var _binding : GenderFragmentBinding? = null
+    private var _binding : FragmentRegGenderBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : GenderViewModel by viewModels()
 
@@ -22,7 +21,7 @@ class GenderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = GenderFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegGenderBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root
@@ -38,7 +37,7 @@ class GenderFragment : Fragment() {
 
     private fun progressBar() {
         val curProgressBar = binding.pbLoading
-        curProgressBar.progress = 16;
+        curProgressBar.progress = 16
     }
 
     private fun initializeView() {

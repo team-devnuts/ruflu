@@ -22,7 +22,7 @@
         <item name="android:textSize">58sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle55">
@@ -31,7 +31,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle2">
@@ -39,7 +39,14 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
+    </style>
+
+    <style name="TextStyle00">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.05</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle73">
@@ -47,7 +54,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_white</item>
+        <item name="android:textColor">@color/ruflu_white</item>
     </style>
 
     <style name="TextStyle56">
@@ -57,7 +64,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle52">
@@ -66,7 +73,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_white</item>
+        <item name="android:textColor">@color/ruflu_white</item>
     </style>
 
     <style name="TextStyle13">
@@ -74,7 +81,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle39">
@@ -83,7 +90,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.03</item>
-        <item name="android:textColor">@color/om_white</item>
+        <item name="android:textColor">@color/ruflu_white</item>
     </style>
 
     <style name="TextStyle32">
@@ -91,7 +98,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle7">
@@ -100,7 +107,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.03</item>
-        <item name="android:textColor">@color/om_white</item>
+        <item name="android:textColor">@color/ruflu_white</item>
     </style>
 
     <style name="TextStyle60">
@@ -109,7 +116,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle59">
@@ -119,7 +126,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle36">
@@ -127,7 +134,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle70">
@@ -136,7 +143,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle22">
@@ -145,7 +152,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_white</item>
+        <item name="android:textColor">@color/ruflu_white</item>
     </style>
 
     <style name="TextStyle18">
@@ -155,7 +162,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle71">
@@ -164,7 +171,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_second_gray</item>
+        <item name="android:textColor">@color/ruflu_second_gray</item>
     </style>
 
     <style name="TextStyle6">
@@ -172,7 +179,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_second_gray</item>
+        <item name="android:textColor">@color/ruflu_second_gray</item>
     </style>
 
     <style name="TextStyle69">
@@ -182,7 +189,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle48">
@@ -192,7 +199,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.01</item>
         <item name="android:lineSpacingMultiplier">1.25</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle47">
@@ -202,7 +209,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.01</item>
         <item name="android:lineSpacingMultiplier">1.25</item>
-        <item name="android:textColor">@color/om_white</item>
+        <item name="android:textColor">@color/ruflu_white</item>
     </style>
 
     <style name="TextStyle46">
@@ -212,7 +219,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.01</item>
         <item name="android:lineSpacingMultiplier">1.25</item>
-        <item name="android:textColor">@color/om_second_gray</item>
+        <item name="android:textColor">@color/ruflu_second_gray</item>
     </style>
 
     <style name="TextStyle24">
@@ -221,7 +228,7 @@
         <item name="android:textSize">15sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle38">
@@ -229,7 +236,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">15sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle31">
@@ -237,7 +244,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">15sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_fourth_gray</item>
+        <item name="android:textColor">@color/ruflu_fourth_gray</item>
     </style>
 
     <style name="TextStyle30">
@@ -245,7 +252,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">15sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle65">
@@ -253,7 +260,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle57">
@@ -262,7 +269,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle16">
@@ -271,7 +278,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle51">
@@ -279,7 +286,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingMultiplier">1.43</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle25">
@@ -289,7 +296,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle54">
@@ -299,7 +306,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle50">
@@ -307,7 +314,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle19">
@@ -316,7 +323,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle8">
@@ -332,7 +339,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.02</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle58">
@@ -341,7 +348,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle45">
@@ -349,7 +356,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle44">
@@ -357,7 +364,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_second_gray</item>
+        <item name="android:textColor">@color/ruflu_second_gray</item>
     </style>
 
     <style name="TextStyle43">
@@ -373,7 +380,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle4">
@@ -382,7 +389,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.01</item>
         <item name="android:lineSpacingMultiplier">1.43</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle3">
@@ -390,7 +397,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">8sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_fourth_gray</item>
+        <item name="android:textColor">@color/ruflu_fourth_gray</item>
     </style>
 
     <style name="TextStyle10">
@@ -398,7 +405,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingMultiplier">1.43</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle53">
@@ -406,7 +413,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_almostwhite</item>
+        <item name="android:textColor">@color/ruflu_almostWhite</item>
     </style>
 
     <style name="TextStyle23">
@@ -415,7 +422,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_almostwhite</item>
+        <item name="android:textColor">@color/ruflu_almostWhite</item>
     </style>
 
     <style name="TextStyle21">
@@ -423,7 +430,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_second_gray</item>
+        <item name="android:textColor">@color/ruflu_second_gray</item>
     </style>
 
     <style name="TextStyle12">
@@ -431,7 +438,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">13sp</item>
         <item name="android:letterSpacing">-0.08</item>
-        <item name="android:textColor">@color/om_fourth_gray</item>
+        <item name="android:textColor">@color/ruflu_fourth_gray</item>
     </style>
 
     <style name="TextStyle29">
@@ -439,7 +446,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">13sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_fourth_gray</item>
+        <item name="android:textColor">@color/ruflu_fourth_gray</item>
     </style>
 
     <style name="TextStyle28">
@@ -447,7 +454,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">13sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_white</item>
+        <item name="android:textColor">@color/ruflu_white</item>
     </style>
 
     <style name="TextStyle67">
@@ -456,7 +463,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.02</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle62">
@@ -465,7 +472,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle34">
@@ -475,7 +482,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle33">
@@ -484,7 +491,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle66">
@@ -492,7 +499,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.02</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle64">
@@ -501,7 +508,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.01</item>
-        <item name="android:textColor">@color/om_second_gray</item>
+        <item name="android:textColor">@color/ruflu_second_gray</item>
     </style>
 
     <style name="TextStyle63">
@@ -510,7 +517,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle41">
@@ -518,7 +525,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_fourth_gray</item>
+        <item name="android:textColor">@color/ruflu_fourth_gray</item>
     </style>
 
     <style name="TextStyle40">
@@ -527,7 +534,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.02</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle35">
@@ -536,7 +543,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.02</item>
-        <item name="android:textColor">@color/om_fourth_gray</item>
+        <item name="android:textColor">@color/ruflu_fourth_gray</item>
     </style>
 
     <style name="TextStyle17">
@@ -545,7 +552,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle14">
@@ -555,7 +562,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_fourth_gray</item>
+        <item name="android:textColor">@color/ruflu_fourth_gray</item>
     </style>
 
     <style name="TextStyle11">
@@ -565,7 +572,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.05</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_second_gray</item>
+        <item name="android:textColor">@color/ruflu_second_gray</item>
     </style>
 
     <style name="TextStyle5">
@@ -574,7 +581,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.02</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle15">
@@ -583,7 +590,7 @@
         <item name="android:textSize">11sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle20">
@@ -592,7 +599,7 @@
         <item name="android:textSize">11sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle49">
@@ -610,7 +617,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">10sp</item>
         <item name="android:letterSpacing">-0.03</item>
-        <item name="android:textColor">@color/om_main_orange</item>
+        <item name="android:textColor">@color/ruflu_main_orange</item>
     </style>
 
     <style name="TextStyle37">
@@ -619,7 +626,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">10sp</item>
         <item name="android:letterSpacing">-0.03</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle">
@@ -638,7 +645,7 @@
         <item name="android:textSize">9sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_third_gray</item>
+        <item name="android:textColor">@color/ruflu_third_gray</item>
     </style>
 
     <style name="TextStyle26">
@@ -648,7 +655,7 @@
         <item name="android:textSize">9sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:lineSpacingMultiplier">1.32</item>
-        <item name="android:textColor">@color/om_main_black</item>
+        <item name="android:textColor">@color/ruflu_main_black</item>
     </style>
 
     <style name="TextStyle75">
@@ -656,6 +663,6 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">13sp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:textColor">@color/om_second_gray</item>
+        <item name="android:textColor">@color/ruflu_second_gray</item>
     </style>
 </resources>

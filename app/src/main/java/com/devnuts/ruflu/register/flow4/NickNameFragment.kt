@@ -8,19 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.NickNameFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegNickNameBinding
 
 class NickNameFragment : Fragment() {
-    private var _binding : NickNameFragmentBinding? = null
+    private var _binding : FragmentRegNickNameBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : NickNameViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = NickNameFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegNickNameBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root
@@ -36,7 +36,7 @@ class NickNameFragment : Fragment() {
 
     private fun progressBar() {
         val curProgressBar = binding.pbLoading
-        curProgressBar.progress = 32;
+        curProgressBar.progress = 32
     }
 
     private fun initializeView() {

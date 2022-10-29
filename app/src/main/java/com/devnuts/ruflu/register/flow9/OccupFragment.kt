@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.OccupFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegOccupBinding
 
 class OccupFragment : Fragment() {
-    private var _binding : OccupFragmentBinding? = null
+    private var _binding : FragmentRegOccupBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : OccupViewModel by viewModels()
 
@@ -20,7 +20,7 @@ class OccupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = OccupFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegOccupBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root

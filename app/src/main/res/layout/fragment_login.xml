@@ -12,10 +12,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mainBackground"
+        android:background="@color/white"
         tools:context=".login.loginAPI.LoginFragment">
 
-
+        <!-- 온보딩 이미지 삽입해야 합니다.-->
         <ImageView
             android:id="@+id/iv_logo"
             android:layout_width="wrap_content"
@@ -28,8 +28,8 @@
         <ImageView
             android:id="@+id/btn_kakaoLogin"
             android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="12dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="100dp"
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/kakao_login_large_wide"
@@ -38,16 +38,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
+        <Button
+            android:id="@+id/btn_phoneLogin"
+            android:layout_width="335dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/button_round"
+            android:text="전화번호로 로그인"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/btn_kakaoLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="40dp" />
+
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="88dp"
-            android:text="로그인"
+            android:id="@+id/tv_login_restore"
+            android:layout_width="410dp"
+            android:layout_height="49dp"
+            android:text="로그인이 안되나요?"
+            android:padding="15dp"
             android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/btn_kakaoLogin"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/btn_kakaoLogin"
-            app:layout_constraintTop_toBottomOf="@+id/btn_kakaoLogin" />
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_phoneLogin"
+            app:layout_constraintStart_toStartOf="@+id/btn_phoneLogin"
+            app:layout_constraintTop_toBottomOf="@+id/btn_phoneLogin" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

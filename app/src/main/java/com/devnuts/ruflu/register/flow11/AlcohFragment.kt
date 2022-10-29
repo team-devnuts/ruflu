@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.AlcohFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegAlcohBinding
 
 class AlcohFragment : Fragment() {
-    private var _binding : AlcohFragmentBinding? = null
+    private var _binding : FragmentRegAlcohBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : AlcohViewModel by viewModels()
 
@@ -20,7 +20,7 @@ class AlcohFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = AlcohFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegAlcohBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root

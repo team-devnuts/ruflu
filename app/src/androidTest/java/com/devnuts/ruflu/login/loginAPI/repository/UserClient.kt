@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.loginAPI.retrofit
+package com.devnuts.ruflu.login.loginAPI.repository
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

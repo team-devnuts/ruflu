@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.LocationFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegLocationBinding
 
 class LocationFragment : Fragment() {
-    private var _binding : LocationFragmentBinding? = null
+    private var _binding : FragmentRegLocationBinding? = null
     private val binding get() = _binding?: error("View error")
     private val viewModel : LocationViewModel by viewModels()
 
@@ -20,7 +20,7 @@ class LocationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = LocationFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegLocationBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         val view = binding.root
 
