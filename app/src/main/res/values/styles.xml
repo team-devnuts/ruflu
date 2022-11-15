@@ -9,6 +9,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlActivated">@color/ruflu_main_orange</item>
+        <item name="android:textViewStyle">@font/suit_regular</item>
     </style>
 
     <style name="NameStyle">

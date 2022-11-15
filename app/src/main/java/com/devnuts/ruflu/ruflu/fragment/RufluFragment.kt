@@ -15,7 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class RufluFragment : Fragment() {
 
-    private val tabTextList = arrayListOf<String>("Siloe", "Nearby")
+    private val tabTextList = arrayListOf<String>("Ruflu", "Nearby")
     private var savePostion : Int = 0
     private lateinit var tabLayout : TabLayout
     private lateinit var viewPager : ViewPager2
