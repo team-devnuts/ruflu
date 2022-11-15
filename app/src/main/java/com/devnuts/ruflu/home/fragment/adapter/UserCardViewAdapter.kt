@@ -37,6 +37,7 @@ class UserCardViewAdapter(val data : ArrayList<UserCard>, val fragment: HomeSubS
         fun bind(userCard: UserCard) {
             pageName.text = "${userCard.nick_nm}"
             pageAge.text = "${UserUtill.getAge(userCard.birth)}"
+
         }
     }
 
