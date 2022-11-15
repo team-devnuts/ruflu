@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.login.loginAPI.model
 
-class KakaoUser (
+data class KakaoUser (
     var oauthKey : String,
     var name : String
     )

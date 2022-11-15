@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.register.flow12.PhotoUpldFragment" />
+            type="com.devnuts.ruflu.register.flow4.NickNameFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/om_almostwhite"
+            android:background="@color/ruflu_almostWhite"
             >
             <ProgressBar
                 android:id="@+id/pb_loading"
@@ -41,7 +41,7 @@
                 android:id="@+id/tv_loading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12/12"
+                android:text="4/12"
                 android:includeFontPadding="false"
                 style="@style/TextStyle5"
                 app:layout_constraintTop_toTopOf="parent"
@@ -58,14 +58,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="사진 로직"
+            android:text="닉네임을 입력해주세요"
             android:includeFontPadding="false"
             style="@style/TextStyle2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_loading" />
 
+
         <TextView
-            android:id="@+id/photoUpldNextBnt"
+            android:id="@+id/nickNameNextBnt"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:layout_marginLeft="20dp"
@@ -75,7 +76,7 @@
             android:background="@drawable/onboard_button_selector"
             android:gravity="center"
             android:text="다음"
-            android:textColor="@color/om_white"
+            android:textColor="@color/ruflu_white"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

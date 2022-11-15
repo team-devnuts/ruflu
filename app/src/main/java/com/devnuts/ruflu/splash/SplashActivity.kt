@@ -34,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun hasToen(): Boolean {
-        var userToken = RufluApp.sharedPreference.getSettingString("USER_TOKEN")
+        val userToken = RufluApp.sharedPreference.getSettingString("USER_TOKEN")
         Log.d("SPLASH", userToken.toString())
         return userToken != null
     }

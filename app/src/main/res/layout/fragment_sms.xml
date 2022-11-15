@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.devnuts.ruflu.login.smsAPI.SMSViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_topTab"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/ruflu_almostWhite"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="@string/phoneVerification"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="@id/cl_topTab"
+            app:layout_constraintStart_toStartOf="@id/cl_topTab"
+            app:layout_constraintTop_toBottomOf="@+id/cl_topTab">
+
+            <TextView
+                android:id="@+id/tv_qa"
+                style="@style/TextStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="전화번호를 입력하세요."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ll_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_qa"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_country"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:drawableEnd="@drawable/ic_dropdown"
+                    android:gravity="center"
+                    android:text="KR +82"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_phoneNumber"
+                    android:theme="@style/EditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="2"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp">
+                    <requestFocus />
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/ll_phone">
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:visibility="invisible"
+                    android:text="잘못된 전화번호입니다."
+                    android:textColor="@color/ruflu_main_red"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/phoneAuthBtn"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/onboard_button_selector"
+                android:gravity="center"
+                android:text="계속"
+                android:textColor="@color/ruflu_white"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

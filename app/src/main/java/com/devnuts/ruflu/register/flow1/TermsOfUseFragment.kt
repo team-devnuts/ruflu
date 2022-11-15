@@ -8,35 +8,34 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.TermsOfUseFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegTermsOfUseBinding
 
 class TermsOfUseFragment : Fragment() {
-    private var _binding : TermsOfUseFragmentBinding? = null
-    private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+    private var _binding : FragmentRegTermsOfUseBinding? = null
+    private val binding get() = _binding?: error("View 참조 초기화 실패")
     private val viewModel : TermsOfUseViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = TermsOfUseFragmentBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentRegTermsOfUseBinding.inflate(inflater, container, false)
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        progressBar();
+        progressBar()
         initializeView()
     }
 
     private fun progressBar() {
         val curProgressBar = binding.pbLoading
-        curProgressBar.progress = 8;
+        curProgressBar.progress = 8
     }
 
     private fun initializeView() {

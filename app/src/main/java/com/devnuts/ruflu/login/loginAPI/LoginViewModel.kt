@@ -10,7 +10,7 @@ import com.devnuts.ruflu.comm.retrofit.RufluApp
 import com.devnuts.ruflu.login.loginAPI.model.RequestLoginData
 import com.devnuts.ruflu.login.loginAPI.model.ResponseLoginData
 import com.devnuts.ruflu.login.loginAPI.model.KakaoUser
-import com.devnuts.ruflu.login.loginAPI.retrofit.UserService
+import com.devnuts.ruflu.login.loginAPI.repository.UserService
 import com.devnuts.ruflu.util.SharedPreferenceToken
 import com.kakao.sdk.auth.*
 import com.kakao.sdk.auth.model.OAuthToken
@@ -27,16 +27,17 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     var kakaoUser = KakaoUser("","")
     val isNew = MutableLiveData<Boolean>()
 
+
     fun checkExistenceToken(context:Context) {
         // 단, hasToken()의 결과가 true 라도 현재 사용자가 로그인 상태임을 보장하지 않습니다.
         if (AuthApiClient.instance.hasToken()) { // 앱 실행 시 사용자가 앞서 로그인을 통해 발급 받은 토큰이 있는지 확인
             // 서버에 액세스 토큰의 유효성을 확인할 수 있는 API
             UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
-                //현재 유효한 access 토큰이 없음
+                // 현재 유효한 access 토큰이 없음
                 //access 토큰이 만료된 것이라면 sdk 내부에서 accessToken 을 갱신한다.
                 if (error != null) {
                     if (error is KakaoSdkError) {
-                        //access 토큰 갱신까지 실패한 것이기 때문에 refresh 토큰이 유효하지 않음, 로그인 필요
+                        // access 토큰 갱신까지 실패한 것이기 때문에 refresh 토큰이 유효하지 않음, 로그인 필요
                         Log.e(LOGINVIEWMODEL, "로그인 필요 / $error.toString()", error)
                         loginKakaoUser(context)
                     }
@@ -48,7 +49,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 else{
                     // 토큰 유효성 체크 성공(필요 시 sdk 내부에서 토큰 갱신됨)
                     Log.e(LOGINVIEWMODEL, "로그인 성공 (필요 시 토큰 갱신) / $tokenInfo.toString()", error)
+                    // 토큰 갱신 API 호출 함수 구현 (USER_TOKEN 최신화 작업이 필요)
                     loginKakaoUser(context)
+
                 }
             }
         }
@@ -101,7 +104,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 getKakaoUserInfo()
             }
         }
-
+        Log.e(LOGINVIEWMODEL, "login 호출?")
         if (LoginClient.instance.isKakaoTalkLoginAvailable(context)) {
             Log.e(LOGINVIEWMODEL, "카카오톡으로")
             LoginClient.instance.loginWithKakaoTalk(context, callback = callback)
@@ -119,7 +122,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 Log.e(LOGINVIEWMODEL, "사용자 정보 요청 실패 / $error.toString()", error)
             }
             else if (user != null) {
-                Log.i(LOGINVIEWMODEL, "사용자 정보 요청 성공" +
+                Log.i(
+                    LOGINVIEWMODEL, "사용자 정보 요청 성공" +
                         "\n회원번호: ${user.id}" +
                         "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
                         "\n이메일: ${user.kakaoAccount?.email}" +
@@ -129,7 +133,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 kakaoUser.oauthKey = user.id.toString()
 
                 //서버에 요청
-                //postLogin()
+                postLogin()
             }
         }
     }
@@ -138,8 +142,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     fun postLogin() {
         val requestLoginData = RequestLoginData(oauthKey = kakaoUser.oauthKey, name = kakaoUser.name) // 전송할 데이터
 
-        val call: Call<ResponseLoginData> = RufluApp.retrofit.create(UserService::class.java)
-            .postLogin(requestLoginData)
+        val call: Call<ResponseLoginData> = RufluApp.retrofit.create(UserService::class.java).postLogin(requestLoginData)
 
         call.enqueue(object : Callback<ResponseLoginData> {
             override fun onResponse(

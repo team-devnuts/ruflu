@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.BirthFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegBirthBinding
 
 class BirthFragment : Fragment() {
 
     //UI binding
-    private var _binding : BirthFragmentBinding? = null
+    private var _binding : FragmentRegBirthBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : BirthViewModel by viewModels()
 
@@ -21,7 +21,7 @@ class BirthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = BirthFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegBirthBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root
@@ -37,7 +37,7 @@ class BirthFragment : Fragment() {
 
     private fun progressBar() {
         val curProgressBar = binding.pbLoading
-        curProgressBar.progress = 24;
+        curProgressBar.progress = 24
     }
 
     private fun initializeView() {

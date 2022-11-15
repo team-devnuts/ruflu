@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.EduFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegEduBinding
 
 class EduFragment : Fragment() {
-    private var _binding : EduFragmentBinding? = null
+    private var _binding : FragmentRegEduBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : EduViewModel by viewModels()
 
@@ -20,7 +20,7 @@ class EduFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = EduFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegEduBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root

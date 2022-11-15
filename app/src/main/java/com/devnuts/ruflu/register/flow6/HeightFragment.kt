@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.HeightFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegHeightBinding
 
 class HeightFragment : Fragment() {
-    private var _binding : HeightFragmentBinding? = null
+    private var _binding : FragmentRegHeightBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : HeightViewModel by viewModels()
 
@@ -20,7 +20,7 @@ class HeightFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = HeightFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegHeightBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root

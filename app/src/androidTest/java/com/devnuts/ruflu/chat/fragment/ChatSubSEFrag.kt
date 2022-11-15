@@ -63,7 +63,7 @@ class ChatSubSEFrag : Fragment() {
         adapter.notifyDataSetChanged()
     }
     private fun initAdapterListener() {
-        adapter.setItemClickListener(object : ChatSubSEAdapter.OnItemClickListener{
+        adapter.setItemClickListener(object : ChatSubSEAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val chatRoom = viewModel.getChatRoomByPos(position)
                 if(chatRoom != null) {

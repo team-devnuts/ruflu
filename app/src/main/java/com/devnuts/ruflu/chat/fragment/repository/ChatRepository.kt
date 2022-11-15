@@ -9,7 +9,6 @@ class ChatRepository {
     private val api = RufluApp.retrofit.create(ServerAPI::class.java)
 
     fun getMyChattingRoomList() : Call<List<ChatRoom>> {
-
         return api.getMyChattingRoomList()
     }
 

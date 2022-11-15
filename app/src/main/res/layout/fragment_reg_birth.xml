@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.register.flow2.GenderViewModel" />
+            type="com.devnuts.ruflu.register.flow3.BirthFragment" />
     </data>
 
 
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/om_almostwhite"
+            android:background="@color/ruflu_almostWhite"
             >
             <ProgressBar
                 android:id="@+id/pb_loading"
@@ -42,7 +42,7 @@
                 android:id="@+id/tv_loading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2/12"
+                android:text="3/12"
                 android:includeFontPadding="false"
                 style="@style/TextStyle5"
                 app:layout_constraintTop_toTopOf="parent"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="성별을 알려주세요"
+            android:text="생일이 언제인가요?"
             android:includeFontPadding="false"
             style="@style/TextStyle2"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
 
 
         <TextView
-            android:id="@+id/genderNextBnt"
+            android:id="@+id/birthNextBnt"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:layout_marginLeft="20dp"
@@ -77,7 +77,7 @@
             android:background="@drawable/onboard_button_selector"
             android:gravity="center"
             android:text="다음"
-            android:textColor="@color/om_white"
+            android:textColor="@color/ruflu_white"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

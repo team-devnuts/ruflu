@@ -5,7 +5,6 @@ import android.util.Log
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.comm.AddCookiesInterceptor
 import com.devnuts.ruflu.comm.AppNotification
-import com.devnuts.ruflu.comm.LogInterceptor
 import com.devnuts.ruflu.comm.ReceivedCookiesInterceptor
 import com.devnuts.ruflu.util.CustomSharedPreference
 import com.kakao.sdk.common.KakaoSdk

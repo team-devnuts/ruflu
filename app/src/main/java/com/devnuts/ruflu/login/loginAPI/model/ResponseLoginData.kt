@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.login.loginAPI.model
 
-class ResponseLoginData (
+data class ResponseLoginData (
     val accessToken : String,
     val isNewUser : Boolean
     )

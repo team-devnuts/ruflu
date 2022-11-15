@@ -10,7 +10,7 @@ import com.devnuts.ruflu.comm.retrofit.RufluApp
 import com.devnuts.ruflu.login.loginAPI.model.RequestLoginData
 import com.devnuts.ruflu.login.loginAPI.model.ResponseLoginData
 import com.devnuts.ruflu.login.loginAPI.model.KakaoUser
-import com.devnuts.ruflu.login.loginAPI.retrofit.UserService
+import com.devnuts.ruflu.login.loginAPI.repository.UserService
 import com.devnuts.ruflu.util.SharedPreferenceToken
 import com.kakao.sdk.auth.*
 import com.kakao.sdk.auth.model.OAuthToken

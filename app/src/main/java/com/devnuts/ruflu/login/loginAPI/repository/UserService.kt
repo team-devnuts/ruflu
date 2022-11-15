@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.loginAPI.retrofit
+package com.devnuts.ruflu.login.loginAPI.repository
 
 import com.devnuts.ruflu.login.loginAPI.model.RequestLoginData
 import com.devnuts.ruflu.login.loginAPI.model.ResponseLoginData

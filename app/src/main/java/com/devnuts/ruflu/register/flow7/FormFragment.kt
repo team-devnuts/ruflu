@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FormFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentRegFormBinding
 
 class FormFragment : Fragment() {
-    private var _binding : FormFragmentBinding? = null
+    private var _binding : FragmentRegFormBinding? = null
     private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel : FormViewModel by viewModels()
 
@@ -20,7 +20,7 @@ class FormFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FormFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegFormBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val view = binding.root

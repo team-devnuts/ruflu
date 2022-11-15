@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.devnuts.ruflu.login.accountRestore.AccountRestoreViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_topTab"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/ruflu_almostWhite"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="@string/emailRegistration"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="@id/cl_topTab"
+            app:layout_constraintStart_toStartOf="@id/cl_topTab"
+            app:layout_constraintTop_toBottomOf="@+id/cl_topTab">
+
+
+            <TextView
+                android:id="@+id/tv_qa"
+                style="@style/TextStyle00"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/guideContent"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/black"
+                android:hint="@string/EmailText"
+                android:paddingStart="10dp"
+                android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:textColorHint="#A0A0A0"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/tv_qa"
+                app:layout_constraintStart_toStartOf="@+id/tv_qa"
+                app:layout_constraintTop_toBottomOf="@id/tv_qa" />
+
+            <TextView
+                android:id="@+id/tv_validateText"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingStart="10dp"
+                android:text="@string/emailError"
+                android:textColor="@color/ruflu_main_red"
+                android:textSize="12sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@id/et_email"
+                app:layout_constraintStart_toStartOf="@id/et_email"
+                app:layout_constraintTop_toBottomOf="@id/et_email" />
+
+            <TextView
+                android:id="@+id/emailRegisBnt"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/onboard_button_selector"
+                android:gravity="center"
+                android:text="@string/nextButton"
+                android:textColor="@color/ruflu_white"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
