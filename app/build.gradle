@@ -33,7 +33,7 @@ android {
             dataBinding = true
         }
         manifestPlaceholders = [kakaoLoginKey: kakaoLoginKey]
-        buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
+       // buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
     }
 
     buildTypes {
