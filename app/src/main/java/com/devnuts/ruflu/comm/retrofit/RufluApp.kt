@@ -21,12 +21,10 @@ class RufluApp : Application() {
         lateinit var retrofit: Retrofit
         lateinit var appNotification: AppNotification
         lateinit var sharedPreference: CustomSharedPreference
-        //val url = "http://172.30.1.3"
-        val url = "http://192.168.0.105"
+        val url = "http://192.168.0.2"
         val port = 8005
     }
-
-
+    
     override fun onCreate() {
         super.onCreate()
         Log.d("Global", "come in here (global)")

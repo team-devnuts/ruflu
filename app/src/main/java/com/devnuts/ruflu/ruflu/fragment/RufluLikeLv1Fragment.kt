@@ -115,10 +115,12 @@ class RufluLikeLv1Fragment : Fragment() {
         super.onAttach(context)
         callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                Log.d("UserDetailFragment", "onBackPressedCallback")
-                childFragmentManager.beginTransaction().remove(rufluUserDetailFragment).commit()
+                if(rufluUserDetailFragment != null) {
+                    Log.d("UserDetailFragment", "onBackPressedCallback")
+                    childFragmentManager.beginTransaction().remove(rufluUserDetailFragment).commit()
+                    userDetailContainer.visibility = View.GONE
+                }
 
-                userDetailContainer.visibility = View.GONE
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)

@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
+        <!--
         <activity
             android:name=".splash.SplashActivity"
             android:screenOrientation="portrait"
@@ -24,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        -->
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
@@ -45,6 +47,7 @@
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".login.activity.RegisterActivity" />
         <activity android:name=".splash.LoadingActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

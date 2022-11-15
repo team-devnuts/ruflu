@@ -8,8 +8,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="서로 대화하고 싶은 이성"
-        android:textSize="30dp"
+        android:text="@string/lv2TitleName"
+        android:textSize="20dp"
         android:textColor="@color/black"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
