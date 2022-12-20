@@ -1,8 +1,8 @@
-package com.devnuts.ruflu.chat.fragment.viewmodel
+package com.devnuts.ruflu.ui.chat
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.chat.fragment.model.ChatRoom
+import com.devnuts.ruflu.ui.model.ChatRoom
 
 class ChatSharedViewModel : ViewModel() {
 

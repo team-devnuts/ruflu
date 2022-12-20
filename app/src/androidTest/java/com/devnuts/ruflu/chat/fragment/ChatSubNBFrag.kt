@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.chat.fragment.viewmodel.ChatSubNBViewModel
+import com.devnuts.ruflu.ui.chat.ChatSubNBViewModel
+import com.devnuts.ruflu.ui.chat.ChatSubNBFrag
 
 class ChatSubNBFrag : Fragment() {
 

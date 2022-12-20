@@ -1,11 +1,12 @@
-package com.devnuts.ruflu.chat.fragment.adapter
+package com.devnuts.ruflu.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ChatPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity){
-    private var fragments : ArrayList<Fragment> = ArrayList()
+class ChatPagerAdapter(fragmentActivity: FragmentActivity) :
+    FragmentStateAdapter(fragmentActivity) {
+    private var fragments: ArrayList<Fragment> = ArrayList()
 
     override fun getItemCount(): Int {
         return fragments.size
@@ -24,7 +25,6 @@ class ChatPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
         fragments.removeLast()
         notifyItemChanged(fragments.size - 1)
     }
-
 
 
 }

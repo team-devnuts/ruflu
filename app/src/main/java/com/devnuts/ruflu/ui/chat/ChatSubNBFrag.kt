@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.chat.fragment
+package com.devnuts.ruflu.ui.chat
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.chat.fragment.viewmodel.ChatSubNBViewModel
 
 class ChatSubNBFrag : Fragment() {
 

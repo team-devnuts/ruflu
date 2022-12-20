@@ -1,12 +1,11 @@
-package com.devnuts.ruflu.chat.fragment.adapter
+package com.devnuts.ruflu.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.devnuts.ruflu.chat.fragment.model.ChatRoom
+import com.devnuts.ruflu.ui.model.ChatRoom
 import com.devnuts.ruflu.databinding.ChatListItemBinding
-import com.devnuts.ruflu.databinding.MyChatRoomBinding
 
 class ChatSubSEAdapter(
         private val myRoomList : ArrayList<ChatRoom>
@@ -41,7 +40,7 @@ class ChatSubSEAdapter(
         holder.bind()
     }
 
-    fun setItemClickListener(onItemClickListener: ChatSubSEAdapter.OnItemClickListener) {
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
         this.seLikeLv1OnClickListener = onItemClickListener
     }
 

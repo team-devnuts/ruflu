@@ -10,10 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.chat.fragment.adapter.ChatSubSEAdapter
-import com.devnuts.ruflu.chat.fragment.viewmodel.ChatSharedViewModel
-import com.devnuts.ruflu.chat.fragment.viewmodel.ChatSubSEViewModel
+import com.devnuts.ruflu.ui.adapter.ChatSubSEAdapter
+import com.devnuts.ruflu.ui.chat.ChatSharedViewModel
+import com.devnuts.ruflu.ui.chat.ChatSubSEViewModel
 import com.devnuts.ruflu.databinding.ChatSubSeFragmentBinding
+import com.devnuts.ruflu.ui.chat.ChatRoomSubSEFrag
+import com.devnuts.ruflu.ui.chat.ChatSubSEFrag
 
 class ChatSubSEFrag : Fragment() {
 

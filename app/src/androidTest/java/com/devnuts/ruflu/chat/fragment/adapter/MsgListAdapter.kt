@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.chat.fragment.model.ChatMessage
+import com.devnuts.ruflu.ui.model.ChatMessage
 import com.devnuts.ruflu.databinding.MsgItemLeftBinding
 import com.devnuts.ruflu.databinding.MsgItemRightBinding
+import com.devnuts.ruflu.ui.adapter.MsgListAdapter
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MsgListAdapter(val msgList : ArrayList<ChatMessage>, val toUserName:String, val toUserImgUrl: String)

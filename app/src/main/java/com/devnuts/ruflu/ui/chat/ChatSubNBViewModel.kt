@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.chat.fragment.viewmodel
+package com.devnuts.ruflu.ui.chat
 
 import androidx.lifecycle.ViewModel
 

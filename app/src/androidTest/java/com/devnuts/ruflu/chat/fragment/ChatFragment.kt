@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.chat.fragment.adapter.ChatPagerAdapter
-import com.devnuts.ruflu.chat.fragment.viewmodel.ChatSharedViewModel
+import com.devnuts.ruflu.ui.adapter.ChatPagerAdapter
+import com.devnuts.ruflu.ui.chat.ChatSharedViewModel
+import com.devnuts.ruflu.ui.chat.ChatFragment
+import com.devnuts.ruflu.ui.chat.ChatSubNBFrag
+import com.devnuts.ruflu.ui.chat.ChatSubSEFrag
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

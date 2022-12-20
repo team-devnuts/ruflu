@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.devnuts.ruflu.chat.fragment.model.ChatRoom
+import com.devnuts.ruflu.ui.model.ChatRoom
 import com.devnuts.ruflu.databinding.ChatListItemBinding
-import com.devnuts.ruflu.databinding.MyChatRoomBinding
+import com.devnuts.ruflu.ui.adapter.ChatSubSEAdapter
 
 class ChatSubSEAdapter(
         private val myRoomList : ArrayList<ChatRoom>

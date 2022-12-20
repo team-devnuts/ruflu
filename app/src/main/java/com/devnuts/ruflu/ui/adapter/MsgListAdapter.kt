@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.chat.fragment.adapter
+package com.devnuts.ruflu.ui.adapter
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.chat.fragment.model.ChatMessage
+import com.devnuts.ruflu.ui.model.ChatMessage
 import com.devnuts.ruflu.databinding.MsgItemLeftBinding
 import com.devnuts.ruflu.databinding.MsgItemRightBinding
 import de.hdodenhof.circleimageview.CircleImageView
