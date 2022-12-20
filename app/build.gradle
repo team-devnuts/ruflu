@@ -182,4 +182,6 @@ dependencies {
     // picasso Library
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
