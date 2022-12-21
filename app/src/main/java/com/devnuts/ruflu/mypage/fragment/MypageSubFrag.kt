@@ -1,11 +1,11 @@
 package com.devnuts.ruflu.mypage.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.devnuts.ruflu.R
 
 class MypageSubFrag : Fragment() {
@@ -17,7 +17,8 @@ class MypageSubFrag : Fragment() {
     private lateinit var viewModel: MypageSubViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.mypage_sub_fragment, container, false)
@@ -28,5 +29,4 @@ class MypageSubFrag : Fragment() {
         viewModel = ViewModelProvider(this).get(MypageSubViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }

@@ -9,9 +9,9 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentSmsAuthBinding
 
 class SMSAuthFragment : Fragment() {
-    private var _binding : FragmentSmsAuthBinding? = null
-    private val binding get() = _binding?: error("View 참조 실패")
-    private val viewModel : SMSViewModel by viewModels()
+    private var _binding: FragmentSmsAuthBinding? = null
+    private val binding get() = _binding ?: error("View 참조 실패")
+    private val viewModel: SMSViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +28,7 @@ class SMSAuthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //back()
+        // back()
         initializeViewBind()
         observeValue()
     }
@@ -45,7 +45,6 @@ class SMSAuthFragment : Fragment() {
             activity?.onBackPressed()
         }
     }
-
 
     private fun initializeViewBind() {
         with(viewModel) {

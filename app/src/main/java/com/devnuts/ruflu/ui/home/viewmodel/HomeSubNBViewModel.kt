@@ -3,8 +3,8 @@ package com.devnuts.ruflu.ui.home.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.ui.model.home.UserDtl
 import com.devnuts.ruflu.domain.repository.HomeRepository
+import com.devnuts.ruflu.ui.model.home.UserDtl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,14 +40,12 @@ class HomeSubNBViewModel : ViewModel() {
                 Log.d(TAG, ":: callback fail ::")
                 Log.d(TAG + ".loadNBUser", "" + t.message)
             }
-
         })
     }
 
-    fun changeRatingToUser(rating : Float, toUser : UserDtl) {
+    fun changeRatingToUser(rating: Float, toUser: UserDtl) {
         val call = homeRepository.changeRatingToUser(rating, toUser.user_id)
     }
 
-    val getNBUser = { pos:Int -> _nbUser.value?.get(pos) }
-
+    val getNBUser = { pos: Int -> _nbUser.value?.get(pos) }
 }

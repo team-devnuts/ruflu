@@ -1,20 +1,21 @@
 package com.devnuts.ruflu.ui.signin.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentAccountRestoreBinding
 
 class AccountRestoreFragment : Fragment() {
-    private var _binding : FragmentAccountRestoreBinding? = null
-    private val binding get() = _binding?: error("View 참조 초기화 실패")
+    private var _binding: FragmentAccountRestoreBinding? = null
+    private val binding get() = _binding ?: error("View 참조 초기화 실패")
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAccountRestoreBinding.inflate(inflater, container, false)
@@ -28,7 +29,6 @@ class AccountRestoreFragment : Fragment() {
 
         back()
         initializedView()
-
     }
 
     private fun back() {

@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.util.Log
-import org.json.JSONObject
 
 class CustomSharedPreference(context: Context) {
     private val ID = "USER_INFO"
@@ -45,9 +44,8 @@ class CustomSharedPreference(context: Context) {
         editor.apply()
     }
 
-    fun getSettingCookie(key: String) : MutableSet<String>? {
+    fun getSettingCookie(key: String): MutableSet<String>? {
         Log.d("SHARED", "Get $key from $ID")
         return mContext.getSharedPreferences(ID, 0).getStringSet(key, null)
     }
-
 }

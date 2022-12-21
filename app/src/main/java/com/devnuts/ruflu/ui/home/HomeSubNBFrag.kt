@@ -11,11 +11,11 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.devnuts.ruflu.ui.adapter.NearByAdapter
-import com.devnuts.ruflu.ui.home.viewmodel.UserDtlSharedViewModel
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.ui.adapter.NearByAdapter
 import com.devnuts.ruflu.ui.adapter.itemDecoration.ItemDecoration
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubNBViewModel
+import com.devnuts.ruflu.ui.home.viewmodel.UserDtlSharedViewModel
 
 class HomeSubNBFrag : Fragment() {
 
@@ -25,18 +25,20 @@ class HomeSubNBFrag : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var nearByAdapter: NearByAdapter
     private lateinit var callback: OnBackPressedCallback
-    private lateinit var userDetailFragment : UserDetailFragment
-    private lateinit var childFragmentTransaction : FragmentTransaction
-    private lateinit var userDetailContainer : RelativeLayout
+    private lateinit var userDetailFragment: UserDetailFragment
+    private lateinit var childFragmentTransaction: FragmentTransaction
+    private lateinit var userDetailContainer: RelativeLayout
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.home_sub_nb_fragment, container, false)
         userDetailContainer = view.findViewById<RelativeLayout>(R.id.user_detail_container)
         recyclerView = view.findViewById(R.id.nb_recview)
-        recyclerView.layoutManager = GridLayoutManager(this.context, 3, RecyclerView.VERTICAL, false)
+        recyclerView.layoutManager =
+            GridLayoutManager(this.context, 3, RecyclerView.VERTICAL, false)
         recyclerView.addItemDecoration(ItemDecoration(requireActivity()))
 
         return view
@@ -58,9 +60,9 @@ class HomeSubNBFrag : Fragment() {
     }
 
     private fun changeNBUser() {
-        if(recyclerView.adapter == null) {
+        if (recyclerView.adapter == null) {
             nearByAdapter = NearByAdapter(nbViewModel.nbUser)
-            nearByAdapter.setItemClickListener(object : NearByAdapter.OnItemClickListener{
+            nearByAdapter.setItemClickListener(object : NearByAdapter.OnItemClickListener {
                 override fun onClick(v: View, position: Int) {
                     Log.d("HomeSubNBFrag", "open childfragment")
                     val userDtl = nbViewModel.getNBUser(position)
@@ -82,7 +84,6 @@ class HomeSubNBFrag : Fragment() {
         nearByAdapter.notifyDataSetChanged()
     }
 
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         callback = object : OnBackPressedCallback(true) {
@@ -94,12 +95,10 @@ class HomeSubNBFrag : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
     }
 
     override fun onDetach() {
         super.onDetach()
         callback.remove()
     }
-
 }

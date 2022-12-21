@@ -1,17 +1,17 @@
 package com.devnuts.ruflu.ui.chat
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.ui.adapter.ChatSubSEAdapter
 import com.devnuts.ruflu.databinding.ChatSubSeFragmentBinding
+import com.devnuts.ruflu.ui.adapter.ChatSubSEAdapter
 
 class ChatSubSEFrag : Fragment() {
 
@@ -20,15 +20,16 @@ class ChatSubSEFrag : Fragment() {
     }
 
     private val viewModel: ChatSubSEViewModel by viewModels()
-    private val sharedViewModel : ChatSharedViewModel by viewModels()
-    private lateinit var bind : ChatSubSeFragmentBinding
-    private lateinit var recycler : RecyclerView
-    private lateinit var adapter : ChatSubSEAdapter
+    private val sharedViewModel: ChatSharedViewModel by viewModels()
+    private lateinit var bind: ChatSubSeFragmentBinding
+    private lateinit var recycler: RecyclerView
+    private lateinit var adapter: ChatSubSEAdapter
     private lateinit var layoutManager: LinearLayoutManager
-    private lateinit var myRoomContainer : RelativeLayout
+    private lateinit var myRoomContainer: RelativeLayout
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         bind = ChatSubSeFragmentBinding.inflate(inflater, container, false)
@@ -61,10 +62,10 @@ class ChatSubSEFrag : Fragment() {
         adapter.notifyDataSetChanged()
     }
     private fun initAdapterListener() {
-        adapter.setItemClickListener(object : ChatSubSEAdapter.OnItemClickListener{
+        adapter.setItemClickListener(object : ChatSubSEAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val chatRoom = viewModel.getChatRoomByPos(position)
-                if(chatRoom != null) {
+                if (chatRoom != null) {
                     sharedViewModel.setMyRoom(chatRoom)
                     val myRoom = ChatRoomSubSEFrag()
 

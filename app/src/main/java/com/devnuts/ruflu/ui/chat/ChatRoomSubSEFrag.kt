@@ -11,24 +11,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.devnuts.ruflu.ui.adapter.MsgListAdapter
-import com.devnuts.ruflu.ui.model.chat.ChatMessage
 import com.devnuts.ruflu.comm.retrofit.RufluApp
 import com.devnuts.ruflu.databinding.MyChatRoomBinding
+import com.devnuts.ruflu.ui.adapter.MsgListAdapter
+import com.devnuts.ruflu.ui.model.chat.ChatMessage
 import com.github.nkzawa.emitter.Emitter
 import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
-import org.json.JSONObject
 import java.net.URISyntaxException
-
+import org.json.JSONObject
 
 class ChatRoomSubSEFrag : Fragment() {
 
-    private lateinit var bind : MyChatRoomBinding
-    private lateinit var mSocket : Socket
-    private lateinit var roomNo : String
+    private lateinit var bind: MyChatRoomBinding
+    private lateinit var mSocket: Socket
+    private lateinit var roomNo: String
     private lateinit var toUserName: String
-    private lateinit var toUserImgUrl : String
+    private lateinit var toUserImgUrl: String
     private lateinit var recyclerView: RecyclerView
     private lateinit var msgEdit: EditText
     private lateinit var adapter: MsgListAdapter
@@ -48,7 +47,7 @@ class ChatRoomSubSEFrag : Fragment() {
         } catch (e: URISyntaxException) {
             e.printStackTrace()
         }
-        mSocket.on("new message",onMessage)
+        mSocket.on("new message", onMessage)
         mSocket.connect()
     }
 
@@ -57,7 +56,7 @@ class ChatRoomSubSEFrag : Fragment() {
         recyclerView = bind.msgRecycler
         recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
-        //adapter = MsgListAdapter()
+        // adapter = MsgListAdapter()
         recyclerView.adapter = adapter
         msgEdit = bind.msgEdit
         submitBtn = bind.submitBtn
@@ -78,7 +77,7 @@ class ChatRoomSubSEFrag : Fragment() {
     private fun initEventListener() {
         submitBtn.setOnClickListener {
             val msg = msgEdit.text.toString()
-            val data : HashMap<String, String> = HashMap()
+            val data: HashMap<String, String> = HashMap()
             val userId = RufluApp.sharedPreference.getSettingString("user_id")
             data.put("message", msg)
             data.put("roomNo", roomNo)
@@ -96,7 +95,7 @@ class ChatRoomSubSEFrag : Fragment() {
 
         val data = ChatMessage(toUserName, obj.getString("message"), toUserImgUrl)
         Log.d("ChatRoom.onMessage", obj.toString())
-        requireActivity().runOnUiThread(object : Runnable{
+        requireActivity().runOnUiThread(object : Runnable {
             override fun run() {
                 (Runnable {
                     kotlin.run {

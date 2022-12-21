@@ -50,17 +50,15 @@ class LoginFragment : Fragment() {
         intentActivity()
     }
 
-
-
     // LiveData 를 이용하여, Activity 화면 전환
     private fun intentActivity() {
         // isNew 로 넘어오는 param 값은 LiveData 의 value
         viewModel.isNew.observe(viewLifecycleOwner) { isNew ->
-            if(isNew) { // 새로운 아이디일 경우, register 로 넘기기
+            if (isNew) { // 새로운 아이디일 경우, register 로 넘기기
                 val intent = Intent(activity, RegisterActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
-            }else { // 존재하는 아이디일 경우, MainActivity 로
+            } else { // 존재하는 아이디일 경우, MainActivity 로
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
@@ -77,7 +75,6 @@ class LoginFragment : Fragment() {
     private fun phoneLogin() {
         binding.btnPhoneLogin.setOnClickListener {
             // SMS_API 로 넘겨주기
-
         }
     }
 

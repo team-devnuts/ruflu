@@ -11,7 +11,7 @@ class SquareRelativeLayout(context: Context, attributeSet: AttributeSet) : Relat
         var width = MeasureSpec.getSize(widthMeasureSpec)
         var height = MeasureSpec.getSize(heightMeasureSpec)
         Log.d("Square", "spec : $width , $height")
-        //setMeasuredDimension(width, width)
+        // setMeasuredDimension(width, width)
         super.onMeasure(widthMeasureSpec, widthMeasureSpec)
     }
 }

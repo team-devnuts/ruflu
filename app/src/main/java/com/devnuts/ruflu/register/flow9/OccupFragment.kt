@@ -1,22 +1,23 @@
 package com.devnuts.ruflu.register.flow9
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentRegOccupBinding
 
 class OccupFragment : Fragment() {
-    private var _binding : FragmentRegOccupBinding? = null
-    private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
-    private val viewModel : OccupViewModel by viewModels()
+    private var _binding: FragmentRegOccupBinding? = null
+    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+    private val viewModel: OccupViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -36,7 +37,7 @@ class OccupFragment : Fragment() {
 
     private fun progressBar() {
         val curProgressBar = binding.pbLoading
-        curProgressBar.progress = 74;
+        curProgressBar.progress = 74
     }
 
     private fun initializeView() {

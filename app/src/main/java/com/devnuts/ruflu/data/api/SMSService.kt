@@ -9,6 +9,6 @@ import retrofit2.http.POST
 interface SMSService {
     @POST("/login/smsAPI")
     fun smsAPI(
-        @Body body : RequestSMSData
-    ) : Call<ResponseSMSData>
+        @Body body: RequestSMSData
+    ): Call<ResponseSMSData>
 }

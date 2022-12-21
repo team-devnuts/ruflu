@@ -13,24 +13,21 @@ import kotlin.concurrent.schedule
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_splash)
+        // setContentView(R.layout.activity_splash)
 
         Timer().schedule(1000) {
-            if(hasToen()) {
+            if (hasToen()) {
                 Log.d("SPLASH", hasToen().toString())
-                val intent = Intent(applicationContext,  MainActivity::class.java)
+                val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-            }else {
+            } else {
                 Log.d("SPLASH", hasToen().toString())
                 val intent = Intent(applicationContext, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }
         }
-
-
-
     }
 
     private fun hasToen(): Boolean {

@@ -3,13 +3,13 @@ package com.devnuts.ruflu.ui.home.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.ui.model.home.UserCard
 import com.devnuts.ruflu.domain.repository.HomeRepository
+import com.devnuts.ruflu.ui.model.home.UserCard
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeSubSEViewModel : ViewModel(){
+class HomeSubSEViewModel : ViewModel() {
 
     private val homeRepository: HomeRepository = HomeRepository()
     private val TAG = javaClass.name
@@ -53,7 +53,6 @@ class HomeSubSEViewModel : ViewModel(){
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     Log.d(TAG, "callback success!!!")
-
                 }
             }
 
@@ -61,7 +60,6 @@ class HomeSubSEViewModel : ViewModel(){
                 Log.d(TAG, "callback fail")
                 Log.d(TAG + ".hateYourUserCard", "" + t.message)
             }
-
         })
     }
 
@@ -82,8 +80,6 @@ class HomeSubSEViewModel : ViewModel(){
                 Log.d(TAG, "callback fail")
                 Log.d(TAG + ".likeYourUserCard", "" + t.stackTrace)
             }
-
         })
     }
 }
-

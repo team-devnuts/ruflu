@@ -7,7 +7,7 @@ import java.util.regex.Pattern
 
 class AccountRestoreViewModel : ViewModel() {
     private val _email = MutableLiveData<String>()
-    val email : LiveData<String>
+    val email: LiveData<String>
             get() = _email
 
     init {
@@ -15,8 +15,8 @@ class AccountRestoreViewModel : ViewModel() {
     }
 
     // email 로직
-    fun validateEmail(email: String) : Boolean{
-        val pattern : Pattern = android.util.Patterns.EMAIL_ADDRESS
+    fun validateEmail(email: String): Boolean {
+        val pattern: Pattern = android.util.Patterns.EMAIL_ADDRESS
         return pattern.matcher(email).matches()
     }
 }

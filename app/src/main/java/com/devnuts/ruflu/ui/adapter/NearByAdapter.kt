@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import android.widget.ImageView
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
@@ -15,18 +14,17 @@ import com.devnuts.ruflu.ui.model.home.UserDtl
 class NearByAdapter(val data: MutableLiveData<ArrayList<UserDtl>>) : RecyclerView.Adapter<NearByAdapter.NearByViewHolder>() {
 
     private lateinit var itemClickListener: OnItemClickListener
-    private lateinit var view : View
+    private lateinit var view: View
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
     }
 
-
     inner class NearByViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind (imgs: List<String>) {
+        fun bind(imgs: List<String>) {
             val imgView = view.findViewById<ImageView>(R.id.nbUPfImg)
             Log.d("is exist img??", "${imgs.isNotEmpty()}")
-            if(imgs.isNotEmpty())
+            if (imgs.isNotEmpty())
                 UserUtill.setImageWithGlide(view, imgs[0], imgView)
             else imgView.setImageResource(R.drawable.noimg_fac)
         }

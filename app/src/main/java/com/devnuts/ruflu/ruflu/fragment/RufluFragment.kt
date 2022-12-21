@@ -1,24 +1,24 @@
 package com.devnuts.ruflu.ruflu.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.devnuts.ruflu.R
 import com.devnuts.ruflu.ruflu.fragment.adapter.RufluPagerAdapter
 import com.devnuts.ruflu.ruflu.fragment.viewmodel.RufluViewModel
-import com.devnuts.ruflu.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class RufluFragment : Fragment() {
 
     private val tabTextList = arrayListOf<String>("Siloe", "Nearby")
-    private var savePostion : Int = 0
-    private lateinit var tabLayout : TabLayout
-    private lateinit var viewPager : ViewPager2
+    private var savePostion: Int = 0
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager2
 
     companion object {
         fun newInstance() = RufluFragment()
@@ -27,10 +27,11 @@ class RufluFragment : Fragment() {
     private lateinit var viewModel: RufluViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view : View = inflater.inflate(R.layout.ruflu_fragment, container, false)
+        val view: View = inflater.inflate(R.layout.ruflu_fragment, container, false)
         viewPager = view.findViewById(R.id.ruflu_viewpager)
         tabLayout = view.findViewById(R.id.ruflu_tabLayout)
 
@@ -45,11 +46,11 @@ class RufluFragment : Fragment() {
             }
         })
 
-        TabLayoutMediator(tabLayout, viewPager){tab, position ->
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabTextList[position]
         }.attach()
 
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 viewPager.currentItem = tab!!.position
             }

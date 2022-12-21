@@ -1,10 +1,10 @@
 package com.devnuts.ruflu.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.HomeFragmentBinding
 import com.devnuts.ruflu.ui.adapter.HomePagerAdapter
@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout
 class HomeFragment : Fragment() {
 
     private var savePosition: Int = 0
-    private var _bind : HomeFragmentBinding? = null
+    private var _bind: HomeFragmentBinding? = null
     private val bind get() = _bind!!
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
@@ -23,7 +23,8 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _bind = HomeFragmentBinding.inflate(inflater, container, false)
@@ -45,7 +46,7 @@ class HomeFragment : Fragment() {
         setCompCallback()
         addListeners()
         // 뷰페이저와 tablayout 연결
-        //TabLayoutMediator(tabLayout, viewPager) { tab, position -> }.attach()
+        // TabLayoutMediator(tabLayout, viewPager) { tab, position -> }.attach()
     }
 
     private fun setCompCallback() {
@@ -79,6 +80,4 @@ class HomeFragment : Fragment() {
         super.onPause()
         savePosition = tabLayout.selectedTabPosition
     }
-
-
 }

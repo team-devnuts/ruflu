@@ -3,8 +3,8 @@ package com.devnuts.ruflu.ruflu.fragment.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.ui.model.home.UserDtl
 import com.devnuts.ruflu.ruflu.repository.RufluRepository
+import com.devnuts.ruflu.ui.model.home.UserDtl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,10 +27,8 @@ class RufluSubSEViewModel : ViewModel() {
     }
     val lv2User: MutableLiveData<ArrayList<UserDtl>> get() = _lv2User
 
-
     private fun init() {
     }
-
 
     fun loadSeLv1User() {
         val call = rufluRepository.getSeLv1User()
@@ -50,7 +48,6 @@ class RufluSubSEViewModel : ViewModel() {
                 Log.d(TAG, ":: callback fail ::")
                 Log.d(TAG, "Error Message" + t.message)
             }
-
         })
     }
 
@@ -70,18 +67,17 @@ class RufluSubSEViewModel : ViewModel() {
                 Log.d(TAG, ":: callback fail ::")
                 Log.d(TAG, "Error Message" + t.message)
             }
-
         })
     }
 
     fun insertSeLikeLv2(userId: String) {
         val call = rufluRepository.insertSeLikeLv2(userId)
-        call.enqueue(object: Callback<String> {
+        call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     Log.d(TAG, "callback success")
                     val message = response.body()
-                    //_lv2User.value = if (nbUserList != null) nbUserList as ArrayList<LikeLv2User> else ArrayList()
+                    // _lv2User.value = if (nbUserList != null) nbUserList as ArrayList<LikeLv2User> else ArrayList()
                     // 매칭시 알림화면
                 }
             }
@@ -90,7 +86,6 @@ class RufluSubSEViewModel : ViewModel() {
                 Log.d(TAG, ":: callback fail ::")
                 Log.d(TAG, "Error Message" + t.message)
             }
-
         })
     }
 
@@ -103,8 +98,7 @@ class RufluSubSEViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     Log.d(TAG, "callback success")
                     val message = response.body()
-                    //_lv2User.value = if (nbUserList != null) nbUserList as ArrayList<LikeLv2User> else ArrayList()
-
+                    // _lv2User.value = if (nbUserList != null) nbUserList as ArrayList<LikeLv2User> else ArrayList()
                 }
             }
 
@@ -112,15 +106,13 @@ class RufluSubSEViewModel : ViewModel() {
                 Log.d(TAG, ":: callback fail ::")
                 Log.d(TAG, "Error Message" + t.message)
             }
-
         })
     }
 
     fun sendMessageAskingTalkToUser(user: UserDtl?) {
-
     }
 
-    val getSeLikeLv1User = { pos:Int -> _lv1User.value?.get(pos) }
+    val getSeLikeLv1User = { pos: Int -> _lv1User.value?.get(pos) }
 
-    val getSeLikeLv2User = { pos:Int -> _lv2User.value?.get(pos) }
+    val getSeLikeLv2User = { pos: Int -> _lv2User.value?.get(pos) }
 }

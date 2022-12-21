@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class HomePagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
-    private var fragments : ArrayList<Fragment> = ArrayList()
+    private var fragments: ArrayList<Fragment> = ArrayList()
 
     override fun getItemCount(): Int {
         return fragments.size
@@ -24,5 +24,4 @@ class HomePagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
         fragments.removeLast()
         notifyItemChanged(fragments.size - 1)
     }
-
 }

@@ -1,11 +1,6 @@
 package com.devnuts.ruflu.ui.signin
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -23,7 +18,6 @@ class LoginActivity : AppCompatActivity() {
         initNavController()
     }
 
-
         /*
          FragmentContainerView 를 사용하여 NavHostFragment 를 만들 때
          또는 FragmentTransaction 을 통해 NavHostFragment 를 활동에 수동으로 추가할 경우
@@ -36,5 +30,4 @@ class LoginActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.host_nav_fragment_login) as NavHostFragment
         navController = navHostFragment.navController
     }
-
 }

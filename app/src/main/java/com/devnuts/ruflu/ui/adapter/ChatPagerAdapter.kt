@@ -25,6 +25,4 @@ class ChatPagerAdapter(fragmentActivity: FragmentActivity) :
         fragments.removeLast()
         notifyItemChanged(fragments.size - 1)
     }
-
-
 }

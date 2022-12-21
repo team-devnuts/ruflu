@@ -40,14 +40,13 @@ class UserDetailFragment : Fragment() {
         indicator = binding.homeNbIndicator
         viewPager2 = binding.homeNbViewpage2
 
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tempUser = parentViewModel.nbUserDtl.value
-        if(tempUser != null) {
+        if (tempUser != null) {
             userDtl = tempUser
             initView()
         }
@@ -65,7 +64,6 @@ class UserDetailFragment : Fragment() {
 
         setCompCallback()
         addListeners()
-
     }
 
     private fun setCompCallback() {

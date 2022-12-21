@@ -15,5 +15,4 @@ class SESharedViewModel : ViewModel() {
     }
 
     fun detachUser() { _lv1UserDtl.value = null }
-
 }

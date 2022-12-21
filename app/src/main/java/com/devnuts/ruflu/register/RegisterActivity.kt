@@ -15,17 +15,15 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
         back()
         initNavController()
-
     }
 
     private fun back() {
-        val back : ImageView = findViewById(R.id.iv_back)
+        val back: ImageView = findViewById(R.id.iv_back)
         back.setOnClickListener {
             if (navController.currentDestination?.label != "terms_of_use_fragment")
-            Log.d("flow", "navController.currentDestination?.parent")
+                Log.d("flow", "navController.currentDestination?.parent")
             onBackPressed()
         }
     }

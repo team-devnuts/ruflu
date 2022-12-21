@@ -1,22 +1,23 @@
 package com.devnuts.ruflu.register.flow11
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentRegAlcohBinding
 
 class AlcohFragment : Fragment() {
-    private var _binding : FragmentRegAlcohBinding? = null
-    private val binding get() = _binding?: error("View를 참조하기 위해 binding이 초기화 되지 x")
-    private val viewModel : AlcohViewModel by viewModels()
+    private var _binding: FragmentRegAlcohBinding? = null
+    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+    private val viewModel: AlcohViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -35,7 +36,7 @@ class AlcohFragment : Fragment() {
 
     private fun progressBar() {
         val curProgressBar = binding.pbLoading
-        curProgressBar.progress = 91;
+        curProgressBar.progress = 91
     }
 
     private fun initializeView() {
@@ -43,5 +44,4 @@ class AlcohFragment : Fragment() {
             findNavController().navigate(R.id.action_alcohFragment_to_photoUpldFragment)
         }
     }
-
 }

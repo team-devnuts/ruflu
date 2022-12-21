@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class RufluPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
-    private var fragments : ArrayList<Fragment> = ArrayList()
+    private var fragments: ArrayList<Fragment> = ArrayList()
 
     override fun getItemCount(): Int {
         return fragments.size
@@ -19,5 +19,4 @@ class RufluPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapt
         fragments.add(fragment)
         notifyItemChanged(fragments.size - 1)
     }
-
 }

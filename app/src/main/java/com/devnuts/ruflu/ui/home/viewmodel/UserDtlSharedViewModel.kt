@@ -16,7 +16,5 @@ class UserDtlSharedViewModel : ViewModel() {
         _userDtl.value = userDtl
     }
 
-    fun detachNBUser() { _userDtl.value = null}
-
-
+    fun detachNBUser() { _userDtl.value = null }
 }

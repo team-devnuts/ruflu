@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.UserDetailFragmentBinding
+import com.devnuts.ruflu.ruflu.fragment.viewmodel.SESharedViewModel
 import com.devnuts.ruflu.ui.adapter.UserImgViewAdapter
 import com.devnuts.ruflu.ui.model.home.UserDtl
-import com.devnuts.ruflu.ruflu.fragment.viewmodel.SESharedViewModel
 import me.relex.circleindicator.CircleIndicator3
 
 class RufluUserDetailFragment() : Fragment() {
@@ -40,14 +40,13 @@ class RufluUserDetailFragment() : Fragment() {
         indicator = binding.homeNbIndicator
         viewPager2 = binding.homeNbViewpage2
 
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tempUser = parentViewModel.userDtl.value
-        if(tempUser != null) {
+        if (tempUser != null) {
             userDtl = tempUser
             initView()
         }
@@ -65,7 +64,6 @@ class RufluUserDetailFragment() : Fragment() {
 
         setCompCallback()
         addListeners()
-
     }
 
     private fun setCompCallback() {
@@ -84,9 +82,7 @@ class RufluUserDetailFragment() : Fragment() {
         }
 
         parentViewModel.userDtl.observe(viewLifecycleOwner, {
-
         })
-
     }
 
     override fun onAttach(context: Context) {

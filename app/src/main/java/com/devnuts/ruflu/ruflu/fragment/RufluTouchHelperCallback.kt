@@ -3,11 +3,11 @@ package com.devnuts.ruflu.ruflu.fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class RufluTouchHelperCallback(private val itemMoveListener : OnItemMoveListener ) : ItemTouchHelper.Callback() {
+class RufluTouchHelperCallback(private val itemMoveListener: OnItemMoveListener) : ItemTouchHelper.Callback() {
 
     interface OnItemMoveListener {
         fun onItemMove(fromposition: Int, toPosition: Int)
-        fun onItemsWipe(position : Int, direction: Int)
+        fun onItemsWipe(position: Int, direction: Int)
     }
     /**
      * 어느 방향으로 움직일지에 따라서 flag 받는것을 정의

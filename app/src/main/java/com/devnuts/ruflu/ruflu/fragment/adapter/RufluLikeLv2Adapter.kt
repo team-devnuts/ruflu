@@ -10,13 +10,13 @@ import com.devnuts.ruflu.databinding.LikeLv2UserBinding
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import de.hdodenhof.circleimageview.CircleImageView
 
-class RufluLikeLv2Adapter (
-        private val likeLv2Users : ArrayList<UserDtl>
-        ) : RecyclerView.Adapter<RufluLikeLv2Adapter.RufluLikeLv2ViewHolder>() {
+class RufluLikeLv2Adapter(
+    private val likeLv2Users: ArrayList<UserDtl>
+) : RecyclerView.Adapter<RufluLikeLv2Adapter.RufluLikeLv2ViewHolder>() {
 
-    private lateinit var view : View
-    private lateinit var binding : LikeLv2UserBinding
-    private lateinit var userImgView : CircleImageView
+    private lateinit var view: View
+    private lateinit var binding: LikeLv2UserBinding
+    private lateinit var userImgView: CircleImageView
     private lateinit var seLikeLv2UserClickListener: OnItemClickListener
     private lateinit var seLikeLv2TalkClickListener: OnItemClickListener
     private lateinit var seLikeLv2CancelClickListener: OnItemClickListener
@@ -25,10 +25,10 @@ class RufluLikeLv2Adapter (
         fun onClick(v: View, position: Int)
     }
 
-    inner class RufluLikeLv2ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    inner class RufluLikeLv2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(likeLv2User: UserDtl) {
-            if("".equals(likeLv2User.imgs.get(0)) && likeLv2User.imgs.get(0) != null)
+            if ("".equals(likeLv2User.imgs.get(0)) && likeLv2User.imgs.get(0) != null)
                 UserUtill.setImageBitmap(likeLv2User.imgs.get(0), userImgView)
             else userImgView.setImageResource(R.drawable.noimg_fac)
             binding.seLv2NickNm.text = likeLv2User.nick_nm
@@ -52,7 +52,6 @@ class RufluLikeLv2Adapter (
     override fun getItemCount(): Int {
         return likeLv2Users.size
     }
-
 
     fun setUserClickListener(onItemClickListener: RufluLikeLv2Adapter.OnItemClickListener) {
         this.seLikeLv2UserClickListener = onItemClickListener
@@ -79,5 +78,4 @@ class RufluLikeLv2Adapter (
             seLikeLv2CancelClickListener.onClick(it, position)
         }
     }
-
 }

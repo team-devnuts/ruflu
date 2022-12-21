@@ -78,8 +78,8 @@ class SMSViewModel() : ViewModel() {
     }
 
     fun validatePhoneNumber(phoneNumber: String): Boolean {
-        //val pattern : Pattern = android.util.Patterns.PHONE
-        //pattern.matcher(phoneNumber).matches()
+        // val pattern : Pattern = android.util.Patterns.PHONE
+        // pattern.matcher(phoneNumber).matches()
         val regex =
             "^\\s*(010|011|012|013|014|015|016|017|018|019)(-|\\)|\\s)*(\\d{3,4})(-|\\s)*(\\d{4})\\s*$"
         return Pattern.compile(regex).matcher(phoneNumber).matches()
@@ -107,8 +107,6 @@ class SMSViewModel() : ViewModel() {
     private fun moveCursor(loc: Int) {
         verifyCodeEtList[loc].selectAll()
         verifyCodeEtList[loc].requestFocus()
-
-
     }
 
     companion object {

@@ -2,29 +2,29 @@ package com.devnuts.ruflu.ui.signin.fragment
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentSmsBinding
-import android.view.inputmethod.InputMethodManager
-import androidx.core.widget.addTextChangedListener
-
 
 class SMSFragment : Fragment() {
 
-    private var _binding : FragmentSmsBinding? = null
-    private val binding get() = _binding?: error("View 참조 실패")
-    private val viewModel : SMSViewModel by viewModels()
+    private var _binding: FragmentSmsBinding? = null
+    private val binding get() = _binding ?: error("View 참조 실패")
+    private val viewModel: SMSViewModel by viewModels()
     private lateinit var inputMethodManager: InputMethodManager
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSmsBinding.inflate(inflater, container, false)
@@ -36,7 +36,6 @@ class SMSFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         back()
         focusEditTextSetting()
         initViewSetting()
@@ -46,12 +45,11 @@ class SMSFragment : Fragment() {
     /* observing */
     private fun observeValue() {
         binding.etPhoneNumber.addTextChangedListener {
-            val phoneNumber : String = binding.etPhoneNumber.text.toString()
-            val checkValidation : Boolean = viewModel.validatePhoneNumber(phoneNumber)
+            val phoneNumber: String = binding.etPhoneNumber.text.toString()
+            val checkValidation: Boolean = viewModel.validatePhoneNumber(phoneNumber)
             binding.phoneAuthBtn.isSelected = checkValidation
         }
     }
-
 
     private fun initViewSetting() {
         /* recycler View 로 확장해야할 부분 */
@@ -60,7 +58,6 @@ class SMSFragment : Fragment() {
                 Toast.makeText(context, "나라 클릭", Toast.LENGTH_SHORT).show()
                 return true
             }
-
         })
 
         binding.phoneAuthBtn.setOnClickListener {

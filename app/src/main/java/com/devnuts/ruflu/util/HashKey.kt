@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
-import android.os.Message
 import android.util.Base64
 import android.util.Base64.NO_WRAP
 import android.util.Log
@@ -46,5 +45,4 @@ class HashKey {
         }
         return null
     }
-
 }
