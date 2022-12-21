@@ -16,7 +16,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.ui.chat.ChatFragment
 import com.devnuts.ruflu.comm.FusedLocationProvider
 import com.devnuts.ruflu.comm.retrofit.RufluApp
-import com.devnuts.ruflu.home.fragment.HomeFragment
+import com.devnuts.ruflu.ui.home.HomeFragment
 import com.devnuts.ruflu.mmodel.User
 import com.devnuts.ruflu.mypage.fragment.MypageFragment
 import com.devnuts.ruflu.ruflu.fragment.RufluFragment

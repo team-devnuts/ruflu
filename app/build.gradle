@@ -86,6 +86,7 @@ android {
 
 dependencies {
 
+    testImplementation 'junit:junit:4.12'
     def room_version = "2.3.0"
     def nav_version = "2.3.5"
     def lifecycle_version = "2.3.1"

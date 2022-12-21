@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.home.fragment
+package com.devnuts.ruflu.ui.home
 
 import android.content.Context
 import android.os.Bundle
@@ -12,11 +12,11 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.UserDetailFragmentBinding
 import com.devnuts.ruflu.ui.adapter.UserImgViewAdapter
+import com.devnuts.ruflu.ui.home.viewmodel.UserDtlSharedViewModel
 import com.devnuts.ruflu.home.model.UserDtl
-import com.devnuts.ruflu.ruflu.fragment.viewmodel.SESharedViewModel
 import me.relex.circleindicator.CircleIndicator3
 
-class RufluUserDetailFragment() : Fragment() {
+class UserDetailFragment : Fragment() {
 
     private lateinit var imgAdapter: UserImgViewAdapter
     private lateinit var binding: UserDetailFragmentBinding
@@ -25,7 +25,7 @@ class RufluUserDetailFragment() : Fragment() {
     private lateinit var viewPager2: ViewPager2
     private lateinit var userDtl: UserDtl
 
-    private val parentViewModel: SESharedViewModel by viewModels(
+    private val parentViewModel: UserDtlSharedViewModel by viewModels(
             ownerProducer = { requireParentFragment() }
     )
 
@@ -46,7 +46,7 @@ class RufluUserDetailFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tempUser = parentViewModel.userDtl.value
+        val tempUser = parentViewModel.nbUserDtl.value
         if(tempUser != null) {
             userDtl = tempUser
             initView()
@@ -82,11 +82,6 @@ class RufluUserDetailFragment() : Fragment() {
             userDtl.ratingStar = rating
             parentViewModel.setUserDtl(userDtl)
         }
-
-        parentViewModel.userDtl.observe(viewLifecycleOwner, {
-
-        })
-
     }
 
     override fun onAttach(context: Context) {
@@ -95,6 +90,6 @@ class RufluUserDetailFragment() : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        parentViewModel.detachUser()
+        parentViewModel.detachNBUser()
     }
 }
