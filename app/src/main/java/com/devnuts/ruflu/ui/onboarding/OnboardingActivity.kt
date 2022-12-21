@@ -8,12 +8,12 @@ import androidx.navigation.*
 import androidx.navigation.fragment.NavHostFragment
 import com.devnuts.ruflu.R
 
-class RegisterActivity : AppCompatActivity() {
+class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_onboarding)
 
         back()
         initNavController()

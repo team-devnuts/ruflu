@@ -45,7 +45,7 @@
             android:name=".ui.signin.LoginActivity"
             android:windowSoftInputMode="adjustResize"/>
 
-        <activity android:name=".ui.onboarding.RegisterActivity" />
+        <activity android:name=".ui.onboarding.OnboardingActivity" />
         <activity android:name=".ui.loading.LoadingActivity" />
         <activity android:name=".MainActivity">
 <!--            <intent-filter>-->

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.devnuts.ruflu.databinding.FragmentEmailRegistrationBinding
-import com.devnuts.ruflu.ui.onboarding.RegisterActivity
+import com.devnuts.ruflu.ui.onboarding.OnboardingActivity
 import com.devnuts.ruflu.ui.signin.viewmodel.EmailRegistrationViewModel
 
 class EmailRegistrationFragment : Fragment() {
@@ -59,7 +59,7 @@ class EmailRegistrationFragment : Fragment() {
     }
 
     private fun intentActivity() {
-        val intent = Intent(activity, RegisterActivity::class.java)
+        val intent = Intent(activity, OnboardingActivity::class.java)
         startActivity(intent)
         activity?.finish()
     }

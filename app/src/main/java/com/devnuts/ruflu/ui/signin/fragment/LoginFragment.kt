@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentLoginBinding
-import com.devnuts.ruflu.ui.onboarding.RegisterActivity
+import com.devnuts.ruflu.ui.onboarding.OnboardingActivity
 import com.devnuts.ruflu.ui.signin.viewmodel.LoginViewModel
 import com.devnuts.ruflu.util.HashKey
 
@@ -55,7 +55,7 @@ class LoginFragment : Fragment() {
         // isNew 로 넘어오는 param 값은 LiveData 의 value
         viewModel.isNew.observe(viewLifecycleOwner) { isNew ->
             if (isNew) { // 새로운 아이디일 경우, register 로 넘기기
-                val intent = Intent(activity, RegisterActivity::class.java)
+                val intent = Intent(activity, OnboardingActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
             } else { // 존재하는 아이디일 경우, MainActivity 로
