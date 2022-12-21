@@ -39,7 +39,7 @@ android {
         }
 
         manifestPlaceholders = [kakaoLoginKey: kakaoLoginKey]
-       // buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
+        // buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
     }
 
     buildTypes {
@@ -71,7 +71,7 @@ android {
     }
 
     buildFeatures {
-       viewBinding true
+        viewBinding true
     }
 
     compileOptions {

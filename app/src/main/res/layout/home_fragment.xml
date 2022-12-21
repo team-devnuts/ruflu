@@ -62,7 +62,7 @@
         android:layout_height="match_parent"
         android:id="@+id/user_detail_container"
         android:layout_below="@id/tab_top_layout"
-        android:background="@android:color/transparent"
+        android:background="@android:color/white"
         >
 
         <androidx.viewpager2.widget.ViewPager2

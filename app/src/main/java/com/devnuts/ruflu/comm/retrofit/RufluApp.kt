@@ -35,18 +35,18 @@ class RufluApp : Application() {
 
     fun initRetrofit() {
         val okHttpClient = OkHttpClient().newBuilder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS)
-                .addInterceptor(AddCookiesInterceptor())
-                .addInterceptor(ReceivedCookiesInterceptor())
-                .build()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor(AddCookiesInterceptor())
+            .addInterceptor(ReceivedCookiesInterceptor())
+            .build()
 
         retrofit = Retrofit.Builder()
-                .baseUrl(url + ":" + port)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(okHttpClient)
-                .build()
+            .baseUrl(url + ":" + port)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(okHttpClient)
+            .build()
     }
 }

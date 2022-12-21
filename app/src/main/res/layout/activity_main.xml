@@ -23,9 +23,8 @@
         android:layout_alignParentBottom="true"
         android:background="#ffffff"
         app:itemIconTint="@drawable/selector_icon_color"
-        app:menu="@menu/lower_menu"
         app:labelVisibilityMode="unlabeled"
-        />
+        app:menu="@menu/lower_menu" />
 
 
 </RelativeLayout>
