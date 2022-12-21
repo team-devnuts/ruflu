@@ -12,6 +12,7 @@
         android:scaleType="centerCrop"
         android:background="@drawable/user_card_img_style"
         android:id="@+id/cardimgview"
+
         />
 
 </LinearLayout>

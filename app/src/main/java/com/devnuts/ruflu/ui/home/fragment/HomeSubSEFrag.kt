@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -58,7 +58,7 @@ class HomeSubSEFrag() : Fragment() {
         setBtnClick(binding.cardLikeBtn, Direction.Right)
     }
 
-    private fun setBtnClick(btn: Button, direction: Direction) {
+    private fun setBtnClick(btn: ImageButton, direction: Direction) {
         btn.setOnClickListener {
             cardStackLayoutManager.setSwipeAnimationSetting(getSetting(direction))
             cardStackView.swipe()
