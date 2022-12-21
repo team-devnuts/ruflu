@@ -2,8 +2,8 @@ package com.devnuts.ruflu.domain.repository
 
 import com.devnuts.ruflu.comm.retrofit.ServerAPI
 import com.devnuts.ruflu.comm.retrofit.RufluApp
-import com.devnuts.ruflu.home.model.UserDtl
-import com.devnuts.ruflu.home.model.UserCard
+import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserCard
 import retrofit2.*
 
 class HomeRepository  {
