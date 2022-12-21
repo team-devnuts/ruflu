@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.ui.adapter.NearByAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.UserDtlSharedViewModel
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.home.ItemDecoration
+import com.devnuts.ruflu.ui.adapter.itemDecoration.ItemDecoration
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubNBViewModel
 
 class HomeSubNBFrag : Fragment() {

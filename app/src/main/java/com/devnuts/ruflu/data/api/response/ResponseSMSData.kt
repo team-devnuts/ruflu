@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.smsAPI.model
+package com.devnuts.ruflu.data.api.response
 
 data class ResponseSMSData (
     val verificationCode : String

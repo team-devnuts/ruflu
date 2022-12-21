@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.mmodel.User
+import com.devnuts.ruflu.ui.model.main.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.accountRestore
+package com.devnuts.ruflu.ui.signin.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

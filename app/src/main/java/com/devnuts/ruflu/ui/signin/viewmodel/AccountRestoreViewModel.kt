@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.accountRestore
+package com.devnuts.ruflu.ui.signin.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

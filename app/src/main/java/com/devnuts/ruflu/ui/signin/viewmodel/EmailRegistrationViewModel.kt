@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.registerEmail
+package com.devnuts.ruflu.ui.signin.viewmodel
 
 import androidx.lifecycle.ViewModel
 import java.util.regex.Pattern

@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.signin
+package com.devnuts.ruflu.ui.signin.viewmodel
 
 import android.app.Application
 import android.content.Context
@@ -7,10 +7,10 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.devnuts.ruflu.comm.retrofit.RufluApp
-import com.devnuts.ruflu.login.loginAPI.model.RequestLoginData
-import com.devnuts.ruflu.login.loginAPI.model.ResponseLoginData
-import com.devnuts.ruflu.login.loginAPI.model.KakaoUser
-import com.devnuts.ruflu.login.loginAPI.repository.UserService
+import com.devnuts.ruflu.data.api.request.RequestLoginData
+import com.devnuts.ruflu.data.api.response.ResponseLoginData
+import com.devnuts.ruflu.ui.model.signin.KakaoUser
+import com.devnuts.ruflu.data.api.UserService
 import com.devnuts.ruflu.util.SharedPreferenceToken
 import com.kakao.sdk.auth.*
 import com.kakao.sdk.auth.model.OAuthToken

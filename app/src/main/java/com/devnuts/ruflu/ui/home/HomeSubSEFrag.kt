@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import com.devnuts.ruflu.databinding.HomeSubSeFragmentBinding
 import com.devnuts.ruflu.ui.adapter.UserCardViewAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubSEViewModel
-import com.devnuts.ruflu.home.model.UserCard
+import com.devnuts.ruflu.ui.model.home.UserCard
 import com.devnuts.ruflu.R
 import com.yuyakaido.android.cardstackview.*
 

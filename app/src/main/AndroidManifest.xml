@@ -17,13 +17,13 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".splash.SplashActivity"
+            android:name=".ui.loading.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -42,16 +42,16 @@
         </activity>
 
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".ui.signin.LoginActivity"
             android:windowSoftInputMode="adjustResize"/>
 
         <activity android:name=".login.activity.RegisterActivity" />
-        <activity android:name=".splash.LoadingActivity" />
+        <activity android:name=".ui.loading.LoadingActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <service

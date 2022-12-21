@@ -1,7 +1,7 @@
-package com.devnuts.ruflu.login.smsAPI.retrofit
+package com.devnuts.ruflu.data.api
 
-import com.devnuts.ruflu.login.smsAPI.model.RequestSMSData
-import com.devnuts.ruflu.login.smsAPI.model.ResponseSMSData
+import com.devnuts.ruflu.data.api.request.RequestSMSData
+import com.devnuts.ruflu.data.api.response.ResponseSMSData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

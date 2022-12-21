@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.mmodel
+package com.devnuts.ruflu.ui.model.main
 
 data class User(
         var latitude : Double,

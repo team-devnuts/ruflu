@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.ui.model.ChatMessage
+import com.devnuts.ruflu.ui.model.chat.ChatMessage
 import com.devnuts.ruflu.databinding.MsgItemLeftBinding
 import com.devnuts.ruflu.databinding.MsgItemRightBinding
 import de.hdodenhof.circleimageview.CircleImageView

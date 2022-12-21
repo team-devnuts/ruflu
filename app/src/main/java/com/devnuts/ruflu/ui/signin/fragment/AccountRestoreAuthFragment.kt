@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.accountRestore
+package com.devnuts.ruflu.ui.signin.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.devnuts.ruflu.databinding.FragmentAccountRestoreAuthBinding
+import com.devnuts.ruflu.ui.signin.viewmodel.AccountRestoreViewModel
 
 class AccountRestoreAuthFragment : Fragment() {
     private var _binding : FragmentAccountRestoreAuthBinding? = null

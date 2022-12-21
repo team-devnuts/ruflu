@@ -2,9 +2,8 @@ package com.devnuts.ruflu.ruflu.repository
 
 import com.devnuts.ruflu.comm.retrofit.RufluApp
 import com.devnuts.ruflu.comm.retrofit.ServerAPI
-import com.devnuts.ruflu.home.model.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDtl
 import com.devnuts.ruflu.ruflu.fragment.model.LikeLv1User
-import com.devnuts.ruflu.ruflu.fragment.model.LikeLv2User
 import retrofit2.Call
 
 class RufluRepository {

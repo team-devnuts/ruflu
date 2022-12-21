@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.model
+package com.devnuts.ruflu.ui.model.chat
 
 data class ChatRoom (
         val userId : String,

@@ -3,7 +3,7 @@ package com.devnuts.ruflu.ui.chat
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.ui.model.ChatRoom
+import com.devnuts.ruflu.ui.model.chat.ChatRoom
 import com.devnuts.ruflu.domain.repository.ChatRepository
 import retrofit2.Call
 import retrofit2.Callback

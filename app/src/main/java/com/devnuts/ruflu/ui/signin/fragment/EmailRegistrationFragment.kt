@@ -1,10 +1,9 @@
-package com.devnuts.ruflu.login.registerEmail
+package com.devnuts.ruflu.ui.signin.fragment
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.devnuts.ruflu.databinding.FragmentEmailRegistrationBinding
 import com.devnuts.ruflu.login.activity.RegisterActivity
+import com.devnuts.ruflu.ui.signin.viewmodel.EmailRegistrationViewModel
 
 class EmailRegistrationFragment : Fragment() {
 

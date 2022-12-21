@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.loginAPI.model
+package com.devnuts.ruflu.data.api.response
 
 data class ResponseLoginData (
     val accessToken : String,

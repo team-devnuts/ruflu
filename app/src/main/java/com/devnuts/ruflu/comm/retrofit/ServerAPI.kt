@@ -1,8 +1,8 @@
 package com.devnuts.ruflu.comm.retrofit
 
-import com.devnuts.ruflu.ui.model.ChatRoom
-import com.devnuts.ruflu.home.model.UserDtl
-import com.devnuts.ruflu.home.model.UserCard
+import com.devnuts.ruflu.ui.model.chat.ChatRoom
+import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserCard
 import com.devnuts.ruflu.ruflu.fragment.model.LikeLv1User
 import retrofit2.Call
 import retrofit2.http.*

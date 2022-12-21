@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.loginAPI.model
+package com.devnuts.ruflu.ui.model.signin
 
 data class KakaoUser (
     var oauthKey : String,

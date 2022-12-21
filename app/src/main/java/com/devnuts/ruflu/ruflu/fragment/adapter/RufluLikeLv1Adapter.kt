@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.comm.utill.UserUtill
 import com.devnuts.ruflu.databinding.LikeLv1UserBinding
-import com.devnuts.ruflu.home.model.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDtl
 import com.devnuts.ruflu.ruflu.fragment.RufluTouchHelperCallback
-import com.devnuts.ruflu.ruflu.fragment.model.LikeLv1User
 import de.hdodenhof.circleimageview.CircleImageView
 
 class RufluLikeLv1Adapter (
@@ -28,7 +27,7 @@ class RufluLikeLv1Adapter (
     }
 
     interface OnItemSwipeListener {
-        fun onSwipe(user:UserDtl, direction: Int)
+        fun onSwipe(user: UserDtl, direction: Int)
     }
 
     inner class RufluLikeLv1ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {

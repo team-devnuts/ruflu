@@ -17,9 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.RufluLikeLv1FragmentBinding
 import com.devnuts.ruflu.home.fragment.RufluUserDetailFragment
-import com.devnuts.ruflu.home.model.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDtl
 import com.devnuts.ruflu.ruflu.fragment.adapter.RufluLikeLv1Adapter
-import com.devnuts.ruflu.ruflu.fragment.model.LikeLv1User
 import com.devnuts.ruflu.ruflu.fragment.viewmodel.RufluSubSEViewModel
 import com.devnuts.ruflu.ruflu.fragment.viewmodel.SESharedViewModel
 

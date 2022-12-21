@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login
+package com.devnuts.ruflu.ui.signin
 
 import android.content.Context
 import android.os.Bundle

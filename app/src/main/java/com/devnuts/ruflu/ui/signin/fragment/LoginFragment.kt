@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.signin
+package com.devnuts.ruflu.ui.signin.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,7 @@ import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentLoginBinding
 import com.devnuts.ruflu.login.activity.RegisterActivity
+import com.devnuts.ruflu.ui.signin.viewmodel.LoginViewModel
 import com.devnuts.ruflu.util.HashKey
 
 class LoginFragment : Fragment() {

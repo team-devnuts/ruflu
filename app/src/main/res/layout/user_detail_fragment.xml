@@ -6,7 +6,7 @@
     <data>
         <variable
             name="nbUser"
-            type="com.devnuts.ruflu.home.model.UserDtl"
+            type="com.devnuts.ruflu.ui.model.home.UserDtl"
             />
     </data>
 

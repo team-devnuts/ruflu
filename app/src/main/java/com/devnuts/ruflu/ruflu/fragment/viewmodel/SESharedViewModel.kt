@@ -1,14 +1,8 @@
 package com.devnuts.ruflu.ruflu.fragment.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.home.model.UserDtl
-import com.devnuts.ruflu.ruflu.fragment.model.LikeLv1User
-import com.devnuts.ruflu.ruflu.repository.RufluRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.devnuts.ruflu.ui.model.home.UserDtl
 
 class SESharedViewModel : ViewModel() {
 

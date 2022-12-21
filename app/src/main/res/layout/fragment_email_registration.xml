@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.login.accountRestore.AccountRestoreViewModel" />
+            type="com.devnuts.ruflu.ui.signin.viewmodel.AccountRestoreViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

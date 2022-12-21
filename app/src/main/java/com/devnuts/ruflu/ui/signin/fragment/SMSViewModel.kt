@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.signin.viewmodel
+package com.devnuts.ruflu.ui.signin.fragment
 
 import android.util.Log
 import android.view.KeyEvent

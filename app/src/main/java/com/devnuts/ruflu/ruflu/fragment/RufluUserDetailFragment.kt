@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.UserDetailFragmentBinding
 import com.devnuts.ruflu.ui.adapter.UserImgViewAdapter
-import com.devnuts.ruflu.home.model.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDtl
 import com.devnuts.ruflu.ruflu.fragment.viewmodel.SESharedViewModel
 import me.relex.circleindicator.CircleIndicator3
 

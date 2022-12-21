@@ -14,7 +14,7 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.comm.utill.UserUtill
 import com.devnuts.ruflu.ui.home.HomeSubSEFrag
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubSEViewModel
-import com.devnuts.ruflu.home.model.UserCard
+import com.devnuts.ruflu.ui.model.home.UserCard
 import com.yuyakaido.android.cardstackview.CardStackView
 import me.relex.circleindicator.CircleIndicator3
 

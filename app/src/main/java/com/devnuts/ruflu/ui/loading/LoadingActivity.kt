@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.splash
+package com.devnuts.ruflu.ui.loading
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

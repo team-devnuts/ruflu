@@ -6,11 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.comm.utill.UserUtill
-import com.devnuts.ruflu.databinding.LikeLv1UserBinding
 import com.devnuts.ruflu.databinding.LikeLv2UserBinding
-import com.devnuts.ruflu.home.model.UserDtl
-import com.devnuts.ruflu.ruflu.fragment.RufluTouchHelperCallback
-import com.devnuts.ruflu.ruflu.fragment.model.LikeLv2User
+import com.devnuts.ruflu.ui.model.home.UserDtl
 import de.hdodenhof.circleimageview.CircleImageView
 
 class RufluLikeLv2Adapter (

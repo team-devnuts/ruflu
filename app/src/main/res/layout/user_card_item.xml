@@ -8,7 +8,7 @@
 
         <variable
             name="user"
-            type="com.devnuts.ruflu.home.model.UserCard"
+            type="com.devnuts.ruflu.ui.model.home.UserCard"
             />
     </data>
 

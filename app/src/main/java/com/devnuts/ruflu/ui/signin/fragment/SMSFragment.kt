@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.login.smsAPI
+package com.devnuts.ruflu.ui.signin.fragment
 
 import android.content.Context
 import android.os.Bundle

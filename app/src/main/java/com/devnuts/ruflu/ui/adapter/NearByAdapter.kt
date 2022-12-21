@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.comm.utill.UserUtill
-import com.devnuts.ruflu.home.model.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDtl
 
 class NearByAdapter(val data: MutableLiveData<ArrayList<UserDtl>>) : RecyclerView.Adapter<NearByAdapter.NearByViewHolder>() {
 

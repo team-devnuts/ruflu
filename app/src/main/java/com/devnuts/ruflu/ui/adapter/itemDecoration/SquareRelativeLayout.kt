@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.home
+package com.devnuts.ruflu.ui.adapter.itemDecoration
 
 import android.content.Context
 import android.util.AttributeSet
