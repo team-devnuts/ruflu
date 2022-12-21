@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentLoginBinding
-import com.devnuts.ruflu.login.activity.RegisterActivity
+import com.devnuts.ruflu.ui.onboarding.RegisterActivity
 import com.devnuts.ruflu.ui.signin.viewmodel.LoginViewModel
 import com.devnuts.ruflu.util.HashKey
 

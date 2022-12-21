@@ -9,7 +9,7 @@
     <!-- 이용약관 -->
     <fragment
         android:id="@+id/termsOfUseFragment"
-        android:name="com.devnuts.ruflu.register.flow1.TermsOfUseFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.TermsOfUseFragment"
         android:label="terms_of_use_fragment"
         tools:layout="@layout/fragment_reg_terms_of_use" >
         <action
@@ -24,7 +24,7 @@
     <!-- 성별선택 -->
     <fragment
         android:id="@+id/genderFragment"
-        android:name="com.devnuts.ruflu.register.flow2.GenderFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.GenderFragment"
         android:label="gender_fragment"
         tools:layout="@layout/fragment_reg_gender" >
         <action
@@ -40,7 +40,7 @@
     <!-- 생년월일 선택 -->
     <fragment
         android:id="@+id/birthFragment"
-        android:name="com.devnuts.ruflu.register.flow3.BirthFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.BirthFragment"
         android:label="birth_fragment"
         tools:layout="@layout/fragment_reg_birth" >
         <action
@@ -56,7 +56,7 @@
     <!-- 닉네임작성 -->
     <fragment
         android:id="@+id/nickNameFragment"
-        android:name="com.devnuts.ruflu.register.flow4.NickNameFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.NickNameFragment"
         android:label="nick_name_fragment"
         tools:layout="@layout/fragment_reg_nick_name" >
         <action
@@ -71,7 +71,7 @@
     <!-- 위치설정 -->
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.devnuts.ruflu.register.flow5.LocationFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.LocationFragment"
         android:label="location_fragment"
         tools:layout="@layout/fragment_reg_location" >
         <action
@@ -86,7 +86,7 @@
     <!-- 키 선택 -->
     <fragment
         android:id="@+id/heightFragment"
-        android:name="com.devnuts.ruflu.register.flow6.HeightFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.HeightFragment"
         android:label="height_fragment"
         tools:layout="@layout/fragment_reg_height" >
         <action
@@ -100,7 +100,7 @@
 
     <fragment
         android:id="@+id/formFragment"
-        android:name="com.devnuts.ruflu.register.flow7.FormFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.FormFragment"
         android:label="form_fragment"
         tools:layout="@layout/fragment_reg_form" >
         <action
@@ -115,7 +115,7 @@
     <!-- 학력선택 -->
     <fragment
         android:id="@+id/eduFragment"
-        android:name="com.devnuts.ruflu.register.flow8.EduFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.EduFragment"
         android:label="edu_fragment"
         tools:layout="@layout/fragment_reg_edu" >
         <action
@@ -130,7 +130,7 @@
     <!-- 직업선택 -->
     <fragment
         android:id="@+id/occupFragment"
-        android:name="com.devnuts.ruflu.register.flow9.OccupFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OccupFragment"
         android:label="occup_fragment"
         tools:layout="@layout/fragment_reg_occup" >
         <action
@@ -145,7 +145,7 @@
     <!-- 종교선택 -->
     <fragment
         android:id="@+id/religFragment"
-        android:name="com.devnuts.ruflu.register.flow10.ReligFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.ReligFragment"
         android:label="relig_fragment"
         tools:layout="@layout/fragment_reg_relig" >
         <action
@@ -160,7 +160,7 @@
     <!-- 음주정도 -->
     <fragment
         android:id="@+id/alcohFragment"
-        android:name="com.devnuts.ruflu.register.flow11.AlcohFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.AlcohFragment"
         android:label="alcoh_fragment"
         tools:layout="@layout/fragment_reg_alcoh" >
         <action
@@ -175,7 +175,7 @@
     <!-- 사진선 -->
     <fragment
         android:id="@+id/photoUpldFragment"
-        android:name="com.devnuts.ruflu.register.flow12.PhotoUpldFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.PhotoUpldFragment"
         android:label="photo_upld_fragment"
         tools:layout="@layout/fragment_reg_photo_upld" >
         <action
