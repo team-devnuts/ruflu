@@ -2,7 +2,6 @@ package com.devnuts.ruflu.comm
 
 import com.devnuts.ruflu.comm.retrofit.RufluApp
 import okhttp3.Interceptor
-import okhttp3.Request
 import okhttp3.Response
 // 로그인시 사용자 정보를 가져오기 위한 쿠기
 class AddCookiesInterceptor : Interceptor {
@@ -20,7 +19,7 @@ class AddCookiesInterceptor : Interceptor {
         */
         var preference = RufluApp.sharedPreference.getSettingString("user_id")
 
-        if(preference != null)
+        if (preference != null)
             builder.addHeader("user_id", preference)
 
         builder.removeHeader("User-Agent").addHeader("User-Agent", "Android")

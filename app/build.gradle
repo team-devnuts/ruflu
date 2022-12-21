@@ -17,12 +17,17 @@ android {
         //resources.excludes.add("META-INF/*")
     }
 
+    packagingOptions {
+        exclude 'META-INF/*'
+    }
+
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.devnuts.ruflu"
         minSdkVersion 21
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -34,7 +39,7 @@ android {
         }
 
         manifestPlaceholders = [kakaoLoginKey: kakaoLoginKey]
-       // buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
+        // buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
     }
 
     buildTypes {
@@ -66,26 +71,25 @@ android {
     }
 
     buildFeatures {
-       viewBinding true
+        viewBinding true
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     dataBinding {
         enabled = true
     }
-
-
 }
 
 dependencies {
 
+    testImplementation 'junit:junit:4.12'
     def room_version = "2.3.0"
     def nav_version = "2.3.5"
     def lifecycle_version = "2.3.1"
@@ -182,11 +186,6 @@ dependencies {
     // picasso Library
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    /*
-    * Lottiefiles
-    * 애니메이션 적용 Library
-    * */
-    def lottieVersion = "3.4.0"
-    implementation "com.airbnb.android:lottie:$lottieVersion"
-
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

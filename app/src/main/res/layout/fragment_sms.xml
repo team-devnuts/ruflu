@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.login.smsAPI.SMSViewModel" />
+            type="com.devnuts.ruflu.ui.signin.fragment.SMSViewModel" />
     </data>
 
 

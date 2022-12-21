@@ -1,9 +1,9 @@
 package com.devnuts.ruflu.comm
 
 import android.util.Log
+import java.text.SimpleDateFormat
 import okhttp3.Interceptor
 import okhttp3.Response
-import java.text.SimpleDateFormat
 
 class LogInterceptor : Interceptor {
     private val TAG = "API"
@@ -18,8 +18,7 @@ class LogInterceptor : Interceptor {
         return response
     }
 
-
-    private fun getNow():String {
+    private fun getNow(): String {
         return SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(System.currentTimeMillis())
     }
 }

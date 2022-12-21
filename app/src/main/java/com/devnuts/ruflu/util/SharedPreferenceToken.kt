@@ -9,9 +9,9 @@ object SharedPreferenceToken {
 
     private val TOKEN = "TOKEN"
 
-    fun putSettingItem(mContext:Context, key: String , value:String) {
+    fun putSettingItem(mContext: Context, key: String, value: String) {
         // SharedPreferences 를 선언과 동시에 초기화를 시킨다.
-        val preference : SharedPreferences = mContext.getSharedPreferences(TOKEN, MODE_PRIVATE)
+        val preference: SharedPreferences = mContext.getSharedPreferences(TOKEN, MODE_PRIVATE)
         val editor = preference.edit()
 
         // 원하는 값을 불러와서, 저장
@@ -19,9 +19,8 @@ object SharedPreferenceToken {
         editor.apply()
     }
 
-    fun getSettingItem(mContext: Context, key: String) : String? {
+    fun getSettingItem(mContext: Context, key: String): String? {
         Log.d("SHARED", "Get $key from $TOKEN")
-        return mContext.getSharedPreferences(TOKEN,0).getString(key, null)
+        return mContext.getSharedPreferences(TOKEN, 0).getString(key, null)
     }
-
 }

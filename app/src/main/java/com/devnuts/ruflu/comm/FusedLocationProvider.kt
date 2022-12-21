@@ -3,7 +3,6 @@ package com.devnuts.ruflu.comm
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Looper
 import android.util.Log
 import androidx.core.app.ActivityCompat
@@ -14,7 +13,7 @@ class FusedLocationProvider(
     val context: Context,
     val listener: MainActivity.LocationListener
 ) {
-    private lateinit var fusedLocationClient : FusedLocationProviderClient
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
 
     companion object {
@@ -60,13 +59,14 @@ class FusedLocationProvider(
     }
 
     fun startLocationUpdates() {
-        if(ActivityCompat.checkSelfPermission(
+        if (ActivityCompat.checkSelfPermission(
                 context,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                 context,
                 Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED) {
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
             return
         }
         val locationRequest = LocationRequest.create().apply {
@@ -81,23 +81,20 @@ class FusedLocationProvider(
     }
 
     fun requestLastLocation() {
-        if(ActivityCompat.checkSelfPermission(
+        if (ActivityCompat.checkSelfPermission(
                 context,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                 context,
                 Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED) {
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
             return
         }
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-            if(location != null) {
+            if (location != null) {
                 listener.onLocationUpdated(location)
             }
         }
     }
-
-
 }
-
-

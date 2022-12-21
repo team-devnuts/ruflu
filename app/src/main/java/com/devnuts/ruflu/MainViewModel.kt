@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.mmodel.User
+import com.devnuts.ruflu.ui.model.main.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,19 +14,19 @@ class MainViewModel : ViewModel() {
     private val repository = MainRepository()
     private val TAG = javaClass.name
 
-    private val _users : MutableLiveData<User> by lazy {
+    private val _users: MutableLiveData<User> by lazy {
         MutableLiveData<User>().also {
             it.value = loadUsers()
         }
     }
 
-    val user : LiveData<User> get() = _users
+    val user: LiveData<User> get() = _users
 
     private fun loadUsers(): User {
         return User(0.0, 0.0)
     }
 
-    fun locationUpdate(latitude : Double, longitude: Double) {
+    fun locationUpdate(latitude: Double, longitude: Double) {
         var user = user.value
         user?.latitude = latitude
         user?.longitude = longitude
@@ -45,7 +45,6 @@ class MainViewModel : ViewModel() {
                 Log.d(TAG, "callback fail")
                 Log.d(TAG, "locationUpdate " + t.message)
             }
-
         })
     }
 
@@ -62,7 +61,6 @@ class MainViewModel : ViewModel() {
                 Log.d(TAG, "callback fail")
                 Log.d(TAG, "" + t.message)
             }
-
         })
     }
 }

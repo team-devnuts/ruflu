@@ -5,8 +5,8 @@ import android.content.Intent
 import android.util.Log
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.MainRepository
-import com.devnuts.ruflu.chat.fragment.ChatFragment
 import com.devnuts.ruflu.comm.retrofit.RufluApp
+import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import retrofit2.Call
@@ -32,7 +32,6 @@ class FCMService : FirebaseMessagingService() {
         if (remoteMessage.data.isNotEmpty()) {
             Log.d(TAG, "Message data payload: ${remoteMessage.data}")
             sendNotificationMessage(remoteMessage.data)
-
         }
 
         // 메시지 유형이 알림 메시지일 경우
@@ -42,10 +41,10 @@ class FCMService : FirebaseMessagingService() {
         var notificationInfo = mapOf<String, String>()
         remoteMessage.notification?.let {
             notificationInfo = mapOf(
-                    "title" to it.title.toString(),
-                    "body" to it.body.toString()
+                "title" to it.title.toString(),
+                "body" to it.body.toString()
             )
-            Log.d("FCMService", "${notificationInfo}")
+            Log.d("FCMService", "$notificationInfo")
             sendNotificationNotification(notificationInfo)
         }
 
@@ -54,9 +53,9 @@ class FCMService : FirebaseMessagingService() {
 
     private fun sendRegistrationToServer(token: String) {
         val call = MainRepository().executeFcmServiceToken(token)
-        call.enqueue(object : Callback<String>{
+        call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                if(!response.isSuccessful) {
+                if (!response.isSuccessful) {
                     Log.d("Token 갱신", "fail " + response.message())
                     return
                 }
@@ -66,23 +65,23 @@ class FCMService : FirebaseMessagingService() {
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.e("fail token update", t.stackTraceToString())
             }
-
         })
     }
 
-
-    private fun sendNotificationMessage(data : Map<String, String>) {
+    private fun sendNotificationMessage(data: Map<String, String>) {
         val pendingIntent = getPendingIntent(data["type"])
-        //if(pendingIntent != null)
-           RufluApp.appNotification.notifyGeneralNotification(this, data["title"],
-                data["content"], pendingIntent!!)
+        RufluApp.appNotification.notifyGeneralNotification(
+            this, data["title"],
+            data["content"], pendingIntent!!
+        )
     }
 
-    private fun sendNotificationNotification(data : Map<String, String>) {
+    private fun sendNotificationNotification(data: Map<String, String>) {
         val pendingIntent = getPendingIntent(data["type"])
-        //if(pendingIntent != null)
-        RufluApp.appNotification.notifyGeneralNotification(this, data["title"],
-                data["body"], pendingIntent!!)
+        RufluApp.appNotification.notifyGeneralNotification(
+            this, data["title"],
+            data["body"], pendingIntent!!
+        )
     }
 
     private fun getPendingIntent(type: String?): PendingIntent? {
@@ -91,15 +90,16 @@ class FCMService : FirebaseMessagingService() {
             "MESSAGE" -> intent = Intent(this, ChatFragment::class.java)
         }
 
-        if(intent != null) {
+        if (intent != null) {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            return PendingIntent.getActivity(this, 0, intent,
-                    PendingIntent.FLAG_ONE_SHOT)
+            return PendingIntent.getActivity(
+                this, 0, intent,
+                PendingIntent.FLAG_ONE_SHOT
+            )
         } else {
             intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            return PendingIntent.getActivity(this, 0, intent
-                    , PendingIntent.FLAG_ONE_SHOT)
+            return PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
         }
     }
 }

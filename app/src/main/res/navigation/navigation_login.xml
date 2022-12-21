@@ -8,7 +8,7 @@
     <!-- 스타트 -->
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.devnuts.ruflu.login.loginAPI.LoginFragment"
+        android:name="com.devnuts.ruflu.ui.signin.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
 
@@ -32,7 +32,7 @@
     <!-- 계정 복구 navigation -->
     <fragment
         android:id="@+id/accountRestoreFragment"
-        android:name="com.devnuts.ruflu.login.accountRestore.AccountRestoreFragment"
+        android:name="com.devnuts.ruflu.ui.signin.fragment.AccountRestoreFragment"
         android:label="account_restore_fragment"
         tools:layout="@layout/fragment_account_restore">
 
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/accountRestoreAuthFragment"
-        android:name="com.devnuts.ruflu.login.accountRestore.AccountRestoreAuthFragment"
+        android:name="com.devnuts.ruflu.ui.signin.fragment.AccountRestoreAuthFragment"
         android:label="account_restore_auth_fragment"
         tools:layout="@layout/fragment_account_restore_auth" />
 
@@ -55,7 +55,7 @@
     <!-- SMS 문자 navigation -->
     <fragment
         android:id="@+id/smsFragment"
-        android:name="com.devnuts.ruflu.login.smsAPI.SMSFragment"
+        android:name="com.devnuts.ruflu.ui.signin.fragment.SMSFragment"
         android:label="sms_fragment"
         tools:layout="@layout/fragment_sms">
 
@@ -70,7 +70,7 @@
 
     <fragment
         android:id="@+id/smsAuthFragment"
-        android:name="com.devnuts.ruflu.login.smsAPI.SMSAuthFragment"
+        android:name="com.devnuts.ruflu.ui.signin.fragment.SMSAuthFragment"
         android:label="sms_auth_fragment"
         tools:layout="@layout/fragment_sms_auth">
         <action
@@ -85,7 +85,7 @@
 
     <fragment
         android:id="@+id/registerEmailFragment"
-        android:name="com.devnuts.ruflu.login.registerEmail.EmailRegistrationFragment"
+        android:name="com.devnuts.ruflu.ui.signin.fragment.EmailRegistrationFragment"
         android:label="register_fragment"
         tools:layout="@layout/fragment_email_registration">
     </fragment>

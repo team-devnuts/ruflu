@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.register.flow8.EduFragment" />
+            type="com.devnuts.ruflu.ui.onboarding.fragment.EduFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

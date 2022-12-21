@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.register.flow6.HeightFragment" />
+            type="com.devnuts.ruflu.ui.onboarding.fragment.HeightFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

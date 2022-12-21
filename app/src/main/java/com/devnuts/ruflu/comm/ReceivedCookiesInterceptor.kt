@@ -20,7 +20,7 @@ class ReceivedCookiesInterceptor : Interceptor {
         }
         */
 
-        if(!originalResponse.headers("user_id").isEmpty()) {
+        if (!originalResponse.headers("user_id").isEmpty()) {
             val userId = originalResponse.header("user_id")
             RufluApp.sharedPreference.putSettingString("user_id", userId!!)
         }

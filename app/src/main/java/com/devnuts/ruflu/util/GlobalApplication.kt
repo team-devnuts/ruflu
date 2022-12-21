@@ -9,14 +9,14 @@ import com.kakao.sdk.common.KakaoSdk
 class GlobalApplication : Application() {
 
     companion object {
-        lateinit var instance : GlobalApplication
-        fun ApplicationContext() : Context {
+        lateinit var instance: GlobalApplication
+        fun ApplicationContext(): Context {
             return instance.applicationContext
         }
     }
 
     init {
-        instance =  this
+        instance = this
     }
 
     override fun onCreate() {

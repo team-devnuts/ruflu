@@ -7,10 +7,9 @@ class BaseDiffUtill<T> (private val newList: List<T>, private val oldList: List<
 
     override fun getNewListSize(): Int = newList.size
 
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean
-        = newList[newItemPosition] == oldList[oldItemPosition]
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+        newList[newItemPosition] == oldList[oldItemPosition]
 
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean
-        = newList[newItemPosition] == oldList[oldItemPosition]
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+        newList[newItemPosition] == oldList[oldItemPosition]
 }

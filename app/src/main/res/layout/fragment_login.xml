@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.login.loginAPI.LoginViewModel"/>
+            type="com.devnuts.ruflu.ui.signin.viewmodel.LoginViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".login.loginAPI.LoginFragment">
+        tools:context=".ui.signin.fragment.LoginFragment">
 
         <!-- 온보딩 이미지 삽입해야 합니다.-->
         <ImageView

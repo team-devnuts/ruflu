@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.register.flow3.BirthFragment" />
+            type="com.devnuts.ruflu.ui.onboarding.fragment.BirthFragment" />
     </data>
 
 
