@@ -6,7 +6,7 @@ import android.util.Log
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.MainRepository
 import com.devnuts.ruflu.comm.retrofit.RufluApp
-import com.devnuts.ruflu.ui.chat.ChatFragment
+import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import retrofit2.Call

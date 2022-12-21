@@ -14,9 +14,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.comm.FusedLocationProvider
 import com.devnuts.ruflu.comm.retrofit.RufluApp
 import com.devnuts.ruflu.ui.mypage.fragment.MypageFragment
-import com.devnuts.ruflu.ruflu.fragment.RufluFragment
-import com.devnuts.ruflu.ui.chat.ChatFragment
-import com.devnuts.ruflu.ui.home.HomeFragment
+import com.devnuts.ruflu.ui.like.fragment.RufluFragment
+import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
+import com.devnuts.ruflu.ui.home.fragment.HomeFragment
 import com.devnuts.ruflu.ui.model.main.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView

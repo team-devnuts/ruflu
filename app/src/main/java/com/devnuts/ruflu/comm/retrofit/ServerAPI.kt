@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.comm.retrofit
 
-import com.devnuts.ruflu.ruflu.fragment.model.LikeLv1User
+import com.devnuts.ruflu.ui.model.like.LikeLv1User
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
 import com.devnuts.ruflu.ui.model.home.UserCard
 import com.devnuts.ruflu.ui.model.home.UserDtl

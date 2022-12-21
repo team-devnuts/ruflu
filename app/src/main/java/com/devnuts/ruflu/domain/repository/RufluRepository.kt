@@ -1,8 +1,8 @@
-package com.devnuts.ruflu.ruflu.repository
+package com.devnuts.ruflu.domain.repository
 
 import com.devnuts.ruflu.comm.retrofit.RufluApp
 import com.devnuts.ruflu.comm.retrofit.ServerAPI
-import com.devnuts.ruflu.ruflu.fragment.model.LikeLv1User
+import com.devnuts.ruflu.ui.model.like.LikeLv1User
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import retrofit2.Call
 
