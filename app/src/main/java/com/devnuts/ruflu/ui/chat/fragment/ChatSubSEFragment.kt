@@ -11,12 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.ChatSubSeFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentChatSubSeBinding
 import com.devnuts.ruflu.ui.adapter.ChatSubSEAdapter
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSharedViewModel
 
-class ChatSubSEFrag : Fragment() {
-    private lateinit var bind: ChatSubSeFragmentBinding
+class ChatSubSEFragment : Fragment() {
+    private lateinit var bind: FragmentChatSubSeBinding
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: ChatSubSEAdapter
     private lateinit var layoutManager: LinearLayoutManager
@@ -29,7 +29,7 @@ class ChatSubSEFrag : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bind = ChatSubSeFragmentBinding.inflate(inflater, container, false)
+        bind = FragmentChatSubSeBinding.inflate(inflater, container, false)
         val view = bind.root
         recycler = bind.chatRoomRecycler
         layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -64,7 +64,7 @@ class ChatSubSEFrag : Fragment() {
                 val chatRoom = viewModel.getChatRoomByPos(position)
                 if (chatRoom != null) {
                     sharedViewModel.setMyRoom(chatRoom)
-                    val myRoom = ChatRoomSubSEFrag()
+                    val myRoom = ChatRoomSubSEFragment()
 
                     val childFragmentTransaction = childFragmentManager.beginTransaction()
                     childFragmentTransaction
@@ -79,6 +79,6 @@ class ChatSubSEFrag : Fragment() {
     }
 
     companion object {
-        fun newInstance() = ChatSubSEFrag()
+        fun newInstance() = ChatSubSEFragment()
     }
 }

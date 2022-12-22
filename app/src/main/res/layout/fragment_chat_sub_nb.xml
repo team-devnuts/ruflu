@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.like.fragment.LikeSubNBFrag"
-    android:background="@color/white">
+    tools:context=".ui.chat.fragment.ChatSubNBFragment">
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="chat_nb"
+        android:textColor="@color/black"/>
 
 </FrameLayout>

@@ -32,7 +32,7 @@ class NearByAdapter(val data: MutableLiveData<ArrayList<UserDtl>>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NearByViewHolder {
-        view = LayoutInflater.from(parent.context).inflate(R.layout.near_by_item, parent, false)
+        view = LayoutInflater.from(parent.context).inflate(R.layout.item_near_by, parent, false)
         return NearByViewHolder(view)
     }
 

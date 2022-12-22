@@ -11,13 +11,13 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.RufluLikeLv2FragmentBinding
+import com.devnuts.ruflu.databinding.FragmentLikeLv2Binding
 import com.devnuts.ruflu.ui.adapter.LikeLv2Adapter
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSubSEViewModel
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSESharedViewModel
 
 class LikeLv2Fragment : Fragment() {
-    private lateinit var likeLv2Binding: RufluLikeLv2FragmentBinding
+    private lateinit var likeLv2Binding: FragmentLikeLv2Binding
     private lateinit var recyclerView: RecyclerView
     private lateinit var userDetailContainer: RelativeLayout
     private lateinit var likeUserDetailFragment: LikeUserDetailFragment
@@ -31,7 +31,7 @@ class LikeLv2Fragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        likeLv2Binding = RufluLikeLv2FragmentBinding.inflate(inflater, container, false)
+        likeLv2Binding = FragmentLikeLv2Binding.inflate(inflater, container, false)
         recyclerView = likeLv2Binding.rufluSeRecycle2
         userDetailContainer = likeLv2Binding.userDetailContainer
         val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)

@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSubNBViewModel
 
-class ChatSubNBFrag : Fragment() {
+class ChatSubNBFragment : Fragment() {
     private lateinit var viewModel: ChatSubNBViewModel
 
     override fun onCreateView(
@@ -17,7 +17,7 @@ class ChatSubNBFrag : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.chat_sub_nb_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_chat_sub_nb, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +26,6 @@ class ChatSubNBFrag : Fragment() {
     }
 
     companion object {
-        fun newInstance() = ChatSubNBFrag()
+        fun newInstance() = ChatSubNBFragment()
     }
 }

@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.MsgItemLeftBinding
-import com.devnuts.ruflu.databinding.MsgItemRightBinding
+import com.devnuts.ruflu.databinding.ItemLeftMessageBinding
+import com.devnuts.ruflu.databinding.ItemRightMessageBinding
 import com.devnuts.ruflu.ui.model.chat.ChatMessage
 import de.hdodenhof.circleimageview.CircleImageView
 
-class MsgListAdapter(
+class MassageListAdapter(
     private val msgList: ArrayList<ChatMessage>,
     private val toUserName: String,
     val toUserImgUrl: String
-) : RecyclerView.Adapter<MsgListAdapter.MsgListViewHolder>() {
+) : RecyclerView.Adapter<MassageListAdapter.MsgListViewHolder>() {
 
-    private lateinit var lBind: MsgItemLeftBinding
-    private lateinit var rBind: MsgItemRightBinding
+    private lateinit var lBind: ItemLeftMessageBinding
+    private lateinit var rBind: ItemRightMessageBinding
 
     inner class MsgListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(data: ChatMessage) {
@@ -40,10 +40,10 @@ class MsgListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MsgListViewHolder {
         val view: View
         if (viewType == 1) {
-            lBind = MsgItemLeftBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            lBind = ItemLeftMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             view = lBind.root
         } else {
-            rBind = MsgItemRightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            rBind = ItemRightMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             view = rBind.root
         }
         return MsgListViewHolder(view)

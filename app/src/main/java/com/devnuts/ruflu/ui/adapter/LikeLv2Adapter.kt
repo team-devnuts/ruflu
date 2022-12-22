@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.databinding.ItemLikeLv2UserBinding
 import com.devnuts.ruflu.util.UserUtil
-import com.devnuts.ruflu.databinding.LikeLv2UserBinding
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -15,7 +15,7 @@ class LikeLv2Adapter(
 ) : RecyclerView.Adapter<LikeLv2Adapter.LikeLv2ViewHolder>() {
 
     private lateinit var view: View
-    private lateinit var binding: LikeLv2UserBinding
+    private lateinit var binding: ItemLikeLv2UserBinding
     private lateinit var userImgView: CircleImageView
     private lateinit var seLikeLv2UserClickListener: OnItemClickListener
     private lateinit var seLikeLv2TalkClickListener: OnItemClickListener
@@ -37,7 +37,7 @@ class LikeLv2Adapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeLv2ViewHolder {
-        binding = LikeLv2UserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemLikeLv2UserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         view = binding.root
         userImgView = binding.seLikeLv2UserImg
 

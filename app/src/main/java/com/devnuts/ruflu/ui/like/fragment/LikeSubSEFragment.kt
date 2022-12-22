@@ -7,15 +7,15 @@ import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
-import com.devnuts.ruflu.databinding.RufluSubSeFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentLikeSubSeBinding
 import com.devnuts.ruflu.ui.adapter.LikeAdapter
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSubSEViewModel
 import timber.log.Timber
 
-class LikeSubSEFrag : Fragment() {
+class LikeSubSEFragment : Fragment() {
 
     private lateinit var viewModel: LikeSubSEViewModel
-    private lateinit var bind: RufluSubSeFragmentBinding
+    private lateinit var bind: FragmentLikeSubSeBinding
     private lateinit var viewPager2: ViewPager2
     private lateinit var adapter: LikeAdapter
     private var distance: Float = 0F
@@ -31,7 +31,7 @@ class LikeSubSEFrag : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bind = RufluSubSeFragmentBinding.inflate(inflater, container, false)
+        bind = FragmentLikeSubSeBinding.inflate(inflater, container, false)
         viewPager2 = bind.rufluSeViewpage2
         adapter = LikeAdapter(requireActivity())
         adapter.addFragment(LikeLv1Fragment())

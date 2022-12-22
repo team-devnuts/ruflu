@@ -11,8 +11,8 @@ import com.devnuts.ruflu.util.UserUtil
 import me.relex.circleindicator.CircleIndicator3
 import timber.log.Timber
 
-class UserImgViewAdapter(private val pager2: ViewPager2, private val indicator: CircleIndicator3) :
-    RecyclerView.Adapter<UserImgViewAdapter.ViewHolder>() {
+class UserImageViewAdapter(private val pager2: ViewPager2, private val indicator: CircleIndicator3) :
+    RecyclerView.Adapter<UserImageViewAdapter.ViewHolder>() {
 
     private lateinit var view: View
     private lateinit var images: List<String>
@@ -39,7 +39,7 @@ class UserImgViewAdapter(private val pager2: ViewPager2, private val indicator: 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        view = LayoutInflater.from(parent.context).inflate(R.layout.user_img_layout, parent, false)
+        view = LayoutInflater.from(parent.context).inflate(R.layout.layout_user_img, parent, false)
         view.setBackgroundResource(R.drawable.user_card_style)
         initListener()
 

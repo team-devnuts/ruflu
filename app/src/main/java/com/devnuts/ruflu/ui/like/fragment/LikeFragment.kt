@@ -31,13 +31,13 @@ class LikeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View = inflater.inflate(R.layout.ruflu_fragment, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_like, container, false)
         viewPager = view.findViewById(R.id.ruflu_viewpager)
         tabLayout = view.findViewById(R.id.ruflu_tabLayout)
 
         val likePagerAdapter = LikePagerAdapter(requireActivity())
-        likePagerAdapter.addFragment(LikeSubSEFrag())
-        likePagerAdapter.addFragment(LikeSubNBFrag())
+        likePagerAdapter.addFragment(LikeSubSEFragment())
+        likePagerAdapter.addFragment(LikeSubNBFragment())
 
         viewPager.adapter = likePagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

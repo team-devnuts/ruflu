@@ -1,7 +1,6 @@
 package com.devnuts.ruflu.ui.chat.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.devnuts.ruflu.databinding.ItemMyChatRoomBinding
 import com.devnuts.ruflu.util.RufluApp
-import com.devnuts.ruflu.databinding.MyChatRoomBinding
-import com.devnuts.ruflu.ui.adapter.MsgListAdapter
+import com.devnuts.ruflu.ui.adapter.MassageListAdapter
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSharedViewModel
 import com.devnuts.ruflu.ui.model.chat.ChatMessage
 import com.github.nkzawa.emitter.Emitter
@@ -23,15 +22,15 @@ import java.net.URISyntaxException
 import org.json.JSONObject
 import timber.log.Timber
 
-class ChatRoomSubSEFrag : Fragment() {
-    private lateinit var bind: MyChatRoomBinding
+class ChatRoomSubSEFragment : Fragment() {
+    private lateinit var bind: ItemMyChatRoomBinding
     private lateinit var mSocket: Socket
     private lateinit var roomNo: String
     private lateinit var toUserName: String
     private lateinit var toUserImgUrl: String
     private lateinit var recyclerView: RecyclerView
     private lateinit var msgEdit: EditText
-    private lateinit var adapter: MsgListAdapter
+    private lateinit var adapter: MassageListAdapter
     private lateinit var submitBtn: Button
 
     private val parentViewModel: ChatSharedViewModel by viewModels(
@@ -58,7 +57,7 @@ class ChatRoomSubSEFrag : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        bind = MyChatRoomBinding.inflate(inflater, container, false)
+        bind = ItemMyChatRoomBinding.inflate(inflater, container, false)
         recyclerView = bind.msgRecycler
         recyclerView.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)

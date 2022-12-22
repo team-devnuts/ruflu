@@ -30,13 +30,13 @@ class ChatFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View = inflater.inflate(R.layout.chat_fragment, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_chat, container, false)
         viewPager = view.findViewById(R.id.chat_viewpager)
         tabLayout = view.findViewById(R.id.chat_tabLayout)
 
         val chatPagerAdapter = ChatPagerAdapter(requireActivity())
-        chatPagerAdapter.addFragment(ChatSubSEFrag())
-        chatPagerAdapter.addFragment(ChatSubNBFrag())
+        chatPagerAdapter.addFragment(ChatSubSEFragment())
+        chatPagerAdapter.addFragment(ChatSubNBFragment())
 
         viewPager.adapter = chatPagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

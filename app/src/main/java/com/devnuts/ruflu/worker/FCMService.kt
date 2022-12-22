@@ -2,6 +2,8 @@ package com.devnuts.ruflu.worker
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.MainRepository
 import com.devnuts.ruflu.util.RufluApp
@@ -21,6 +23,7 @@ class FCMService : FirebaseMessagingService() {
         sendRegistrationToServer(token)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
@@ -68,6 +71,7 @@ class FCMService : FirebaseMessagingService() {
         })
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun sendNotificationMessage(data: Map<String, String>) {
         val pendingIntent = getPendingIntent(data["type"])
         RufluApp.appNotification.notifyGeneralNotification(
@@ -76,6 +80,7 @@ class FCMService : FirebaseMessagingService() {
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun sendNotificationNotification(data: Map<String, String>) {
         val pendingIntent = getPendingIntent(data["type"])
         RufluApp.appNotification.notifyGeneralNotification(

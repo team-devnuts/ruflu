@@ -8,16 +8,16 @@ import android.widget.RatingBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.devnuts.ruflu.databinding.UserDetailFragmentBinding
-import com.devnuts.ruflu.ui.adapter.UserImgViewAdapter
+import com.devnuts.ruflu.databinding.FragmentUserDetailBinding
+import com.devnuts.ruflu.ui.adapter.UserImageViewAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.UserDetailSharedViewModel
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import me.relex.circleindicator.CircleIndicator3
 import timber.log.Timber
 
 class UserDetailFragment : Fragment() {
-    private lateinit var imgAdapter: UserImgViewAdapter
-    private lateinit var binding: UserDetailFragmentBinding
+    private lateinit var imgAdapter: UserImageViewAdapter
+    private lateinit var binding: FragmentUserDetailBinding
     private lateinit var indicator: CircleIndicator3
     private lateinit var ratingBar: RatingBar
     private lateinit var viewPager2: ViewPager2
@@ -31,8 +31,8 @@ class UserDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = UserDetailFragmentBinding.inflate(inflater, container, false)
+    ): View {
+        binding = FragmentUserDetailBinding.inflate(inflater, container, false)
         binding.homeNbViewpage2
         ratingBar = binding.homeNbRatingBar
         indicator = binding.homeNbIndicator
@@ -51,7 +51,7 @@ class UserDetailFragment : Fragment() {
     }
 
     private fun initView() {
-        imgAdapter = UserImgViewAdapter(viewPager2, indicator)
+        imgAdapter = UserImageViewAdapter(viewPager2, indicator)
         imgAdapter.setImages(userDtl.imgs)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2.offscreenPageLimit = 4

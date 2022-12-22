@@ -12,19 +12,18 @@ import com.yuyakaido.android.cardstackview.*
  */
 class CustomCardStackView(context: Context?, attr: AttributeSet?) : CardStackView(context, attr) {
 
-    private lateinit var onCustomSwipeTouchEvent : OnCustomSwipeTouchEvent
+    private lateinit var onCustomSwipeTouchEvent: OnCustomSwipeTouchEvent
 
     interface OnCustomSwipeTouchEvent {
         fun onCustomizedSwipe(event: MotionEvent?)
     }
 
     override fun onInterceptTouchEvent(event: MotionEvent?): Boolean {
-
         onCustomSwipeTouchEvent.onCustomizedSwipe(event)
         return super.onInterceptTouchEvent(event)
     }
 
-    fun setOnCustomSwipeTouchEvent(onCustomSwipeTouchEvent : OnCustomSwipeTouchEvent) {
+    fun setOnCustomSwipeTouchEvent(onCustomSwipeTouchEvent: OnCustomSwipeTouchEvent) {
         this.onCustomSwipeTouchEvent = onCustomSwipeTouchEvent
     }
 

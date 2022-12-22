@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.util.UserUtil
-import com.devnuts.ruflu.ui.home.fragment.HomeSubSEFrag
+import com.devnuts.ruflu.ui.home.fragment.HomeSubSEFragment
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubSEViewModel
 import com.devnuts.ruflu.ui.model.home.UserCard
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -20,12 +20,12 @@ import timber.log.Timber
 
 class UserCardViewAdapter(
     private val viewModel: HomeSubSEViewModel,
-    val fragment: HomeSubSEFrag,
+    val fragment: HomeSubSEFragment,
     private val cardStackView: CardStackView
 ) : RecyclerView.Adapter<UserCardViewAdapter.PagerViewHolder>() {
 
     private lateinit var view: View
-    private lateinit var imgAdapter: UserImgViewAdapter
+    private lateinit var imgAdapter: UserImageViewAdapter
     private lateinit var viewPager2: ViewPager2
     private lateinit var indicator: CircleIndicator3
     private val animation =
@@ -42,11 +42,11 @@ class UserCardViewAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
-        view = LayoutInflater.from(parent.context).inflate(R.layout.user_card_item, parent, false)
+        view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_card, parent, false)
 
         indicator = view.findViewById(R.id.indicator)
         viewPager2 = view.findViewById(R.id.imgviewpager) as ViewPager2
-        imgAdapter = UserImgViewAdapter(viewPager2, indicator)
+        imgAdapter = UserImageViewAdapter(viewPager2, indicator)
         val drawerBar = view.findViewById<LinearLayout>(R.id.drawer_bar)
         val scrollView = view.findViewById<ScrollView>(R.id.user_card_scroll)
 

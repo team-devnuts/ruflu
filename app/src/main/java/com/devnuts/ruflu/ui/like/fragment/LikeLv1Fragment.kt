@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.RufluLikeLv1FragmentBinding
+import com.devnuts.ruflu.databinding.FragmentLikeLv1Binding
 import com.devnuts.ruflu.ui.adapter.LikeLv1Adapter
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSubSEViewModel
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSESharedViewModel
@@ -24,7 +24,7 @@ import timber.log.Timber
 
 class LikeLv1Fragment : Fragment() {
     private lateinit var adapter: LikeLv1Adapter
-    private lateinit var binding: RufluLikeLv1FragmentBinding
+    private lateinit var binding: FragmentLikeLv1Binding
     private lateinit var callback: OnBackPressedCallback
     private lateinit var likeUserDetailFragment: LikeUserDetailFragment
     private lateinit var childFragmentTransaction: FragmentTransaction
@@ -38,7 +38,7 @@ class LikeLv1Fragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = RufluLikeLv1FragmentBinding.inflate(inflater, container, false)
+        binding = FragmentLikeLv1Binding.inflate(inflater, container, false)
         userDetailContainer = binding.userDetailContainer
         recyclerView = binding.rufluSeRecycle
         val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)

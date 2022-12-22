@@ -12,19 +12,19 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.HomeSubSeFragmentBinding
+import com.devnuts.ruflu.databinding.FragmentHomeSubSeBinding
 import com.devnuts.ruflu.ui.adapter.UserCardViewAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubSEViewModel
 import com.devnuts.ruflu.ui.model.home.UserCard
 import com.yuyakaido.android.cardstackview.*
 import timber.log.Timber
 
-class HomeSubSEFrag() : Fragment() {
+class HomeSubSEFragment() : Fragment() {
     private lateinit var cardStackLayoutManager: CardStackLayoutManager
     private lateinit var userCardViewAdapter: UserCardViewAdapter
     private lateinit var cardStackView: CardStackView
     private val binding get() = _binding!!
-    private var _binding: HomeSubSeFragmentBinding? = null
+    private var _binding: FragmentHomeSubSeBinding? = null
     private var cardPosition: Int = 0
     val viewModel: HomeSubSEViewModel by viewModels()
 
@@ -33,7 +33,7 @@ class HomeSubSEFrag() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = HomeSubSeFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeSubSeBinding.inflate(inflater, container, false)
         val view = binding.root
         init(view)
         setUpCardStack()

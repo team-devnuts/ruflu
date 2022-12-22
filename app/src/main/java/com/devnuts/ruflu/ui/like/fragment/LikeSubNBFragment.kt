@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSubNBViewModel
 
-class LikeSubNBFrag : Fragment() {
+class LikeSubNBFragment : Fragment() {
     private lateinit var viewModel: LikeSubNBViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +22,10 @@ class LikeSubNBFrag : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.ruflu_sub_nb_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_like_sub_nb, container, false)
     }
 
     companion object {
-        fun newInstance() = LikeSubNBFrag()
+        fun newInstance() = LikeSubNBFragment()
     }
 }

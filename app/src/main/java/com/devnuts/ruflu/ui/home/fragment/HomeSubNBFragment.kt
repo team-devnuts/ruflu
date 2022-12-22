@@ -17,7 +17,7 @@ import com.devnuts.ruflu.ui.adapter.itemDecoration.ItemDecoration
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubNBViewModel
 import com.devnuts.ruflu.ui.home.viewmodel.UserDetailSharedViewModel
 
-class HomeSubNBFrag : Fragment() {
+class HomeSubNBFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var nearByAdapter: NearByAdapter
     private lateinit var callback: OnBackPressedCallback
@@ -32,7 +32,7 @@ class HomeSubNBFrag : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.home_sub_nb_fragment, container, false)
+        val view = inflater.inflate(R.layout.fragment_home_sub_nb, container, false)
         userDetailContainer = view.findViewById<RelativeLayout>(R.id.user_detail_container)
         recyclerView = view.findViewById(R.id.nb_recview)
         recyclerView.layoutManager =

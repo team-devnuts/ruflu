@@ -22,6 +22,7 @@ class AppNotification(rufluApp: RufluApp) {
         createNotificationChannel(rufluApp)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun notifyGeneralNotification(
         context: Context,
         title: String?,
