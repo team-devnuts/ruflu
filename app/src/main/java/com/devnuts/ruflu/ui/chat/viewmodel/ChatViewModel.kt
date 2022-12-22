@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class ChatSubSEViewModel : ViewModel() {
+class ChatViewModel : ViewModel() {
     private val repository = ChatRepository()
     private val _chatRoomList by lazy {
         MutableLiveData<ArrayList<ChatRoom>>().also {

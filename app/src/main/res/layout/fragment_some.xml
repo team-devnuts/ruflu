@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    tools:context=".ui.like.fragment.SomeFragment">
 
     <TextView
+        android:id="@+id/s_like_lv1_title01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/lv2TitleName"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
-        android:id="@+id/s_like_lv2_title01"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
-        />
+        android:text="@string/lv1TitleName"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ruflu_se_recycle2"
+        android:id="@+id/ruflu_se_recycle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/s_like_lv2_title01"
-        />
+        android:layout_below="@+id/s_like_lv1_title01" />
 
     <RelativeLayout
+        android:id="@+id/user_detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/user_detail_container"
         android:background="@color/white"
-        android:visibility="gone"
-        >
-
-    </RelativeLayout>
+        android:visibility="gone" />
 
 </RelativeLayout>

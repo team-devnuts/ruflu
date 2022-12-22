@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.ui.home.fragment.HomeSubSEFragment
+import com.devnuts.ruflu.ui.home.fragment.CardFragment
 import com.devnuts.ruflu.ui.model.home.UserCard
 import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.worker.CustomCardStackView
@@ -20,7 +20,7 @@ import kotlin.collections.ArrayList
 
 class UserCardViewAdapter(
     val data: ArrayList<UserCard>,
-    val fragment: HomeSubSEFragment,
+    val fragment: CardFragment,
     val cardStackView: CustomCardStackView
 ) : RecyclerView.Adapter<UserCardViewAdapter.PagerViewHoler>() {
 

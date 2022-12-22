@@ -22,7 +22,7 @@ import java.net.URISyntaxException
 import org.json.JSONObject
 import timber.log.Timber
 
-class ChatRoomSubSEFragment : Fragment() {
+class ChatRoomFragment : Fragment() {
     private lateinit var bind: ItemMyChatRoomBinding
     private lateinit var mSocket: Socket
     private lateinit var roomNo: String

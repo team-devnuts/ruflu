@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.FragmentUserDetailBinding
-import com.devnuts.ruflu.ui.like.viewmodel.LikeSESharedViewModel
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSharedViewModel
 import com.devnuts.ruflu.ui.adapter.UserImageViewAdapter
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import me.relex.circleindicator.CircleIndicator3
@@ -23,7 +23,7 @@ class LikeUserDetailFragment() : Fragment() {
     private lateinit var viewPager2: ViewPager2
     private lateinit var userDtl: UserDtl
 
-    private val parentViewModel: LikeSESharedViewModel by viewModels(
+    private val parentViewModel: LikeSharedViewModel by viewModels(
         ownerProducer = { requireParentFragment() }
     )
 

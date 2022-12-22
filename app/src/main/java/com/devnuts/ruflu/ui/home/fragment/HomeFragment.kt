@@ -12,8 +12,8 @@ import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
     private var savePosition: Int = 0
-    private var _bind: FragmentHomeBinding? = null
-    private val bind get() = _bind!!
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
 
@@ -22,12 +22,12 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _bind = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        tabLayout = bind.homeTabLayout
-        viewPager = bind.homeViewpager
+        tabLayout = binding.homeTabLayout
+        viewPager = binding.homeViewpager
         initView()
-        return bind.root
+        return binding.root
     }
 
 
@@ -38,16 +38,12 @@ class HomeFragment : Fragment() {
 
     private fun initView() {
         val homePagerAdapter = HomePagerAdapter(requireActivity())
-        homePagerAdapter.addFragment(HomeSubSEFragment())
-        homePagerAdapter.addFragment(HomeSubNBFragment())
+        homePagerAdapter.addFragment(CardFragment())
 
         viewPager.adapter = homePagerAdapter
         viewPager.isUserInputEnabled = false
 
         setCompCallback()
-        addListeners()
-        // 뷰페이저와 tablayout 연결
-        // TabLayoutMediator(tabLayout, viewPager) { tab, position -> }.attach()
     }
 
     private fun setCompCallback() {
@@ -56,24 +52,5 @@ class HomeFragment : Fragment() {
                 super.onPageSelected(position)
             }
         })
-    }
-
-    private fun addListeners() {
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                viewPager.currentItem = tab!!.position
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-        })
-    }
-
-    override fun onPause() {
-        super.onPause()
-        savePosition = tabLayout.selectedTabPosition
     }
 }

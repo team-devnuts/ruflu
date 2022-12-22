@@ -1,9 +1,9 @@
-package com.devnuts.ruflu.ui.like.fragment
+package com.devnuts.ruflu.ui.like.listener
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class LikeTouchHelperCallback(private val itemMoveListener: OnItemMoveListener) :
+class SomeTouchHelperCallback(private val itemMoveListener: OnItemMoveListener) :
     ItemTouchHelper.Callback() {
 
     interface OnItemMoveListener {

@@ -17,30 +17,30 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentHomeSubSeBinding
+import com.devnuts.ruflu.databinding.FragmentCardBinding
 import com.devnuts.ruflu.ui.adapter.UserCardViewAdapter
-import com.devnuts.ruflu.ui.home.viewmodel.HomeSubSEViewModel
+import com.devnuts.ruflu.ui.home.viewmodel.CardViewModel
 import com.devnuts.ruflu.ui.model.home.UserCard
 import com.devnuts.ruflu.worker.CustomCardStackView
 import com.yuyakaido.android.cardstackview.*
 import kotlin.math.abs
 
-class HomeSubSEFragment() : Fragment() {
+class CardFragment : Fragment() {
     private lateinit var cardStackLayoutManager: CardStackLayoutManager
     private lateinit var userCardViewAdapter: UserCardViewAdapter
     private lateinit var cardStackView: CustomCardStackView
     private var touchDwX: Float = 0f
     private var touchDwY: Float = 0f
     private val binding get() = _binding!!
-    private var _binding: FragmentHomeSubSeBinding? = null
+    private var _binding: FragmentCardBinding? = null
     private var cardPosition: Int = 0
-    val viewModel: HomeSubSEViewModel by viewModels()
+    val viewModel: CardViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentHomeSubSeBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentCardBinding.inflate(inflater, container, false)
         val view = binding.root
         init(view)
         setUpCardStack()
