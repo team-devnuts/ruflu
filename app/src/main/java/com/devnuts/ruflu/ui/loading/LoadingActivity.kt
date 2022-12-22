@@ -17,7 +17,7 @@ class LoadingActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val DURATION: Long = 3000 // Loading 시간은 3초
+        private const val DURATION: Long = 3000
     }
 
     override fun onBackPressed() {

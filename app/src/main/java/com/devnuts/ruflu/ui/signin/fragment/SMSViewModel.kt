@@ -1,6 +1,5 @@
 package com.devnuts.ruflu.ui.signin.fragment
 
-import android.util.Log
 import android.view.KeyEvent
 import android.widget.EditText
 import androidx.databinding.BaseObservable
@@ -50,7 +49,6 @@ class SMSViewModel() : ViewModel() {
             set(value) {
                 field = value
                 verifyCode[3] = verifyCode4!!
-                Log.d("flow", "---> $verifyCode")
                 notifyPropertyChanged(BR.verifyCode4)
                 stringToList()
             }
@@ -62,7 +60,6 @@ class SMSViewModel() : ViewModel() {
 
                     if (keyCode == KeyEvent.KEYCODE_DEL && event.action == KeyEvent.ACTION_DOWN) {
                         controlEditTextFocus(loc, BACK)
-                        Log.d("flow", "backspace")
                     } else {
                         checkIfValueExists(loc, event.number.toString())
                         controlEditTextFocus(loc, NEXT)

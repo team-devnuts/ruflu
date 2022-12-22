@@ -8,7 +8,7 @@ import java.util.regex.Pattern
 class AccountRestoreViewModel : ViewModel() {
     private val _email = MutableLiveData<String>()
     val email: LiveData<String>
-            get() = _email
+        get() = _email
 
     init {
         _email.value = ""

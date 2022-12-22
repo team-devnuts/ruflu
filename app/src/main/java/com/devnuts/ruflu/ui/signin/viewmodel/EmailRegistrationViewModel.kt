@@ -9,6 +9,4 @@ class EmailRegistrationViewModel : ViewModel() {
         val pattern: Pattern = android.util.Patterns.EMAIL_ADDRESS
         return pattern.matcher(email).matches()
     }
-
-    // email 형식이 맞다면 retrofit 저장 시키기
 }

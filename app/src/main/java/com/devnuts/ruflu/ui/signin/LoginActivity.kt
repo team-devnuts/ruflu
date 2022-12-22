@@ -18,13 +18,13 @@ class LoginActivity : AppCompatActivity() {
         initNavController()
     }
 
-        /*
-         FragmentContainerView 를 사용하여 NavHostFragment 를 만들 때
-         또는 FragmentTransaction 을 통해 NavHostFragment 를 활동에 수동으로 추가할 경우
-         Navigation.findNavController(Activity, @IdrRes. int) 를 통해
-         onCreate() 에서 NavController 를 검색하려고 하면 실패합니다.
-         대신, NavHostFragment 에서 직접 NavController 를 검색해야 합니다.
-         */
+    /*
+     FragmentContainerView 를 사용하여 NavHostFragment 를 만들 때
+     또는 FragmentTransaction 을 통해 NavHostFragment 를 활동에 수동으로 추가할 경우
+     Navigation.findNavController(Activity, @IdrRes. int) 를 통해
+     onCreate() 에서 NavController 를 검색하려고 하면 실패합니다.
+     대신, NavHostFragment 에서 직접 NavController 를 검색해야 합니다.
+     */
     private fun initNavController() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.host_nav_fragment_login) as NavHostFragment

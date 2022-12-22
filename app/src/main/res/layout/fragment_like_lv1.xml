@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.like.fragment.LikeLv1Fragment"
+    >
+
+    <TextView
+        android:id="@+id/s_like_lv1_title01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/lv1TitleName"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ruflu_se_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/s_like_lv1_title01"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/user_detail_container"
+        android:background="@color/white"
+        android:visibility="gone"
+        >
+
+    </RelativeLayout>
+
+</RelativeLayout>

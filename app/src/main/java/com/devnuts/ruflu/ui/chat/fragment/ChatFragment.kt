@@ -14,30 +14,29 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ChatFragment : Fragment() {
-
-    private val tabTextList = arrayListOf<String>("Siloe", "Nearby")
-    private var savePostion: Int = 0
+    private val tabTextList = arrayListOf(TAB_ONE, TAB_TWO)
+    private var savePosition: Int = 0
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
-
-    companion object {
-        fun newInstance() = ChatFragment()
-    }
-
     private lateinit var viewModel: ChatSharedViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(ChatSharedViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view: View = inflater.inflate(R.layout.chat_fragment, container, false)
+    ): View {
+        val view: View = inflater.inflate(R.layout.fragment_chat, container, false)
         viewPager = view.findViewById(R.id.chat_viewpager)
         tabLayout = view.findViewById(R.id.chat_tabLayout)
 
         val chatPagerAdapter = ChatPagerAdapter(requireActivity())
-        chatPagerAdapter.addFragment(ChatSubSEFrag())
-        chatPagerAdapter.addFragment(ChatSubNBFrag())
+        chatPagerAdapter.addFragment(ChatSubSEFragment())
+        chatPagerAdapter.addFragment(ChatSubNBFragment())
 
         viewPager.adapter = chatPagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -55,26 +54,28 @@ class ChatFragment : Fragment() {
                 viewPager.currentItem = tab!!.position
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ChatSharedViewModel::class.java)
-
-        tabLayout.getTabAt(savePostion)?.select()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tabLayout.getTabAt(savePosition)?.select()
     }
 
     override fun onPause() {
         super.onPause()
+        savePosition = tabLayout.selectedTabPosition
+    }
 
-        savePostion = tabLayout.selectedTabPosition
+    companion object {
+        fun newInstance() = ChatFragment()
+        private const val TAB_ONE = "Ruflu"
+        private const val TAB_TWO = "Nearby"
+
     }
 }

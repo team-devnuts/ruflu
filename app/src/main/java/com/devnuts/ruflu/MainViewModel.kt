@@ -1,6 +1,5 @@
 package com.devnuts.ruflu
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,11 +7,11 @@ import com.devnuts.ruflu.ui.model.main.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 class MainViewModel : ViewModel() {
 
     private val repository = MainRepository()
-    private val TAG = javaClass.name
 
     private val _users: MutableLiveData<User> by lazy {
         MutableLiveData<User>().also {
@@ -27,7 +26,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun locationUpdate(latitude: Double, longitude: Double) {
-        var user = user.value
+        val user = user.value
         user?.latitude = latitude
         user?.longitude = longitude
 
@@ -37,13 +36,13 @@ class MainViewModel : ViewModel() {
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    Log.d(TAG, "update success")
+                    Timber.d("update success")
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Log.d(TAG, "callback fail")
-                Log.d(TAG, "locationUpdate " + t.message)
+                Timber.d("callback fail")
+                Timber.d("locationUpdate %s", t.message)
             }
         })
     }
@@ -53,13 +52,13 @@ class MainViewModel : ViewModel() {
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    Log.d(TAG, "update success")
+                    Timber.d("update success")
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Log.d(TAG, "callback fail")
-                Log.d(TAG, "" + t.message)
+                Timber.d("callback fail")
+                Timber.d("%s", t.message)
             }
         })
     }

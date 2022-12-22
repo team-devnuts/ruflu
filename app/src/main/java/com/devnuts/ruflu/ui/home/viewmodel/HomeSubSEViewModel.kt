@@ -8,38 +8,34 @@ import com.devnuts.ruflu.ui.model.home.UserCard
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 class HomeSubSEViewModel : ViewModel() {
-
     private val homeRepository: HomeRepository = HomeRepository()
-    private val TAG = javaClass.name
 
     private val _userCard by lazy {
         MutableLiveData<ArrayList<UserCard>>().also {
-            init()
+            loadUserCard()
         }
     }
-
     val userCard: MutableLiveData<ArrayList<UserCard>> get() = _userCard
-
-    private fun init() {
-        loadUserCard()
-    }
 
     fun loadUserCard() {
         val call = homeRepository.getUserCardList()
         call.enqueue(object : Callback<List<UserCard>> {
-            override fun onResponse(call: Call<List<UserCard>>, response: Response<List<UserCard>>) {
+            override fun onResponse(
+                call: Call<List<UserCard>>,
+                response: Response<List<UserCard>>
+            ) {
                 if (response.isSuccessful) {
-                    Log.d(TAG, "Success")
+                    Timber.d("callback success")
                     val userCardList: List<UserCard>? = response.body()
                     userCard.value = userCardList as ArrayList<UserCard>?
                 }
             }
 
             override fun onFailure(call: Call<List<UserCard>>, t: Throwable) {
-                Log.d(TAG, "callback fail")
-                Log.d(TAG + ".selectUserCardList", "${t.message}, ${t.printStackTrace()}")
+                Timber.tag("callback fail").e(t)
             }
         })
     }
@@ -52,13 +48,12 @@ class HomeSubSEViewModel : ViewModel() {
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    Log.d(TAG, "callback success!!!")
+                    Timber.d("callback success")
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Log.d(TAG, "callback fail")
-                Log.d(TAG + ".hateYourUserCard", "" + t.message)
+                Timber.tag("callback fail").e(t)
             }
         })
     }
@@ -71,14 +66,13 @@ class HomeSubSEViewModel : ViewModel() {
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    Log.d(TAG, "callback success!!!")
+                    Timber.d("callback success")
                     // 결과값에 따라서 매치되었다고 화면 표시
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Log.d(TAG, "callback fail")
-                Log.d(TAG + ".likeYourUserCard", "" + t.stackTrace)
+                Timber.tag("callback fail").e(t)
             }
         })
     }

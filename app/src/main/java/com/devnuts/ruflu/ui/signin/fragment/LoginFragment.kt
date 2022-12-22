@@ -26,7 +26,6 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d(LOGINFRAGMENT, "onCreateView")
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
 
@@ -41,10 +40,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(LOGINFRAGMENT, "onViewCreated")
-
         initializeView()
-
         getHash()
         kakaologin()
         intentActivity()
@@ -87,12 +83,9 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_smsFragment)
         }
     }
+
     private fun getHash() {
         val hashKey = HashKey() // 인스턴스 생성
         hashKey.getHashKey(requireContext()) // fragment 에서는 getContext 가 아닌, requireContext 를사용
-    }
-
-    companion object {
-        val LOGINFRAGMENT = "LoginViewModel"
     }
 }

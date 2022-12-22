@@ -1,15 +1,15 @@
 package com.devnuts.ruflu.ui.signin.viewmodel
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.devnuts.ruflu.comm.retrofit.RufluApp
+import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.data.api.UserService
-import com.devnuts.ruflu.data.api.request.RequestLoginData
-import com.devnuts.ruflu.data.api.response.ResponseLoginData
+import com.devnuts.ruflu.data.api.request.signin.RequestLoginData
+import com.devnuts.ruflu.data.api.response.signin.ResponseLoginData
 import com.devnuts.ruflu.ui.model.signin.KakaoUser
 import com.devnuts.ruflu.util.SharedPreferenceToken
 import com.kakao.sdk.auth.*
@@ -21,9 +21,10 @@ import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
-    var kakaoUser = KakaoUser("", "")
+    private var kakaoUser = KakaoUser("", "")
     val isNew = MutableLiveData<Boolean>()
 
     fun checkExistenceToken(context: Context) {
@@ -36,27 +37,27 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 if (error != null) {
                     if (error is KakaoSdkError) {
                         // access 토큰 갱신까지 실패한 것이기 때문에 refresh 토큰이 유효하지 않음, 로그인 필요
-                        Log.e(LOGINVIEWMODEL, "로그인 필요 / $error.toString()", error)
+                        Timber.e("로그인 필요 / $error.toString()")
                         loginKakaoUser(context)
                     } else {
                         // 기타 에러 (에러 시, 레퍼런스 참고해야할 것)
-                        Log.e(LOGINVIEWMODEL, "기타 에러 / $error.toString()", error)
+                        Timber.e("기타 에러 / $error.toString()")
                     }
                 } else {
                     // 토큰 유효성 체크 성공(필요 시 sdk 내부에서 토큰 갱신됨)
-                    Log.e(LOGINVIEWMODEL, "로그인 성공 (필요 시 토큰 갱신) / $tokenInfo.toString()", error)
+                    Timber.i("로그인 성공 (필요 시 토큰 갱신) / $tokenInfo.toString()")
                     // 토큰 갱신 API 호출 함수 구현 (USER_TOKEN 최신화 작업이 필요)
                     loginKakaoUser(context)
                 }
             }
         } else {
             // hasToken() API 의 결과가 false 라면 토큰이 없는 상태이므로 사용자가 로그인할 수 있도록 처리
-            Log.d(LOGINVIEWMODEL, "로그인 필요")
+            Timber.i("로그인 필요")
             loginKakaoUser(context)
         }
     }
 
-    fun loginKakaoUser(context: Context) {
+    private fun loginKakaoUser(context: Context) {
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 when {
@@ -88,10 +89,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                     }
                     else -> { // Unknown
                         if (error.toString() == ClientErrorCause.TokenNotFound.toString()) {
-                            Log.d("*******TokenNotFound", error.toString())
                             Toast.makeText(context, "기타 에러", Toast.LENGTH_SHORT).show()
                         } else {
-                            Log.d("************ERROR", "" + error.message)
+                            Timber.e("************ERROR / ${error.message}")
                         }
                     }
                 }
@@ -100,25 +100,26 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 getKakaoUserInfo()
             }
         }
-        Log.e(LOGINVIEWMODEL, "login 호출?")
+
         if (LoginClient.instance.isKakaoTalkLoginAvailable(context)) {
-            Log.e(LOGINVIEWMODEL, "카카오톡으로")
+            Timber.i("카카오톡으로")
             LoginClient.instance.loginWithKakaoTalk(context, callback = callback)
         } else {
-            Log.e(LOGINVIEWMODEL, "홈페이지로")
+            Timber.i("홈페이지로")
             LoginClient.instance.loginWithKakaoAccount(context, callback = callback)
         }
     }
 
     // 카카오 정보 가져오기
+    @SuppressLint("BinaryOperationInTimber")
     fun getKakaoUserInfo() {
         // 사용자 정보 요청 (기본)
         UserApiClient.instance.me { user, error ->
             if (error != null) {
-                Log.e(LOGINVIEWMODEL, "사용자 정보 요청 실패 / $error.toString()", error)
+                Timber.e("사용자 정보 요청 실패 / $error.toString()")
             } else if (user != null) {
-                Log.i(
-                    LOGINVIEWMODEL, "사용자 정보 요청 성공" +
+                Timber.i(
+                    "사용자 정보 요청 성공" +
                             "\n회원번호: ${user.id}" +
                             "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
                             "\n이메일: ${user.kakaoAccount?.email}" +
@@ -135,7 +136,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     // 서버 DB 저장 & 토큰 받아오기
-    fun postLogin() {
+    private fun postLogin() {
         val requestLoginData =
             RequestLoginData(oauthKey = kakaoUser.oauthKey, name = kakaoUser.name) // 전송할 데이터
 
@@ -149,8 +150,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             ) {
                 if (response.isSuccessful) {
                     // token 값 저장
-                    Log.d("getAccessToken", "응답성공")
-                    Log.d("getAcessToken", response.body().toString())
                     SharedPreferenceToken.putSettingItem(
                         getApplication<Application>().applicationContext,
                         "USER_TOKEN",
@@ -158,12 +157,12 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                     )
                     isNew.value = response.body()?.isNewUser
                 } else {
-                    Log.d(LOGINVIEWMODEL, "응답실패 : ${response.code()}, ${response.message()}")
+                    Timber.i("응답실패 : ${response.code()}, ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
-                Log.d("NetworkTest", "error:$t")
+                Timber.i("error:$t")
             }
         })
     }
@@ -173,29 +172,22 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
      */
     fun kakaoLogout() {
         UserApiClient.instance.logout { error ->
-            if (error != null) {
-                Log.e(LOGINVIEWMODEL, "로그아웃 실패. SDK에서 토큰 삭제됨", error)
-            } else {
-                Log.i(LOGINVIEWMODEL, "로그아웃 성공. SDK에서 토큰 삭제됨")
-            }
+            if (error != null) Timber.e("로그아웃 실패. SDK 에서 토큰 삭제됨")
+            else Timber.e("로그아웃 성공. SDK 에서 토큰 삭제됨")
         }
     }
 
     /**
-     * 카카오 연결 끊
+     * 카카오 연결 끊기
      */
     fun kakaoDisconnect() {
         // 연결 끊기
         UserApiClient.instance.unlink { error ->
             if (error != null) {
-                Log.e(LOGINVIEWMODEL, "연결 끊기 실패", error)
+                Timber.e("연결 끊기 실패")
             } else {
-                Log.i(LOGINVIEWMODEL, "연결 끊기 성공. SDK 에서 토큰 삭제 됨")
+                Timber.i("연결 끊기 성공. SDK 에서 토큰 삭제 됨")
             }
         }
-    }
-
-    companion object {
-        val LOGINVIEWMODEL = "LoginViewModel"
     }
 }
