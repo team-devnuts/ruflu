@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.comm.utill.UserUtill
+import com.devnuts.ruflu.comm.utill.UserUtil
 import com.devnuts.ruflu.databinding.LikeLv1UserBinding
 import com.devnuts.ruflu.ui.like.fragment.RufluTouchHelperCallback
 import com.devnuts.ruflu.ui.model.home.UserDtl
@@ -14,7 +14,8 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class RufluLikeLv1Adapter(
     private val likeLv1Users: ArrayList<UserDtl>
-) : RecyclerView.Adapter<RufluLikeLv1Adapter.RufluLikeLv1ViewHolder>(), RufluTouchHelperCallback.OnItemMoveListener {
+) : RecyclerView.Adapter<RufluLikeLv1Adapter.RufluLikeLv1ViewHolder>(),
+    RufluTouchHelperCallback.OnItemMoveListener {
 
     private lateinit var view: View
     private lateinit var binding: LikeLv1UserBinding
@@ -35,11 +36,11 @@ class RufluLikeLv1Adapter(
         fun bind(likeLv1User: UserDtl) {
 
             if (likeLv1User.imgs.isNotEmpty())
-                UserUtill.setImageWithGlide(itemView, likeLv1User.imgs.get(0), userImgView)
+                UserUtil.setImageWithGlide(itemView, likeLv1User.imgs.get(0), userImgView)
             else userImgView.setImageResource(R.drawable.noimg_fac)
 
             binding.seLv1NickNm.text = likeLv1User.nick_nm
-            binding.seLv1Age.text = "${UserUtill.getAge(likeLv1User.birth)}"
+            binding.seLv1Age.text = "${UserUtil.getAge(likeLv1User.birth)}"
         }
     }
 

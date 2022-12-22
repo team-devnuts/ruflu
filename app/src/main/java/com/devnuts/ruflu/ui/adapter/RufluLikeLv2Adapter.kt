@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.comm.utill.UserUtill
+import com.devnuts.ruflu.comm.utill.UserUtil
 import com.devnuts.ruflu.databinding.LikeLv2UserBinding
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import de.hdodenhof.circleimageview.CircleImageView
@@ -29,10 +29,10 @@ class RufluLikeLv2Adapter(
 
         fun bind(likeLv2User: UserDtl) {
             if ("".equals(likeLv2User.imgs.get(0)) && likeLv2User.imgs.get(0) != null)
-                UserUtill.setImageBitmap(likeLv2User.imgs.get(0), userImgView)
+                UserUtil.setImageBitmap(likeLv2User.imgs.get(0), userImgView)
             else userImgView.setImageResource(R.drawable.noimg_fac)
             binding.seLv2NickNm.text = likeLv2User.nick_nm
-            binding.seLv2Age.text = "${UserUtill.getAge(likeLv2User.birth)}"
+            binding.seLv2Age.text = "${UserUtil.getAge(likeLv2User.birth)}"
         }
     }
 

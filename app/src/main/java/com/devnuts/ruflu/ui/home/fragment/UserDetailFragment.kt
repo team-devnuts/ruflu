@@ -54,7 +54,7 @@ class UserDetailFragment : Fragment() {
 
     private fun initView() {
         imgAdapter = UserImgViewAdapter(viewPager2, indicator)
-        imgAdapter.setImgs(userDtl.imgs)
+        imgAdapter.setImages(userDtl.imgs)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2.offscreenPageLimit = 4
         viewPager2.adapter = imgAdapter

@@ -2,7 +2,11 @@ package com.devnuts.ruflu.comm.utill
 
 import androidx.recyclerview.widget.DiffUtil
 
-class BaseDiffUtill<T> (private val newList: List<T>, private val oldList: List<T>) : DiffUtil.Callback() {
+class BaseDiffUtil<T>(
+    private val newList: List<T>,
+    private val oldList: List<T>
+) : DiffUtil.Callback() {
+
     override fun getOldListSize(): Int = oldList.size
 
     override fun getNewListSize(): Int = newList.size

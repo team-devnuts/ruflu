@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.data.api.request
+package com.devnuts.ruflu.data.api.request.signin
 
 data class RequestLoginData(
     val oauthKey: String,

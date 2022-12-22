@@ -20,10 +20,12 @@ class ReceivedCookiesInterceptor : Interceptor {
         }
         */
 
-        if (!originalResponse.headers("user_id").isEmpty()) {
+        if (originalResponse.headers("user_id").isNotEmpty()) {
             val userId = originalResponse.header("user_id")
+
             RufluApp.sharedPreference.putSettingString("user_id", userId!!)
         }
+
         return originalResponse
     }
 }

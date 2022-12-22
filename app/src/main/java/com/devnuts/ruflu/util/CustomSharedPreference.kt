@@ -12,7 +12,7 @@ class CustomSharedPreference(context: Context) {
     fun putSettingString(key: String, value: String) {
         Log.d("SHARED", "Put $key ( value : $value) to $ID ")
         val preferences: SharedPreferences = mContext.getSharedPreferences(ID, MODE_PRIVATE)
-        var editor = preferences.edit()
+        val editor = preferences.edit()
         editor.putString(key, value)
         editor.apply()
     }

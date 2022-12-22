@@ -12,12 +12,13 @@ import com.google.firebase.messaging.RemoteMessage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 class FCMService : FirebaseMessagingService() {
-    private val TAG = javaClass.name
+
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Log.d(TAG, "토큰 : $token")
+        Timber.tag("토큰").i(token)
         sendRegistrationToServer(token)
     }
 
@@ -25,12 +26,13 @@ class FCMService : FirebaseMessagingService() {
         super.onMessageReceived(remoteMessage)
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         // 앱이 foreground 상태에 있을 때 FCM 알림을 받았다면 onMessageReceived() 콜백 메소드가 호출됨으로써 FCM 알림이 대신된다.
-        Log.d("onMessageReceived 콜백", "From: ${remoteMessage.from}")
+        Timber.tag("onMessageReceived 콜백").d("${remoteMessage.from}")
+
 
         // 메시지 유형이 데이터 메시지일 경우
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
-            Log.d(TAG, "Message data payload: ${remoteMessage.data}")
+            Timber.tag("Message data payload").d("${remoteMessage.data}")
             sendNotificationMessage(remoteMessage.data)
         }
 
@@ -38,13 +40,12 @@ class FCMService : FirebaseMessagingService() {
         // Check if message contains a notification payload.
         // Set FCM title, body to android notificatio
 
-        var notificationInfo = mapOf<String, String>()
         remoteMessage.notification?.let {
-            notificationInfo = mapOf(
+            val notificationInfo = mapOf(
                 "title" to it.title.toString(),
                 "body" to it.body.toString()
             )
-            Log.d("FCMService", "$notificationInfo")
+
             sendNotificationNotification(notificationInfo)
         }
 
@@ -56,14 +57,14 @@ class FCMService : FirebaseMessagingService() {
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (!response.isSuccessful) {
-                    Log.d("Token 갱신", "fail " + response.message())
+                    Timber.tag("Token 갱신").d(response.message())
                     return
                 }
-                Log.d("Token 갱신", "Success")
+                Timber.tag("Token 갱신").d("Success")
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Log.e("fail token update", t.stackTraceToString())
+                Timber.tag("fail token update").e(t.stackTraceToString())
             }
         })
     }
@@ -90,16 +91,16 @@ class FCMService : FirebaseMessagingService() {
             "MESSAGE" -> intent = Intent(this, ChatFragment::class.java)
         }
 
-        if (intent != null) {
+        return if (intent != null) {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            return PendingIntent.getActivity(
+            PendingIntent.getActivity(
                 this, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT
             )
         } else {
             intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            return PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
         }
     }
 }

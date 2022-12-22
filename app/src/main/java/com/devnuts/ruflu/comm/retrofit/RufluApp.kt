@@ -1,7 +1,6 @@
 package com.devnuts.ruflu.comm.retrofit
 
 import android.app.Application
-import android.util.Log
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.comm.AddCookiesInterceptor
 import com.devnuts.ruflu.comm.AppNotification
@@ -15,25 +14,16 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RufluApp : Application() {
-    companion object {
-        lateinit var retrofit: Retrofit
-        lateinit var appNotification: AppNotification
-        lateinit var sharedPreference: CustomSharedPreference
-        val url = "http://192.168.0.6"
-        // 192.168.123.103
-        val port = 8005
-    }
 
     override fun onCreate() {
         super.onCreate()
-        Log.d("Global", "come in here (global)")
         KakaoSdk.init(this, getString(R.string.kakao_app_key))
         appNotification = AppNotification(this)
         sharedPreference = CustomSharedPreference(this)
         initRetrofit()
     }
 
-    fun initRetrofit() {
+    private fun initRetrofit() {
         val okHttpClient = OkHttpClient().newBuilder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
@@ -43,10 +33,18 @@ class RufluApp : Application() {
             .build()
 
         retrofit = Retrofit.Builder()
-            .baseUrl(url + ":" + port)
+            .baseUrl("$url:$port")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
+    }
+
+    companion object {
+        const val url = "http://192.168.0.6"
+        const val port = 8005
+        lateinit var retrofit: Retrofit
+        lateinit var appNotification: AppNotification
+        lateinit var sharedPreference: CustomSharedPreference
     }
 }

@@ -6,12 +6,15 @@ import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.comm.retrofit.RufluApp
 import okhttp3.internal.notify
+import timber.log.Timber
 
 class AppNotification(rufluApp: RufluApp) {
+    @RequiresApi(Build.VERSION_CODES.N)
     private val importance = NotificationManager.IMPORTANCE_HIGH
     private lateinit var channel: NotificationChannel
     private lateinit var notificationManager: NotificationManager
@@ -21,19 +24,24 @@ class AppNotification(rufluApp: RufluApp) {
         createNotificationChannel(rufluApp)
     }
 
-    fun notifyGeneralNotification(context: Context, title: String?, content: String?, pendingIntent: PendingIntent) {
-        val GROUP_KEY_WORK_NOTIFI = "com.ruflu.notification.test"
-        Log.d("AppNotification", "${context.applicationInfo.className}, $title, $content, $pendingIntent")
+    fun notifyGeneralNotification(
+        context: Context,
+        title: String?,
+        content: String?,
+        pendingIntent: PendingIntent
+    ) {
+        Timber.tag("AppNotification")
+            .d("${context.applicationInfo.className}, $title, $content, $pendingIntent")
         // var msg = NotificationCompat.MessagingStyle.Message(content, )
 
-        var builder = NotificationCompat.Builder(context, R.string.channel_id.toString())
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
-                .setContentTitle(title)
-                .setContentText(content)
-                .setPriority(importance)
-                .setContentIntent(pendingIntent)
-                .setGroup(GROUP_KEY_WORK_NOTIFI)
-                .setAutoCancel(true)
+        val builder = NotificationCompat.Builder(context, R.string.channel_id.toString())
+            .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+            .setContentTitle(title)
+            .setContentText(content)
+            .setPriority(importance)
+            .setContentIntent(pendingIntent)
+            .setGroup(GROUP_KEY_WORK_NOTIFI)
+            .setAutoCancel(true)
 
         notificationManager.notify(notificationId, builder.build())
     }
@@ -47,8 +55,13 @@ class AppNotification(rufluApp: RufluApp) {
             }
 
             // Register the channel with the system
-            notificationManager = rufluApp.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager =
+                rufluApp.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    companion object {
+        private const val GROUP_KEY_WORK_NOTIFI = "com.ruflu.notification.test"
     }
 }

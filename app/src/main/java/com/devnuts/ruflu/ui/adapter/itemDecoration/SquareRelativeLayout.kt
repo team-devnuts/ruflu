@@ -4,13 +4,15 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import android.widget.RelativeLayout
+import timber.log.Timber
 
-class SquareRelativeLayout(context: Context, attributeSet: AttributeSet) : RelativeLayout(context, attributeSet) {
+class SquareRelativeLayout(context: Context, attributeSet: AttributeSet) :
+    RelativeLayout(context, attributeSet) {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        var width = MeasureSpec.getSize(widthMeasureSpec)
-        var height = MeasureSpec.getSize(heightMeasureSpec)
-        Log.d("Square", "spec : $width , $height")
+        val width = MeasureSpec.getSize(widthMeasureSpec)
+        val height = MeasureSpec.getSize(heightMeasureSpec)
+        Timber.d("spec : $width , $height")
         // setMeasuredDimension(width, width)
         super.onMeasure(widthMeasureSpec, widthMeasureSpec)
     }

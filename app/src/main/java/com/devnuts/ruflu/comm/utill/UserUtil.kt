@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -14,20 +13,21 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
 import com.squareup.picasso.Picasso
+import timber.log.Timber
 import java.io.BufferedInputStream
 import java.net.URL
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class UserUtill {
+class UserUtil {
 
     companion object {
 
         fun getAge(birth: String): Int {
-            var birthYear = TextUtils.substring(birth, 0, 4)
-            var birthMMdd = TextUtils.substring(birth, 5, 8)
+            val birthYear = TextUtils.substring(birth, 0, 4)
+            val birthMMdd = TextUtils.substring(birth, 5, 8)
 
-            var todayStr =
+            val todayStr =
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                     LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
                 } else {
@@ -35,10 +35,10 @@ class UserUtill {
                     ""
                 }
 
-            var todayYear = TextUtils.substring(todayStr, 0, 4)
-            var todayMMdd = TextUtils.substring(todayStr, 5, 8)
+            val todayYear = TextUtils.substring(todayStr, 0, 4)
+            val todayMMdd = TextUtils.substring(todayStr, 5, 8)
 
-            var age = todayYear.toInt() - birthYear.toInt()
+            val age = todayYear.toInt() - birthYear.toInt()
 
             return if (todayMMdd > birthMMdd) age - 1 else age
         }
@@ -58,7 +58,7 @@ class UserUtill {
             othLocation.longitude = yLongitude
 
             val distance = myLocation.distanceTo(othLocation)
-            Log.d("getDistanceToUser", "Distance : $distance")
+            Timber.d("Distance : $distance")
             return distance
         }
 

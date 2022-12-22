@@ -10,7 +10,7 @@ import retrofit2.http.*
 interface ServerAPI {
 
     @GET("/home/userCardList")
-    fun getUsercardList(): Call<List<UserCard>>
+    fun getUserCardList(): Call<List<UserCard>>
 
     @FormUrlEncoded
     @POST("/home/ins/hate")

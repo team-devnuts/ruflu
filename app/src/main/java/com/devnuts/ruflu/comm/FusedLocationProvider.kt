@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.devnuts.ruflu.MainActivity
 import com.google.android.gms.location.*
+import timber.log.Timber
 
 class FusedLocationProvider(
     val context: Context,
@@ -15,10 +16,6 @@ class FusedLocationProvider(
 ) {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
-
-    companion object {
-        private const val TAG = "FusedLocationProvider"
-    }
 
     init {
         initLocationClient()
@@ -38,10 +35,10 @@ class FusedLocationProvider(
         val client = LocationServices.getSettingsClient(context)
         val task = client.checkLocationSettings(builder.build())
         task.addOnSuccessListener {
-            Log.d(TAG, "location client setting success")
+            Timber.d("location client setting success")
         }
         task.addOnFailureListener {
-            Log.d(TAG, "location client setting failure")
+            Timber.d("location client setting failure")
         }
     }
 

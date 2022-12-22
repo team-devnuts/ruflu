@@ -12,7 +12,7 @@ class HomeRepository {
 
     fun getUserCardList(): Call<List<UserCard>> {
 
-        return api.getUsercardList()
+        return api.getUserCardList()
     }
 
     fun getNBUserList(): Call<List<UserDtl>> {

@@ -14,9 +14,7 @@ class ChatSubSEAdapter(
     private lateinit var seLikeLv1OnClickListener: OnItemClickListener
 
     inner class ChatSubSEViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        fun bind() {
-        }
+        fun bind() {}
     }
 
     interface OnItemClickListener {

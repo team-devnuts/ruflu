@@ -12,19 +12,22 @@ import com.devnuts.ruflu.databinding.MsgItemRightBinding
 import com.devnuts.ruflu.ui.model.chat.ChatMessage
 import de.hdodenhof.circleimageview.CircleImageView
 
-class MsgListAdapter(val msgList: ArrayList<ChatMessage>, val toUserName: String, val toUserImgUrl: String) :
-    RecyclerView.Adapter<MsgListAdapter.MsgListViewHoler>() {
+class MsgListAdapter(
+    private val msgList: ArrayList<ChatMessage>,
+    private val toUserName: String,
+    val toUserImgUrl: String
+) : RecyclerView.Adapter<MsgListAdapter.MsgListViewHolder>() {
 
     private lateinit var lBind: MsgItemLeftBinding
     private lateinit var rBind: MsgItemRightBinding
 
-    inner class MsgListViewHoler(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MsgListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(data: ChatMessage) {
             val userNm = itemView.findViewById<TextView>(R.id.textv_nicname)
             val msgTextView = itemView.findViewById<TextView>(R.id.textv_msg)
             val userImg: CircleImageView? = itemView.findViewById(R.id.imgv)
-            msgTextView.setText(data.msg)
-            userNm.setText(data.userName)
+            msgTextView.text = data.msg
+            userNm.text = data.userName
             userImg?.setImageURI(Uri.parse(data.imgUrl))
         }
     }
@@ -34,8 +37,8 @@ class MsgListAdapter(val msgList: ArrayList<ChatMessage>, val toUserName: String
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MsgListViewHoler {
-        var view: View? = null
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MsgListViewHolder {
+        val view: View
         if (viewType == 1) {
             lBind = MsgItemLeftBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             view = lBind.root
@@ -43,15 +46,19 @@ class MsgListAdapter(val msgList: ArrayList<ChatMessage>, val toUserName: String
             rBind = MsgItemRightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             view = rBind.root
         }
-        return MsgListViewHoler(view)
+        return MsgListViewHolder(view)
     }
 
     override fun getItemViewType(position: Int): Int {
         val youUserNm = msgList[position].userName
-        return if (youUserNm.equals(toUserName)) { 1 } else { 2 }
+
+        return when(youUserNm == toUserName) {
+            true -> 1
+            false -> 2
+        }
     }
 
-    override fun onBindViewHolder(holder: MsgListViewHoler, position: Int) {
+    override fun onBindViewHolder(holder: MsgListViewHolder, position: Int) {
         holder.bind(msgList[position])
     }
 
