@@ -1,56 +1,88 @@
 package com.devnuts.ruflu.ui.adapter
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.animation.AnimationUtils
+import android.annotation.SuppressLint
+import android.util.Log
+import android.view.*
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.ui.home.fragment.HomeSubSEFragment
-import com.devnuts.ruflu.ui.home.viewmodel.HomeSubSEViewModel
 import com.devnuts.ruflu.ui.model.home.UserCard
-import com.yuyakaido.android.cardstackview.CardStackView
+import com.devnuts.ruflu.util.UserUtil
+import com.devnuts.ruflu.worker.CustomCardStackView
 import me.relex.circleindicator.CircleIndicator3
-import timber.log.Timber
+import java.util.*
+import kotlin.collections.ArrayList
 
 class UserCardViewAdapter(
-    private val viewModel: HomeSubSEViewModel,
+    val data: ArrayList<UserCard>,
     val fragment: HomeSubSEFragment,
-    private val cardStackView: CardStackView
-) : RecyclerView.Adapter<UserCardViewAdapter.PagerViewHolder>() {
+    val cardStackView: CustomCardStackView
+) : RecyclerView.Adapter<UserCardViewAdapter.PagerViewHoler>() {
 
     private lateinit var view: View
     private lateinit var imgAdapter: UserImageViewAdapter
     private lateinit var viewPager2: ViewPager2
     private lateinit var indicator: CircleIndicator3
-    private val animation =
-        AnimationUtils.loadAnimation(fragment.context, R.anim.user_card_drawer_action)
 
-    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    //private val animation = AnimationUtils.loadAnimation(fragment.context,R.anim.user_card_drawer_action)
+    private var scrollViewY = 0f
+    private var isFlagScroll = false
+
+    inner class PagerViewHoler(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val pageName: TextView = itemView.findViewById(R.id.card_view_name)
         private val pageAge: TextView = itemView.findViewById(R.id.card_view_age)
 
         fun bind(userCard: UserCard) {
-            pageName.text = userCard.nick_nm
+            pageName.text = "${userCard.nick_nm}"
             pageAge.text = "${UserUtil.getAge(userCard.birth)}"
+
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHoler {
         view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_card, parent, false)
-
+        // 하위뷰까지 영향이 가도록 아웃 라인 설정
+        view.clipToOutline = true
         indicator = view.findViewById(R.id.indicator)
         viewPager2 = view.findViewById(R.id.imgviewpager) as ViewPager2
         imgAdapter = UserImageViewAdapter(viewPager2, indicator)
-        val drawerBar = view.findViewById<LinearLayout>(R.id.drawer_bar)
-        val scrollView = view.findViewById<ScrollView>(R.id.user_card_scroll)
 
-        scrollView.visibility = View.GONE
+        val scrollView = view.findViewById<ScrollView>(R.id.user_card_scroll)
+        val rlSvBox = view.findViewById<RelativeLayout>(R.id.rl_sv_box)
+        val drawBar = view.findViewById<LinearLayout>(R.id.LL_drawer_bar)
+
+        drawBar.setOnTouchListener() { v, event ->
+            Log.d("View_Drag:flow", "Drag Start Touch Listener ${event.action}")
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    cardStackView.requestDisallowInterceptTouchEvent(true)
+                    isFlagScroll = true
+                    scrollViewY = rlSvBox.y - event.rawY
+                    Log.d("View_Drag:flow", "Drag Y :  ${scrollViewY}")
+                    Log.d("View_Drag:flow", "event.raw Y :  ${event.rawY}")
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    if (event.rawY > (760 - 30))
+                        rlSvBox.animate()
+                            .y(event.rawY + scrollViewY)
+                            .setDuration(0)
+                            .start()
+                }
+                MotionEvent.ACTION_UP -> {
+                    isFlagScroll = false
+                    cardStackView.requestDisallowInterceptTouchEvent(false)
+                }
+            }
+            return@setOnTouchListener true
+        }
+
+        //scrollView.visibility = View.GONE
 
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
@@ -60,40 +92,32 @@ class UserCardViewAdapter(
             }
         })
 
-        drawerBar.setOnClickListener {
-            val sVisbSt = scrollView.visibility
-            if (sVisbSt == View.GONE) {
-                scrollView.visibility = View.VISIBLE
-            } else {
-                scrollView.visibility = View.GONE
-            }
-            Timber.tag("drawerBar").d("hee %s", scrollView.visibility)
-
-            drawerBar.startAnimation(animation)
-            scrollView.startAnimation(animation)
-        }
 
         scrollView.setOnTouchListener { v, event ->
-            cardStackView.requestDisallowInterceptTouchEvent(true)
-            return@setOnTouchListener false
+
+            isFlagScroll
         }
+
 
         viewPager2.offscreenPageLimit = 4
         indicator.setViewPager(viewPager2)
 
-        return PagerViewHolder(view)
+        return PagerViewHoler(view)
     }
 
-    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
-        val userCard = viewModel.userCard.value!!.get(position)
-        imgAdapter.setImages(userCard.imgs)
 
+    override fun onBindViewHolder(holder: PagerViewHoler, position: Int) {
+
+        val userCard = data.get(position)
+        imgAdapter.setImgs(userCard.imgs)
         if (viewPager2.adapter == null) viewPager2.adapter = imgAdapter
-        Timber.d("onCreateViewHolder $position nickNm ${userCard.nick_nm} age ${userCard.birth} ")
 
         indicator.createIndicators(imgAdapter.itemCount, 0)
+
         holder.bind(userCard)
     }
 
-    override fun getItemCount(): Int = viewModel.userCard.value!!.size
+    override fun getItemCount(): Int = data.size
+
+
 }

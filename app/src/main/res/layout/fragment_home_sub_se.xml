@@ -7,18 +7,18 @@
     android:orientation="vertical"
     tools:context=".ui.home.fragment.HomeSubSEFragment">
 
-<!--    <com.airbnb.lottie.LottieAnimationView-->
-<!--        android:id="@+id/reload"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="200dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:lottie_autoPlay="true"-->
-<!--        app:lottie_loop="true"-->
-<!--        app:lottie_rawRes="@raw/reload_star"-->
-<!--        tools:ignore="MissingClass" />-->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/reload"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/reload_star"
+        tools:ignore="MissingClass" />
 
     <com.devnuts.ruflu.worker.CustomCardStackView
         android:id="@+id/user_card_recycler"
