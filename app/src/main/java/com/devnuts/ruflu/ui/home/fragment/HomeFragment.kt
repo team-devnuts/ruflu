@@ -11,28 +11,29 @@ import com.devnuts.ruflu.ui.adapter.HomePagerAdapter
 import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
-
     private var savePosition: Int = 0
     private var _bind: HomeFragmentBinding? = null
     private val bind get() = _bind!!
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _bind = HomeFragmentBinding.inflate(inflater, container, false)
 
         tabLayout = bind.homeTabLayout
         viewPager = bind.homeViewpager
         initView()
         return bind.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tabLayout.getTabAt(savePosition)?.select()
     }
 
     private fun initView() {
@@ -69,11 +70,6 @@ class HomeFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        tabLayout.getTabAt(savePosition)?.select()
     }
 
     override fun onPause() {

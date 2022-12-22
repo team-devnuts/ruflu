@@ -63,8 +63,4 @@ class SMSAuthFragment : Fragment() {
             findNavController().navigate(R.id.action_smsAuthFragment_to_registerEmailFragment)
         }
     }
-
-    companion object {
-        val FAG = "SMSAuthFragment"
-    }
 }

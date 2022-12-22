@@ -15,19 +15,17 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.ui.adapter.NearByAdapter
 import com.devnuts.ruflu.ui.adapter.itemDecoration.ItemDecoration
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubNBViewModel
-import com.devnuts.ruflu.ui.home.viewmodel.UserDtlSharedViewModel
+import com.devnuts.ruflu.ui.home.viewmodel.UserDetailSharedViewModel
 
 class HomeSubNBFrag : Fragment() {
-
-    private val userDtlSharedViewModel: UserDtlSharedViewModel by viewModels<UserDtlSharedViewModel>()
-    private val nbViewModel: HomeSubNBViewModel by viewModels<HomeSubNBViewModel>()
-
     private lateinit var recyclerView: RecyclerView
     private lateinit var nearByAdapter: NearByAdapter
     private lateinit var callback: OnBackPressedCallback
     private lateinit var userDetailFragment: UserDetailFragment
     private lateinit var childFragmentTransaction: FragmentTransaction
     private lateinit var userDetailContainer: RelativeLayout
+    private val userDtlSharedViewModel: UserDetailSharedViewModel by viewModels()
+    private val nbViewModel: HomeSubNBViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

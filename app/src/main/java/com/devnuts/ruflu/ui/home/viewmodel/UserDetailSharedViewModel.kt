@@ -1,20 +1,20 @@
 package com.devnuts.ruflu.ui.home.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.ui.model.home.UserDtl
+import timber.log.Timber
 
-class UserDtlSharedViewModel : ViewModel() {
-
-    private val TAG = javaClass.name
+class UserDetailSharedViewModel : ViewModel() {
     private var _userDtl: MutableLiveData<UserDtl> = MutableLiveData()
     val nbUserDtl get() = _userDtl
 
     fun setUserDtl(userDtl: UserDtl?) {
-        Log.d("NBharedViewModel", "$userDtl")
+        Timber.d("$userDtl")
         _userDtl.value = userDtl
     }
 
-    fun detachNBUser() { _userDtl.value = null }
+    fun detachNBUser() {
+        _userDtl.value = null
+    }
 }

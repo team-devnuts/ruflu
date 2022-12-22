@@ -4,9 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class RufluLikeAdapter(fragmentActivity: FragmentActivity) :
+class LikePagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
-
     private var fragments: ArrayList<Fragment> = ArrayList()
 
     override fun getItemCount(): Int {
@@ -17,7 +16,8 @@ class RufluLikeAdapter(fragmentActivity: FragmentActivity) :
         return fragments[position]
     }
 
-    fun addFragment(frag: Fragment) {
-        fragments.add(frag)
+    fun addFragment(fragment: Fragment) {
+        fragments.add(fragment)
+        notifyItemChanged(fragments.size - 1)
     }
 }

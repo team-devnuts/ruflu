@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import timber.log.Timber
 
 class BaseFragment : Fragment() {
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Timber.i("onAttach call")

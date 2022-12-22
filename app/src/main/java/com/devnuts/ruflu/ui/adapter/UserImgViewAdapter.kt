@@ -20,7 +20,7 @@ class UserImgViewAdapter(private val pager2: ViewPager2, private val indicator: 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private lateinit var imgView: ImageView
         fun bind(img: String) {
-            imgView = itemView.findViewById<ImageView>(R.id.cardimgview)
+            imgView = itemView.findViewById(R.id.cardimgview)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 val outlineProvider = object : ViewOutlineProvider() {
                     override fun getOutline(view: View?, outline: Outline?) {

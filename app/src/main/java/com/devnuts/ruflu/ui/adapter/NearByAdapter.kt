@@ -10,10 +10,12 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.ui.model.home.UserDtl
 
-class NearByAdapter(val data: MutableLiveData<ArrayList<UserDtl>>) : RecyclerView.Adapter<NearByAdapter.NearByViewHolder>() {
+class NearByAdapter(val data: MutableLiveData<ArrayList<UserDtl>>) :
+    RecyclerView.Adapter<NearByAdapter.NearByViewHolder>() {
 
     private lateinit var itemClickListener: OnItemClickListener
     private lateinit var view: View
+
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
     }

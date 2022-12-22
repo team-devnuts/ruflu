@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.ui.like.viewmodel.RufluSubNBViewModel
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSubNBViewModel
 
-class RufluSubNBFrag : Fragment() {
+class LikeSubNBFrag : Fragment() {
+    private lateinit var viewModel: LikeSubNBViewModel
 
-    companion object {
-        fun newInstance() = RufluSubNBFrag()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(LikeSubNBViewModel::class.java)
     }
-
-    private lateinit var viewModel: RufluSubNBViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,8 +25,7 @@ class RufluSubNBFrag : Fragment() {
         return inflater.inflate(R.layout.ruflu_sub_nb_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RufluSubNBViewModel::class.java)
+    companion object {
+        fun newInstance() = LikeSubNBFrag()
     }
 }

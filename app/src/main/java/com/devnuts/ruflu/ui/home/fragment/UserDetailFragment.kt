@@ -1,8 +1,6 @@
 package com.devnuts.ruflu.ui.home.fragment
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.UserDetailFragmentBinding
 import com.devnuts.ruflu.ui.adapter.UserImgViewAdapter
-import com.devnuts.ruflu.ui.home.viewmodel.UserDtlSharedViewModel
+import com.devnuts.ruflu.ui.home.viewmodel.UserDetailSharedViewModel
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import me.relex.circleindicator.CircleIndicator3
+import timber.log.Timber
 
 class UserDetailFragment : Fragment() {
-
     private lateinit var imgAdapter: UserImgViewAdapter
     private lateinit var binding: UserDetailFragmentBinding
     private lateinit var indicator: CircleIndicator3
@@ -25,15 +23,15 @@ class UserDetailFragment : Fragment() {
     private lateinit var viewPager2: ViewPager2
     private lateinit var userDtl: UserDtl
 
-    private val parentViewModel: UserDtlSharedViewModel by viewModels(
-            ownerProducer = { requireParentFragment() }
+    private val parentViewModel: UserDetailSharedViewModel by viewModels(
+        ownerProducer = { requireParentFragment() }
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = UserDetailFragmentBinding.inflate(inflater, container, false)
         binding.homeNbViewpage2
         ratingBar = binding.homeNbRatingBar
@@ -75,15 +73,11 @@ class UserDetailFragment : Fragment() {
     }
 
     private fun addListeners() {
-        ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
-            Log.d("rating", "" + rating)
+        ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
+            Timber.tag("rating").d("$rating")
             userDtl.ratingStar = rating
             parentViewModel.setUserDtl(userDtl)
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
     }
 
     override fun onDetach() {

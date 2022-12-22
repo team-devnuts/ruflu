@@ -60,8 +60,7 @@ class UserCardViewAdapter(
             }
         })
 
-        drawerBar.setOnClickListener(View.OnClickListener {
-
+        drawerBar.setOnClickListener {
             val sVisbSt = scrollView.visibility
             if (sVisbSt == View.GONE) {
                 scrollView.visibility = View.VISIBLE
@@ -72,11 +71,10 @@ class UserCardViewAdapter(
 
             drawerBar.startAnimation(animation)
             scrollView.startAnimation(animation)
-        })
+        }
 
         scrollView.setOnTouchListener { v, event ->
             cardStackView.requestDisallowInterceptTouchEvent(true)
-
             return@setOnTouchListener false
         }
 

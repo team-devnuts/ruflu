@@ -10,11 +10,6 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSubNBViewModel
 
 class ChatSubNBFrag : Fragment() {
-
-    companion object {
-        fun newInstance() = ChatSubNBFrag()
-    }
-
     private lateinit var viewModel: ChatSubNBViewModel
 
     override fun onCreateView(
@@ -25,9 +20,12 @@ class ChatSubNBFrag : Fragment() {
         return inflater.inflate(R.layout.chat_sub_nb_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ChatSubNBViewModel::class.java)
-        // TODO: Use the ViewModel
+    }
+
+    companion object {
+        fun newInstance() = ChatSubNBFrag()
     }
 }

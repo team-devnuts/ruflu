@@ -12,55 +12,49 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.RufluLikeLv2FragmentBinding
-import com.devnuts.ruflu.ui.adapter.RufluLikeLv2Adapter
-import com.devnuts.ruflu.ui.like.viewmodel.RufluSubSEViewModel
-import com.devnuts.ruflu.ui.like.viewmodel.SESharedViewModel
+import com.devnuts.ruflu.ui.adapter.LikeLv2Adapter
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSubSEViewModel
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSESharedViewModel
 
-class RufluLikeLv2Fragment : Fragment() {
-
-    private lateinit var rufluLv2Binding: RufluLikeLv2FragmentBinding
-    private val viewModel: RufluSubSEViewModel by viewModels<RufluSubSEViewModel>()
-    private val sharedViewModel: SESharedViewModel by viewModels()
+class LikeLv2Fragment : Fragment() {
+    private lateinit var likeLv2Binding: RufluLikeLv2FragmentBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var userDetailContainer: RelativeLayout
-    private lateinit var rufluUserDetailFragment: RufluUserDetailFragment
+    private lateinit var likeUserDetailFragment: LikeUserDetailFragment
     private lateinit var childFragmentTransaction: FragmentTransaction
-    private lateinit var adapter: RufluLikeLv2Adapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
+    private lateinit var adapter: LikeLv2Adapter
+    private val viewModel: LikeSubSEViewModel by viewModels()
+    private val sharedViewModel: LikeSESharedViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        rufluLv2Binding = RufluLikeLv2FragmentBinding.inflate(inflater, container, false)
-        val view = rufluLv2Binding.root
-        recyclerView = rufluLv2Binding.rufluSeRecycle2
-        userDetailContainer = rufluLv2Binding.userDetailContainer
-        var layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-
+    ): View {
+        likeLv2Binding = RufluLikeLv2FragmentBinding.inflate(inflater, container, false)
+        recyclerView = likeLv2Binding.rufluSeRecycle2
+        userDetailContainer = likeLv2Binding.userDetailContainer
+        val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
-        return view
+
+        return likeLv2Binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
     }
-    private fun initViewModel() {
-        sharedViewModel.userDtl.observe(viewLifecycleOwner, {
-            changeAdapter()
-        })
 
-        viewModel.lv2User.observe(viewLifecycleOwner, {
+    private fun initViewModel() {
+        sharedViewModel.userDtl.observe(viewLifecycleOwner) {
             changeAdapter()
-        })
+        }
+
+        viewModel.lv2User.observe(viewLifecycleOwner) {
+            changeAdapter()
+        }
     }
+
     private fun changeAdapter() {
         if (recyclerView.adapter == null) {
             adapter = createAdapter()
@@ -72,32 +66,32 @@ class RufluLikeLv2Fragment : Fragment() {
     }
 
     private fun initAdapterListener() {
-        adapter.setUserClickListener(object : RufluLikeLv2Adapter.OnItemClickListener {
+        adapter.setUserClickListener(object : LikeLv2Adapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
 
                 val userDtl = viewModel.getSeLikeLv2User(position)
                 if (userDtl != null)
                     sharedViewModel.setUserDtl(userDtl)
 
-                rufluUserDetailFragment = RufluUserDetailFragment()
+                likeUserDetailFragment = LikeUserDetailFragment()
                 childFragmentTransaction = childFragmentManager.beginTransaction()
                 childFragmentTransaction
-                        .add(R.id.user_detail_container, rufluUserDetailFragment, "child")
-                        .addToBackStack(null)
-                        .commit()
+                    .add(R.id.user_detail_container, likeUserDetailFragment, "child")
+                    .addToBackStack(null)
+                    .commit()
 
                 userDetailContainer.visibility = View.VISIBLE
             }
         })
 
-        adapter.setTalkClickListener(object : RufluLikeLv2Adapter.OnItemClickListener {
+        adapter.setTalkClickListener(object : LikeLv2Adapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val user = viewModel.lv2User.value?.get(position)
                 viewModel.sendMessageAskingTalkToUser(user)
             }
         })
 
-        adapter.setCancelClickListener(object : RufluLikeLv2Adapter.OnItemClickListener {
+        adapter.setCancelClickListener(object : LikeLv2Adapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val user = viewModel.lv2User.value?.get(position)
                 viewModel.removeLikeUser(user)
@@ -105,7 +99,7 @@ class RufluLikeLv2Fragment : Fragment() {
         })
     }
 
-    private fun createAdapter(): RufluLikeLv2Adapter {
-        return RufluLikeLv2Adapter(viewModel.lv2User.value!!)
+    private fun createAdapter(): LikeLv2Adapter {
+        return LikeLv2Adapter(viewModel.lv2User.value!!)
     }
 }

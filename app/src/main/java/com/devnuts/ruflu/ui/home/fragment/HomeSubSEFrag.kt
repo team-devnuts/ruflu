@@ -1,7 +1,6 @@
 package com.devnuts.ruflu.ui.home.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,24 +17,22 @@ import com.devnuts.ruflu.ui.adapter.UserCardViewAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.HomeSubSEViewModel
 import com.devnuts.ruflu.ui.model.home.UserCard
 import com.yuyakaido.android.cardstackview.*
+import timber.log.Timber
 
 class HomeSubSEFrag() : Fragment() {
-
-    val viewModel: HomeSubSEViewModel by viewModels()
-
     private lateinit var cardStackLayoutManager: CardStackLayoutManager
-    lateinit var userCardViewAdapter: UserCardViewAdapter
-    lateinit var cardStackView: CardStackView
-
+    private lateinit var userCardViewAdapter: UserCardViewAdapter
+    private lateinit var cardStackView: CardStackView
     private val binding get() = _binding!!
     private var _binding: HomeSubSeFragmentBinding? = null
     private var cardPosition: Int = 0
+    val viewModel: HomeSubSEViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = HomeSubSeFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         init(view)
@@ -92,15 +89,14 @@ class HomeSubSEFrag() : Fragment() {
         cardStackLayoutManager.setVisibleCount(2)
         cardStackLayoutManager.setTranslationInterval(8.0f)
 
-        // card view를 만들어서 생성
+        // card view 를 만들어서 생성
         cardStackView.layoutManager = cardStackLayoutManager
         cardStackView.itemAnimator = DefaultItemAnimator()
     }
 
     private fun getSetting(direction: Direction): SwipeAnimationSetting {
-        val setting = SwipeAnimationSetting.Builder().setDirection(direction)
+        return SwipeAnimationSetting.Builder().setDirection(direction)
             .setDuration(Duration.Normal.duration).setInterpolator(AccelerateInterpolator()).build()
-        return setting
     }
 
     // 레이아웃 메니저 생성 메소드
@@ -108,14 +104,13 @@ class HomeSubSEFrag() : Fragment() {
 
         return CardStackLayoutManager(this.context, object : CardStackListener {
             override fun onCardDragging(direction: Direction?, ratio: Float) {
-                Log.d("CardStackView", "onCardDragging: d = ${direction?.name}, r = $ratio")
+                Timber.tag("CardStackView")
+                    .d("onCardDragging: d = ${direction?.name}, r = $ratio")
             }
 
             override fun onCardSwiped(direction: Direction?) {
-                Log.d(
-                    "CardStackView",
-                    "onCardSwiped: p = ${cardStackLayoutManager.topPosition}, d = $direction"
-                )
+                Timber.tag("CardStackView")
+                    .d("onCardSwiped: p = ${cardStackLayoutManager.topPosition}, d = $direction")
 
                 if (direction == Direction.Right) {
                     // /viewModel.likeYourUserCard(cardPosition)
@@ -124,32 +119,23 @@ class HomeSubSEFrag() : Fragment() {
                 }
 
                 if (cardStackLayoutManager.topPosition == cardStackLayoutManager.itemCount) {
-                    Log.d(
-                        "CardStackView",
-                        "refreshUserCard : topPos[${cardStackLayoutManager.topPosition}], itemCnt[${cardStackLayoutManager.itemCount}] "
-                    )
+                    Timber.tag("CardStackView")
+                        .d("refreshUserCard : topPos[${cardStackLayoutManager.topPosition}], itemCnt[${cardStackLayoutManager.itemCount}] ")
                     Thread.sleep(1000)
                     viewModel.loadUserCard()
                 }
             }
 
-            override fun onCardRewound() {
-                Log.d("CardStackView", "onCardRewound: ${cardStackLayoutManager.topPosition}")
-            }
+            override fun onCardRewound() {}
 
-            override fun onCardCanceled() {
-                Log.d("CardStackView", "onCardCanceled: ${cardStackLayoutManager.topPosition}")
-            }
+            override fun onCardCanceled() {}
 
             override fun onCardAppeared(view: View?, position: Int) {
                 val textView = view!!.findViewById<TextView>(R.id.card_view_name)
-                Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
                 // cardPosition = position
             }
 
-            override fun onCardDisappeared(view: View?, position: Int) {
-                Log.d("CardStackView", "onCardDisappeared: ($position) ")
-            }
+            override fun onCardDisappeared(view: View?, position: Int) {}
         })
     }
 

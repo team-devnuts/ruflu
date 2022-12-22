@@ -16,56 +16,53 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.RufluLikeLv1FragmentBinding
-import com.devnuts.ruflu.ui.adapter.RufluLikeLv1Adapter
-import com.devnuts.ruflu.ui.like.viewmodel.RufluSubSEViewModel
-import com.devnuts.ruflu.ui.like.viewmodel.SESharedViewModel
+import com.devnuts.ruflu.ui.adapter.LikeLv1Adapter
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSubSEViewModel
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSESharedViewModel
 import com.devnuts.ruflu.ui.model.home.UserDtl
+import timber.log.Timber
 
-class RufluLikeLv1Fragment : Fragment() {
-
-    private lateinit var adapter: RufluLikeLv1Adapter
+class LikeLv1Fragment : Fragment() {
+    private lateinit var adapter: LikeLv1Adapter
     private lateinit var binding: RufluLikeLv1FragmentBinding
-    private val sharedViewModel: SESharedViewModel by viewModels()
-    private val rufluSubSEViewModel: RufluSubSEViewModel by viewModels<RufluSubSEViewModel>()
     private lateinit var callback: OnBackPressedCallback
-    private lateinit var rufluUserDetailFragment: RufluUserDetailFragment
+    private lateinit var likeUserDetailFragment: LikeUserDetailFragment
     private lateinit var childFragmentTransaction: FragmentTransaction
     private lateinit var userDetailContainer: RelativeLayout
     private lateinit var recyclerView: RecyclerView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val sharedViewModel: LikeSESharedViewModel by viewModels()
+    private val likeSubSEViewModel: LikeSubSEViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = RufluLikeLv1FragmentBinding.inflate(inflater, container, false)
-        var view = binding.root
         userDetailContainer = binding.userDetailContainer
         recyclerView = binding.rufluSeRecycle
-        var layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-
+        val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
-        return view
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
     }
+
     private fun initViewModel() {
-        rufluSubSEViewModel.lv1User.observe(viewLifecycleOwner, {
+        likeSubSEViewModel.lv1User.observe(viewLifecycleOwner) {
             changeAdapter()
-        })
+        }
     }
+
     private fun changeAdapter() {
         if (recyclerView.adapter == null) {
             adapter = createAdapter()
             initAdapterListener()
-            val helper = ItemTouchHelper(RufluTouchHelperCallback(adapter))
+            val helper = ItemTouchHelper(LikeTouchHelperCallback(adapter))
             helper.attachToRecyclerView(recyclerView)
         }
 
@@ -74,17 +71,17 @@ class RufluLikeLv1Fragment : Fragment() {
     }
 
     private fun initAdapterListener() {
-        adapter.setItemClickListener(object : RufluLikeLv1Adapter.OnItemClickListener {
+        adapter.setItemClickListener(object : LikeLv1Adapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
 
-                val userDtl = rufluSubSEViewModel.getSeLikeLv1User(position)
+                val userDtl = likeSubSEViewModel.getSeLikeLv1User(position)
                 if (userDtl != null)
                     sharedViewModel.setUserDtl(userDtl)
 
-                rufluUserDetailFragment = RufluUserDetailFragment()
+                likeUserDetailFragment = LikeUserDetailFragment()
                 childFragmentTransaction = childFragmentManager.beginTransaction()
                 childFragmentTransaction
-                    .add(R.id.user_detail_container, rufluUserDetailFragment, "child")
+                    .add(R.id.user_detail_container, likeUserDetailFragment, "child")
                     .addToBackStack(null)
                     .commit()
 
@@ -92,29 +89,29 @@ class RufluLikeLv1Fragment : Fragment() {
             }
         })
 
-        adapter.setItemSwipeListener(object : RufluLikeLv1Adapter.OnItemSwipeListener {
+        adapter.setItemSwipeListener(object : LikeLv1Adapter.OnItemSwipeListener {
             override fun onSwipe(user: UserDtl, direction: Int) {
                 // 32 right 좋아요
                 // 16 left  싫어요
-                Log.d("onSwipe", "direction :  $direction")
+                Timber.tag("onSwipe").d("direction :  $direction")
+
                 if (direction == 32) {
-                    rufluSubSEViewModel.insertSeLikeLv2(user.user_id)
-                } else {
+                    likeSubSEViewModel.insertSeLikeLv2(user.user_id)
                 }
             }
         })
     }
 
-    private fun createAdapter(): RufluLikeLv1Adapter {
-        return RufluLikeLv1Adapter(rufluSubSEViewModel.lv1User.value!!)
+    private fun createAdapter(): LikeLv1Adapter {
+        return LikeLv1Adapter(likeSubSEViewModel.lv1User.value!!)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                Log.d("UserDetailFragment", "onBackPressedCallback")
-                childFragmentManager.beginTransaction().remove(rufluUserDetailFragment).commit()
+                Timber.d("onBackPressedCallback")
+                childFragmentManager.beginTransaction().remove(likeUserDetailFragment).commit()
 
                 userDetailContainer.visibility = View.GONE
             }

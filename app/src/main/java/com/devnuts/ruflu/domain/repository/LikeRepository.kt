@@ -6,7 +6,7 @@ import com.devnuts.ruflu.ui.model.like.LikeLv1User
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import retrofit2.Call
 
-class RufluRepository {
+class LikeRepository {
     private val api = RufluApp.retrofit.create(ServerAPI::class.java)
 
     fun getSeLv1User(): Call<List<UserDtl>> {

@@ -8,38 +8,38 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.ui.adapter.RufluPagerAdapter
-import com.devnuts.ruflu.ui.like.viewmodel.RufluViewModel
+import com.devnuts.ruflu.ui.adapter.LikePagerAdapter
+import com.devnuts.ruflu.ui.like.viewmodel.LikeViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class RufluFragment : Fragment() {
+class LikeFragment : Fragment() {
 
-    private val tabTextList = arrayListOf<String>("Siloe", "Nearby")
-    private var savePostion: Int = 0
+    private val tabTextList = arrayListOf(TAB_ONE, TAB_TWO)
+    private var savePosition: Int = 0
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
+    private lateinit var viewModel: LikeViewModel
 
-    companion object {
-        fun newInstance() = RufluFragment()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
     }
-
-    private lateinit var viewModel: RufluViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.ruflu_fragment, container, false)
         viewPager = view.findViewById(R.id.ruflu_viewpager)
         tabLayout = view.findViewById(R.id.ruflu_tabLayout)
 
-        val RufluPagerAdapter = RufluPagerAdapter(requireActivity())
-        RufluPagerAdapter.addFragment(RufluSubSEFrag())
-        RufluPagerAdapter.addFragment(RufluSubNBFrag())
+        val likePagerAdapter = LikePagerAdapter(requireActivity())
+        likePagerAdapter.addFragment(LikeSubSEFrag())
+        likePagerAdapter.addFragment(LikeSubNBFrag())
 
-        viewPager.adapter = RufluPagerAdapter
+        viewPager.adapter = likePagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -62,18 +62,23 @@ class RufluFragment : Fragment() {
             }
         })
         viewPager.isUserInputEnabled = false
+
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RufluViewModel::class.java)
-        tabLayout.getTabAt(savePostion)?.select()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tabLayout.getTabAt(savePosition)?.select()
     }
 
     override fun onPause() {
         super.onPause()
+        savePosition = tabLayout.selectedTabPosition
+    }
 
-        savePostion = tabLayout.selectedTabPosition
+    companion object {
+        fun newInstance() = LikeFragment()
+        private const val TAB_ONE = "Ruflu"
+        private const val TAB_TWO = "Nearby"
     }
 }

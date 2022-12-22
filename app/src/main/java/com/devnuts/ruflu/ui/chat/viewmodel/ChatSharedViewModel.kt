@@ -13,5 +13,7 @@ class ChatSharedViewModel : ViewModel() {
         _chatRoom.value = myRoom
     }
 
-    fun detachRoom() { _chatRoom.value = null }
+    fun detachRoom() {
+        _chatRoom.value = null
+    }
 }

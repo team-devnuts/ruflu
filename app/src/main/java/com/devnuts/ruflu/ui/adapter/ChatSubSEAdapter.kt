@@ -10,6 +10,7 @@ import com.devnuts.ruflu.ui.model.chat.ChatRoom
 class ChatSubSEAdapter(
     private val myRoomList: ArrayList<ChatRoom>
 ) : RecyclerView.Adapter<ChatSubSEAdapter.ChatSubSEViewHolder>() {
+
     private lateinit var bind: ChatListItemBinding
     private lateinit var seLikeLv1OnClickListener: OnItemClickListener
 
@@ -29,7 +30,6 @@ class ChatSubSEAdapter(
     }
 
     override fun onBindViewHolder(holder: ChatSubSEViewHolder, position: Int) {
-
         holder.bind()
     }
 

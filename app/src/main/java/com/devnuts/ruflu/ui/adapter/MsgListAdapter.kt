@@ -52,7 +52,7 @@ class MsgListAdapter(
     override fun getItemViewType(position: Int): Int {
         val youUserNm = msgList[position].userName
 
-        return when(youUserNm == toUserName) {
+        return when (youUserNm == toUserName) {
             true -> 1
             false -> 2
         }

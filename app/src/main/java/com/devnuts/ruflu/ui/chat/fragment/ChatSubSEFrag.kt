@@ -1,5 +1,6 @@
 package com.devnuts.ruflu.ui.chat.fragment
 
+import com.devnuts.ruflu.ui.chat.viewmodel.ChatSubSEViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,27 +14,21 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.ChatSubSeFragmentBinding
 import com.devnuts.ruflu.ui.adapter.ChatSubSEAdapter
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSharedViewModel
-import com.devnuts.ruflu.ui.chat.viewmodel.ChatSubSEViewModel
 
 class ChatSubSEFrag : Fragment() {
-
-    companion object {
-        fun newInstance() = ChatSubSEFrag()
-    }
-
-    private val viewModel: ChatSubSEViewModel by viewModels()
-    private val sharedViewModel: ChatSharedViewModel by viewModels()
     private lateinit var bind: ChatSubSeFragmentBinding
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: ChatSubSEAdapter
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var myRoomContainer: RelativeLayout
+    private val viewModel: ChatSubSEViewModel by viewModels()
+    private val sharedViewModel: ChatSharedViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         bind = ChatSubSeFragmentBinding.inflate(inflater, container, false)
         val view = bind.root
         recycler = bind.chatRoomRecycler
@@ -48,10 +43,9 @@ class ChatSubSEFrag : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
     }
+
     private fun initViewModel() {
-        viewModel.chatRoomList.observe(viewLifecycleOwner, {
-            changeAdapter()
-        })
+        viewModel.chatRoomList.observe(viewLifecycleOwner) { changeAdapter() }
     }
 
     private fun changeAdapter() {
@@ -63,6 +57,7 @@ class ChatSubSEFrag : Fragment() {
         recycler.adapter = adapter
         adapter.notifyDataSetChanged()
     }
+
     private fun initAdapterListener() {
         adapter.setItemClickListener(object : ChatSubSEAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
@@ -81,5 +76,9 @@ class ChatSubSEFrag : Fragment() {
                 }
             }
         })
+    }
+
+    companion object {
+        fun newInstance() = ChatSubSEFrag()
     }
 }

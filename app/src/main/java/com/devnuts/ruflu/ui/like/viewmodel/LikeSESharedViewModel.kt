@@ -4,9 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.ui.model.home.UserDtl
 
-class SESharedViewModel : ViewModel() {
+class LikeSESharedViewModel : ViewModel() {
 
-    private val TAG = javaClass.name
     private var _lv1UserDtl: MutableLiveData<UserDtl> = MutableLiveData()
     val userDtl get() = _lv1UserDtl
 

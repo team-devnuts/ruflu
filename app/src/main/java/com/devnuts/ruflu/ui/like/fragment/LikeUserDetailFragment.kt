@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.UserDetailFragmentBinding
-import com.devnuts.ruflu.ui.like.viewmodel.SESharedViewModel
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSESharedViewModel
 import com.devnuts.ruflu.ui.adapter.UserImgViewAdapter
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import me.relex.circleindicator.CircleIndicator3
+import timber.log.Timber
 
-class RufluUserDetailFragment() : Fragment() {
-
+class LikeUserDetailFragment() : Fragment() {
     private lateinit var imgAdapter: UserImgViewAdapter
     private lateinit var binding: UserDetailFragmentBinding
     private lateinit var indicator: CircleIndicator3
@@ -25,15 +25,15 @@ class RufluUserDetailFragment() : Fragment() {
     private lateinit var viewPager2: ViewPager2
     private lateinit var userDtl: UserDtl
 
-    private val parentViewModel: SESharedViewModel by viewModels(
-            ownerProducer = { requireParentFragment() }
+    private val parentViewModel: LikeSESharedViewModel by viewModels(
+        ownerProducer = { requireParentFragment() }
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = UserDetailFragmentBinding.inflate(inflater, container, false)
         binding.homeNbViewpage2
         ratingBar = binding.homeNbRatingBar
@@ -45,6 +45,7 @@ class RufluUserDetailFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val tempUser = parentViewModel.userDtl.value
         if (tempUser != null) {
             userDtl = tempUser
@@ -75,18 +76,13 @@ class RufluUserDetailFragment() : Fragment() {
     }
 
     private fun addListeners() {
-        ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
-            Log.d("rating", "" + rating)
+        ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
+            Timber.tag("rating").d("$rating")
             userDtl.ratingStar = rating
             parentViewModel.setUserDtl(userDtl)
         }
 
-        parentViewModel.userDtl.observe(viewLifecycleOwner, {
-        })
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
+        parentViewModel.userDtl.observe(viewLifecycleOwner) {}
     }
 
     override fun onDetach() {

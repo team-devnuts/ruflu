@@ -6,6 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class HomePagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
+
     private var fragments: ArrayList<Fragment> = ArrayList()
 
     override fun getItemCount(): Int {

@@ -1,5 +1,6 @@
 package com.devnuts.ruflu.ui.signin.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +17,6 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentSmsBinding
 
 class SMSFragment : Fragment() {
-
     private var _binding: FragmentSmsBinding? = null
     private val binding get() = _binding ?: error("View 참조 실패")
     private val viewModel: SMSViewModel by viewModels()
@@ -51,6 +51,7 @@ class SMSFragment : Fragment() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initViewSetting() {
         /* recycler View 로 확장해야할 부분 */
         binding.etCountry.setOnTouchListener(object : View.OnTouchListener {

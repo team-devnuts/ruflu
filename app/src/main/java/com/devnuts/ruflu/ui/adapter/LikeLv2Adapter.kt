@@ -10,9 +10,9 @@ import com.devnuts.ruflu.databinding.LikeLv2UserBinding
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import de.hdodenhof.circleimageview.CircleImageView
 
-class RufluLikeLv2Adapter(
+class LikeLv2Adapter(
     private val likeLv2Users: ArrayList<UserDtl>
-) : RecyclerView.Adapter<RufluLikeLv2Adapter.RufluLikeLv2ViewHolder>() {
+) : RecyclerView.Adapter<LikeLv2Adapter.LikeLv2ViewHolder>() {
 
     private lateinit var view: View
     private lateinit var binding: LikeLv2UserBinding
@@ -25,10 +25,10 @@ class RufluLikeLv2Adapter(
         fun onClick(v: View, position: Int)
     }
 
-    inner class RufluLikeLv2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class LikeLv2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(likeLv2User: UserDtl) {
-            if ("".equals(likeLv2User.imgs.get(0)) && likeLv2User.imgs.get(0) != null)
+            if ("" == likeLv2User.imgs[0])
                 UserUtil.setImageBitmap(likeLv2User.imgs.get(0), userImgView)
             else userImgView.setImageResource(R.drawable.noimg_fac)
             binding.seLv2NickNm.text = likeLv2User.nick_nm
@@ -36,17 +36,17 @@ class RufluLikeLv2Adapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RufluLikeLv2ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeLv2ViewHolder {
         binding = LikeLv2UserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         view = binding.root
         userImgView = binding.seLikeLv2UserImg
 
-        return RufluLikeLv2ViewHolder(view)
+        return LikeLv2ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RufluLikeLv2ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LikeLv2ViewHolder, position: Int) {
         initListener(position)
-        holder.bind(likeLv2Users.get(position))
+        holder.bind(likeLv2Users[position])
     }
 
     override fun getItemCount(): Int {

@@ -21,9 +21,9 @@ import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
 import java.net.URISyntaxException
 import org.json.JSONObject
+import timber.log.Timber
 
 class ChatRoomSubSEFrag : Fragment() {
-
     private lateinit var bind: MyChatRoomBinding
     private lateinit var mSocket: Socket
     private lateinit var roomNo: String
@@ -42,6 +42,7 @@ class ChatRoomSubSEFrag : Fragment() {
         super.onCreate(savedInstanceState)
         init()
     }
+
     private fun init() {
         try {
             mSocket = IO.socket(RufluApp.url + ":" + RufluApp.port)
@@ -52,10 +53,15 @@ class ChatRoomSubSEFrag : Fragment() {
         mSocket.connect()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         bind = MyChatRoomBinding.inflate(inflater, container, false)
         recyclerView = bind.msgRecycler
-        recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         // adapter = MsgListAdapter()
         recyclerView.adapter = adapter
@@ -66,22 +72,13 @@ class ChatRoomSubSEFrag : Fragment() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mSocket.disconnect()
-    }
-
     private fun initEventListener() {
         submitBtn.setOnClickListener {
-            val msg = msgEdit.text.toString()
             val data: HashMap<String, String> = HashMap()
+            val msg = msgEdit.text.toString()
             val userId = RufluApp.sharedPreference.getSettingString("user_id")
-            data.put("message", msg)
-            data.put("roomNo", roomNo)
+            data[MESSAGE] = msg
+            data[ROOM_NO] = roomNo
 
             mSocket.emit("new message", data)
             adapter.addItem(ChatMessage(userId!!, msg, ""))
@@ -91,19 +88,27 @@ class ChatRoomSubSEFrag : Fragment() {
         }
     }
 
-    var onMessage = Emitter.Listener { args ->
+    private var onMessage = Emitter.Listener { args ->
         val obj = JSONObject(args[0].toString())
-
         val data = ChatMessage(toUserName, obj.getString("message"), toUserImgUrl)
-        Log.d("ChatRoom.onMessage", obj.toString())
-        requireActivity().runOnUiThread(object : Runnable {
-            override fun run() {
-                (Runnable {
-                    kotlin.run {
-                        adapter.addItem(data)
-                    }
-                })
-            }
-        })
+        Timber.tag("ChatRoom.onMessage").d(obj.toString())
+
+        requireActivity().runOnUiThread {
+            (Runnable {
+                kotlin.run {
+                    adapter.addItem(data)
+                }
+            })
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mSocket.disconnect()
+    }
+
+    companion object {
+        private const val MESSAGE = "message"
+        private const val ROOM_NO = "roomNo"
     }
 }
