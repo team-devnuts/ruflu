@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.home.fragment.HomeSubSEFragment">
+    tools:context=".ui.home.fragment.CardFragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/reload"

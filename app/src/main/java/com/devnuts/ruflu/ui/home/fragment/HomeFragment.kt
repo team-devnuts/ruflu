@@ -12,8 +12,8 @@ import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
     private var savePosition: Int = 0
-    private var _bind: FragmentHomeBinding? = null
-    private val bind get() = _bind!!
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
 
@@ -22,12 +22,12 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _bind = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        tabLayout = bind.homeTabLayout
-        viewPager = bind.homeViewpager
+        tabLayout = binding.homeTabLayout
+        viewPager = binding.homeViewpager
         initView()
-        return bind.root
+        return binding.root
     }
 
 
@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
 
     private fun initView() {
         val homePagerAdapter = HomePagerAdapter(requireActivity())
-        homePagerAdapter.addFragment(HomeSubSEFragment())
+        homePagerAdapter.addFragment(CardFragment())
 
         viewPager.adapter = homePagerAdapter
         viewPager.isUserInputEnabled = false

@@ -1,6 +1,5 @@
 package com.devnuts.ruflu.ui.home.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.domain.repository.HomeRepository
@@ -10,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class HomeSubSEViewModel : ViewModel() {
+class CardViewModel : ViewModel() {
     private val homeRepository: HomeRepository = HomeRepository()
 
     private val _userCard by lazy {
