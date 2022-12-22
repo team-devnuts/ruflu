@@ -188,4 +188,11 @@ dependencies {
 
     // Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    /**
+     * Lottiefiles
+     * 애니메이션 적용 Library
+     */
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }
