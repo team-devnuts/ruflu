@@ -39,15 +39,11 @@ class HomeFragment : Fragment() {
     private fun initView() {
         val homePagerAdapter = HomePagerAdapter(requireActivity())
         homePagerAdapter.addFragment(HomeSubSEFragment())
-        homePagerAdapter.addFragment(HomeSubNBFragment())
 
         viewPager.adapter = homePagerAdapter
         viewPager.isUserInputEnabled = false
 
         setCompCallback()
-        addListeners()
-        // 뷰페이저와 tablayout 연결
-        // TabLayoutMediator(tabLayout, viewPager) { tab, position -> }.attach()
     }
 
     private fun setCompCallback() {
@@ -56,24 +52,5 @@ class HomeFragment : Fragment() {
                 super.onPageSelected(position)
             }
         })
-    }
-
-    private fun addListeners() {
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                viewPager.currentItem = tab!!.position
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-        })
-    }
-
-    override fun onPause() {
-        super.onPause()
-        savePosition = tabLayout.selectedTabPosition
     }
 }
