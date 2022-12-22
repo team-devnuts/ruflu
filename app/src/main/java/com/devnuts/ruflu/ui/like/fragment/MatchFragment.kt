@@ -24,8 +24,4 @@ class MatchFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_match, container, false)
     }
-
-    companion object {
-        fun newInstance() = MatchFragment()
-    }
 }

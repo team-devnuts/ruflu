@@ -4,78 +4,77 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.ui.adapter.ChatPagerAdapter
+import com.devnuts.ruflu.databinding.FragmentChatBinding
+import com.devnuts.ruflu.ui.adapter.ChatSubSEAdapter
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSharedViewModel
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.devnuts.ruflu.ui.chat.viewmodel.ChatViewModel
 
 class ChatFragment : Fragment() {
-    private val tabTextList = arrayListOf(TAB_ONE, TAB_TWO)
-    private var savePosition: Int = 0
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager: ViewPager2
-    private lateinit var viewModel: ChatSharedViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ChatSharedViewModel::class.java)
-    }
+    private lateinit var binding: FragmentChatBinding
+    private lateinit var recycler: RecyclerView
+    private lateinit var adapter: ChatSubSEAdapter
+    private lateinit var layoutManager: LinearLayoutManager
+    private lateinit var myRoomContainer: RelativeLayout
+    private val viewModel: ChatViewModel by viewModels()
+    private val sharedViewModel: ChatSharedViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View = inflater.inflate(R.layout.fragment_chat, container, false)
-        viewPager = view.findViewById(R.id.chat_viewpager)
-        tabLayout = view.findViewById(R.id.chat_tabLayout)
-
-        val chatPagerAdapter = ChatPagerAdapter(requireActivity())
-        chatPagerAdapter.addFragment(ChatSubSEFragment())
-        chatPagerAdapter.addFragment(ChatSubNBFragment())
-
-        viewPager.adapter = chatPagerAdapter
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-            }
-        })
-
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabTextList[position]
-        }.attach()
-
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                viewPager.currentItem = tab!!.position
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-        })
+        binding = FragmentChatBinding.inflate(inflater, container, false)
+        val view = binding.root
+        recycler = binding.chatRoomRecycler
+        layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        myRoomContainer = binding.myRoomContainer
+        recycler.layoutManager = layoutManager
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tabLayout.getTabAt(savePosition)?.select()
+        initViewModel()
     }
 
-    override fun onPause() {
-        super.onPause()
-        savePosition = tabLayout.selectedTabPosition
+    private fun initViewModel() {
+        viewModel.chatRoomList.observe(viewLifecycleOwner) { changeAdapter() }
     }
 
-    companion object {
-        fun newInstance() = ChatFragment()
-        private const val TAB_ONE = "Ruflu"
-        private const val TAB_TWO = "Nearby"
+    private fun changeAdapter() {
+        val chatRoomList = viewModel.chatRoomList.value
+        if (chatRoomList != null) {
+            adapter = ChatSubSEAdapter(chatRoomList)
+            initAdapterListener()
+        }
+        recycler.adapter = adapter
+        adapter.notifyDataSetChanged()
+    }
 
+    private fun initAdapterListener() {
+        adapter.setItemClickListener(object : ChatSubSEAdapter.OnItemClickListener {
+            override fun onClick(v: View, position: Int) {
+                val chatRoom = viewModel.getChatRoomByPos(position)
+                if (chatRoom != null) {
+                    sharedViewModel.setMyRoom(chatRoom)
+                    val myRoom = ChatRoomFragment()
+
+                    val childFragmentTransaction = childFragmentManager.beginTransaction()
+                    childFragmentTransaction
+                        .add(R.id.my_room_container, myRoom, "child")
+                        .addToBackStack(null)
+                        .commit()
+
+                    myRoomContainer.visibility = View.VISIBLE
+                }
+            }
+        })
     }
 }
