@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.comm.utill.UserUtil
+import com.devnuts.ruflu.util.UserUtil
 import me.relex.circleindicator.CircleIndicator3
 import timber.log.Timber
 

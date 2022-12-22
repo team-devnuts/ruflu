@@ -20,7 +20,7 @@
 <!--        app:lottie_rawRes="@raw/reload_star"-->
 <!--        tools:ignore="MissingClass" />-->
 
-    <com.devnuts.ruflu.home.CustomCardStackView
+    <com.devnuts.ruflu.worker.CustomCardStackView
         android:id="@+id/user_card_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

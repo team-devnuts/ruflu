@@ -1,11 +1,10 @@
-package com.devnuts.ruflu.comm.retrofit
+package com.devnuts.ruflu.util
 
 import android.app.Application
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.comm.AddCookiesInterceptor
-import com.devnuts.ruflu.comm.AppNotification
-import com.devnuts.ruflu.comm.ReceivedCookiesInterceptor
-import com.devnuts.ruflu.util.CustomSharedPreference
+import com.devnuts.ruflu.worker.AddCookiesInterceptor
+import com.devnuts.ruflu.worker.AppNotification
+import com.devnuts.ruflu.worker.ReceivedCookiesInterceptor
 import com.kakao.sdk.common.KakaoSdk
 import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient

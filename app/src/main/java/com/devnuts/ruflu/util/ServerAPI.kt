@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.comm.retrofit
+package com.devnuts.ruflu.util
 
 import com.devnuts.ruflu.ui.model.like.LikeLv1User
 import com.devnuts.ruflu.ui.model.chat.ChatRoom

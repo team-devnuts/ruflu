@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
-import com.devnuts.ruflu.comm.FusedLocationProvider
-import com.devnuts.ruflu.comm.retrofit.RufluApp
+import com.devnuts.ruflu.worker.FusedLocationProvider
+import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.ui.mypage.fragment.MypageFragment
 import com.devnuts.ruflu.ui.like.fragment.RufluFragment
 import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private val homeFragment by lazy { HomeFragment() }
     private val rufluFragment by lazy { RufluFragment() }
     private val chatFragment by lazy { ChatFragment() }
-    private val mypageFragment by lazy { MypageFragment() }
+    private val myPageFragment by lazy { MypageFragment() }
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var fusedLocationProvider: FusedLocationProvider
 
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         mainAdapter.addFragment(homeFragment)
         mainAdapter.addFragment(rufluFragment)
         mainAdapter.addFragment(chatFragment)
-        mainAdapter.addFragment(mypageFragment)
+        mainAdapter.addFragment(myPageFragment)
         return mainAdapter
     }
 

@@ -1,11 +1,10 @@
-package com.devnuts.ruflu.comm
+package com.devnuts.ruflu.worker
 
 import android.app.PendingIntent
 import android.content.Intent
-import android.util.Log
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.MainRepository
-import com.devnuts.ruflu.comm.retrofit.RufluApp
+import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage

@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.comm.utill
+package com.devnuts.ruflu.util
 
 import android.graphics.BitmapFactory
 import android.location.Location

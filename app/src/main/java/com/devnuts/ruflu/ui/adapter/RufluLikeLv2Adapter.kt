@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.comm.utill.UserUtil
+import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.databinding.LikeLv2UserBinding
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import de.hdodenhof.circleimageview.CircleImageView

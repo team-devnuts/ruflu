@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.devnuts.ruflu.MainActivity
-import com.devnuts.ruflu.comm.retrofit.RufluApp
+import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.ui.signin.LoginActivity
 import java.util.*
 import kotlin.concurrent.schedule

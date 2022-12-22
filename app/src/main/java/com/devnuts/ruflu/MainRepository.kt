@@ -1,7 +1,7 @@
 package com.devnuts.ruflu
 
-import com.devnuts.ruflu.comm.retrofit.RufluApp
-import com.devnuts.ruflu.comm.retrofit.ServerAPI
+import com.devnuts.ruflu.util.RufluApp
+import com.devnuts.ruflu.util.ServerAPI
 import retrofit2.Call
 
 class MainRepository {

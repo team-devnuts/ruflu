@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.comm.utill
+package com.devnuts.ruflu.util
 
 import androidx.recyclerview.widget.DiffUtil
 

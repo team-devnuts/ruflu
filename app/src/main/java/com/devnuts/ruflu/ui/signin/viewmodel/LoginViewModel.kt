@@ -6,7 +6,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.devnuts.ruflu.comm.retrofit.RufluApp
+import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.data.api.UserService
 import com.devnuts.ruflu.data.api.request.signin.RequestLoginData
 import com.devnuts.ruflu.data.api.response.signin.ResponseLoginData

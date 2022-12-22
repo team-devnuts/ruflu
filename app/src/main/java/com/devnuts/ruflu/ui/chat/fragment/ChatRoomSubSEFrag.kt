@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.devnuts.ruflu.comm.retrofit.RufluApp
+import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.databinding.MyChatRoomBinding
 import com.devnuts.ruflu.ui.adapter.MsgListAdapter
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSharedViewModel
