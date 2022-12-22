@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class LikeSubSEViewModel : ViewModel() {
+class SomeViewModel : ViewModel() {
     private val likeRepository = LikeRepository()
 
     private val _lv1User by lazy {

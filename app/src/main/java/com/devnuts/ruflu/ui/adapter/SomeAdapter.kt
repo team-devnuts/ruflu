@@ -7,15 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.ItemLikeLv1UserBinding
 import com.devnuts.ruflu.util.UserUtil
-import com.devnuts.ruflu.ui.like.fragment.LikeTouchHelperCallback
+import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import de.hdodenhof.circleimageview.CircleImageView
 import timber.log.Timber
 
-class LikeLv1Adapter(
+class SomeAdapter(
     private val likeLv1Users: ArrayList<UserDtl>
-) : RecyclerView.Adapter<LikeLv1Adapter.LikeLv1ViewHolder>(),
-    LikeTouchHelperCallback.OnItemMoveListener {
+) : RecyclerView.Adapter<SomeAdapter.LikeLv1ViewHolder>(),
+    SomeTouchHelperCallback.OnItemMoveListener {
 
     private lateinit var view: View
     private lateinit var binding: ItemLikeLv1UserBinding

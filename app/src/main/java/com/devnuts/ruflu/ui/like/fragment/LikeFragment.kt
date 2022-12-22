@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.ui.adapter.LikePagerAdapter
-import com.devnuts.ruflu.ui.like.viewmodel.LikeViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -19,12 +18,6 @@ class LikeFragment : Fragment() {
     private var savePosition: Int = 0
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
-    private lateinit var viewModel: LikeViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,8 +29,8 @@ class LikeFragment : Fragment() {
         tabLayout = view.findViewById(R.id.ruflu_tabLayout)
 
         val likePagerAdapter = LikePagerAdapter(requireActivity())
-        likePagerAdapter.addFragment(LikeSubSEFragment())
-        likePagerAdapter.addFragment(LikeSubNBFragment())
+        likePagerAdapter.addFragment(SomeFragment())
+        likePagerAdapter.addFragment(MatchFragment())
 
         viewPager.adapter = likePagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -77,8 +70,7 @@ class LikeFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = LikeFragment()
-        private const val TAB_ONE = "Ruflu"
-        private const val TAB_TWO = "Nearby"
+        private const val TAB_ONE = "LIKE"
+        private const val TAB_TWO = "MATCH"
     }
 }

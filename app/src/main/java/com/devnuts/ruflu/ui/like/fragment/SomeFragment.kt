@@ -2,45 +2,51 @@ package com.devnuts.ruflu.ui.like.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.RelativeLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentLikeLv1Binding
-import com.devnuts.ruflu.ui.adapter.LikeLv1Adapter
-import com.devnuts.ruflu.ui.like.viewmodel.LikeSubSEViewModel
-import com.devnuts.ruflu.ui.like.viewmodel.LikeSESharedViewModel
+import com.devnuts.ruflu.databinding.FragmentSomeBinding
+import com.devnuts.ruflu.ui.adapter.SomeAdapter
+import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSharedViewModel
+import com.devnuts.ruflu.ui.like.viewmodel.SomeViewModel
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import timber.log.Timber
 
-class LikeLv1Fragment : Fragment() {
-    private lateinit var adapter: LikeLv1Adapter
-    private lateinit var binding: FragmentLikeLv1Binding
+class SomeFragment : Fragment() {
+    private lateinit var viewModel: SomeViewModel
+    private lateinit var adapter: SomeAdapter
+    private lateinit var binding: FragmentSomeBinding
     private lateinit var callback: OnBackPressedCallback
     private lateinit var likeUserDetailFragment: LikeUserDetailFragment
     private lateinit var childFragmentTransaction: FragmentTransaction
     private lateinit var userDetailContainer: RelativeLayout
     private lateinit var recyclerView: RecyclerView
-    private val sharedViewModel: LikeSESharedViewModel by viewModels()
-    private val likeSubSEViewModel: LikeSubSEViewModel by viewModels()
+    private val sharedViewModel: LikeSharedViewModel by viewModels()
+    private val likeSubSEViewModel: SomeViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(SomeViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLikeLv1Binding.inflate(inflater, container, false)
+        binding = FragmentSomeBinding.inflate(inflater, container, false)
         userDetailContainer = binding.userDetailContainer
         recyclerView = binding.rufluSeRecycle
+
         val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
 
@@ -62,7 +68,7 @@ class LikeLv1Fragment : Fragment() {
         if (recyclerView.adapter == null) {
             adapter = createAdapter()
             initAdapterListener()
-            val helper = ItemTouchHelper(LikeTouchHelperCallback(adapter))
+            val helper = ItemTouchHelper(SomeTouchHelperCallback(adapter))
             helper.attachToRecyclerView(recyclerView)
         }
 
@@ -71,7 +77,7 @@ class LikeLv1Fragment : Fragment() {
     }
 
     private fun initAdapterListener() {
-        adapter.setItemClickListener(object : LikeLv1Adapter.OnItemClickListener {
+        adapter.setItemClickListener(object : SomeAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
 
                 val userDtl = likeSubSEViewModel.getSeLikeLv1User(position)
@@ -89,7 +95,7 @@ class LikeLv1Fragment : Fragment() {
             }
         })
 
-        adapter.setItemSwipeListener(object : LikeLv1Adapter.OnItemSwipeListener {
+        adapter.setItemSwipeListener(object : SomeAdapter.OnItemSwipeListener {
             override fun onSwipe(user: UserDtl, direction: Int) {
                 // 32 right 좋아요
                 // 16 left  싫어요
@@ -102,8 +108,8 @@ class LikeLv1Fragment : Fragment() {
         })
     }
 
-    private fun createAdapter(): LikeLv1Adapter {
-        return LikeLv1Adapter(likeSubSEViewModel.lv1User.value!!)
+    private fun createAdapter(): SomeAdapter {
+        return SomeAdapter(likeSubSEViewModel.lv1User.value!!)
     }
 
     override fun onAttach(context: Context) {
