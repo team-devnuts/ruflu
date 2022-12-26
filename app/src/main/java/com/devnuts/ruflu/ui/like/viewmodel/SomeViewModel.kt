@@ -2,7 +2,7 @@ package com.devnuts.ruflu.ui.like.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.domain.repository.LikeRepository
+import com.devnuts.ruflu.domain.repository.SomeRepository
 import com.devnuts.ruflu.ui.model.home.UserDtl
 import retrofit2.Call
 import retrofit2.Callback
@@ -10,14 +10,14 @@ import retrofit2.Response
 import timber.log.Timber
 
 class SomeViewModel : ViewModel() {
-    private val likeRepository = LikeRepository()
+    private val repository = SomeRepository()
 
-    private val _lv1User by lazy {
+    private val _someUser by lazy {
         MutableLiveData<ArrayList<UserDtl>>().also {
-            loadSeLv1User()
+            loadSomeUser()
         }
     }
-    val lv1User: MutableLiveData<ArrayList<UserDtl>> get() = _lv1User
+    val someUser: MutableLiveData<ArrayList<UserDtl>> get() = _someUser
 
     private val _lv2User by lazy {
         MutableLiveData<ArrayList<UserDtl>>().also {
@@ -26,15 +26,15 @@ class SomeViewModel : ViewModel() {
     }
     val lv2User: MutableLiveData<ArrayList<UserDtl>> get() = _lv2User
 
-    private fun loadSeLv1User() {
-        val call = likeRepository.getSeLv1User()
+    private fun loadSomeUser() {
+        val call = repository.getSeLv1User()
 
         call.enqueue(object : Callback<List<UserDtl>> {
             override fun onResponse(call: Call<List<UserDtl>>, response: Response<List<UserDtl>>) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
                     val nbUserList: List<UserDtl>? = response.body()
-                    _lv1User.value =
+                    _someUser.value =
                         if (nbUserList != null) nbUserList as ArrayList<UserDtl> else ArrayList()
                 } else {
                     Timber.d(response.message())
@@ -48,7 +48,7 @@ class SomeViewModel : ViewModel() {
     }
 
     private fun loadSeLv2User() {
-        val call = likeRepository.getSeLv2User()
+        val call = repository.getSeLv2User()
 
         call.enqueue(object : Callback<List<UserDtl>> {
             override fun onResponse(call: Call<List<UserDtl>>, response: Response<List<UserDtl>>) {
@@ -67,7 +67,7 @@ class SomeViewModel : ViewModel() {
     }
 
     fun insertSeLikeLv2(userId: String) {
-        val call = likeRepository.insertSeLikeLv2(userId)
+        val call = repository.insertSeLikeLv2(userId)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
@@ -84,9 +84,9 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    fun removeLikeUser(user: UserDtl?) {
+    fun removeSomeUser(user: UserDtl?) {
         val userId = user?.user_id
-        val call = likeRepository.deleteLikeUser(userId)
+        val call = repository.deleteLikeUser(userId)
 
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -105,7 +105,7 @@ class SomeViewModel : ViewModel() {
 
     fun sendMessageAskingTalkToUser(user: UserDtl?) {}
 
-    val getSeLikeLv1User = { pos: Int -> _lv1User.value?.get(pos) }
+    val getSomeUser = { pos: Int -> _someUser.value?.get(pos) }
 
     val getSeLikeLv2User = { pos: Int -> _lv2User.value?.get(pos) }
 }

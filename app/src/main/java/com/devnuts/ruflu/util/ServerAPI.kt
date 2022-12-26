@@ -1,9 +1,9 @@
 package com.devnuts.ruflu.util
 
-import com.devnuts.ruflu.ui.model.like.LikeLv1User
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
 import com.devnuts.ruflu.ui.model.home.UserCard
 import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.like.SomeUser
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -48,7 +48,7 @@ interface ServerAPI {
     fun getSeLv1User(): Call<List<UserDtl>>
 
     @GET("/home/seLv1/userDtl/{userId}")
-    fun getSeLv1UserDtl(@Path("userId") userId: String): Call<LikeLv1User>
+    fun getSeLv1UserDtl(@Path("userId") userId: String): Call<SomeUser>
 
     @FormUrlEncoded
     @POST("/home/seLv1/like")

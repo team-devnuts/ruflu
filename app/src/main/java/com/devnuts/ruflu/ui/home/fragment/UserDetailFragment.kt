@@ -43,7 +43,7 @@ class UserDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tempUser = parentViewModel.nbUserDtl.value
+        val tempUser = parentViewModel.userDetail.value
         if (tempUser != null) {
             userDtl = tempUser
             initView()
@@ -52,7 +52,7 @@ class UserDetailFragment : Fragment() {
 
     private fun initView() {
         imgAdapter = UserImageViewAdapter(viewPager2, indicator)
-        imgAdapter.setImgs(userDtl.imgs)
+        imgAdapter.setImages(userDtl.imgs)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2.offscreenPageLimit = 4
         viewPager2.adapter = imgAdapter

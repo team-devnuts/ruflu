@@ -11,10 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.databinding.ItemMyChatRoomBinding
-import com.devnuts.ruflu.util.RufluApp
-import com.devnuts.ruflu.ui.adapter.MassageListAdapter
+import com.devnuts.ruflu.ui.adapter.MassagesAdapter
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSharedViewModel
 import com.devnuts.ruflu.ui.model.chat.ChatMessage
+import com.devnuts.ruflu.util.RufluApp
 import com.github.nkzawa.emitter.Emitter
 import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
@@ -30,7 +30,7 @@ class ChatRoomFragment : Fragment() {
     private lateinit var toUserImgUrl: String
     private lateinit var recyclerView: RecyclerView
     private lateinit var msgEdit: EditText
-    private lateinit var adapter: MassageListAdapter
+    private lateinit var adapter: MassagesAdapter
     private lateinit var submitBtn: Button
 
     private val parentViewModel: ChatSharedViewModel by viewModels(

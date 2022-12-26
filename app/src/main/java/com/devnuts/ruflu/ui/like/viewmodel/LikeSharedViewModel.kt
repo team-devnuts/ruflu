@@ -6,12 +6,12 @@ import com.devnuts.ruflu.ui.model.home.UserDtl
 
 class LikeSharedViewModel : ViewModel() {
 
-    private var _lv1UserDtl: MutableLiveData<UserDtl> = MutableLiveData()
-    val userDtl get() = _lv1UserDtl
+    private var _userDetail: MutableLiveData<UserDtl> = MutableLiveData()
+    val userDtl get() = _userDetail
 
     fun setUserDtl(userDtl: UserDtl) {
-        _lv1UserDtl.value = userDtl
+        _userDetail.value = userDtl
     }
 
-    fun detachUser() { _lv1UserDtl.value = null }
+    fun detachUser() { _userDetail.value = null }
 }

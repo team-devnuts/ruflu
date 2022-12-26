@@ -10,7 +10,7 @@ import retrofit2.Response
 import timber.log.Timber
 
 class CardViewModel : ViewModel() {
-    private val homeRepository: HomeRepository = HomeRepository()
+    private val repository: HomeRepository = HomeRepository()
 
     private val _userCard by lazy {
         MutableLiveData<ArrayList<UserCard>>().also {
@@ -20,7 +20,7 @@ class CardViewModel : ViewModel() {
     val userCard: MutableLiveData<ArrayList<UserCard>> get() = _userCard
 
     fun loadUserCard() {
-        val call = homeRepository.getUserCardList()
+        val call = repository.getUserCardList()
         call.enqueue(object : Callback<List<UserCard>> {
             override fun onResponse(
                 call: Call<List<UserCard>>,
@@ -41,8 +41,8 @@ class CardViewModel : ViewModel() {
 
     fun hateYourUserCard(position: Int) {
         val map = HashMap<String, String>()
-        map.put("to_user_id", _userCard.value!!.get(position).user_id)
-        val call = homeRepository.insertHateUserCard(map)
+        map["to_user_id"] = _userCard.value!![position].user_id
+        val call = repository.insertHateUserCard(map)
 
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -59,9 +59,9 @@ class CardViewModel : ViewModel() {
 
     fun likeYourUserCard(position: Int) {
         val map = HashMap<String, String>()
-        map.put("to_user_id", _userCard.value!!.get(position).user_id)
+        map["to_user_id"] = _userCard.value!![position].user_id
 
-        val call = homeRepository.insertLikeUserCard(map)
+        val call = repository.insertLikeUserCard(map)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {

@@ -1,7 +1,6 @@
 package com.devnuts.ruflu.ui.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -14,38 +13,37 @@ import com.devnuts.ruflu.ui.home.fragment.CardFragment
 import com.devnuts.ruflu.ui.model.home.UserCard
 import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.worker.CustomCardStackView
-import me.relex.circleindicator.CircleIndicator3
 import java.util.*
 import kotlin.collections.ArrayList
+import me.relex.circleindicator.CircleIndicator3
 
 class UserCardViewAdapter(
     val data: ArrayList<UserCard>,
     val fragment: CardFragment,
-    val cardStackView: CustomCardStackView
-) : RecyclerView.Adapter<UserCardViewAdapter.PagerViewHoler>() {
+    private val cardStackView: CustomCardStackView
+) : RecyclerView.Adapter<UserCardViewAdapter.PagerViewHolder>() {
 
     private lateinit var view: View
     private lateinit var imgAdapter: UserImageViewAdapter
     private lateinit var viewPager2: ViewPager2
     private lateinit var indicator: CircleIndicator3
 
-    //private val animation = AnimationUtils.loadAnimation(fragment.context,R.anim.user_card_drawer_action)
+    // private val animation = AnimationUtils.loadAnimation(fragment.context,R.anim.user_card_drawer_action)
     private var scrollViewY = 0f
     private var isFlagScroll = false
 
-    inner class PagerViewHoler(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val pageName: TextView = itemView.findViewById(R.id.card_view_name)
         private val pageAge: TextView = itemView.findViewById(R.id.card_view_age)
 
         fun bind(userCard: UserCard) {
-            pageName.text = "${userCard.nick_nm}"
+            pageName.text = userCard.nick_nm
             pageAge.text = "${UserUtil.getAge(userCard.birth)}"
-
         }
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHoler {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
         view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_card, parent, false)
         // 하위뷰까지 영향이 가도록 아웃 라인 설정
         view.clipToOutline = true
@@ -57,15 +55,12 @@ class UserCardViewAdapter(
         val rlSvBox = view.findViewById<RelativeLayout>(R.id.rl_sv_box)
         val drawBar = view.findViewById<LinearLayout>(R.id.LL_drawer_bar)
 
-        drawBar.setOnTouchListener() { v, event ->
-            Log.d("View_Drag:flow", "Drag Start Touch Listener ${event.action}")
+        drawBar.setOnTouchListener() { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     cardStackView.requestDisallowInterceptTouchEvent(true)
                     isFlagScroll = true
                     scrollViewY = rlSvBox.y - event.rawY
-                    Log.d("View_Drag:flow", "Drag Y :  ${scrollViewY}")
-                    Log.d("View_Drag:flow", "event.raw Y :  ${event.rawY}")
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (event.rawY > (760 - 30))
@@ -82,7 +77,7 @@ class UserCardViewAdapter(
             return@setOnTouchListener true
         }
 
-        //scrollView.visibility = View.GONE
+        // scrollView.visibility = View.GONE
 
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
@@ -92,24 +87,18 @@ class UserCardViewAdapter(
             }
         })
 
-
-        scrollView.setOnTouchListener { v, event ->
-
-            isFlagScroll
-        }
-
+        scrollView.setOnTouchListener { _, _ -> isFlagScroll }
 
         viewPager2.offscreenPageLimit = 4
         indicator.setViewPager(viewPager2)
 
-        return PagerViewHoler(view)
+        return PagerViewHolder(view)
     }
 
-
-    override fun onBindViewHolder(holder: PagerViewHoler, position: Int) {
+    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
 
         val userCard = data.get(position)
-        imgAdapter.setImgs(userCard.imgs)
+        imgAdapter.setImages(userCard.imgs)
         if (viewPager2.adapter == null) viewPager2.adapter = imgAdapter
 
         indicator.createIndicators(imgAdapter.itemCount, 0)
@@ -118,6 +107,4 @@ class UserCardViewAdapter(
     }
 
     override fun getItemCount(): Int = data.size
-
-
 }

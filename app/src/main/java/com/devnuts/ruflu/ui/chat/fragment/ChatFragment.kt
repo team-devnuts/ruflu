@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentChatBinding
-import com.devnuts.ruflu.ui.adapter.ChatSubSEAdapter
+import com.devnuts.ruflu.ui.adapter.ChatAdapter
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSharedViewModel
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatViewModel
 
 class ChatFragment : Fragment() {
     private lateinit var binding: FragmentChatBinding
     private lateinit var recycler: RecyclerView
-    private lateinit var adapter: ChatSubSEAdapter
+    private lateinit var adapter: ChatAdapter
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var myRoomContainer: RelativeLayout
     private val viewModel: ChatViewModel by viewModels()
@@ -51,7 +51,7 @@ class ChatFragment : Fragment() {
     private fun changeAdapter() {
         val chatRoomList = viewModel.chatRoomList.value
         if (chatRoomList != null) {
-            adapter = ChatSubSEAdapter(chatRoomList)
+            adapter = ChatAdapter(chatRoomList)
             initAdapterListener()
         }
         recycler.adapter = adapter
@@ -59,7 +59,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun initAdapterListener() {
-        adapter.setItemClickListener(object : ChatSubSEAdapter.OnItemClickListener {
+        adapter.setItemClickListener(object : ChatAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val chatRoom = viewModel.getChatRoomByPos(position)
                 if (chatRoom != null) {

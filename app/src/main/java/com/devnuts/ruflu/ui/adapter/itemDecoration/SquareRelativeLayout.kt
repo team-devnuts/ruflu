@@ -2,7 +2,6 @@ package com.devnuts.ruflu.ui.adapter.itemDecoration
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.widget.RelativeLayout
 import timber.log.Timber
 

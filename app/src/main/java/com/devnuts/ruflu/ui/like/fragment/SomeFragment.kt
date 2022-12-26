@@ -31,7 +31,7 @@ class SomeFragment : Fragment() {
     private lateinit var userDetailContainer: RelativeLayout
     private lateinit var recyclerView: RecyclerView
     private val sharedViewModel: LikeSharedViewModel by viewModels()
-    private val likeSubSEViewModel: SomeViewModel by viewModels()
+    private val someViewModel: SomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +59,7 @@ class SomeFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        likeSubSEViewModel.lv1User.observe(viewLifecycleOwner) {
+        someViewModel.someUser.observe(viewLifecycleOwner) {
             changeAdapter()
         }
     }
@@ -80,7 +80,7 @@ class SomeFragment : Fragment() {
         adapter.setItemClickListener(object : SomeAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
 
-                val userDtl = likeSubSEViewModel.getSeLikeLv1User(position)
+                val userDtl = someViewModel.getSomeUser(position)
                 if (userDtl != null)
                     sharedViewModel.setUserDtl(userDtl)
 
@@ -102,14 +102,14 @@ class SomeFragment : Fragment() {
                 Timber.tag("onSwipe").d("direction :  $direction")
 
                 if (direction == 32) {
-                    likeSubSEViewModel.insertSeLikeLv2(user.user_id)
+                    someViewModel.insertSeLikeLv2(user.user_id)
                 }
             }
         })
     }
 
     private fun createAdapter(): SomeAdapter {
-        return SomeAdapter(likeSubSEViewModel.lv1User.value!!)
+        return SomeAdapter(someViewModel.someUser.value!!)
     }
 
     override fun onAttach(context: Context) {

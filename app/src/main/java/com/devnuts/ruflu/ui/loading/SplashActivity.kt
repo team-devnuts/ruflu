@@ -2,14 +2,13 @@ package com.devnuts.ruflu.ui.loading
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.devnuts.ruflu.MainActivity
-import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.ui.signin.LoginActivity
-import timber.log.Timber
+import com.devnuts.ruflu.util.RufluApp
 import java.util.*
 import kotlin.concurrent.schedule
+import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         var intent: Intent
 
         Timer().schedule(1000) {
-            if (hasToen()) {
+            if (hasToken()) {
                 intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -30,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun hasToen(): Boolean {
+    private fun hasToken(): Boolean {
         val userToken = RufluApp.sharedPreference.getSettingString("USER_TOKEN")
         Timber.d(userToken.toString())
         return userToken != null

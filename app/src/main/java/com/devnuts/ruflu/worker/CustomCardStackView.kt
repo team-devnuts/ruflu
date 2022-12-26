@@ -30,5 +30,4 @@ class CustomCardStackView(context: Context?, attr: AttributeSet?) : CardStackVie
     override fun onDragEvent(event: DragEvent?): Boolean {
         return super.onDragEvent(event)
     }
-
 }

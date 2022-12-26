@@ -6,15 +6,15 @@ import com.devnuts.ruflu.ui.model.home.UserDtl
 import timber.log.Timber
 
 class UserDetailSharedViewModel : ViewModel() {
-    private var _userDtl: MutableLiveData<UserDtl> = MutableLiveData()
-    val nbUserDtl get() = _userDtl
+    private var _userDetail: MutableLiveData<UserDtl> = MutableLiveData()
+    val userDetail get() = _userDetail
 
     fun setUserDtl(userDtl: UserDtl?) {
         Timber.d("$userDtl")
-        _userDtl.value = userDtl
+        _userDetail.value = userDtl
     }
 
     fun detachNBUser() {
-        _userDtl.value = null
+        _userDetail.value = null
     }
 }

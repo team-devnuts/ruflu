@@ -5,23 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.ItemLikeLv1UserBinding
-import com.devnuts.ruflu.util.UserUtil
+import com.devnuts.ruflu.databinding.ItemSomeUserBinding
 import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
 import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.util.UserUtil
 import de.hdodenhof.circleimageview.CircleImageView
 import timber.log.Timber
 
 class SomeAdapter(
-    private val likeLv1Users: ArrayList<UserDtl>
-) : RecyclerView.Adapter<SomeAdapter.LikeLv1ViewHolder>(),
+    private val someUsers: ArrayList<UserDtl>
+) : RecyclerView.Adapter<SomeAdapter.SomeViewHolder>(),
     SomeTouchHelperCallback.OnItemMoveListener {
 
     private lateinit var view: View
-    private lateinit var binding: ItemLikeLv1UserBinding
-    private lateinit var userImgView: CircleImageView
-    private lateinit var seLikeLv1OnClickListener: OnItemClickListener
-    private lateinit var seLikeLv1OnSwipeListener: OnItemSwipeListener
+    private lateinit var binding: ItemSomeUserBinding
+    private lateinit var userImagesView: CircleImageView
+    private lateinit var someClickListener: OnItemClickListener
+    private lateinit var someSwipeListener: OnItemSwipeListener
 
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
@@ -31,36 +31,36 @@ class SomeAdapter(
         fun onSwipe(user: UserDtl, direction: Int)
     }
 
-    inner class LikeLv1ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class SomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(likeLv1User: UserDtl) {
+        fun bind(someUser: UserDtl) {
 
-            if (likeLv1User.imgs.isNotEmpty())
-                UserUtil.setImageWithGlide(itemView, likeLv1User.imgs.get(0), userImgView)
-            else userImgView.setImageResource(R.drawable.noimg_fac)
+            if (someUser.imgs.isNotEmpty())
+                UserUtil.setImageWithGlide(itemView, someUser.imgs[0], userImagesView)
+            else userImagesView.setImageResource(R.drawable.noimg_fac)
 
-            binding.seLv1NickNm.text = likeLv1User.nick_nm
-            binding.seLv1Age.text = "${UserUtil.getAge(likeLv1User.birth)}"
+            binding.nickName.text = someUser.nick_nm
+            binding.age.text = "${UserUtil.getAge(someUser.birth)}"
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeLv1ViewHolder {
-        binding = ItemLikeLv1UserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SomeViewHolder {
+        binding = ItemSomeUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         view = binding.root
-        userImgView = binding.seLikeLv1UserImg
+        userImagesView = binding.seLikeLv1UserImg
 
-        return LikeLv1ViewHolder(view)
+        return SomeViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: LikeLv1ViewHolder, position: Int) {
-        userImgView.setOnClickListener {
-            seLikeLv1OnClickListener.onClick(it, position)
+    override fun onBindViewHolder(holder: SomeViewHolder, position: Int) {
+        userImagesView.setOnClickListener {
+            someClickListener.onClick(it, position)
         }
-        holder.bind(likeLv1Users[position])
+        holder.bind(someUsers[position])
     }
 
     override fun getItemCount(): Int {
-        return likeLv1Users.size
+        return someUsers.size
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
@@ -68,18 +68,18 @@ class SomeAdapter(
 
     override fun onItemsWipe(position: Int, direction: Int) {
         Timber.tag("swipe").d("direction : $direction")
-        val lv1User = likeLv1Users[position]
+        val user = someUsers[position]
 
-        seLikeLv1OnSwipeListener.onSwipe(lv1User, direction)
-        likeLv1Users.remove(lv1User)
+        someSwipeListener.onSwipe(user, direction)
+        someUsers.remove(user)
         notifyItemRemoved(position)
     }
 
     fun setItemClickListener(onItemClickListener: OnItemClickListener) {
-        this.seLikeLv1OnClickListener = onItemClickListener
+        this.someClickListener = onItemClickListener
     }
 
     fun setItemSwipeListener(onItemSwipeListener: OnItemSwipeListener) {
-        this.seLikeLv1OnSwipeListener = onItemSwipeListener
+        this.someSwipeListener = onItemSwipeListener
     }
 }
