@@ -102,7 +102,7 @@ class SomeFragment : Fragment() {
                 Timber.tag("onSwipe").d("direction :  $direction")
 
                 if (direction == 32) {
-                    someViewModel.insertSeLikeLv2(user.user_id)
+                    someViewModel.insertMatch(user.user_id)
                 }
             }
         })

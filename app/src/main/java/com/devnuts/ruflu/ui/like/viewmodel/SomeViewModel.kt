@@ -19,12 +19,12 @@ class SomeViewModel : ViewModel() {
     }
     val someUser: MutableLiveData<ArrayList<UserDtl>> get() = _someUser
 
-    private val _lv2User by lazy {
+    private val _matchUser by lazy {
         MutableLiveData<ArrayList<UserDtl>>().also {
-            loadSeLv2User()
+            loadMatchUser()
         }
     }
-    val lv2User: MutableLiveData<ArrayList<UserDtl>> get() = _lv2User
+    val matchUser: MutableLiveData<ArrayList<UserDtl>> get() = _matchUser
 
     private fun loadSomeUser() {
         val call = repository.getSeLv1User()
@@ -47,7 +47,7 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    private fun loadSeLv2User() {
+    private fun loadMatchUser() {
         val call = repository.getSeLv2User()
 
         call.enqueue(object : Callback<List<UserDtl>> {
@@ -55,7 +55,7 @@ class SomeViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
                     val nbUserList: List<UserDtl>? = response.body()
-                    _lv2User.value =
+                    _matchUser.value =
                         if (nbUserList != null) nbUserList as ArrayList<UserDtl> else ArrayList()
                 }
             }
@@ -66,7 +66,7 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    fun insertSeLikeLv2(userId: String) {
+    fun insertMatch(userId: String) {
         val call = repository.insertSeLikeLv2(userId)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -107,5 +107,5 @@ class SomeViewModel : ViewModel() {
 
     val getSomeUser = { pos: Int -> _someUser.value?.get(pos) }
 
-    val getSeLikeLv2User = { pos: Int -> _lv2User.value?.get(pos) }
+    val getMatchUser = { pos: Int -> _matchUser.value?.get(pos) }
 }
