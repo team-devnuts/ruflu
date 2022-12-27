@@ -71,6 +71,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_boarder"
-        app:navGraph="@navigation/navigation_register" />
+        app:navGraph="@navigation/navigation_onboarding" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

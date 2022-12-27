@@ -33,7 +33,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/se_lv1_nick_nm"
+                    android:id="@+id/nick_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
@@ -45,7 +45,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/se_lv1_age"
+                    android:id="@+id/age"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"

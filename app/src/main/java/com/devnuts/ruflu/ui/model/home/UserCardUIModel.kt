@@ -1,6 +1,10 @@
 package com.devnuts.ruflu.ui.model.home
 
-data class NBUserDtl(
+import com.devnuts.ruflu.ui.model.CellType
+import com.devnuts.ruflu.ui.model.Model
+
+data class UserCardUIModel(
+    override val type: CellType = CellType.USER_CARD_CEL,
     val user_id: String,
     val nick_nm: String,
     val birth: String,
@@ -19,4 +23,4 @@ data class NBUserDtl(
     val qa2: String,
     val hob: String,
     val imgs: List<String>
-)
+): Model(type)

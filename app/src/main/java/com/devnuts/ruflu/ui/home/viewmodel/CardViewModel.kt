@@ -3,37 +3,37 @@ package com.devnuts.ruflu.ui.home.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.domain.repository.HomeRepository
-import com.devnuts.ruflu.ui.model.home.UserCard
+import com.devnuts.ruflu.ui.model.home.UserCardUIModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
 class CardViewModel : ViewModel() {
-    private val homeRepository: HomeRepository = HomeRepository()
+    private val repository: HomeRepository = HomeRepository()
 
     private val _userCard by lazy {
-        MutableLiveData<ArrayList<UserCard>>().also {
+        MutableLiveData<ArrayList<UserCardUIModel>>().also {
             loadUserCard()
         }
     }
-    val userCard: MutableLiveData<ArrayList<UserCard>> get() = _userCard
+    val userCard: MutableLiveData<ArrayList<UserCardUIModel>> get() = _userCard
 
     fun loadUserCard() {
-        val call = homeRepository.getUserCardList()
-        call.enqueue(object : Callback<List<UserCard>> {
+        val call = repository.getUserCardList()
+        call.enqueue(object : Callback<List<UserCardUIModel>> {
             override fun onResponse(
-                call: Call<List<UserCard>>,
-                response: Response<List<UserCard>>
+                call: Call<List<UserCardUIModel>>,
+                response: Response<List<UserCardUIModel>>
             ) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
-                    val userCardList: List<UserCard>? = response.body()
-                    userCard.value = userCardList as ArrayList<UserCard>?
+                    val userCardList: List<UserCardUIModel>? = response.body()
+                    userCard.value = userCardList as ArrayList<UserCardUIModel>?
                 }
             }
 
-            override fun onFailure(call: Call<List<UserCard>>, t: Throwable) {
+            override fun onFailure(call: Call<List<UserCardUIModel>>, t: Throwable) {
                 Timber.tag("callback fail").e(t)
             }
         })
@@ -41,8 +41,8 @@ class CardViewModel : ViewModel() {
 
     fun hateYourUserCard(position: Int) {
         val map = HashMap<String, String>()
-        map.put("to_user_id", _userCard.value!!.get(position).user_id)
-        val call = homeRepository.insertHateUserCard(map)
+        map["to_user_id"] = _userCard.value!![position].user_id
+        val call = repository.insertHateUserCard(map)
 
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -59,9 +59,9 @@ class CardViewModel : ViewModel() {
 
     fun likeYourUserCard(position: Int) {
         val map = HashMap<String, String>()
-        map.put("to_user_id", _userCard.value!!.get(position).user_id)
+        map["to_user_id"] = _userCard.value!![position].user_id
 
-        val call = homeRepository.insertLikeUserCard(map)
+        val call = repository.insertLikeUserCard(map)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {

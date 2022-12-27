@@ -11,7 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.FragmentUserDetailBinding
 import com.devnuts.ruflu.ui.adapter.UserImageViewAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.UserDetailSharedViewModel
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import me.relex.circleindicator.CircleIndicator3
 import timber.log.Timber
 
@@ -21,7 +21,7 @@ class UserDetailFragment : Fragment() {
     private lateinit var indicator: CircleIndicator3
     private lateinit var ratingBar: RatingBar
     private lateinit var viewPager2: ViewPager2
-    private lateinit var userDtl: UserDtl
+    private lateinit var userDtl: UserDetailUIModel
 
     private val parentViewModel: UserDetailSharedViewModel by viewModels(
         ownerProducer = { requireParentFragment() }
@@ -43,7 +43,7 @@ class UserDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tempUser = parentViewModel.nbUserDtl.value
+        val tempUser = parentViewModel.userDetail.value
         if (tempUser != null) {
             userDtl = tempUser
             initView()
@@ -52,7 +52,7 @@ class UserDetailFragment : Fragment() {
 
     private fun initView() {
         imgAdapter = UserImageViewAdapter(viewPager2, indicator)
-        imgAdapter.setImgs(userDtl.imgs)
+        imgAdapter.setImages(userDtl.imgs)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2.offscreenPageLimit = 4
         viewPager2.adapter = imgAdapter

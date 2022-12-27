@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.FragmentUserDetailBinding
-import com.devnuts.ruflu.ui.like.viewmodel.LikeSharedViewModel
 import com.devnuts.ruflu.ui.adapter.UserImageViewAdapter
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.like.viewmodel.LikeSharedViewModel
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import me.relex.circleindicator.CircleIndicator3
 import timber.log.Timber
 
@@ -21,7 +21,7 @@ class LikeUserDetailFragment() : Fragment() {
     private lateinit var indicator: CircleIndicator3
     private lateinit var ratingBar: RatingBar
     private lateinit var viewPager2: ViewPager2
-    private lateinit var userDtl: UserDtl
+    private lateinit var userDtl: UserDetailUIModel
 
     private val parentViewModel: LikeSharedViewModel by viewModels(
         ownerProducer = { requireParentFragment() }
@@ -53,7 +53,7 @@ class LikeUserDetailFragment() : Fragment() {
 
     private fun initView() {
         imgAdapter = UserImageViewAdapter(viewPager2, indicator)
-        imgAdapter.setImgs(userDtl.imgs)
+        imgAdapter.setImages(userDtl.imgs)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2.offscreenPageLimit = 4
         viewPager2.adapter = imgAdapter

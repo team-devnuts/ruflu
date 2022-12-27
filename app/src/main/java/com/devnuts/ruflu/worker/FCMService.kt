@@ -6,8 +6,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.MainRepository
-import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
+import com.devnuts.ruflu.util.RufluApp
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import retrofit2.Call
@@ -29,7 +29,6 @@ class FCMService : FirebaseMessagingService() {
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         // 앱이 foreground 상태에 있을 때 FCM 알림을 받았다면 onMessageReceived() 콜백 메소드가 호출됨으로써 FCM 알림이 대신된다.
         Timber.tag("onMessageReceived 콜백").d("${remoteMessage.from}")
-
 
         // 메시지 유형이 데이터 메시지일 경우
         // Check if message contains a data payload.

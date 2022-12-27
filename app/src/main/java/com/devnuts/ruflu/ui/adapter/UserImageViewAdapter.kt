@@ -2,7 +2,6 @@ package com.devnuts.ruflu.ui.adapter
 
 import android.graphics.Outline
 import android.os.Build
-import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,13 +10,13 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.util.UserUtil
 import me.relex.circleindicator.CircleIndicator3
 
-class UserImageViewAdapter(val pager2: ViewPager2, val indicator: CircleIndicator3) :
-    RecyclerView.Adapter<UserImageViewAdapter.ViewHoler>() {
+class UserImageViewAdapter(private val pager2: ViewPager2, private val indicator: CircleIndicator3) :
+    RecyclerView.Adapter<UserImageViewAdapter.UserImageViewHolder>() {
 
     private lateinit var view: View
-    private lateinit var imgs: List<String>
+    private lateinit var images: List<String>
 
-    inner class ViewHoler(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class UserImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private lateinit var imgView: ImageView
         fun bind(img: String) {
             imgView = itemView.findViewById<ImageView>(R.id.cardimgview)
@@ -26,25 +25,22 @@ class UserImageViewAdapter(val pager2: ViewPager2, val indicator: CircleIndicato
                     override fun getOutline(view: View?, outline: Outline?) {
                         outline!!.setRoundRect(0, 0, view!!.width, view!!.height, 20f)
                     }
-
                 }
                 imgView.outlineProvider = outlineProvider
 
                 imgView.clipToOutline = true
             }
-            //UserUtill.setImageWithGlide(view, img, imgView)
-            Log.d("UserCardViewAdapter", "onCreateViewHolder ${img} ")
+
             UserUtil.setImageWithPiccaso(view, img, imgView)
-            //UserUtill.setImageBitmap(img, imgView)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHoler {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserImageViewHolder {
         view = LayoutInflater.from(parent.context).inflate(R.layout.layout_user_img, parent, false)
         view.setBackgroundResource(R.drawable.user_card_style)
         initListener()
 
-        return ViewHoler(view)
+        return UserImageViewHolder(view)
     }
 
     private fun initListener() {
@@ -57,22 +53,21 @@ class UserImageViewAdapter(val pager2: ViewPager2, val indicator: CircleIndicato
         })
     }
 
-    override fun onBindViewHolder(holder: ViewHoler, position: Int) {
-        Log.d("UserCardViewAdapter", "onCreateViewHolder ${position} ")
-        holder.bind(imgs[position])
+    override fun onBindViewHolder(holder: UserImageViewHolder, position: Int) {
+        holder.bind(images[position])
     }
 
-    override fun getItemCount(): Int = imgs.size
+    override fun getItemCount(): Int = images.size
 
-    fun setImgs(imgArr: List<String>) {
-        imgs = imgArr
+    fun setImages(imgArr: List<String>) {
+        images = imgArr
     }
 
     private fun setCurrentPageItem(event: MotionEvent) {
         var curNum = pager2.currentItem
         curNum = if (event.x > 550) curNum + 1 else curNum - 1
 
-        if (curNum < 0 || curNum >= imgs.size)
+        if (curNum < 0 || curNum >= images.size)
             curNum = pager2.currentItem
 
         pager2.setCurrentItem(curNum, true)

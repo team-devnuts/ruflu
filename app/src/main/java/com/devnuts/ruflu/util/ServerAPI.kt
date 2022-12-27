@@ -1,16 +1,16 @@
 package com.devnuts.ruflu.util
 
-import com.devnuts.ruflu.ui.model.like.LikeLv1User
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
-import com.devnuts.ruflu.ui.model.home.UserCard
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserCardUIModel
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
+import com.devnuts.ruflu.ui.model.like.SomeUser
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ServerAPI {
 
     @GET("/home/userCardList")
-    fun getUserCardList(): Call<List<UserCard>>
+    fun getUserCardList(): Call<List<UserCardUIModel>>
 
     @FormUrlEncoded
     @POST("/home/ins/hate")
@@ -21,7 +21,7 @@ interface ServerAPI {
     fun insertLikeUserCard(@FieldMap param: HashMap<String, String>): Call<String>
 
     @GET("/home/NbUserDtl/{position}")
-    fun getNBUserDtl(@Path("userId") userId: String): Call<UserDtl>
+    fun getNBUserDtl(@Path("userId") userId: String): Call<UserDetailUIModel>
 
     @FormUrlEncoded
     @POST("/home/chg/star")
@@ -31,7 +31,7 @@ interface ServerAPI {
     ): Call<String>
 
     @GET("/home/NbUserList")
-    fun getNBUserList(): Call<List<UserDtl>>
+    fun getNBUserList(): Call<List<UserDetailUIModel>>
 
     @FormUrlEncoded
     @POST("/main/loca/udt")
@@ -45,17 +45,17 @@ interface ServerAPI {
     fun executeFcmServiceToken(@Field("token") token: String): Call<String>
 
     @GET("/home/seLv1List")
-    fun getSeLv1User(): Call<List<UserDtl>>
+    fun getSeLv1User(): Call<List<UserDetailUIModel>>
 
     @GET("/home/seLv1/userDtl/{userId}")
-    fun getSeLv1UserDtl(@Path("userId") userId: String): Call<LikeLv1User>
+    fun getSeLv1UserDtl(@Path("userId") userId: String): Call<SomeUser>
 
     @FormUrlEncoded
     @POST("/home/seLv1/like")
     fun insertSeLikeLv2(@Field("userId") userId: String): Call<String>
 
     @GET("/home/seLv2List")
-    fun getSeLv2User(): Call<List<UserDtl>>
+    fun getSeLv2User(): Call<List<UserDetailUIModel>>
 
     @FormUrlEncoded
     @POST("/home/remove/like")

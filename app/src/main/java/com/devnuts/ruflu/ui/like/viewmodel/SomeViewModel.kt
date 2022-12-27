@@ -2,72 +2,72 @@ package com.devnuts.ruflu.ui.like.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.domain.repository.LikeRepository
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.domain.repository.SomeRepository
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
 class SomeViewModel : ViewModel() {
-    private val likeRepository = LikeRepository()
+    private val repository = SomeRepository()
 
-    private val _lv1User by lazy {
-        MutableLiveData<ArrayList<UserDtl>>().also {
-            loadSeLv1User()
+    private val _someUser by lazy {
+        MutableLiveData<ArrayList<UserDetailUIModel>>().also {
+            loadSomeUser()
         }
     }
-    val lv1User: MutableLiveData<ArrayList<UserDtl>> get() = _lv1User
+    val someUser: MutableLiveData<ArrayList<UserDetailUIModel>> get() = _someUser
 
-    private val _lv2User by lazy {
-        MutableLiveData<ArrayList<UserDtl>>().also {
-            loadSeLv2User()
+    private val _matchUser by lazy {
+        MutableLiveData<ArrayList<UserDetailUIModel>>().also {
+            loadMatchUser()
         }
     }
-    val lv2User: MutableLiveData<ArrayList<UserDtl>> get() = _lv2User
+    val matchUser: MutableLiveData<ArrayList<UserDetailUIModel>> get() = _matchUser
 
-    private fun loadSeLv1User() {
-        val call = likeRepository.getSeLv1User()
+    private fun loadSomeUser() {
+        val call = repository.getSeLv1User()
 
-        call.enqueue(object : Callback<List<UserDtl>> {
-            override fun onResponse(call: Call<List<UserDtl>>, response: Response<List<UserDtl>>) {
+        call.enqueue(object : Callback<List<UserDetailUIModel>> {
+            override fun onResponse(call: Call<List<UserDetailUIModel>>, response: Response<List<UserDetailUIModel>>) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
-                    val nbUserList: List<UserDtl>? = response.body()
-                    _lv1User.value =
-                        if (nbUserList != null) nbUserList as ArrayList<UserDtl> else ArrayList()
+                    val nbUserList: List<UserDetailUIModel>? = response.body()
+                    _someUser.value =
+                        if (nbUserList != null) nbUserList as ArrayList<UserDetailUIModel> else ArrayList()
                 } else {
                     Timber.d(response.message())
                 }
             }
 
-            override fun onFailure(call: Call<List<UserDtl>>, t: Throwable) {
+            override fun onFailure(call: Call<List<UserDetailUIModel>>, t: Throwable) {
                 Timber.tag(":: callback fail ::").e(t)
             }
         })
     }
 
-    private fun loadSeLv2User() {
-        val call = likeRepository.getSeLv2User()
+    private fun loadMatchUser() {
+        val call = repository.getSeLv2User()
 
-        call.enqueue(object : Callback<List<UserDtl>> {
-            override fun onResponse(call: Call<List<UserDtl>>, response: Response<List<UserDtl>>) {
+        call.enqueue(object : Callback<List<UserDetailUIModel>> {
+            override fun onResponse(call: Call<List<UserDetailUIModel>>, response: Response<List<UserDetailUIModel>>) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
-                    val nbUserList: List<UserDtl>? = response.body()
-                    _lv2User.value =
-                        if (nbUserList != null) nbUserList as ArrayList<UserDtl> else ArrayList()
+                    val nbUserList: List<UserDetailUIModel>? = response.body()
+                    _matchUser.value =
+                        if (nbUserList != null) nbUserList as ArrayList<UserDetailUIModel> else ArrayList()
                 }
             }
 
-            override fun onFailure(call: Call<List<UserDtl>>, t: Throwable) {
+            override fun onFailure(call: Call<List<UserDetailUIModel>>, t: Throwable) {
                 Timber.tag(":: callback fail ::").e(t)
             }
         })
     }
 
-    fun insertSeLikeLv2(userId: String) {
-        val call = likeRepository.insertSeLikeLv2(userId)
+    fun insertMatch(userId: String) {
+        val call = repository.insertSeLikeLv2(userId)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
@@ -84,9 +84,9 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    fun removeLikeUser(user: UserDtl?) {
+    fun removeSomeUser(user: UserDetailUIModel?) {
         val userId = user?.user_id
-        val call = likeRepository.deleteLikeUser(userId)
+        val call = repository.deleteLikeUser(userId)
 
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -103,9 +103,9 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    fun sendMessageAskingTalkToUser(user: UserDtl?) {}
+    fun sendMessageAskingTalkToUser(user: UserDetailUIModel?) {}
 
-    val getSeLikeLv1User = { pos: Int -> _lv1User.value?.get(pos) }
+    val getSomeUser = { pos: Int -> _someUser.value?.get(pos) }
 
-    val getSeLikeLv2User = { pos: Int -> _lv2User.value?.get(pos) }
+    val getMatchUser = { pos: Int -> _matchUser.value?.get(pos) }
 }

@@ -1,6 +1,10 @@
 package com.devnuts.ruflu.ui.model.home
 
-data class UserDtl(
+import com.devnuts.ruflu.ui.model.CellType
+import com.devnuts.ruflu.ui.model.Model
+
+data class UserDetailUIModel(
+    override val type: CellType = CellType.USER_CARD_CEL,
     val user_id: String,
     val nick_nm: String,
     val birth: String,
@@ -24,5 +28,4 @@ data class UserDtl(
     var latitude: Double,
     var longitude: Double,
     var distance: Double
-
-)
+): Model(type)

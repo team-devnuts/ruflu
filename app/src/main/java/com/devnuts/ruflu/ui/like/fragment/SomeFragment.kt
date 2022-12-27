@@ -18,7 +18,7 @@ import com.devnuts.ruflu.ui.adapter.SomeAdapter
 import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSharedViewModel
 import com.devnuts.ruflu.ui.like.viewmodel.SomeViewModel
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import timber.log.Timber
 
 class SomeFragment : Fragment() {
@@ -31,7 +31,7 @@ class SomeFragment : Fragment() {
     private lateinit var userDetailContainer: RelativeLayout
     private lateinit var recyclerView: RecyclerView
     private val sharedViewModel: LikeSharedViewModel by viewModels()
-    private val likeSubSEViewModel: SomeViewModel by viewModels()
+    private val someViewModel: SomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +59,7 @@ class SomeFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        likeSubSEViewModel.lv1User.observe(viewLifecycleOwner) {
+        someViewModel.someUser.observe(viewLifecycleOwner) {
             changeAdapter()
         }
     }
@@ -80,7 +80,7 @@ class SomeFragment : Fragment() {
         adapter.setItemClickListener(object : SomeAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
 
-                val userDtl = likeSubSEViewModel.getSeLikeLv1User(position)
+                val userDtl = someViewModel.getSomeUser(position)
                 if (userDtl != null)
                     sharedViewModel.setUserDtl(userDtl)
 
@@ -96,20 +96,20 @@ class SomeFragment : Fragment() {
         })
 
         adapter.setItemSwipeListener(object : SomeAdapter.OnItemSwipeListener {
-            override fun onSwipe(user: UserDtl, direction: Int) {
+            override fun onSwipe(user: UserDetailUIModel, direction: Int) {
                 // 32 right 좋아요
                 // 16 left  싫어요
                 Timber.tag("onSwipe").d("direction :  $direction")
 
                 if (direction == 32) {
-                    likeSubSEViewModel.insertSeLikeLv2(user.user_id)
+                    someViewModel.insertMatch(user.user_id)
                 }
             }
         })
     }
 
     private fun createAdapter(): SomeAdapter {
-        return SomeAdapter(likeSubSEViewModel.lv1User.value!!)
+        return SomeAdapter(someViewModel.someUser.value!!)
     }
 
     override fun onAttach(context: Context) {

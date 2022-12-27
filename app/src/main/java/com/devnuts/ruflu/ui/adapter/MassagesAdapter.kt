@@ -12,20 +12,20 @@ import com.devnuts.ruflu.databinding.ItemRightMessageBinding
 import com.devnuts.ruflu.ui.model.chat.ChatMessage
 import de.hdodenhof.circleimageview.CircleImageView
 
-class MassageListAdapter(
-    private val msgList: ArrayList<ChatMessage>,
+class MassagesAdapter(
+    private val massages: ArrayList<ChatMessage>,
     private val toUserName: String,
     val toUserImgUrl: String
-) : RecyclerView.Adapter<MassageListAdapter.MsgListViewHolder>() {
+) : RecyclerView.Adapter<MassagesAdapter.MassagesViewHolder>() {
 
     private lateinit var lBind: ItemLeftMessageBinding
     private lateinit var rBind: ItemRightMessageBinding
 
-    inner class MsgListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MassagesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(data: ChatMessage) {
-            val userNm = itemView.findViewById<TextView>(R.id.textv_nicname)
-            val msgTextView = itemView.findViewById<TextView>(R.id.textv_msg)
-            val userImg: CircleImageView? = itemView.findViewById(R.id.imgv)
+            val userNm = itemView.findViewById<TextView>(R.id.tv_nickName)
+            val msgTextView = itemView.findViewById<TextView>(R.id.tv_massage)
+            val userImg: CircleImageView? = itemView.findViewById(R.id.img_user)
             msgTextView.text = data.msg
             userNm.text = data.userName
             userImg?.setImageURI(Uri.parse(data.imgUrl))
@@ -33,11 +33,11 @@ class MassageListAdapter(
     }
 
     fun addItem(data: ChatMessage) {
-        msgList.add(data)
+        massages.add(data)
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MsgListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MassagesViewHolder {
         val view: View
         if (viewType == 1) {
             lBind = ItemLeftMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -46,11 +46,11 @@ class MassageListAdapter(
             rBind = ItemRightMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             view = rBind.root
         }
-        return MsgListViewHolder(view)
+        return MassagesViewHolder(view)
     }
 
     override fun getItemViewType(position: Int): Int {
-        val youUserNm = msgList[position].userName
+        val youUserNm = massages[position].userName
 
         return when (youUserNm == toUserName) {
             true -> 1
@@ -58,9 +58,9 @@ class MassageListAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: MsgListViewHolder, position: Int) {
-        holder.bind(msgList[position])
+    override fun onBindViewHolder(holder: MassagesViewHolder, position: Int) {
+        holder.bind(massages[position])
     }
 
-    override fun getItemCount() = msgList.size
+    override fun getItemCount() = massages.size
 }

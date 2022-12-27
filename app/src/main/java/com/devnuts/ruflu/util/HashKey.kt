@@ -7,9 +7,9 @@ import android.os.Build
 import android.util.Base64
 import android.util.Base64.NO_WRAP
 import com.kakao.util.helper.Utility.getPackageInfo
-import timber.log.Timber
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import timber.log.Timber
 
 class HashKey {
 

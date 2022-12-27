@@ -3,7 +3,6 @@ package com.devnuts.ruflu.ui.home.fragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -12,6 +11,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -20,7 +20,7 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentCardBinding
 import com.devnuts.ruflu.ui.adapter.UserCardViewAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.CardViewModel
-import com.devnuts.ruflu.ui.model.home.UserCard
+import com.devnuts.ruflu.ui.model.home.UserCardUIModel
 import com.devnuts.ruflu.worker.CustomCardStackView
 import com.yuyakaido.android.cardstackview.*
 import kotlin.math.abs
@@ -31,13 +31,14 @@ class CardFragment : Fragment() {
     private lateinit var cardStackView: CustomCardStackView
     private var touchDwX: Float = 0f
     private var touchDwY: Float = 0f
-    private val binding get() = _binding!!
-    private var _binding: FragmentCardBinding? = null
     private var cardPosition: Int = 0
+    private var _binding: FragmentCardBinding? = null
+    private val binding get() = _binding!!
     val viewModel: CardViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCardBinding.inflate(inflater, container, false)
@@ -73,21 +74,18 @@ class CardFragment : Fragment() {
         setBtnClick(binding.cardHateBtn, Direction.Left)
         setBtnClick(binding.cardSkipBtn, Direction.Bottom)
         setBtnClick(binding.cardLikeBtn, Direction.Right)
-
     }
-
 
     private fun setBtnClick(btn: ImageButton, direction: Direction) {
         btn.setOnClickListener {
             cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(direction))
             cardStackView.swipe()
         }
-
     }
 
     // viewModel 초기화 메소드
     private fun initViewModel() {
-        viewModel.userCard.observe(this.viewLifecycleOwner, Observer<ArrayList<UserCard>> {
+        viewModel.userCard.observe(this.viewLifecycleOwner, Observer<ArrayList<UserCardUIModel>> {
             changeCardView()
         })
     }
@@ -102,7 +100,6 @@ class CardFragment : Fragment() {
 
         userCardViewAdapter.notifyDataSetChanged()
     }
-
 
     // 카드뷰 초기 셋팅
     private fun setUpCardStack() {
@@ -121,7 +118,6 @@ class CardFragment : Fragment() {
         // card view를 만들어서 생성
         cardStackView.layoutManager = cardStackLayoutManager
         cardStackView.itemAnimator = DefaultItemAnimator()
-
     }
 
     private fun getSwipeSetting(direction: Direction): SwipeAnimationSetting {
@@ -162,7 +158,7 @@ class CardFragment : Fragment() {
                         viewModel.likeYourUserCard(cardPosition)
                     }
                     Direction.Left -> {
-                        //viewModel.hateYourUserCard(cardPosition)
+                        // viewModel.hateYourUserCard(cardPosition)
                     }
                 }
                 Log.d(
@@ -198,12 +194,12 @@ class CardFragment : Fragment() {
 
     private fun onControlDirectionCardStackSwipe(event: MotionEvent?) {
         val action = event?.action
-        Log.d("CARDVIEW ACTION", " : ${action}")
+        Log.d("CARDVIEW ACTION", " : $action")
         when (action) {
             MotionEvent.ACTION_DOWN -> {
                 touchDwX = event.x
                 touchDwY = event.y
-                Log.d("CARDVIEW ACTIONDOWN", "x = ${touchDwX}, y = ${touchDwY}")
+                Log.d("CARDVIEW ACTIONDOWN", "x = $touchDwX, y = $touchDwY")
             }
             MotionEvent.ACTION_UP -> {
                 var moveTouchX = touchDwX - event.x
@@ -212,11 +208,11 @@ class CardFragment : Fragment() {
                 var direction: Direction? = null
 
                 if (abs(moveTouchX) > abs(moveTouchY)) {
-                    Log.d("CARDVIEWTOUCH_X", "${moveTouchX}")
+                    Log.d("CARDVIEWTOUCH_X", "$moveTouchX")
                     if (moveTouchX < -100) direction = Direction.Right
                     else if (moveTouchX > 100) direction = Direction.Left
                 } else {
-                    Log.d("CARDVIEWTOUCH_Y", "${moveTouchY}")
+                    Log.d("CARDVIEWTOUCH_Y", "$moveTouchY")
                     if (moveTouchY < -100) else if (moveTouchY > 100) direction = Direction.Top
                 }
 
@@ -227,7 +223,6 @@ class CardFragment : Fragment() {
             }
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
