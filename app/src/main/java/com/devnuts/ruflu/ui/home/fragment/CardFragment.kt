@@ -20,7 +20,7 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentCardBinding
 import com.devnuts.ruflu.ui.adapter.UserCardViewAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.CardViewModel
-import com.devnuts.ruflu.ui.model.home.UserCard
+import com.devnuts.ruflu.ui.model.home.UserCardUIModel
 import com.devnuts.ruflu.worker.CustomCardStackView
 import com.yuyakaido.android.cardstackview.*
 import kotlin.math.abs
@@ -85,7 +85,7 @@ class CardFragment : Fragment() {
 
     // viewModel 초기화 메소드
     private fun initViewModel() {
-        viewModel.userCard.observe(this.viewLifecycleOwner, Observer<ArrayList<UserCard>> {
+        viewModel.userCard.observe(this.viewLifecycleOwner, Observer<ArrayList<UserCardUIModel>> {
             changeCardView()
         })
     }

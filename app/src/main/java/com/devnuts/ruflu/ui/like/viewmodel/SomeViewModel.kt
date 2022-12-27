@@ -3,7 +3,7 @@ package com.devnuts.ruflu.ui.like.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.domain.repository.SomeRepository
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,35 +13,35 @@ class SomeViewModel : ViewModel() {
     private val repository = SomeRepository()
 
     private val _someUser by lazy {
-        MutableLiveData<ArrayList<UserDtl>>().also {
+        MutableLiveData<ArrayList<UserDetailUIModel>>().also {
             loadSomeUser()
         }
     }
-    val someUser: MutableLiveData<ArrayList<UserDtl>> get() = _someUser
+    val someUser: MutableLiveData<ArrayList<UserDetailUIModel>> get() = _someUser
 
     private val _matchUser by lazy {
-        MutableLiveData<ArrayList<UserDtl>>().also {
+        MutableLiveData<ArrayList<UserDetailUIModel>>().also {
             loadMatchUser()
         }
     }
-    val matchUser: MutableLiveData<ArrayList<UserDtl>> get() = _matchUser
+    val matchUser: MutableLiveData<ArrayList<UserDetailUIModel>> get() = _matchUser
 
     private fun loadSomeUser() {
         val call = repository.getSeLv1User()
 
-        call.enqueue(object : Callback<List<UserDtl>> {
-            override fun onResponse(call: Call<List<UserDtl>>, response: Response<List<UserDtl>>) {
+        call.enqueue(object : Callback<List<UserDetailUIModel>> {
+            override fun onResponse(call: Call<List<UserDetailUIModel>>, response: Response<List<UserDetailUIModel>>) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
-                    val nbUserList: List<UserDtl>? = response.body()
+                    val nbUserList: List<UserDetailUIModel>? = response.body()
                     _someUser.value =
-                        if (nbUserList != null) nbUserList as ArrayList<UserDtl> else ArrayList()
+                        if (nbUserList != null) nbUserList as ArrayList<UserDetailUIModel> else ArrayList()
                 } else {
                     Timber.d(response.message())
                 }
             }
 
-            override fun onFailure(call: Call<List<UserDtl>>, t: Throwable) {
+            override fun onFailure(call: Call<List<UserDetailUIModel>>, t: Throwable) {
                 Timber.tag(":: callback fail ::").e(t)
             }
         })
@@ -50,17 +50,17 @@ class SomeViewModel : ViewModel() {
     private fun loadMatchUser() {
         val call = repository.getSeLv2User()
 
-        call.enqueue(object : Callback<List<UserDtl>> {
-            override fun onResponse(call: Call<List<UserDtl>>, response: Response<List<UserDtl>>) {
+        call.enqueue(object : Callback<List<UserDetailUIModel>> {
+            override fun onResponse(call: Call<List<UserDetailUIModel>>, response: Response<List<UserDetailUIModel>>) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
-                    val nbUserList: List<UserDtl>? = response.body()
+                    val nbUserList: List<UserDetailUIModel>? = response.body()
                     _matchUser.value =
-                        if (nbUserList != null) nbUserList as ArrayList<UserDtl> else ArrayList()
+                        if (nbUserList != null) nbUserList as ArrayList<UserDetailUIModel> else ArrayList()
                 }
             }
 
-            override fun onFailure(call: Call<List<UserDtl>>, t: Throwable) {
+            override fun onFailure(call: Call<List<UserDetailUIModel>>, t: Throwable) {
                 Timber.tag(":: callback fail ::").e(t)
             }
         })
@@ -84,7 +84,7 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    fun removeSomeUser(user: UserDtl?) {
+    fun removeSomeUser(user: UserDetailUIModel?) {
         val userId = user?.user_id
         val call = repository.deleteLikeUser(userId)
 
@@ -103,7 +103,7 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    fun sendMessageAskingTalkToUser(user: UserDtl?) {}
+    fun sendMessageAskingTalkToUser(user: UserDetailUIModel?) {}
 
     val getSomeUser = { pos: Int -> _someUser.value?.get(pos) }
 

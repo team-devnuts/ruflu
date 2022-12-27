@@ -18,7 +18,7 @@ import com.devnuts.ruflu.ui.adapter.SomeAdapter
 import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSharedViewModel
 import com.devnuts.ruflu.ui.like.viewmodel.SomeViewModel
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import timber.log.Timber
 
 class SomeFragment : Fragment() {
@@ -96,7 +96,7 @@ class SomeFragment : Fragment() {
         })
 
         adapter.setItemSwipeListener(object : SomeAdapter.OnItemSwipeListener {
-            override fun onSwipe(user: UserDtl, direction: Int) {
+            override fun onSwipe(user: UserDetailUIModel, direction: Int) {
                 // 32 right 좋아요
                 // 16 left  싫어요
                 Timber.tag("onSwipe").d("direction :  $direction")

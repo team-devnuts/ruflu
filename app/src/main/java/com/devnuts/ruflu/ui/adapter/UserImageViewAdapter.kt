@@ -11,12 +11,12 @@ import com.devnuts.ruflu.util.UserUtil
 import me.relex.circleindicator.CircleIndicator3
 
 class UserImageViewAdapter(private val pager2: ViewPager2, private val indicator: CircleIndicator3) :
-    RecyclerView.Adapter<UserImageViewAdapter.ViewHolder>() {
+    RecyclerView.Adapter<UserImageViewAdapter.UserImageViewHolder>() {
 
     private lateinit var view: View
     private lateinit var images: List<String>
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class UserImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private lateinit var imgView: ImageView
         fun bind(img: String) {
             imgView = itemView.findViewById<ImageView>(R.id.cardimgview)
@@ -35,12 +35,12 @@ class UserImageViewAdapter(private val pager2: ViewPager2, private val indicator
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserImageViewHolder {
         view = LayoutInflater.from(parent.context).inflate(R.layout.layout_user_img, parent, false)
         view.setBackgroundResource(R.drawable.user_card_style)
         initListener()
 
-        return ViewHolder(view)
+        return UserImageViewHolder(view)
     }
 
     private fun initListener() {
@@ -53,7 +53,7 @@ class UserImageViewAdapter(private val pager2: ViewPager2, private val indicator
         })
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserImageViewHolder, position: Int) {
         holder.bind(images[position])
     }
 

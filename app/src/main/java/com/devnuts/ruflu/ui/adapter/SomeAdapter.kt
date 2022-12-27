@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.ItemSomeUserBinding
 import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import com.devnuts.ruflu.util.UserUtil
 import de.hdodenhof.circleimageview.CircleImageView
 import timber.log.Timber
 
 class SomeAdapter(
-    private val someUsers: ArrayList<UserDtl>
+    private val someUsers: ArrayList<UserDetailUIModel>
 ) : RecyclerView.Adapter<SomeAdapter.SomeViewHolder>(),
     SomeTouchHelperCallback.OnItemMoveListener {
 
@@ -28,12 +28,12 @@ class SomeAdapter(
     }
 
     interface OnItemSwipeListener {
-        fun onSwipe(user: UserDtl, direction: Int)
+        fun onSwipe(user: UserDetailUIModel, direction: Int)
     }
 
     inner class SomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(someUser: UserDtl) {
+        fun bind(someUser: UserDetailUIModel) {
 
             if (someUser.imgs.isNotEmpty())
                 UserUtil.setImageWithGlide(itemView, someUser.imgs[0], userImagesView)

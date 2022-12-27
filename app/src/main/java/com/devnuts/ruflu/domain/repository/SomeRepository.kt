@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.domain.repository
 
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import com.devnuts.ruflu.ui.model.like.SomeUser
 import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.util.ServerAPI
@@ -9,7 +9,7 @@ import retrofit2.Call
 class SomeRepository {
     private val api = RufluApp.retrofit.create(ServerAPI::class.java)
 
-    fun getSeLv1User(): Call<List<UserDtl>> {
+    fun getSeLv1User(): Call<List<UserDetailUIModel>> {
         return api.getSeLv1User()
     }
 
@@ -21,7 +21,7 @@ class SomeRepository {
         return api.insertSeLikeLv2(userId)
     }
 
-    fun getSeLv2User(): Call<List<UserDtl>> {
+    fun getSeLv2User(): Call<List<UserDetailUIModel>> {
         return api.getSeLv2User()
     }
 

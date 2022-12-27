@@ -1,7 +1,7 @@
 package com.devnuts.ruflu.domain.repository
 
-import com.devnuts.ruflu.ui.model.home.UserCard
-import com.devnuts.ruflu.ui.model.home.UserDtl
+import com.devnuts.ruflu.ui.model.home.UserCardUIModel
+import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.util.ServerAPI
 import retrofit2.*
@@ -10,11 +10,11 @@ class HomeRepository {
 
     private val api = RufluApp.retrofit.create(ServerAPI::class.java)
 
-    fun getUserCardList(): Call<List<UserCard>> {
+    fun getUserCardList(): Call<List<UserCardUIModel>> {
         return api.getUserCardList()
     }
 
-    fun getNBUserList(): Call<List<UserDtl>> {
+    fun getNBUserList(): Call<List<UserDetailUIModel>> {
         return api.getNBUserList()
     }
 
@@ -26,7 +26,7 @@ class HomeRepository {
         return api.insertLikeUserCard(userCard)
     }
 
-    fun getNBUserDtl(userId: String): Call<UserDtl> {
+    fun getNBUserDtl(userId: String): Call<UserDetailUIModel> {
         return api.getNBUserDtl(userId)
     }
 
