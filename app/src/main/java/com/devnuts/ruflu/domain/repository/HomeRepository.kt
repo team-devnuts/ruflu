@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.domain.repository
 
-import com.devnuts.ruflu.ui.model.home.UserCardUIModel
+import com.devnuts.ruflu.data.api.response.card.CardModel
 import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.util.ServerAPI
@@ -10,7 +10,7 @@ class HomeRepository {
 
     private val api = RufluApp.retrofit.create(ServerAPI::class.java)
 
-    fun getUserCardList(): Call<List<UserCardUIModel>> {
+    fun getUserCardList(): Call<List<CardModel>> {
         return api.getUserCardList()
     }
 

@@ -9,14 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.FragmentUserDetailBinding
-import com.devnuts.ruflu.ui.adapter.UserImageViewAdapter
 import com.devnuts.ruflu.ui.like.viewmodel.LikeSharedViewModel
 import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import me.relex.circleindicator.CircleIndicator3
 import timber.log.Timber
 
-class LikeUserDetailFragment() : Fragment() {
-    private lateinit var imgAdapter: UserImageViewAdapter
+class LikeUserDetailFragment : Fragment() {
     private lateinit var binding: FragmentUserDetailBinding
     private lateinit var indicator: CircleIndicator3
     private lateinit var ratingBar: RatingBar
@@ -47,23 +45,23 @@ class LikeUserDetailFragment() : Fragment() {
         val tempUser = parentViewModel.userDtl.value
         if (tempUser != null) {
             userDtl = tempUser
-            initView()
+            //initView()
         }
     }
 
-    private fun initView() {
-        imgAdapter = UserImageViewAdapter(viewPager2, indicator)
-        imgAdapter.setImages(userDtl.imgs)
-        viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        viewPager2.offscreenPageLimit = 4
-        viewPager2.adapter = imgAdapter
-        indicator.createIndicators(imgAdapter.itemCount, 0)
-        indicator.setViewPager(viewPager2)
-        ratingBar.numStars = userDtl.ratingStar.toInt()
-
-        setCompCallback()
-        addListeners()
-    }
+//    private fun initView() {
+//        imgAdapter = CardImageViewAdapter(viewPager2, indicator)
+//        imgAdapter.setImages(userDtl.imgs)
+//        viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+//        viewPager2.offscreenPageLimit = 4
+//        viewPager2.adapter = imgAdapter
+//        indicator.createIndicators(imgAdapter.itemCount, 0)
+//        indicator.setViewPager(viewPager2)
+//        ratingBar.numStars = userDtl.ratingStar.toInt()
+//
+//        setCompCallback()
+//        addListeners()
+//    }
 
     private fun setCompCallback() {
         viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
