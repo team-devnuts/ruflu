@@ -1,7 +1,7 @@
 package com.devnuts.ruflu.util
 
+import com.devnuts.ruflu.data.api.response.card.CardModel
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
-import com.devnuts.ruflu.ui.model.home.UserCardUIModel
 import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
 import com.devnuts.ruflu.ui.model.like.SomeUser
 import retrofit2.Call
@@ -10,7 +10,7 @@ import retrofit2.http.*
 interface ServerAPI {
 
     @GET("/home/userCardList")
-    fun getUserCardList(): Call<List<UserCardUIModel>>
+    fun getUserCardList(): Call<List<CardModel>>
 
     @FormUrlEncoded
     @POST("/home/ins/hate")

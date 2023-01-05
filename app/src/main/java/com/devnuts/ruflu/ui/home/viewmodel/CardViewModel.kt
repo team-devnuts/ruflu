@@ -2,8 +2,11 @@ package com.devnuts.ruflu.ui.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.devnuts.ruflu.data.api.response.card.CardModel
+import com.devnuts.ruflu.data.api.response.card.toHomeMenuModel
 import com.devnuts.ruflu.domain.repository.HomeRepository
-import com.devnuts.ruflu.ui.model.home.UserCardUIModel
+import com.devnuts.ruflu.ui.model.CellType
+import com.devnuts.ruflu.ui.model.home.CardUIModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,27 +16,29 @@ class CardViewModel : ViewModel() {
     private val repository: HomeRepository = HomeRepository()
 
     private val _userCard by lazy {
-        MutableLiveData<ArrayList<UserCardUIModel>>().also {
+        MutableLiveData<List<CardUIModel>>().also {
             loadUserCard()
         }
     }
-    val userCard: MutableLiveData<ArrayList<UserCardUIModel>> get() = _userCard
+    val userCard: MutableLiveData<List<CardUIModel>> get() = _userCard
 
     fun loadUserCard() {
         val call = repository.getUserCardList()
-        call.enqueue(object : Callback<List<UserCardUIModel>> {
+        call.enqueue(object : Callback<List<CardModel>> {
             override fun onResponse(
-                call: Call<List<UserCardUIModel>>,
-                response: Response<List<UserCardUIModel>>
+                call: Call<List<CardModel>>,
+                response: Response<List<CardModel>>
             ) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
-                    val userCardList: List<UserCardUIModel>? = response.body()
-                    userCard.value = userCardList as ArrayList<UserCardUIModel>?
+                    val cards: List<CardModel>? = response.body()
+                    userCard.value = cards?.map {
+                        it.toHomeMenuModel(CellType.USER_CARD_CEL)
+                    }
                 }
             }
 
-            override fun onFailure(call: Call<List<UserCardUIModel>>, t: Throwable) {
+            override fun onFailure(call: Call<List<CardModel>>, t: Throwable) {
                 Timber.tag("callback fail").e(t)
             }
         })

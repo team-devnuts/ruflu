@@ -12,7 +12,6 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class LikeFragment : Fragment() {
-
     private val tabTextList = arrayListOf(TAB_ONE, TAB_TWO)
     private var savePosition: Int = 0
     private lateinit var tabLayout: TabLayout
@@ -47,14 +46,12 @@ class LikeFragment : Fragment() {
                 viewPager.currentItem = tab!!.position
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
-        viewPager.isUserInputEnabled = false
 
+        viewPager.isUserInputEnabled = false
         return view
     }
 

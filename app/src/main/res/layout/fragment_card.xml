@@ -21,7 +21,7 @@
         tools:ignore="MissingClass" />
 
     <com.devnuts.ruflu.worker.CustomCardStackView
-        android:id="@+id/user_card_recycler"
+        android:id="@+id/rv_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
