@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.onboarding.fragment
+package com.devnuts.ruflu.ui.onboarding.fragment.one
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,24 +8,20 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentRegGenderBinding
-import com.devnuts.ruflu.ui.onboarding.viewmodel.GenderViewModel
+import com.devnuts.ruflu.databinding.FragmentOnboardingGenderBinding
 
-/* 온보딩 - 2 : 성별  */
-class GenderFragment : Fragment() {
-
-    private var _binding: FragmentRegGenderBinding? = null
-    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
-    private val viewModel: GenderViewModel by viewModels()
+/* 온보딩 - 1 : 성별  */
+class OnboardingGenderFragment : Fragment() {
+    private var _binding: FragmentOnboardingGenderBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: OnboardingGenderViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRegGenderBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        _binding = FragmentOnboardingGenderBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,5 +41,10 @@ class GenderFragment : Fragment() {
         binding.genderNextBnt.setOnClickListener {
             findNavController().navigate(R.id.action_genderFragment_to_birthFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

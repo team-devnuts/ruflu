@@ -3,30 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_register"
-    app:startDestination="@id/termsOfUseFragment">
-
-
-    <!-- 이용약관 -->
-    <fragment
-        android:id="@+id/termsOfUseFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.TermsOfUseFragment"
-        android:label="terms_of_use_fragment"
-        tools:layout="@layout/fragment_reg_terms_of_use" >
-        <action
-            android:id="@+id/action_termsOfUseFragment_to_genderFragment"
-            app:destination="@id/genderFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out" />
-    </fragment>
+    app:startDestination="@id/genderFragment">
 
     <!-- 성별선택 -->
     <fragment
         android:id="@+id/genderFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.GenderFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.one.OnboardingGenderFragment"
         android:label="gender_fragment"
-        tools:layout="@layout/fragment_reg_gender" >
+        tools:layout="@layout/fragment_onboarding_gender" >
         <action
             android:id="@+id/action_genderFragment_to_birthFragment"
             app:destination="@id/birthFragment"
@@ -40,9 +24,9 @@
     <!-- 생년월일 선택 -->
     <fragment
         android:id="@+id/birthFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.BirthFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingAgeFragment"
         android:label="birth_fragment"
-        tools:layout="@layout/fragment_reg_birth" >
+        tools:layout="@layout/fragment_onboarding_age" >
         <action
             android:id="@+id/action_birthFragment_to_nickNameFragment"
             app:destination="@id/nickNameFragment"
@@ -56,9 +40,9 @@
     <!-- 닉네임작성 -->
     <fragment
         android:id="@+id/nickNameFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.NickNameFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingNickNameFragment"
         android:label="nick_name_fragment"
-        tools:layout="@layout/fragment_reg_nick_name" >
+        tools:layout="@layout/fragment_onboarding_nick_name" >
         <action
             android:id="@+id/action_nickNameFragment_to_locationFragment"
             app:destination="@id/locationFragment"
@@ -71,9 +55,9 @@
     <!-- 위치설정 -->
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.LocationFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingLocationFragment"
         android:label="location_fragment"
-        tools:layout="@layout/fragment_reg_location" >
+        tools:layout="@layout/fragment_onboarding_location" >
         <action
             android:id="@+id/action_locationFragment_to_heightFragment"
             app:destination="@id/heightFragment"
@@ -86,9 +70,9 @@
     <!-- 키 선택 -->
     <fragment
         android:id="@+id/heightFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.HeightFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingHeightFragment"
         android:label="height_fragment"
-        tools:layout="@layout/fragment_reg_height" >
+        tools:layout="@layout/fragment_onboarding_height" >
         <action
             android:id="@+id/action_heightFragment_to_formFragment"
             app:destination="@id/formFragment"
@@ -100,9 +84,9 @@
 
     <fragment
         android:id="@+id/formFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.FormFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingFancyFragment"
         android:label="form_fragment"
-        tools:layout="@layout/fragment_reg_form" >
+        tools:layout="@layout/fragment_onboarding_fancy" >
         <action
             android:id="@+id/action_formFragment_to_eduFragment"
             app:destination="@id/eduFragment"
@@ -115,9 +99,9 @@
     <!-- 학력선택 -->
     <fragment
         android:id="@+id/eduFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.EduFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingAcademyFragment"
         android:label="edu_fragment"
-        tools:layout="@layout/fragment_reg_edu" >
+        tools:layout="@layout/fragment_onboarding_academy" >
         <action
             android:id="@+id/action_eduFragment_to_occupFragment"
             app:destination="@id/occupFragment"
@@ -130,9 +114,9 @@
     <!-- 직업선택 -->
     <fragment
         android:id="@+id/occupFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OccupFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingJobFragment"
         android:label="occup_fragment"
-        tools:layout="@layout/fragment_reg_occup" >
+        tools:layout="@layout/fragment_onboarding_job" >
         <action
             android:id="@+id/action_occupFragment_to_religFragment"
             app:destination="@id/religFragment"
@@ -145,9 +129,9 @@
     <!-- 종교선택 -->
     <fragment
         android:id="@+id/religFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.ReligFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingReligionFragment"
         android:label="relig_fragment"
-        tools:layout="@layout/fragment_reg_relig" >
+        tools:layout="@layout/fragment_onboarding_religion" >
         <action
             android:id="@+id/action_religFragment_to_alcohFragment"
             app:destination="@id/alcohFragment"
@@ -160,9 +144,9 @@
     <!-- 음주정도 -->
     <fragment
         android:id="@+id/alcohFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.AlcohFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingAlcoholFragment"
         android:label="alcoh_fragment"
-        tools:layout="@layout/fragment_reg_alcoh" >
+        tools:layout="@layout/fragment_onboarding_alcohol" >
         <action
             android:id="@+id/action_alcohFragment_to_photoUpldFragment"
             app:destination="@id/photoUpldFragment"
@@ -175,9 +159,9 @@
     <!-- 사진선 -->
     <fragment
         android:id="@+id/photoUpldFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.PhotoUpldFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingPhotoFragment"
         android:label="photo_upld_fragment"
-        tools:layout="@layout/fragment_reg_photo_upld" >
+        tools:layout="@layout/fragment_onboarding_photo" >
         <action
             android:id="@+id/action_alcohFragment_to_loop"
             app:destination="@id/photoUpldFragment"

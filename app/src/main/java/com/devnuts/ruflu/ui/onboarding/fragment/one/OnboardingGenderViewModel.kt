@@ -1,7 +1,7 @@
-package com.devnuts.ruflu.ui.onboarding.viewmodel
+package com.devnuts.ruflu.ui.onboarding.fragment.one
 
 import androidx.lifecycle.ViewModel
 
-class GenderViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class OnboardingGenderViewModel : ViewModel() {
+
 }

@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentRegOccupBinding
+import com.devnuts.ruflu.databinding.FragmentOnboardingJobBinding
 import com.devnuts.ruflu.ui.onboarding.viewmodel.OccupViewModel
 
 /* 온보딩 - 9 : 직업 */
-class OccupFragment : Fragment() {
-    private var _binding: FragmentRegOccupBinding? = null
-    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+class OnboardingJobFragment : Fragment() {
+    private var _binding: FragmentOnboardingJobBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: OccupViewModel by viewModels()
 
     override fun onCreateView(
@@ -22,10 +22,7 @@ class OccupFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentRegOccupBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        _binding = FragmentOnboardingJobBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,5 +42,10 @@ class OccupFragment : Fragment() {
         binding.occupNextBnt.setOnClickListener {
             findNavController().navigate(R.id.action_occupFragment_to_religFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentRegNickNameBinding
+import com.devnuts.ruflu.databinding.FragmentOnboardingNickNameBinding
 import com.devnuts.ruflu.ui.onboarding.viewmodel.NickNameViewModel
 
 /* 온보딩 - 4 : 닉네임 */
-class NickNameFragment : Fragment() {
-    private var _binding: FragmentRegNickNameBinding? = null
-    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+class OnboardingNickNameFragment : Fragment() {
+    private var _binding: FragmentOnboardingNickNameBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: NickNameViewModel by viewModels()
 
     override fun onCreateView(
@@ -22,10 +22,7 @@ class NickNameFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentRegNickNameBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        _binding = FragmentOnboardingNickNameBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,5 +42,10 @@ class NickNameFragment : Fragment() {
         binding.nickNameNextBnt.setOnClickListener {
             findNavController().navigate(R.id.action_nickNameFragment_to_locationFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

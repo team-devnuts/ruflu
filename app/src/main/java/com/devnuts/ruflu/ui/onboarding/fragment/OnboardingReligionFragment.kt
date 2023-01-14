@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentRegReligBinding
+import com.devnuts.ruflu.databinding.FragmentOnboardingReligionBinding
 import com.devnuts.ruflu.ui.onboarding.viewmodel.ReligViewModel
 
 /* 온보딩 - 10 : 종교 */
-class ReligFragment : Fragment() {
-    private var _binding: FragmentRegReligBinding? = null
-    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+class OnboardingReligionFragment : Fragment() {
+    private var _binding: FragmentOnboardingReligionBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: ReligViewModel by viewModels()
 
     override fun onCreateView(
@@ -22,10 +22,7 @@ class ReligFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentRegReligBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        _binding = FragmentOnboardingReligionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,5 +42,10 @@ class ReligFragment : Fragment() {
         binding.religNextBnt.setOnClickListener {
             findNavController().navigate(R.id.action_religFragment_to_alcohFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentRegEduBinding
+import com.devnuts.ruflu.databinding.FragmentOnboardingAcademyBinding
 import com.devnuts.ruflu.ui.onboarding.viewmodel.EduViewModel
 
 /* 온보딩 - 8 : 학력 */
-class EduFragment : Fragment() {
-    private var _binding: FragmentRegEduBinding? = null
-    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+class OnboardingAcademyFragment : Fragment() {
+    private var _binding: FragmentOnboardingAcademyBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: EduViewModel by viewModels()
 
     override fun onCreateView(
@@ -22,10 +22,7 @@ class EduFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentRegEduBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        _binding = FragmentOnboardingAcademyBinding.inflate(inflater, container, false)
         return binding.root
     }
 

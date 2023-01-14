@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentRegAlcohBinding
+import com.devnuts.ruflu.databinding.FragmentOnboardingAlcoholBinding
 import com.devnuts.ruflu.ui.onboarding.viewmodel.AlcohViewModel
 
 /* 온보딩 - 11 : 주량 정도 */
-class AlcohFragment : Fragment() {
-    private var _binding: FragmentRegAlcohBinding? = null
-    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+class OnboardingAlcoholFragment : Fragment() {
+    private var _binding: FragmentOnboardingAlcoholBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: AlcohViewModel by viewModels()
 
     override fun onCreateView(
@@ -22,10 +22,7 @@ class AlcohFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentRegAlcohBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        _binding = FragmentOnboardingAlcoholBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,5 +41,10 @@ class AlcohFragment : Fragment() {
         binding.alcohNextBnt.setOnClickListener {
             findNavController().navigate(R.id.action_alcohFragment_to_photoUpldFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

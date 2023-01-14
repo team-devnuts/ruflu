@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.ui.onboarding.fragment.BirthFragment" />
+            type="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingAgeFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

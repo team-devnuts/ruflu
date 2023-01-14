@@ -8,14 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentRegBirthBinding
+import com.devnuts.ruflu.databinding.FragmentOnboardingAgeBinding
 import com.devnuts.ruflu.ui.onboarding.viewmodel.BirthViewModel
 
 /* 온보딩 - 3 : 생년원일 */
-class BirthFragment : Fragment() {
-
-    private var _binding: FragmentRegBirthBinding? = null
-    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
+class OnboardingAgeFragment : Fragment() {
+    private var _binding: FragmentOnboardingAgeBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: BirthViewModel by viewModels()
 
     override fun onCreateView(
@@ -23,9 +22,7 @@ class BirthFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRegBirthBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        _binding = FragmentOnboardingAgeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,5 +42,10 @@ class BirthFragment : Fragment() {
         binding.birthNextBnt.setOnClickListener {
             findNavController().navigate(R.id.action_birthFragment_to_nickNameFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

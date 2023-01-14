@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.ui.onboarding.fragment.LocationFragment" />
+            type="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingLocationFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

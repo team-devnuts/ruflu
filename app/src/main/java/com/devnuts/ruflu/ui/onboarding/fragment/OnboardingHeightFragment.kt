@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentRegHeightBinding
+import com.devnuts.ruflu.databinding.FragmentOnboardingHeightBinding
 import com.devnuts.ruflu.ui.onboarding.viewmodel.HeightViewModel
 
 /* 온보딩 - 6 : 키  */
-class HeightFragment : Fragment() {
-    private var _binding: FragmentRegHeightBinding? = null
+class OnboardingHeightFragment : Fragment() {
+    private var _binding: FragmentOnboardingHeightBinding? = null
     private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
     private val viewModel: HeightViewModel by viewModels()
 
@@ -22,10 +22,7 @@ class HeightFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentRegHeightBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        _binding = FragmentOnboardingHeightBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,5 +42,10 @@ class HeightFragment : Fragment() {
         binding.heiNextBnt.setOnClickListener {
             findNavController().navigate(R.id.action_heightFragment_to_formFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
