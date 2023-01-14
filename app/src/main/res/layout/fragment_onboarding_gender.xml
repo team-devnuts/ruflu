@@ -5,13 +5,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.ui.onboarding.fragment.HeightFragment" />
+            type="com.devnuts.ruflu.ui.onboarding.viewmodel.GenderViewModel" />
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/ruflu_almostWhite">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_loading"
@@ -41,7 +42,7 @@
                 android:id="@+id/tv_loading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6/12"
+                android:text="2/12"
                 android:includeFontPadding="false"
                 style="@style/TextStyle5"
                 app:layout_constraintTop_toTopOf="parent"
@@ -58,14 +59,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="키를 설정해주세요"
+            android:text="성별을 알려주세요"
             android:includeFontPadding="false"
             style="@style/TextStyle2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_loading" />
 
+
         <TextView
-            android:id="@+id/heiNextBnt"
+            android:id="@+id/genderNextBnt"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:layout_marginLeft="20dp"

@@ -5,13 +5,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.devnuts.ruflu.ui.onboarding.fragment.PhotoUpldFragment" />
+            type="com.devnuts.ruflu.ui.onboarding.fragment.ReligFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/ruflu_almostWhite">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_loading"
@@ -41,7 +41,7 @@
                 android:id="@+id/tv_loading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12/12"
+                android:text="10/12"
                 android:includeFontPadding="false"
                 style="@style/TextStyle5"
                 app:layout_constraintTop_toTopOf="parent"
@@ -58,14 +58,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="사진 로직"
+            android:text="종교를 선택해주세요"
             android:includeFontPadding="false"
             style="@style/TextStyle2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_loading" />
 
         <TextView
-            android:id="@+id/photoUpldNextBnt"
+            android:id="@+id/religNextBnt"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:layout_marginLeft="20dp"
