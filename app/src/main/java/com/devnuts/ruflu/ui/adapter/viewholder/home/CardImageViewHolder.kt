@@ -7,18 +7,18 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.ItemUserCardImagesBinding
-import com.devnuts.ruflu.ui.model.home.CardImageUIModel
+import com.devnuts.ruflu.ui.model.home.UserImageUIModel
 import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 
 class CardImageViewHolder(
     private val binding: ItemUserCardImagesBinding
-) : ModelViewHolder<CardImageUIModel>(binding) {
+) : ModelViewHolder<UserImageUIModel>(binding) {
 
-    override fun bindData(model: CardImageUIModel) {}
+    override fun bindData(model: UserImageUIModel) {}
 
     @SuppressLint("ObsoleteSdkInt")
-    override fun bindViews(model: CardImageUIModel, menuAdapterListener: ModelAdapterListener?) {
+    override fun bindViews(model: UserImageUIModel, adapterListener: ModelAdapterListener?) {
         binding.root.setBackgroundResource(R.drawable.user_card_style)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

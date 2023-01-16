@@ -7,16 +7,38 @@ import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.ItemUserCardBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.model.Model
-import com.devnuts.ruflu.ui.model.home.CardImageUIModel
-import com.devnuts.ruflu.ui.model.home.CardUIModel
+import com.devnuts.ruflu.ui.model.home.UserImageUIModel
+import com.devnuts.ruflu.ui.model.home.UserUIModel
 import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 
 class CardViewHolder(
     private val binding: ItemUserCardBinding
-) : ModelViewHolder<CardUIModel>(binding) {
+) : ModelViewHolder<UserUIModel>(binding) {
 
-    private val imagesAdapter: ModelRecyclerViewAdapter<CardImageUIModel> by lazy {
+    override fun bindData(model: UserUIModel) {
+        binding.cardViewName.text = model.nickName
+        binding.cardViewAge.text = "${UserUtil.getAge(model.birth)}"
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun bindViews(model: UserUIModel, adapterListener: ModelAdapterListener?) {
+        with(binding) {
+            vp2Image.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                }
+            })
+            vp2Image.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            vp2Image.offscreenPageLimit = 4
+            ci3Image.setViewPager(vp2Image)
+            vp2Image.adapter = imagesAdapter
+            ci3Image.createIndicators(imagesAdapter.itemCount, 0)
+        }
+        imagesAdapter.submitList(model.images)
+    }
+
+    private val imagesAdapter: ModelRecyclerViewAdapter<UserImageUIModel> by lazy {
         ModelRecyclerViewAdapter(object : ModelAdapterListener {
             override fun onClick(view: View, model: Model, position: Int) {}
 
@@ -26,28 +48,10 @@ class CardViewHolder(
                     MotionEvent.ACTION_UP -> view.performClick()
                 }
             }
+
+            override fun onSwipe(position: Int, direction: Int) {}
+
         })
-    }
-
-    override fun bindData(model: CardUIModel) {
-        binding.cardViewName.text = model.nick_nm
-        binding.cardViewAge.text = "${UserUtil.getAge(model.birth)}"
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    override fun bindViews(model: CardUIModel, menuAdapterListener: ModelAdapterListener?) {
-        binding.vp2Image.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        binding.vp2Image.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-            }
-        })
-        binding.vp2Image.offscreenPageLimit = 4
-        binding.ci3Image.setViewPager(binding.vp2Image)
-        binding.vp2Image.adapter = imagesAdapter
-        binding.ci3Image.createIndicators(imagesAdapter.itemCount, 0)
-
-        imagesAdapter.submitList(model.images)
     }
 
     private fun setCurrentPageItem(event: MotionEvent) {
