@@ -9,13 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentOnboardingHeightBinding
-import com.devnuts.ruflu.ui.onboarding.viewmodel.HeightViewModel
 
 /* 온보딩 - 6 : 키  */
 class OnboardingHeightFragment : Fragment() {
     private var _binding: FragmentOnboardingHeightBinding? = null
-    private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화 되지 x")
-    private val viewModel: HeightViewModel by viewModels()
+    private val binding get() = _binding!!
+    //private val viewModel: HeightViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,18 +28,12 @@ class OnboardingHeightFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        progressBar()
         initializeView()
-    }
-
-    private fun progressBar() {
-        val curProgressBar = binding.pbLoading
-        curProgressBar.progress = 50
     }
 
     private fun initializeView() {
         binding.heiNextBnt.setOnClickListener {
-            findNavController().navigate(R.id.action_heightFragment_to_formFragment)
+            findNavController().navigate(R.id.action_heightFragment_to_academyFragment)
         }
     }
 
