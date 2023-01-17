@@ -13,7 +13,7 @@ class OnboardingHeightViewModel : ViewModel() {
     val height: LiveData<Int> get() = _height
 
     fun initHeight(position: Int): List<Model> {
-        if (position > 0) _height.value = position
+        _height.value = position
 
         val heightRange = mutableListOf<HeightUIModel>()
         for (i in MIN..MAX) {

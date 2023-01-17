@@ -1,6 +1,7 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.two
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -61,6 +62,8 @@ class OnboardingAgeFragment : Fragment() {
 
     private fun initializeObserve() {
         viewModel.age.observe(viewLifecycleOwner) {
+            if (viewModel.age.value!! < 0) return@observe
+
             with(binding.btnAge) {
                 isSelected = true
                 isEnabled = true

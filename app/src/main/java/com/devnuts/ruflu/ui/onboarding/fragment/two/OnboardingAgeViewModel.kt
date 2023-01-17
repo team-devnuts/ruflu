@@ -14,7 +14,7 @@ class OnboardingAgeViewModel : ViewModel() {
     val age: LiveData<Int> get() = _age
 
     fun initAge(position: Int): List<Model> {
-        if (position > 0) _age.value = position // 초기 세팅 시, 버튼 비활성화를 위한 코드
+        _age.value = position
 
         val ageRange = mutableListOf<AgeUIModel>()
         for (i in MIN..MAX) {
