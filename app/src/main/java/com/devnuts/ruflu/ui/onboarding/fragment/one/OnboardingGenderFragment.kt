@@ -29,7 +29,7 @@ class OnboardingGenderFragment : Fragment() {
     private val genderAdapter: ModelRecyclerViewAdapter<Model> by lazy {
         ModelRecyclerViewAdapter(object : ModelAdapterListener {
             override fun onClick(view: View, model: Model, position: Int) {
-                when(model.type) {
+                when (model.type) {
                     CellType.GENDER_CEL -> {
                         val rv = binding.rvGender
                         viewModel.genderSingleChoice(rv, position)
@@ -40,6 +40,7 @@ class OnboardingGenderFragment : Fragment() {
 
             override fun onTouch(view: View, model: Model, event: MotionEvent) {
             }
+
             override fun onSwipe(position: Int, direction: Int) {}
         })
     }
@@ -56,7 +57,6 @@ class OnboardingGenderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        progressBar()
         setupNavigation()
 
         initializeObserve()
@@ -73,7 +73,7 @@ class OnboardingGenderFragment : Fragment() {
 
         binding.rvGender.adapter = genderAdapter
         genderLayoutManager = GridLayoutManager(requireContext(), 2)
-        genderLayoutManager = object  : GridLayoutManager(requireContext(), 2) {
+        genderLayoutManager = object : GridLayoutManager(requireContext(), 2) {
             override fun checkLayoutParams(lp: RecyclerView.LayoutParams): Boolean {
                 lp.width = ((width - 50) / spanCount)
                 return true
@@ -86,18 +86,16 @@ class OnboardingGenderFragment : Fragment() {
 
     private fun initializeObserve() {
         viewModel.gender.observe(viewLifecycleOwner) {
-            binding.btnGender.isSelected = true
+            with(binding.btnGender) {
+                isSelected = true
+                isEnabled = true
+            }
         }
     }
 
-    private fun progressBar() {
-        binding.pbLoading.progress = 0
-    }
-
-
     private fun setupNavigation() {
         binding.btnGender.setOnClickListener {
-            findNavController().navigate(R.id.action_genderFragment_to_birthFragment)
+            findNavController().navigate(R.id.action_genderFragment_to_ageFragment)
         }
     }
 
