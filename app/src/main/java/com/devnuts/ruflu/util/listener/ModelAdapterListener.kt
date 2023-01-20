@@ -7,4 +7,5 @@ import com.devnuts.ruflu.ui.model.Model
 interface ModelAdapterListener {
     fun onClick(view: View, model: Model, position: Int)
     fun onTouch(view: View, model: Model, event: MotionEvent)
+    fun onSwipe(position: Int, direction: Int)
 }

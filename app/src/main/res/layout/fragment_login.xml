@@ -1,68 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ruflu_almostWhite"
+    tools:context=".ui.signin.fragment.LoginFragment">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.devnuts.ruflu.ui.signin.viewmodel.LoginViewModel"/>
-    </data>
+    <!-- 온보딩 이미지 삽입해야 합니다.-->
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_onboarding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        tools:context=".ui.signin.fragment.LoginFragment">
+    <TextView
+        android:id="@+id/tv_mention"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="간편 로그인을 통해 회원가입을 진행하세요."
+        android:textColor="@color/ruflu_color_grey"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_kakaoLogin"
+        app:layout_constraintEnd_toEndOf="@id/btn_kakaoLogin"
+        app:layout_constraintStart_toStartOf="@id/btn_kakaoLogin" />
 
-        <!-- 온보딩 이미지 삽입해야 합니다.-->
-        <ImageView
-            android:id="@+id/iv_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/btn_kakaoLogin"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/kakao_login_large_wide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
-        <ImageView
-            android:id="@+id/btn_kakaoLogin"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="100dp"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/kakao_login_large_wide"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+    <Button
+        android:id="@+id/btn_phoneLogin"
+        android:layout_width="335dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_round"
+        android:text="전화번호로 로그인"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_kakaoLogin" />
 
-        <Button
-            android:id="@+id/btn_phoneLogin"
-            android:layout_width="335dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/button_round"
-            android:text="전화번호로 로그인"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/btn_kakaoLogin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteX="40dp" />
+    <TextView
+        android:id="@+id/tv_login_restore"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="계정을 찾고 싶으신가요?"
+        android:textAlignment="center"
+        android:textColor="@color/ruflu_color_grey"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_phoneLogin"
+        app:layout_constraintStart_toStartOf="@+id/btn_phoneLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btn_phoneLogin" />
 
-        <TextView
-            android:id="@+id/tv_login_restore"
-            android:layout_width="410dp"
-            android:layout_height="49dp"
-            android:text="로그인이 안되나요?"
-            android:padding="15dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="@+id/btn_phoneLogin"
-            app:layout_constraintStart_toStartOf="@+id/btn_phoneLogin"
-            app:layout_constraintTop_toBottomOf="@+id/btn_phoneLogin" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <TextView
+        android:id="@+id/tv_private_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입 시 루플루의 개인정보 취급 방침 및 이용 약관에 동의합니다."
+        android:textColor="@color/black"
+        android:textColorLink="@color/ruflu_main_orange"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_login_restore"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_restore" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

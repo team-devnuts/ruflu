@@ -11,11 +11,10 @@ import com.devnuts.ruflu.ui.adapter.HomePagerAdapter
 import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
-    private var savePosition: Int = 0
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager: ViewPager2
+
+    private var savePosition: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,30 +22,30 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-        tabLayout = binding.homeTabLayout
-        viewPager = binding.homeViewpager
-        initView()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tabLayout.getTabAt(savePosition)?.select()
+
+        initView()
+        setCompCallback()
     }
 
     private fun initView() {
         val homePagerAdapter = HomePagerAdapter(requireActivity())
         homePagerAdapter.addFragment(CardFragment())
 
-        viewPager.adapter = homePagerAdapter
-        viewPager.isUserInputEnabled = false
+        with(binding) {
+            vp2Home.adapter = homePagerAdapter
+            vp2Home.isUserInputEnabled = false
+        }
 
-        setCompCallback()
+        binding.tlHome.getTabAt(savePosition)?.select()
     }
 
     private fun setCompCallback() {
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        binding.vp2Home.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
             }

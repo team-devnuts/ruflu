@@ -23,7 +23,7 @@
             app:tabIndicatorHeight = tablayout 밑줄 값
         -->
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/home_tabLayout"
+            android:id="@+id/tl_home"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:tabTextColor="@color/black"
@@ -53,13 +53,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/user_detail_container"
+        android:id="@+id/rl_user_detail"
         android:layout_below="@id/tab_top_layout"
         android:background="@android:color/white"
         >
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/home_viewpager"
+            android:id="@+id/vp_2_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"

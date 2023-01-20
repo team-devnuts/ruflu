@@ -7,7 +7,7 @@
 
         <variable
             name="user"
-            type="com.devnuts.ruflu.ui.model.home.CardUIModel" />
+            type="com.devnuts.ruflu.ui.model.home.UserUIModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,129 +78,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-
-                    <LinearLayout
-                        android:id="@+id/scroll_in_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="10dp">
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/PROFILE_Q_GENDER" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.gender}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_WEI" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.wei}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_WEI" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.hei}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_OCCU" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.occu}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_OCCU_DTL" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.occu_dtl}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_RLGN" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.rign}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_ALCH" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.alch}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_SMK_YN" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.smk_yn}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_SMK_YN" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.mbti}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_FANCY" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.fancy}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_MBTI" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.intd}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_FANCY" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.hob}" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_INTD" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.qa1}" />
-
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@string/PROFILE_Q_HOB" />
-
-                        <TextView
-                            style="@style/ProfileTextTitleStyle"
-                            android:text="@{user.qa2}" />
-                    </LinearLayout>
                 </LinearLayout>
             </ScrollView>
         </RelativeLayout>

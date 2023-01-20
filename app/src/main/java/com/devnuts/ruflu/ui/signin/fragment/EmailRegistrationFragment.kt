@@ -16,7 +16,7 @@ import com.devnuts.ruflu.ui.signin.viewmodel.EmailRegistrationViewModel
 class EmailRegistrationFragment : Fragment() {
 
     private var _binding: FragmentEmailRegistrationBinding? = null
-    private val binding get() = _binding ?: error("View 참조 초기화 실패")
+    private val binding get() = _binding!!
     private val viewModel: EmailRegistrationViewModel by viewModels()
 
     override fun onCreateView(
@@ -26,7 +26,6 @@ class EmailRegistrationFragment : Fragment() {
     ): View {
 
         _binding = FragmentEmailRegistrationBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 

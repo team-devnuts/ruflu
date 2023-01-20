@@ -61,7 +61,26 @@
         <item>KR +82</item>
     </string-array>
   
-    <!--ruflue Like lv1-->
-    <string name="lv1TitleName">당신에게 호감을 표시한 이성</string>
-    <string name="lv2TitleName">당신이 좋아하는 이성</string>
+    <!-- like -->
+    <string name="some_title">당신에게 호감을 표시한 이성</string>
+    <string name="match_title">매칭된 이성 </string>
+
+    <!-- onboarding -->
+    <string name="onboarding_next_button">다음</string>
+    <string name="onboarding_one_progress">1/7</string>
+    <string name="onboarding_one_title">성별을 알려주세요</string>
+    <string name="onboarding_two_progress">2/7</string>
+    <string name="onboarding_two_title">나이가 어떻게 되시나요?</string>
+    <string name="onboarding_three_progress">3/7</string>
+    <string name="onboarding_three_title">닉네임을 입력해주세요</string>
+    <string name="onboarding_three_text_hint">ex. 뚱딩</string>
+    <string name="onboarding_four_title">키를 설정해주세요</string>
+    <string name="onboarding_four_process">4/7</string>
+    <string name="onboarding_five_title">학력을 기입해주세요</string>
+    <string name="onboarding_five_process">5/7</string>
+    <string name="onboarding_six_title">직업을 선택해주세요</string>
+    <string name="onboarding_six_process">6/7</string>
+    <string name="onboarding_seven_title">좋아하는 이상형을 선택해주세요</string>
+    <string name="onboarding_seven_process">7/7</string>
+
 </resources>

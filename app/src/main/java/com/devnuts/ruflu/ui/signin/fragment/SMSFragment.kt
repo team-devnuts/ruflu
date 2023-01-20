@@ -15,11 +15,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentSmsBinding
+import com.devnuts.ruflu.ui.signin.viewmodel.SMSViewModel
 
 class SMSFragment : Fragment() {
     private var _binding: FragmentSmsBinding? = null
-    private val binding get() = _binding ?: error("View 참조 실패")
+    private val binding get() = _binding!!
     private val viewModel: SMSViewModel by viewModels()
+
     private lateinit var inputMethodManager: InputMethodManager
 
     override fun onCreateView(
@@ -28,8 +30,6 @@ class SMSFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSmsBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
         return binding.root
     }
 
@@ -53,7 +53,7 @@ class SMSFragment : Fragment() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initViewSetting() {
-        /* recycler View 로 확장해야할 부분 */
+        /* recycler View 로 확장 해야할 부분 */
         binding.etCountry.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 Toast.makeText(context, "나라 클릭", Toast.LENGTH_SHORT).show()
@@ -77,5 +77,10 @@ class SMSFragment : Fragment() {
         binding.ivBack.setOnClickListener {
             activity?.onBackPressed()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

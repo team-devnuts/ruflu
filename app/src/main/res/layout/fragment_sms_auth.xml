@@ -6,7 +6,7 @@
     <data>
         <variable
             name="observer"
-            type="com.devnuts.ruflu.ui.signin.fragment.SMSViewModel.Observer" />
+            type="com.devnuts.ruflu.ui.signin.viewmodel.SMSViewModel.Observer" />
     </data>
 
 

@@ -11,7 +11,7 @@ abstract class ModelViewHolder<M : Model>(
     open fun bindData(model: M) {}
     open fun bindViews(
         model: M,
-        menuAdapterListener: ModelAdapterListener?
+        adapterListener: ModelAdapterListener?
     ) {
     }
     open fun bindDataWithPayLoads(

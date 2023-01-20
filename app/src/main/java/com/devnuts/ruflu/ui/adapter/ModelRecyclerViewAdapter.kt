@@ -9,9 +9,8 @@ import com.devnuts.ruflu.ui.model.CellType
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 import com.devnuts.ruflu.util.mapper.ModelViewHolderMapper
-import timber.log.Timber
 
-class ModelRecyclerViewAdapter<M: Model>(
+open class ModelRecyclerViewAdapter<M: Model>(
     private val modelAdapterListener: ModelAdapterListener? = null
 ): RecyclerView.Adapter<ModelViewHolder<M>>() {
     private var modelList: MutableList<Model> = mutableListOf()
@@ -21,13 +20,11 @@ class ModelRecyclerViewAdapter<M: Model>(
     override fun getItemViewType(position: Int) = modelList[position].type.ordinal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModelViewHolder<M> {
-        Log.d("flow", "---> ${CellType.values()[viewType]}")
         return ModelViewHolderMapper.map(parent, CellType.values()[viewType], modelAdapterListener)
     }
 
     override fun onBindViewHolder(holder: ModelViewHolder<M>, position: Int) {
         val model = modelList[position] as M
-        Log.d("flow", model.type.name)
         holder.bindData(model)
         holder.bindViews(model, modelAdapterListener)
     }
@@ -37,8 +34,6 @@ class ModelRecyclerViewAdapter<M: Model>(
         newList?.let { modelList = newList.toMutableList() }
         notifyDataSetChanged()
     }
-
-
 
     fun updateModelAtPosition(model: Model, position: Int) {
         if (modelList.size <= position) modelList.add(position, model)
@@ -53,4 +48,5 @@ class ModelRecyclerViewAdapter<M: Model>(
         )).toMutableList()
         notifyItemRangeChanged(0,modelList.size-2)
     }
+
 }
