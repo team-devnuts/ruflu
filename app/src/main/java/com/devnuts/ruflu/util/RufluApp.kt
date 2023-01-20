@@ -40,8 +40,9 @@ class RufluApp : Application() {
     }
 
     companion object {
-        const val url = "http://10.0.2.2"
-        const val port = 8005
+        const val url = "http://192.168.0.60"
+        //const val url = "http://192.168.0.21"
+        const val port = 3000
         lateinit var retrofit: Retrofit
         lateinit var appNotification: AppNotification
         lateinit var sharedPreference: CustomSharedPreference
