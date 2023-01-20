@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.signin.fragment
+package com.devnuts.ruflu.ui.signin.viewmodel
 
 import android.view.KeyEvent
 import android.widget.EditText
@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.BR
 import java.util.regex.Pattern
 
-class SMSViewModel() : ViewModel() {
+class SMSViewModel : ViewModel() {
     private val verifyCode = arrayListOf("", "", "", "")
     val verifyCodeEtList = arrayListOf<EditText>()
 

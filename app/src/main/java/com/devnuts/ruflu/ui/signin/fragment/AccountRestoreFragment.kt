@@ -11,7 +11,7 @@ import com.devnuts.ruflu.databinding.FragmentAccountRestoreBinding
 
 class AccountRestoreFragment : Fragment() {
     private var _binding: FragmentAccountRestoreBinding? = null
-    private val binding get() = _binding ?: error("View 참조 초기화 실패")
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,8 +19,6 @@ class AccountRestoreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAccountRestoreBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
         return binding.root
     }
 
@@ -41,5 +39,10 @@ class AccountRestoreFragment : Fragment() {
         binding.accountRestoreBnt.setOnClickListener {
             findNavController().navigate(R.id.action_accountRestoreFragment_to_accountRestoreAuthFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

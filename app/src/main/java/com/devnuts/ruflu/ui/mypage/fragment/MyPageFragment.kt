@@ -7,27 +7,34 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.databinding.FragmentMypageBinding
 import com.devnuts.ruflu.ui.mypage.viewmodel.MyPageViewModel
 
 class MyPageFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = MyPageFragment()
-    }
-
-    private lateinit var viewModel: MyPageViewModel
+    private var _binding: FragmentMypageBinding? = null
+    val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_mypage, container, false)
+    ): View {
+        _binding = FragmentMypageBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MyPageViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initView()
+    }
+
+    private fun initView() {
+
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

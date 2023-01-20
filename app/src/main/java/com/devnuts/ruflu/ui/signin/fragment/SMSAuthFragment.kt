@@ -7,10 +7,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentSmsAuthBinding
+import com.devnuts.ruflu.ui.signin.viewmodel.SMSViewModel
 
 class SMSAuthFragment : Fragment() {
     private var _binding: FragmentSmsAuthBinding? = null
-    private val binding get() = _binding ?: error("View 참조 실패")
+    private val binding get() = _binding!!
     private val viewModel: SMSViewModel by viewModels()
 
     override fun onCreateView(
@@ -19,7 +20,6 @@ class SMSAuthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSmsAuthBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.observer = viewModel.Observer()
 
         return binding.root
@@ -62,5 +62,10 @@ class SMSAuthFragment : Fragment() {
         binding.phoneAuthBtn.setOnClickListener {
             findNavController().navigate(R.id.action_smsAuthFragment_to_registerEmailFragment)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

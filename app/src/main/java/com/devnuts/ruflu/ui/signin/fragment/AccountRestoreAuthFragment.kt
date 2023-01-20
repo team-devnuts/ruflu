@@ -13,7 +13,7 @@ import com.devnuts.ruflu.ui.signin.viewmodel.AccountRestoreViewModel
 
 class AccountRestoreAuthFragment : Fragment() {
     private var _binding: FragmentAccountRestoreAuthBinding? = null
-    private val binding get() = _binding ?: error("View 참조 초기화 실패")
+    private val binding get() = _binding!!
     private val viewModel: AccountRestoreViewModel by viewModels()
 
     override fun onCreateView(
@@ -21,9 +21,7 @@ class AccountRestoreAuthFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // 레이아웃이 참조하는 변수는 자동으로 대입되지 않기 때문에 뷰 측 onCreate(onCreateView) 로 돌아와 연결시켜야한다
         _binding = FragmentAccountRestoreAuthBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -59,5 +57,10 @@ class AccountRestoreAuthFragment : Fragment() {
         binding.ivBack.setOnClickListener {
             activity?.onBackPressed()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
