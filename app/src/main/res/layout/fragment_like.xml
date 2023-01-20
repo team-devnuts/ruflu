@@ -16,7 +16,7 @@
         android:elevation="5dp"
         >
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/ruflu_tabLayout"
+            android:id="@+id/tl_like"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:tabTextColor="@color/black"
@@ -27,13 +27,12 @@
             >
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/ruflu_ruflu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ruflu"
                 />
+
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/ruflu_NB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NearBy"
@@ -51,7 +50,7 @@
     </LinearLayout>
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/ruflu_viewpager"
+        android:id="@+id/vp_2_like"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tab_top_layout"

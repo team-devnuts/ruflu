@@ -1,9 +1,13 @@
 package com.devnuts.ruflu.ui.like.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.devnuts.ruflu.data.api.response.card.UserModel
+import com.devnuts.ruflu.data.api.response.card.toCardUIModel
 import com.devnuts.ruflu.domain.repository.SomeRepository
-import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
+import com.devnuts.ruflu.ui.model.CellType
+import com.devnuts.ruflu.ui.model.home.UserUIModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,67 +17,49 @@ class SomeViewModel : ViewModel() {
     private val repository = SomeRepository()
 
     private val _someUser by lazy {
-        MutableLiveData<ArrayList<UserDetailUIModel>>().also {
+        MutableLiveData<List<UserUIModel>>().also {
             loadSomeUser()
         }
     }
-    val someUser: MutableLiveData<ArrayList<UserDetailUIModel>> get() = _someUser
+    val someUser: MutableLiveData<List<UserUIModel>> get() = _someUser
 
-    private val _matchUser by lazy {
-        MutableLiveData<ArrayList<UserDetailUIModel>>().also {
-            loadMatchUser()
-        }
-    }
-    val matchUser: MutableLiveData<ArrayList<UserDetailUIModel>> get() = _matchUser
 
     private fun loadSomeUser() {
-        val call = repository.getSeLv1User()
+        val call = repository.getLikeMeList()
 
-        call.enqueue(object : Callback<List<UserDetailUIModel>> {
-            override fun onResponse(call: Call<List<UserDetailUIModel>>, response: Response<List<UserDetailUIModel>>) {
+        call.enqueue(object : Callback<ArrayList<UserModel>> {
+            override fun onResponse(
+                call: Call<ArrayList<UserModel>>,
+                response: Response<ArrayList<UserModel>>
+            ) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
-                    val nbUserList: List<UserDetailUIModel>? = response.body()
+                    val users: ArrayList<UserModel>? = response.body()
                     _someUser.value =
-                        if (nbUserList != null) nbUserList as ArrayList<UserDetailUIModel> else ArrayList()
+                        users?.map { user ->
+                            user.toCardUIModel(CellType.SOME_LIKE_CEL)
+                        }
                 } else {
                     Timber.d(response.message())
                 }
             }
 
-            override fun onFailure(call: Call<List<UserDetailUIModel>>, t: Throwable) {
+            override fun onFailure(call: Call<ArrayList<UserModel>>, t: Throwable) {
                 Timber.tag(":: callback fail ::").e(t)
             }
         })
     }
 
-    private fun loadMatchUser() {
-        val call = repository.getSeLv2User()
-
-        call.enqueue(object : Callback<List<UserDetailUIModel>> {
-            override fun onResponse(call: Call<List<UserDetailUIModel>>, response: Response<List<UserDetailUIModel>>) {
-                if (response.isSuccessful) {
-                    Timber.d("callback success")
-                    val nbUserList: List<UserDetailUIModel>? = response.body()
-                    _matchUser.value =
-                        if (nbUserList != null) nbUserList as ArrayList<UserDetailUIModel> else ArrayList()
-                }
-            }
-
-            override fun onFailure(call: Call<List<UserDetailUIModel>>, t: Throwable) {
-                Timber.tag(":: callback fail ::").e(t)
-            }
-        })
-    }
 
     fun insertMatch(userId: String) {
         val call = repository.insertSeLikeLv2(userId)
+
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
                     val message = response.body()
-                    // _lv2User.value = if (nbUserList != null) nbUserList as ArrayList<LikeLv2User> else ArrayList()
+                    // _lv2User.value = if (nbUserList != null) nbUserList as List<LikeLv2User> else List()
                     // 매칭시 알림화면
                 }
             }
@@ -84,7 +70,7 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    fun removeSomeUser(user: UserDetailUIModel?) {
+    fun removeSomeUser(user: UserModel?) {
         val userId = user?.user_id
         val call = repository.deleteLikeUser(userId)
 
@@ -93,7 +79,7 @@ class SomeViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     Timber.d("callback success")
                     val message = response.body()
-                    // _lv2User.value = if (nbUserList != null) nbUserList as ArrayList<LikeLv2User> else ArrayList()
+                    // _lv2User.value = if (nbUserList != null) nbUserList as List<LikeLv2User> else List()
                 }
             }
 
@@ -103,9 +89,7 @@ class SomeViewModel : ViewModel() {
         })
     }
 
-    fun sendMessageAskingTalkToUser(user: UserDetailUIModel?) {}
+    fun sendMessageAskingTalkToUser(user: UserModel?) {}
 
     val getSomeUser = { pos: Int -> _someUser.value?.get(pos) }
-
-    val getMatchUser = { pos: Int -> _matchUser.value?.get(pos) }
 }

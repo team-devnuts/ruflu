@@ -23,7 +23,7 @@
             >
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/se_like_lv1_user_img"
+                    android:id="@+id/civ_some"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"

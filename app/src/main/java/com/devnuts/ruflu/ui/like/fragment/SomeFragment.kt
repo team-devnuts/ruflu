@@ -2,126 +2,112 @@ package com.devnuts.ruflu.ui.like.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import android.widget.RelativeLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.data.api.response.card.UserModel
 import com.devnuts.ruflu.databinding.FragmentSomeBinding
-import com.devnuts.ruflu.ui.adapter.SomeAdapter
+import com.devnuts.ruflu.ui.adapter.SwipeAdapter
+import com.devnuts.ruflu.ui.common.UserDetailFragment
 import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
-import com.devnuts.ruflu.ui.like.viewmodel.LikeSharedViewModel
 import com.devnuts.ruflu.ui.like.viewmodel.SomeViewModel
-import com.devnuts.ruflu.ui.model.home.UserDetailUIModel
+import com.devnuts.ruflu.ui.model.Model
+import com.devnuts.ruflu.ui.model.home.UserUIModel
+import com.devnuts.ruflu.util.listener.ModelAdapterListener
 import timber.log.Timber
 
 class SomeFragment : Fragment() {
-    private lateinit var viewModel: SomeViewModel
-    private lateinit var adapter: SomeAdapter
-    private lateinit var binding: FragmentSomeBinding
-    private lateinit var callback: OnBackPressedCallback
-    private lateinit var likeUserDetailFragment: LikeUserDetailFragment
+    /* 정리 필요 */
+    private lateinit var userDetailFragment: UserDetailFragment
     private lateinit var childFragmentTransaction: FragmentTransaction
-    private lateinit var userDetailContainer: RelativeLayout
-    private lateinit var recyclerView: RecyclerView
-    private val sharedViewModel: LikeSharedViewModel by viewModels()
+    private lateinit var callback: OnBackPressedCallback
+
+    private var _binding: FragmentSomeBinding? = null
+    val binding get() = _binding!!
     private val someViewModel: SomeViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SomeViewModel::class.java)
+    private val someAdapter: SwipeAdapter<Model> by lazy {
+        SwipeAdapter(object: ModelAdapterListener {
+            override fun onClick(view: View, model: Model, position: Int) {
+                userDetailFragment = UserDetailFragment(model as UserUIModel)
+
+                childFragmentTransaction = childFragmentManager.beginTransaction()
+                childFragmentTransaction
+                    .add(R.id.rl_user_detail, userDetailFragment, "child")
+                    .addToBackStack(null)
+                    .commit()
+
+                binding.rlUserDetail.visibility = View.VISIBLE
+            }
+
+            override fun onTouch(view: View, model: Model, event: MotionEvent) {}
+
+            override fun onSwipe(position: Int, direction: Int) {
+                /** 32 right 좋아요, 16 left  싫어요 **/
+                if (direction == 32) {
+                    someViewModel.insertMatch(someViewModel.getSomeUser(position)!!.userId)
+                }
+                // 현재 임시
+                someViewModel.someUser.value?.toMutableList()?.remove(someViewModel.getSomeUser(position))
+            }
+        })
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSomeBinding.inflate(inflater, container, false)
-        userDetailContainer = binding.userDetailContainer
-        recyclerView = binding.rufluSeRecycle
-
-        val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        recyclerView.layoutManager = layoutManager
-
+        _binding = FragmentSomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewModel()
+
+        setupAdapter()
+        initObserve()
     }
 
-    private fun initViewModel() {
+    private fun setupAdapter() {
+        binding.rvSome.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        binding.rvSome.adapter = someAdapter
+        val helper = ItemTouchHelper(SomeTouchHelperCallback(someAdapter))
+        helper.attachToRecyclerView(binding.rvSome)
+    }
+
+    private fun initObserve() {
         someViewModel.someUser.observe(viewLifecycleOwner) {
-            changeAdapter()
+            val model = it as List<Model>
+            someAdapter.submitList(model)
         }
     }
 
-    private fun changeAdapter() {
-        if (recyclerView.adapter == null) {
-            adapter = createAdapter()
-            initAdapterListener()
-            val helper = ItemTouchHelper(SomeTouchHelperCallback(adapter))
-            helper.attachToRecyclerView(recyclerView)
-        }
-
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun initAdapterListener() {
-        adapter.setItemClickListener(object : SomeAdapter.OnItemClickListener {
-            override fun onClick(v: View, position: Int) {
-
-                val userDtl = someViewModel.getSomeUser(position)
-                if (userDtl != null)
-                    sharedViewModel.setUserDtl(userDtl)
-
-                likeUserDetailFragment = LikeUserDetailFragment()
-                childFragmentTransaction = childFragmentManager.beginTransaction()
-                childFragmentTransaction
-                    .add(R.id.user_detail_container, likeUserDetailFragment, "child")
-                    .addToBackStack(null)
-                    .commit()
-
-                userDetailContainer.visibility = View.VISIBLE
-            }
-        })
-
-        adapter.setItemSwipeListener(object : SomeAdapter.OnItemSwipeListener {
-            override fun onSwipe(user: UserDetailUIModel, direction: Int) {
-                // 32 right 좋아요
-                // 16 left  싫어요
-                Timber.tag("onSwipe").d("direction :  $direction")
-
-                if (direction == 32) {
-                    someViewModel.insertMatch(user.user_id)
-                }
-            }
-        })
-    }
-
-    private fun createAdapter(): SomeAdapter {
-        return SomeAdapter(someViewModel.someUser.value!!)
-    }
-
+    /* 정리 필요 */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 Timber.d("onBackPressedCallback")
-                childFragmentManager.beginTransaction().remove(likeUserDetailFragment).commit()
+                childFragmentManager.beginTransaction().remove(userDetailFragment).commit()
 
-                userDetailContainer.visibility = View.GONE
+                binding.rlUserDetail.visibility = View.GONE
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
 }
