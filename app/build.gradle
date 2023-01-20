@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.gms.google-services'
+    id "com.google.dagger.hilt.android"
     //id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
@@ -39,7 +40,7 @@ android {
         }
 
         manifestPlaceholders = [kakaoLoginKey: kakaoLoginKey]
-        // buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
+        //buildConfigField "String", "KAKAO_LOGIN_KEY", properties['kakao.login.key']
     }
 
     buildTypes {
@@ -195,4 +196,9 @@ dependencies {
      */
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    // Hilt
+    implementation 'com.google.dagger:hilt-android:2.41'
+    kapt 'com.google.dagger:hilt-compiler:2.41'
+
 }
