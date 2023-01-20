@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.onboarding.fragment
+package com.devnuts.ruflu.ui.onboarding.fragment.eight
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import com.devnuts.ruflu.databinding.FragmentOnboardingPhotoBinding
 class OnboardingPhotoFragment : Fragment() {
     private var _binding: FragmentOnboardingPhotoBinding? = null
     private val binding get() = _binding!!
-    //private val viewModel: PhotoUpldViewModel by viewModels()
+    private val viewModel: OnboardingPhotoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

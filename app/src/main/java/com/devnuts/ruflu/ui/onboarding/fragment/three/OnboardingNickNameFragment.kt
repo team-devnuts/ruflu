@@ -15,7 +15,7 @@ import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentOnboardingNickNameBinding
 
 
-/* 온보딩 - 4 : 닉네임 */
+/* 온보딩 - 3 : 닉네임 */
 class OnboardingNickNameFragment : Fragment() {
     private var _binding: FragmentOnboardingNickNameBinding? = null
     private val binding get() = _binding!!

@@ -19,7 +19,7 @@
     <color name="ruflu_third_gray">#898989</color>
     <color name="ruflu_second_gray">#636363</color>
     <color name="ruflu_main_green">#6ad255</color>
-    <color name="ruflu_fifth_gray">#f0f0f0</color>
+    <color name="ruflu_unselected_gray">#f0f0f0</color>
     <color name="ruflu_main_red">#d7260d</color>
     <color name="ruflu_main_black">#3e3e3e</color>
     <color name="ruflu_almostWhite">#fbfbfb</color>
@@ -27,7 +27,9 @@
     <color name="ruflu_white">#ffffff</color>
     <color name="progressbar_grey">#e5e5e5</color>
     <color name="coral">#fa6550</color>
-    <color name="ruflu_main_orange10">#1Aff9a24</color>
+    <color name="login_background">#F6BDB5</color>
+    <color name="ruflu_login">#1Aff9a24</color>
+    <color name="ruflu_fifth_gray">#f0f0f0</color>
 
 
     <color name="ruflu_color_transparent">#e8efff</color>

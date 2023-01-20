@@ -12,14 +12,11 @@ class AgeViewHolder(
     override fun bindData(model: AgeUIModel) {
         binding.tvText.text = model.age.toString()
         itemView.isSelected = model.isSelected
-
     }
 
     override fun bindViews(model: AgeUIModel, adapterListener: ModelAdapterListener?) {
         itemView.setOnClickListener {
             adapterListener?.onClick(it, model, absoluteAdapterPosition)
         }
-
-
     }
 }

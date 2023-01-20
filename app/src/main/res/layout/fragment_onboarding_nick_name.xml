@@ -30,7 +30,7 @@
                 android:layout_marginStart="20dp"
                 android:indeterminate="false"
                 android:max="100"
-                android:progress="30"
+                android:progress="43"
                 android:progressDrawable="@drawable/style_progressbar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_loading"
@@ -95,6 +95,7 @@
             android:background="@drawable/onboard_button_selector"
             android:gravity="center"
             android:text="@string/onboarding_next_button"
+            android:enabled="false"
             android:textColor="@color/ruflu_white"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

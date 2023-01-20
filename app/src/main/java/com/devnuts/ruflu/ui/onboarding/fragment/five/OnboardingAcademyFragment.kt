@@ -20,7 +20,7 @@ import com.devnuts.ruflu.ui.model.onboarding.AcademyUIModel
 import com.devnuts.ruflu.ui.model.onboarding.GenderUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 
-/* 온보딩 - 8 : 학력 */
+/* 온보딩 - 5 : 학력 */
 class OnboardingAcademyFragment : Fragment() {
     private var _binding: FragmentOnboardingAcademyBinding? = null
     private val binding get() = _binding!!
@@ -33,7 +33,6 @@ class OnboardingAcademyFragment : Fragment() {
             override fun onClick(view: View, model: Model, position: Int) {
                 when (model.type) {
                     CellType.ACADEMY_CEL -> {
-                        val m = model as AcademyUIModel
                         academyAdapter.submitList(viewModel.initAcademy(position))
                     }
 

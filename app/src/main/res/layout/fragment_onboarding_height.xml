@@ -29,7 +29,7 @@
                 android:layout_marginStart="20dp"
                 android:indeterminate="false"
                 android:max="100"
-                android:progress="40"
+                android:progress="58"
                 android:progressDrawable="@drawable/style_progressbar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_loading"

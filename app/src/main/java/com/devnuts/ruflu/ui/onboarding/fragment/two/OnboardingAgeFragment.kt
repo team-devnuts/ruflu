@@ -72,6 +72,8 @@ class OnboardingAgeFragment : Fragment() {
     }
 
     private fun initializeRecyclerView() {
+        binding.btnAge.isEnabled = false
+
         ageAdapter.submitList(viewModel.initAge(-1))
 
         with(binding.rvAge) {

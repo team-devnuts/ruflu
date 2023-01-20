@@ -5,15 +5,15 @@
     android:id="@+id/navigation_register"
     app:startDestination="@id/genderFragment">
 
-    <!-- 성별선택 -->
+    <!-- 성별 선택 -->
     <fragment
         android:id="@+id/genderFragment"
         android:name="com.devnuts.ruflu.ui.onboarding.fragment.one.OnboardingGenderFragment"
         android:label="gender_fragment"
         tools:layout="@layout/fragment_onboarding_gender" >
         <action
-            android:id="@+id/action_genderFragment_to_birthFragment"
-            app:destination="@id/birthFragment"
+            android:id="@+id/action_genderFragment_to_ageFragment"
+            app:destination="@id/ageFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
@@ -21,14 +21,14 @@
 
     </fragment>
 
-    <!-- 생년월일 선택 -->
+    <!-- 나이 선택 -->
     <fragment
-        android:id="@+id/birthFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingAgeFragment"
-        android:label="birth_fragment"
-        tools:layout="@layout/fragment_onboarding_age" >
+        android:id="@+id/ageFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.two.OnboardingAgeFragment"
+        android:label="age_fragment"
+        tools:layout="@layout/fragment_onboarding_age">
         <action
-            android:id="@+id/action_birthFragment_to_nickNameFragment"
+            android:id="@+id/action_ageFragment_to_nickNameFragment"
             app:destination="@id/nickNameFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
@@ -37,29 +37,14 @@
     </fragment>
 
 
-    <!-- 닉네임작성 -->
+    <!-- 닉네임 작성 -->
     <fragment
         android:id="@+id/nickNameFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingNickNameFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.three.OnboardingNickNameFragment"
         android:label="nick_name_fragment"
         tools:layout="@layout/fragment_onboarding_nick_name" >
         <action
-            android:id="@+id/action_nickNameFragment_to_locationFragment"
-            app:destination="@id/locationFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out" />
-    </fragment>
-
-    <!-- 위치설정 -->
-    <fragment
-        android:id="@+id/locationFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingLocationFragment"
-        android:label="location_fragment"
-        tools:layout="@layout/fragment_onboarding_location" >
-        <action
-            android:id="@+id/action_locationFragment_to_heightFragment"
+            android:id="@+id/action_nickNameFragment_to_heightFragment"
             app:destination="@id/heightFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
@@ -70,86 +55,57 @@
     <!-- 키 선택 -->
     <fragment
         android:id="@+id/heightFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingHeightFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.four.OnboardingHeightFragment"
         android:label="height_fragment"
         tools:layout="@layout/fragment_onboarding_height" >
         <action
-            android:id="@+id/action_heightFragment_to_formFragment"
-            app:destination="@id/formFragment"
+            android:id="@+id/action_heightFragment_to_academyFragment"
+            app:destination="@id/academyFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out" />
     </fragment>
 
+    <!-- 학력 선택 -->
     <fragment
-        android:id="@+id/formFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingFancyFragment"
-        android:label="form_fragment"
-        tools:layout="@layout/fragment_onboarding_fancy" >
+        android:id="@+id/academyFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.five.OnboardingAcademyFragment"
+        android:label="academy_fragment"
+        tools:layout="@layout/fragment_onboarding_academy">
         <action
-            android:id="@+id/action_formFragment_to_eduFragment"
-            app:destination="@id/eduFragment"
+            android:id="@+id/action_academyFragment_to_jobFragment"
+            app:destination="@id/jobFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out" />
     </fragment>
 
-    <!-- 학력선택 -->
+    <!-- 직업 선택 -->
     <fragment
-        android:id="@+id/eduFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingAcademyFragment"
-        android:label="edu_fragment"
-        tools:layout="@layout/fragment_onboarding_academy" >
+        android:id="@+id/jobFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.six.OnboardingJobFragment"
+        android:label="job_fragment"
+        tools:layout="@layout/fragment_onboarding_job">
         <action
-            android:id="@+id/action_eduFragment_to_occupFragment"
-            app:destination="@id/occupFragment"
+            android:id="@+id/action_jobFragment_to_fancyFragment"
+            app:destination="@id/fancyFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out" />
     </fragment>
 
-    <!-- 직업선택 -->
+    <!-- 이상형 선택 -->
     <fragment
-        android:id="@+id/occupFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingJobFragment"
-        android:label="occup_fragment"
-        tools:layout="@layout/fragment_onboarding_job" >
+        android:id="@+id/fancyFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.seven.OnboardingFancyFragment"
+        android:label="fancy_fragment"
+        tools:layout="@layout/fragment_onboarding_fancy">
         <action
-            android:id="@+id/action_occupFragment_to_religFragment"
-            app:destination="@id/religFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out" />
-    </fragment>
-
-    <!-- 종교선택 -->
-    <fragment
-        android:id="@+id/religFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingReligionFragment"
-        android:label="relig_fragment"
-        tools:layout="@layout/fragment_onboarding_religion" >
-        <action
-            android:id="@+id/action_religFragment_to_alcohFragment"
-            app:destination="@id/alcohFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out" />
-    </fragment>
-
-    <!-- 음주정도 -->
-    <fragment
-        android:id="@+id/alcohFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingAlcoholFragment"
-        android:label="alcoh_fragment"
-        tools:layout="@layout/fragment_onboarding_alcohol" >
-        <action
-            android:id="@+id/action_alcohFragment_to_photoUpldFragment"
-            app:destination="@id/photoUpldFragment"
+            android:id="@+id/action_fancyFragment_to_photoFragment"
+            app:destination="@id/photoFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
@@ -158,13 +114,13 @@
 
     <!-- 사진선 -->
     <fragment
-        android:id="@+id/photoUpldFragment"
-        android:name="com.devnuts.ruflu.ui.onboarding.fragment.OnboardingPhotoFragment"
-        android:label="photo_upld_fragment"
-        tools:layout="@layout/fragment_onboarding_photo" >
+        android:id="@+id/photoFragment"
+        android:name="com.devnuts.ruflu.ui.onboarding.fragment.eight.OnboardingPhotoFragment"
+        android:label="photo_fragment"
+        tools:layout="@layout/fragment_onboarding_photo">
         <action
-            android:id="@+id/action_alcohFragment_to_loop"
-            app:destination="@id/photoUpldFragment"
+            android:id="@+id/action_photoFragment_to_loop"
+            app:destination="@id/photoFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"

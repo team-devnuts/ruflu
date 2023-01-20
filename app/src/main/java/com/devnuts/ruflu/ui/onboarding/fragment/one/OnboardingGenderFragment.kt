@@ -58,12 +58,13 @@ class OnboardingGenderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupNavigation()
-
-        initializeObserve()
         initializeRecyclerView()
+        initializeObserve()
     }
 
     private fun initializeRecyclerView() {
+        binding.btnGender.isEnabled = false
+
         genderAdapter.submitList(
             listOf(
                 GenderUIModel(resourceId = R.drawable.onboarding_female_selector, name = "여성"),
@@ -86,6 +87,8 @@ class OnboardingGenderFragment : Fragment() {
 
     private fun initializeObserve() {
         viewModel.gender.observe(viewLifecycleOwner) {
+            if (viewModel.gender.value!! < 0) return@observe
+
             with(binding.btnGender) {
                 isSelected = true
                 isEnabled = true

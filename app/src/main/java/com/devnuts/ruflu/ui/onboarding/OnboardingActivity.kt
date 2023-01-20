@@ -21,7 +21,7 @@ class OnboardingActivity : AppCompatActivity() {
     private fun back() {
         val back: ImageView = findViewById(R.id.iv_back)
         back.setOnClickListener {
-            if (navController.currentDestination?.label != "terms_of_use_fragment")
+            //if (navController.currentDestination?.label != "terms_of_use_fragment")
             onBackPressed()
         }
     }

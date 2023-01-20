@@ -19,7 +19,7 @@ import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.onboarding.HeightUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 
-/* 온보딩 - 6 : 키  */
+/* 온보딩 - 4 : 키  */
 class OnboardingHeightFragment : Fragment() {
     private var _binding: FragmentOnboardingHeightBinding? = null
     private val binding get() = _binding!!
@@ -77,6 +77,8 @@ class OnboardingHeightFragment : Fragment() {
     }
 
     private fun initializeRecyclerView() {
+        binding.btnHeight.isEnabled = false
+
         heightAdapter.submitList(viewModel.initHeight(-1))
 
         with(binding.rvHeight) {
