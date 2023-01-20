@@ -17,19 +17,19 @@ import com.devnuts.ruflu.databinding.FragmentCardBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.home.viewmodel.CardViewModel
 import com.devnuts.ruflu.ui.model.Model
-import com.devnuts.ruflu.ui.model.home.CardUIModel
 import com.devnuts.ruflu.worker.CustomCardStackView
 import com.yuyakaido.android.cardstackview.*
 import kotlin.math.abs
 
 class CardFragment : Fragment() {
+    private var _binding: FragmentCardBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: CardViewModel by viewModels()
+
     private lateinit var cardStackLayoutManager: CardStackLayoutManager
     private var touchDwX: Float = 0f
     private var touchDwY: Float = 0f
     private var cardPosition: Int = 0
-    private var _binding: FragmentCardBinding? = null
-    private val binding get() = _binding ?: error("view 를 참조하기 위해 binding 이 초기화 되지 x")
-    private val viewModel: CardViewModel by viewModels()
 
     private val cardAdapter: ModelRecyclerViewAdapter<Model> by lazy {
         ModelRecyclerViewAdapter()
@@ -47,7 +47,11 @@ class CardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewModel()
+
+
+        initView()
+        initObserve()
+
     }
 
     // 카트스택 뷰와 레이아웃 매니저 생성 메소드
@@ -64,7 +68,6 @@ class CardFragment : Fragment() {
                     onControlDirectionCardStackSwipe(event)
                 }
             })
-
 
             cardHateBtn.visibility = View.GONE
             cardSkipBtn.visibility = View.GONE
@@ -84,21 +87,17 @@ class CardFragment : Fragment() {
         }
     }
 
-    // viewModel 초기화 메소드
-    private fun initViewModel() {
+    private fun initObserve() {
         viewModel.userCard.observe(this.viewLifecycleOwner) {
-            initRecyclerView()
             cardAdapter.submitList(it)
         }
     }
 
-
     // 리사이클러 뷰 초기화
-    private fun initRecyclerView() = binding.let {
+    private fun initView() = binding.let {
         it.rvCard.itemAnimator = null
         it.rvCard.adapter = cardAdapter
     }
-
 
     private fun getSwipeSetting(direction: Direction): SwipeAnimationSetting {
         return SwipeAnimationSetting.Builder()

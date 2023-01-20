@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.adapter.viewholder
+package com.devnuts.ruflu.ui.adapter.viewholder.home
 
 import android.annotation.SuppressLint
 import android.view.MotionEvent
@@ -6,6 +6,7 @@ import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.ItemUserCardBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
+import com.devnuts.ruflu.ui.adapter.viewholder.ModelViewHolder
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserImageUIModel
 import com.devnuts.ruflu.ui.model.home.UserUIModel

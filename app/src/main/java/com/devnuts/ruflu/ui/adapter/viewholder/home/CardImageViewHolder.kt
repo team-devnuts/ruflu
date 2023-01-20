@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.adapter.viewholder
+package com.devnuts.ruflu.ui.adapter.viewholder.home
 
 import android.annotation.SuppressLint
 import android.graphics.Outline
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.ItemUserCardImagesBinding
+import com.devnuts.ruflu.ui.adapter.viewholder.ModelViewHolder
 import com.devnuts.ruflu.ui.model.home.UserImageUIModel
 import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
