@@ -32,25 +32,33 @@
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
 
-                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
-                <data
-                    android:host="oauth"
-                    android:scheme="kakao${kakaoLoginKey}" />
-            </intent-filter>
+<!--                &lt;!&ndash; Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" &ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="oauth"-->
+<!--                    android:scheme="kakao${kakaoLoginKey}" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <activity
             android:name=".ui.signin.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
 
-        <activity android:name=".ui.onboarding.OnboardingActivity" />
+        <activity android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
         <activity android:name=".ui.loading.LoadingActivity" />
+
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
