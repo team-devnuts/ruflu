@@ -9,13 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentOnboardingJobBinding
-import com.devnuts.ruflu.ui.onboarding.viewmodel.OccupViewModel
 
 /* 온보딩 - 9 : 직업 */
 class OnboardingJobFragment : Fragment() {
     private var _binding: FragmentOnboardingJobBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: OccupViewModel by viewModels()
+    //private val viewModel: OccupViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,18 +28,12 @@ class OnboardingJobFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        progressBar()
         initializeView()
-    }
-
-    private fun progressBar() {
-        val curProgressBar = binding.pbLoading
-        curProgressBar.progress = 74
     }
 
     private fun initializeView() {
         binding.occupNextBnt.setOnClickListener {
-            findNavController().navigate(R.id.action_occupFragment_to_religFragment)
+            findNavController().navigate(R.id.action_jobFragment_to_religionFragment)
         }
     }
 
