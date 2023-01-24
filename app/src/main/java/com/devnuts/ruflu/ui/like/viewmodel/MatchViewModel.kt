@@ -3,14 +3,19 @@ package com.devnuts.ruflu.ui.like.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.data.api.response.card.UserModel
+import com.devnuts.ruflu.domain.repository.MatchRepository
 import com.devnuts.ruflu.domain.repository.SomeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
+import javax.inject.Inject
 
-class MatchViewModel : ViewModel() {
-    private val repository = SomeRepository()
+@HiltViewModel
+class MatchViewModel @Inject constructor(
+    private val matchRepository: MatchRepository
+) : ViewModel() {
 
     private val _matchUser by lazy {
         MutableLiveData<List<UserModel>>().also {
@@ -22,7 +27,7 @@ class MatchViewModel : ViewModel() {
 
 
     private fun loadMatchUser() {
-        val call = repository.getSeLv2User()
+        val call = matchRepository.getUserMatchedWithMeList()
 
         call.enqueue(object : Callback<ArrayList<UserModel>> {
             override fun onResponse(
