@@ -20,8 +20,11 @@ import com.devnuts.ruflu.worker.FusedLocationProvider
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val homeFragment by lazy { HomeFragment() }
     private val likeFragment by lazy { LikeFragment() }
@@ -57,7 +60,8 @@ class MainActivity : AppCompatActivity() {
         // GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(applicationContext)
         initLowerTab()
 
-        RufluApp.sharedPreference.putSettingString("user_id", "1")
+        //RufluApp.sharedPreference.putSettingString("user_id", "1");
+
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
                 Timber.tag("FCMService 토근 갱신")
