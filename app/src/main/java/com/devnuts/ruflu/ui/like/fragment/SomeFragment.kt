@@ -2,7 +2,6 @@ package com.devnuts.ruflu.ui.like.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -10,9 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.data.api.response.card.UserModel
 import com.devnuts.ruflu.databinding.FragmentSomeBinding
 import com.devnuts.ruflu.ui.adapter.SwipeAdapter
 import com.devnuts.ruflu.ui.common.UserDetailFragment
@@ -21,8 +18,10 @@ import com.devnuts.ruflu.ui.like.viewmodel.SomeViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class SomeFragment : Fragment() {
     /* 정리 필요 */
     private lateinit var userDetailFragment: UserDetailFragment
@@ -52,7 +51,7 @@ class SomeFragment : Fragment() {
             override fun onSwipe(position: Int, direction: Int) {
                 /** 32 right 좋아요, 16 left  싫어요 **/
                 if (direction == 32) {
-                    someViewModel.insertMatch(someViewModel.getSomeUser(position)!!.userId)
+                    someViewModel.addUserInMyMatchList(someViewModel.getSomeUser(position)!!.userId)
                 }
                 // 현재 임시
                 someViewModel.someUser.value?.toMutableList()?.remove(someViewModel.getSomeUser(position))

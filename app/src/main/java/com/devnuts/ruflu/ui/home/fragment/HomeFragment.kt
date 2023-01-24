@@ -9,6 +9,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.databinding.FragmentHomeBinding
 import com.devnuts.ruflu.ui.adapter.HomePagerAdapter
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

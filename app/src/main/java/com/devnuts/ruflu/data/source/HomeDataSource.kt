@@ -1,11 +1,9 @@
-package com.devnuts.ruflu.domain.repository
+package com.devnuts.ruflu.data.source
 
 import com.devnuts.ruflu.data.api.response.card.UserModel
-import retrofit2.*
+import retrofit2.Call
 
-interface HomeRepository {
-
-    //private val api = RufluApp.retrofit.create(ServerAPI::class.java)
+interface HomeDataSource {
 
     fun getUserList(): Call<List<UserModel>>
 

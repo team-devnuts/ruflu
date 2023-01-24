@@ -20,8 +20,8 @@ class AddCookiesInterceptor : Interceptor {
             builder.addHeader("Cookie", it)
         }
         */
-        val preference = RufluApp.sharedPreference.getSettingString("user_id")
-
+        //val preference = RufluApp.sharedPreference.getSettingString("user_id")
+        val preference = "1"
         if (preference != null)
             builder.addHeader("user_id", preference)
 

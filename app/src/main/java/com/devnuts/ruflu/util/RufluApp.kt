@@ -6,12 +6,15 @@ import com.devnuts.ruflu.worker.AddCookiesInterceptor
 import com.devnuts.ruflu.worker.AppNotification
 import com.devnuts.ruflu.worker.ReceivedCookiesInterceptor
 import com.kakao.sdk.common.KakaoSdk
+import dagger.hilt.android.HiltAndroidApp
 import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
+
+@HiltAndroidApp
 class RufluApp : Application() {
 
     override fun onCreate() {
@@ -40,7 +43,7 @@ class RufluApp : Application() {
     }
 
     companion object {
-        const val url = "http://192.168.0.60"
+        const val url = "http://192.168.0.25"
         //const val url = "http://192.168.0.21"
         const val port = 3000
         lateinit var retrofit: Retrofit

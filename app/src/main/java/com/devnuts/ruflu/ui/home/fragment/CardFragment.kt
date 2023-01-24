@@ -19,8 +19,11 @@ import com.devnuts.ruflu.ui.home.viewmodel.CardViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.worker.CustomCardStackView
 import com.yuyakaido.android.cardstackview.*
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs
 
+
+@AndroidEntryPoint
 class CardFragment : Fragment() {
     private var _binding: FragmentCardBinding? = null
     private val binding get() = _binding!!
@@ -131,10 +134,10 @@ class CardFragment : Fragment() {
 
                 when (direction) {
                     Direction.Right -> {
-                        viewModel.likeYourUserCard(cardPosition)
+                        viewModel.addLikeUser(cardPosition)
                     }
                     Direction.Left -> {
-                        // viewModel.hateYourUserCard(cardPosition)
+                        viewModel.addHateUser(cardPosition)
                     }
                     else -> {}
                 }

@@ -24,8 +24,10 @@ import com.devnuts.ruflu.ui.like.viewmodel.SomeViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MatchFragment : Fragment() {
     /* 정리 필요 */
     private lateinit var userDetailFragment: UserDetailFragment
