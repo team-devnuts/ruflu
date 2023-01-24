@@ -10,6 +10,7 @@ import com.devnuts.ruflu.databinding.FragmentLikeBinding
 import com.devnuts.ruflu.ui.adapter.LikePagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
 class LikeFragment : Fragment() {
     private var _binding: FragmentLikeBinding? = null
