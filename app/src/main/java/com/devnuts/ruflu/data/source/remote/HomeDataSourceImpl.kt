@@ -1,6 +1,5 @@
 package com.devnuts.ruflu.data.source.remote
 
-import android.util.Log
 import com.devnuts.ruflu.data.api.response.card.UserModel
 import com.devnuts.ruflu.data.source.HomeDataSource
 import com.devnuts.ruflu.util.ServerAPI
@@ -11,15 +10,15 @@ class HomeDataSourceImpl @Inject constructor(
     private val serverAPI: ServerAPI
 ) : HomeDataSource {
 
-    override fun getUsers(): Call<List<UserModel>> {
-        return serverAPI.getUserCardList()
+    override fun getUserList(): Call<List<UserModel>> {
+        return serverAPI.getUserList()
     }
 
-    override fun addHateUser(userCard: HashMap<String, String>): Call<String> {
-        return serverAPI.insertHateUserCard(userCard)
+    override fun addUserInMyHateList(userCard: HashMap<String, String>): Call<String> {
+        return serverAPI.addUserInMyHateList(userCard)
     }
 
-    override fun addLikeUser(userCard: HashMap<String, String>): Call<String> {
-        return serverAPI.insertLikeUserCard(userCard)
+    override fun addUserInMyLikeList(userCard: HashMap<String, String>): Call<String> {
+        return serverAPI.addUserInMyLikeList(userCard)
     }
 }

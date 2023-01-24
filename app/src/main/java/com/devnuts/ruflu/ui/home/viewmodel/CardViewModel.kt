@@ -29,7 +29,7 @@ class CardViewModel @Inject constructor(
     val userCard: MutableLiveData<List<UserUIModel>> get() = _userCard
 
     fun loadUserCard() {
-        val call = homeRepository.getUsers()
+        val call = homeRepository.getUserList()
 
         call.enqueue(object : Callback<List<UserModel>> {
             override fun onResponse(
@@ -56,7 +56,7 @@ class CardViewModel @Inject constructor(
     fun addHateUser(position: Int) {
         val map = HashMap<String, String>()
         map["to_user_id"] = _userCard.value!![position].userId
-        val call = homeRepository.addHateUser(map)
+        val call = homeRepository.addUserInMyHateList(map)
 
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -75,7 +75,7 @@ class CardViewModel @Inject constructor(
         val map = HashMap<String, String>()
         map["to_user_id"] = _userCard.value!![position].userId
 
-        val call = homeRepository.addLikeUser(map)
+        val call = homeRepository.addUserInMyLikeList(map)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {

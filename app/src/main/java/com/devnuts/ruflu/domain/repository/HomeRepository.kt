@@ -7,9 +7,9 @@ interface HomeRepository {
 
     //private val api = RufluApp.retrofit.create(ServerAPI::class.java)
 
-    fun getUsers(): Call<List<UserModel>>
+    fun getUserList(): Call<List<UserModel>>
 
-    fun addHateUser(userCard: HashMap<String, String>): Call<String>
+    fun addUserInMyHateList(userCard: HashMap<String, String>): Call<String>
 
-    fun addLikeUser(userCard: HashMap<String, String>): Call<String>
+    fun addUserInMyLikeList(userCard: HashMap<String, String>): Call<String>
 }
