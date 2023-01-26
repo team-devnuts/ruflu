@@ -7,45 +7,52 @@ import retrofit2.http.*
 
 interface ServerAPI {
 
-    @GET("home/userCardList")
+    /** Home **/
+    @GET("home/users") // 변경 예정 userList
     fun getUserList(): Call<List<UserModel>>
 
     @FormUrlEncoded
-    @POST("home/ins/hate")
+    @POST("home/hate")
     fun addUserInMyHateList(@FieldMap param: HashMap<String, String>): Call<String>
 
     @FormUrlEncoded
-    @POST("home/ins/like")
+    @POST("home/like")
     fun addUserInMyLikeList(@FieldMap param: HashMap<String, String>): Call<String>
 
-    @GET("home/seLv1List")
+    /** Some **/
+    @GET("some/like/me")
     fun getLikeMeList(): Call<ArrayList<UserModel>>
 
     @FormUrlEncoded
-    @POST("home/seLv1/like")
-    fun addUserInMyMatchList(@Field("userId") userId: String): Call<String>
+    @POST("some/match")
+    fun addUserInMyMatchList(@Field("otherUserId") userId: String): Call<String>
 
+    /** Match **/
+    @GET("some/match")
+    fun getUserMatchedWithMeList(): Call<ArrayList<UserModel>>
+
+    // 미완성 보류 (리턴값 response 객체로 수정)
+    @PATCH("some/match")
+    fun deleteUserMatchedWithMe(@Field("otherUserId") userId: String): Call<List<String>>
+
+    /** Main **/
     @FormUrlEncoded
-    @POST("main/loca/udt")
+    @POST("main/location")
     fun updateUserLocation(
         @Field("latitude") latitude: Double,
         @Field("longitude") longitude: Double
     ): Call<String>
 
     @FormUrlEncoded
-    @POST("main/token/udt")
-    fun executeFcmServiceToken(@Field("token") token: String): Call<String>
-
-
-    @GET("home/seLv2List")
-    fun getUserMatchedWithMeList(): Call<ArrayList<UserModel>>
-
-    // 채팅 api
-    @GET("chat/list")
-    fun getMyChattingRoomList(): Call<List<ChatRoom>>
+    @POST("main/alarm")
+    fun updateAlarmToken(
+        @Field("token") token: String
+    ): Call<String>
 }
 
-
+//    // 채팅 api
+//    @GET("chat/list")
+//    fun getMyChattingRoomList(): Call<List<ChatRoom>>
 
 //    @GET("home/seLv1/userDtl/{userId}")
 //    fun getUserDetail(@Path("userId") userId: String): Call<SomeUser>
