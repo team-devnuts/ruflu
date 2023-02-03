@@ -8,7 +8,6 @@ data class UserUIModel(
     val userId: String,
     val nickName: String,
     val age: String,
-    val detailInfo: List<Model>,
     val images: List<Model>,
     var distance: Double
 ): Model(type)

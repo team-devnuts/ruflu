@@ -11,9 +11,8 @@ data class UserEntity(
     val userId: String,
     val nickName: String,
     val age: String,
-    val detailInfo: List<UserDetailEntity>,
     val images: List<UserImageEntity>,
-    val distance: Double
+    val distance: Double = 0.0
 )
 
 // Entity(Domain) -> Model(Data Layer)
@@ -28,7 +27,6 @@ fun UserEntity.toUiModel(
     userId = userId,
     nickName = nickName,
     age = age,
-    detailInfo = detailInfo.map { it.toUiModel() },
     images = images.map { it.toUiModel() },
     distance = distance
 )
