@@ -1,23 +1,25 @@
 package com.devnuts.ruflu.util
 
-import com.devnuts.ruflu.data.api.response.card.UserModel
+import com.devnuts.ruflu.data.api.response.NetworkResponse
+import com.devnuts.ruflu.data.api.response.home.UserListResponse
+import com.devnuts.ruflu.data.api.response.home.model.UserModel
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
-interface ServerAPI {
-
+interface RufluApiService {
     /** Home **/
     @GET("home/users") // 변경 예정 userList
-    fun getUserList(): Call<List<UserModel>>
+    suspend fun getUserList(): Response<UserListResponse>
 
     @FormUrlEncoded
     @POST("home/hate")
-    fun addUserInMyHateList(@FieldMap param: HashMap<String, String>): Call<String>
+    suspend fun addUserInMyHateList(@FieldMap param: HashMap<String, String>): Response<NetworkResponse>
 
     @FormUrlEncoded
-    @POST("home/like")
-    fun addUserInMyLikeList(@FieldMap param: HashMap<String, String>): Call<String>
+    @POST("some/like")
+    suspend fun addUserInMyLikeList(@FieldMap param: HashMap<String, String>): Response<NetworkResponse>
 
     /** Some **/
     @GET("some/like/me")
@@ -27,7 +29,6 @@ interface ServerAPI {
     @POST("some/match")
     fun addUserInMyMatchList(@Field("otherUserId") userId: String): Call<String>
 
-    /** Match **/
     @GET("some/match")
     fun getUserMatchedWithMeList(): Call<ArrayList<UserModel>>
 
@@ -45,14 +46,15 @@ interface ServerAPI {
 
     @FormUrlEncoded
     @POST("main/alarm")
-    fun updateAlarmToken(
-        @Field("token") token: String
-    ): Call<String>
+    fun updateAlarmToken(@Field("token") token: String): Call<String>
+
+
+    // 채팅 api
+    @GET("chat/list")
+    fun getMyChattingRoomList(): Call<List<ChatRoom>>
 }
 
-//    // 채팅 api
-//    @GET("chat/list")
-//    fun getMyChattingRoomList(): Call<List<ChatRoom>>
+
 
 //    @GET("home/seLv1/userDtl/{userId}")
 //    fun getUserDetail(@Path("userId") userId: String): Call<SomeUser>
