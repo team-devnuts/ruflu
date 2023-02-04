@@ -12,7 +12,7 @@ data class UserEntity(
     val nickName: String,
     val age: String,
     val images: List<UserImageEntity>,
-    val distance: Double = 0.0
+    val distance: Float = 0F
 )
 
 // Entity(Domain) -> Model(Data Layer)

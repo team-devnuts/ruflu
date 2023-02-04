@@ -9,5 +9,5 @@ data class UserUIModel(
     val nickName: String,
     val age: String,
     val images: List<Model>,
-    var distance: Double
+    var distance: Float
 ): Model(type)
