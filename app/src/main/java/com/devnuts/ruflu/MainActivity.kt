@@ -15,7 +15,6 @@ import com.devnuts.ruflu.ui.home.fragment.HomeFragment
 import com.devnuts.ruflu.ui.like.fragment.LikeFragment
 import com.devnuts.ruflu.ui.model.main.User
 import com.devnuts.ruflu.ui.mypage.fragment.MyPageFragment
-import com.devnuts.ruflu.util.RufluApp
 import com.devnuts.ruflu.worker.FusedLocationProvider
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView

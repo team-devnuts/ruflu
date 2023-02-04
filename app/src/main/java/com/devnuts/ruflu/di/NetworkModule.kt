@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.di
 
-import com.devnuts.ruflu.util.ServerAPI
+import com.devnuts.ruflu.util.RufluApiService
 import com.devnuts.ruflu.worker.AddCookiesInterceptor
 import com.devnuts.ruflu.worker.ReceivedCookiesInterceptor
 import dagger.Module
@@ -18,9 +18,9 @@ import java.util.concurrent.TimeUnit
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
     @Provides
-    fun provideMenuApiService(
+    fun provideApiService(
         retrofit: Retrofit
-    ): ServerAPI = retrofit.create(ServerAPI::class.java)
+    ): RufluApiService = retrofit.create(RufluApiService::class.java)
 }
 
 
@@ -36,7 +36,7 @@ object RetrofitModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(converter)
-            .baseUrl("http://10.0.2.2:3000/api/")
+            .baseUrl("http://172.30.1.60:3000/api/")
             .build()
     }
 }
