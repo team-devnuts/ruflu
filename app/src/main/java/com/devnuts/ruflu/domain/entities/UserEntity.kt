@@ -22,8 +22,9 @@ fun UserEntity.toModel() {
 
 // Entity(Domain) -> UI Model(Presenter Layer)
 fun UserEntity.toUiModel(
-    cellType: CellType = CellType.USER_CARD_CEL
+    cellType: CellType
 ) = UserUIModel(
+    type = cellType,
     userId = userId,
     nickName = nickName,
     age = age,
