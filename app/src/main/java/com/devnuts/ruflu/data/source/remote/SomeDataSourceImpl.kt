@@ -1,19 +1,49 @@
 package com.devnuts.ruflu.data.source.remote
 
-import com.devnuts.ruflu.data.api.response.card.UserModel
+import android.util.Log
+import com.devnuts.ruflu.data.api.response.NetworkResponse
+import com.devnuts.ruflu.data.api.response.home.model.UserModel
+import com.devnuts.ruflu.data.api.response.home.model.toEntity
 import com.devnuts.ruflu.data.source.SomeDataSource
-import com.devnuts.ruflu.util.ServerAPI
+import com.devnuts.ruflu.domain.entities.UserEntity
+import com.devnuts.ruflu.util.RufluApiService
 import retrofit2.Call
 import javax.inject.Inject
 
 class SomeDataSourceImpl @Inject constructor(
-    private val serverAPI: ServerAPI
+    private val api: RufluApiService
 ) : SomeDataSource {
-    override fun getLikeMeList(): Call<ArrayList<UserModel>> {
-        return serverAPI.getLikeMeList()
+    override suspend fun getLikeMeList(): Result<List<UserEntity>> = try {
+        val response = api.getLikeMeList()
+        if (response.isSuccessful) {
+            val body = response.body()
+            if (body != null) {
+                Log.d("flow", "${response.body()}")
+                Result.success(body.result.map { it.toEntity() })
+            } else {
+                Result.success(emptyList())
+            }
+        } else {
+            throw Exception()
+        }
+    } catch (exception: Exception) {
+        Result.failure<Nothing>(exception)
     }
 
-    override fun addUserInMyMatchList(userId: String): Call<String> {
-        return serverAPI.addUserInMyMatchList(userId)
+
+    override suspend fun addUserInMyMatchList(userId: String): Result<NetworkResponse> = try {
+        val response = api.addUserInMyMatchList(userId)
+        if (response.isSuccessful) {
+            val body = response.body()
+            if (body != null) {
+                Result.success(NetworkResponse("200", "path"))
+            } else {
+                Result.success(NetworkResponse("111", "null"))
+            }
+        } else {
+            throw Exception()
+        }
+    } catch (exception: Exception) {
+        Result.failure<Nothing>(exception)
     }
 }

@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.model.like
+package com.devnuts.ruflu.ui.model.some
 
 data class SomeUser(
     val userId: String,

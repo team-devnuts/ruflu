@@ -1,11 +1,13 @@
 package com.devnuts.ruflu.data.source
 
-import com.devnuts.ruflu.data.api.response.card.UserModel
+import com.devnuts.ruflu.data.api.response.NetworkResponse
+import com.devnuts.ruflu.data.api.response.home.model.UserModel
+import com.devnuts.ruflu.domain.entities.UserEntity
 import retrofit2.Call
 
 interface SomeDataSource {
 
-    fun getLikeMeList(): Call<ArrayList<UserModel>>
+    suspend fun getLikeMeList(): Result<List<UserEntity>>
 
-    fun addUserInMyMatchList(userId: String): Call<String>
+    suspend fun addUserInMyMatchList(userId: String): Result<NetworkResponse>
 }

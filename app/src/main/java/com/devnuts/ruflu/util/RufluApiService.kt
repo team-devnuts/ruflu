@@ -22,19 +22,19 @@ interface RufluApiService {
     suspend fun addUserInMyLikeList(@FieldMap param: HashMap<String, String>): Response<NetworkResponse>
 
     /** Some **/
-    @GET("some/like/me")
-    fun getLikeMeList(): Call<ArrayList<UserModel>>
+    @GET("some/like")
+    suspend fun getLikeMeList(): Response<UserListResponse>
 
     @FormUrlEncoded
     @POST("some/match")
-    fun addUserInMyMatchList(@Field("otherUserId") userId: String): Call<String>
+    suspend fun addUserInMyMatchList(@Field("otherUserId") userId: String): Response<NetworkResponse>
 
     @GET("some/match")
     fun getUserMatchedWithMeList(): Call<ArrayList<UserModel>>
 
     // 미완성 보류 (리턴값 response 객체로 수정)
     @PATCH("some/match")
-    fun deleteUserMatchedWithMe(@Field("otherUserId") userId: String): Call<List<String>>
+    fun deleteUserMatchedWithMe(@Field("otherUserId") userId: String): Response<NetworkResponse>
 
     /** Main **/
     @FormUrlEncoded
@@ -53,7 +53,6 @@ interface RufluApiService {
     @GET("chat/list")
     fun getMyChattingRoomList(): Call<List<ChatRoom>>
 }
-
 
 
 //    @GET("home/seLv1/userDtl/{userId}")
