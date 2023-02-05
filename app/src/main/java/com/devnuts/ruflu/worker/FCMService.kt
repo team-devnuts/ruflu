@@ -3,6 +3,7 @@ package com.devnuts.ruflu.worker
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
@@ -16,13 +17,13 @@ import retrofit2.Response
 import timber.log.Timber
 import javax.inject.Inject
 
-class FCMService @Inject constructor(
-    private val repository: MainRepository
-) : FirebaseMessagingService() {
+class FCMService : FirebaseMessagingService() {
+    @Inject lateinit var repository: MainRepository
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Timber.tag("토큰").i(token)
+
+        Log.d("flow", "--------------->>>>>>>>${token}")
         sendRegistrationToServer(token)
     }
 
