@@ -28,13 +28,6 @@ class CardViewModel @Inject constructor(
     private val addUserInMyLikeListUseCase: AddUserInMyLikeListUseCase
 ) : ViewModel() {
 
-//    private val _userCard by lazy {
-//        MutableLiveData<List<UserUIModel>>().also {
-//            loadUserCard()
-//        }
-//    }
-//    val userCard: MutableLiveData<List<UserUIModel>> get() = _userCard
-
     private val _userInfo = MutableStateFlow<List<UserUIModel>>(emptyList())
     val userInfo = _userInfo.asStateFlow()
 
@@ -42,16 +35,13 @@ class CardViewModel @Inject constructor(
         getUserListUseCase()
             .onSuccess {
                 Log.d("flow", "distance : ${it.get(0).distance}")
-
                 _userInfo.value = it.map { entity ->
                     entity.toUiModel(CellType.USER_CARD_CEL)
                 }
             }
             .onFailure {
-                Log.d("flow", "failure")
-                it.stackTrace
+                Log.d("flow", "home failure")
                 Log.d("flow", "${it.message}")
-                Log.d("flow", "${it.localizedMessage}")
             }
     }
 

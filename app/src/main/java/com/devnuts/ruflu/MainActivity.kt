@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -63,25 +64,24 @@ class MainActivity : AppCompatActivity() {
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Timber.tag("FCMService 토근 갱신")
-                    .w(task.exception, "Fetching FCM registration token failed")
+                Log.d("flow", "토큰 갱신 한다.")
                 return@OnCompleteListener
             }
 
             // Get new FCM registration token
             val token = task.result
-            Timber.tag("토큰 갱신").i("token [$token]")
+            Log.d("flow", "===> 토큰 존재한다. $token")
             sendRegistrationToServer(token)
         })
 
         fusedLocationProvider = FusedLocationProvider(applicationContext, locationListener)
         fusedLocationProvider.requestLastLocation()
         mainViewModel.user.observe(this, Observer<User> {
-            // 유저정보 변환시
+            // 유저 정보 변환시
             Timber.tag("유저 정보 변환")
                 .i(" : ${it.latitude} , ${it.longitude}")
-            RufluApp.sharedPreference.putSettingString("latitude", it.latitude.toString())
-            RufluApp.sharedPreference.putSettingString("longitude", it.longitude.toString())
+            RufluApp.sharedPreference.putSettingDouble("latitude", it.latitude)
+            RufluApp.sharedPreference.putSettingDouble("longitude", it.longitude)
         })
     }
 
