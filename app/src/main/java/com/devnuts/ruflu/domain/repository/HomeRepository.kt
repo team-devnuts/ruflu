@@ -1,15 +1,15 @@
 package com.devnuts.ruflu.domain.repository
 
-import com.devnuts.ruflu.data.api.response.card.UserModel
+import com.devnuts.ruflu.data.api.response.NetworkResponse
+import com.devnuts.ruflu.data.api.response.home.UserListResponse
+import com.devnuts.ruflu.data.api.response.home.UserResponse
+import com.devnuts.ruflu.domain.entities.UserEntity
 import retrofit2.*
 
 interface HomeRepository {
+    suspend fun getUserList(): Result<List<UserEntity>>
 
-    //private val api = RufluApp.retrofit.create(ServerAPI::class.java)
+    suspend fun addUserInMyHateList(userCard: HashMap<String, String>): Result<NetworkResponse>
 
-    fun getUserList(): Call<List<UserModel>>
-
-    fun addUserInMyHateList(userCard: HashMap<String, String>): Call<String>
-
-    fun addUserInMyLikeList(userCard: HashMap<String, String>): Call<String>
+    suspend fun addUserInMyLikeList(userCard: HashMap<String, String>): Result<NetworkResponse>
 }

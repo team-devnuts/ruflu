@@ -19,7 +19,7 @@ class CardViewHolder(
 
     override fun bindData(model: UserUIModel) {
         binding.cardViewName.text = model.nickName
-        binding.cardViewAge.text = "${UserUtil.getAge(model.birth)}"
+        binding.cardViewAge.text = "${UserUtil.getAge(model.age)}"
     }
 
     @SuppressLint("ClickableViewAccessibility")

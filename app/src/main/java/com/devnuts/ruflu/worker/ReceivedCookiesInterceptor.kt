@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.worker
 
-import com.devnuts.ruflu.util.RufluApp
+import com.devnuts.ruflu.RufluApp
 import okhttp3.Interceptor
 import okhttp3.Response
 

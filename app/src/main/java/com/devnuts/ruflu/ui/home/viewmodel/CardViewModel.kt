@@ -1,14 +1,20 @@
 package com.devnuts.ruflu.ui.home.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.data.api.response.card.UserModel
-import com.devnuts.ruflu.data.api.response.card.toCardUIModel
+import androidx.lifecycle.viewModelScope
+import com.devnuts.ruflu.domain.entities.UserEntity
+import com.devnuts.ruflu.domain.entities.toUiModel
 import com.devnuts.ruflu.domain.repository.HomeRepository
+import com.devnuts.ruflu.domain.usecase.AddUserInMyHateListUseCase
+import com.devnuts.ruflu.domain.usecase.AddUserInMyLikeListUseCase
+import com.devnuts.ruflu.domain.usecase.GetUserListUseCase
 import com.devnuts.ruflu.ui.model.CellType
 import com.devnuts.ruflu.ui.model.home.UserUIModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,76 +23,52 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CardViewModel @Inject constructor(
-    private val homeRepository: HomeRepository
+    private val getUserListUseCase: GetUserListUseCase,
+    private val addUserInMyHateListUseCase: AddUserInMyHateListUseCase,
+    private val addUserInMyLikeListUseCase: AddUserInMyLikeListUseCase
 ) : ViewModel() {
 
-    private val _userCard by lazy {
-        MutableLiveData<List<UserUIModel>>().also {
-            loadUserCard()
-        }
-    }
+    private val _userInfo = MutableStateFlow<List<UserUIModel>>(emptyList())
+    val userInfo = _userInfo.asStateFlow()
 
-    val userCard: MutableLiveData<List<UserUIModel>> get() = _userCard
-
-    fun loadUserCard() {
-        val call = homeRepository.getUserList()
-
-        call.enqueue(object : Callback<List<UserModel>> {
-            override fun onResponse(
-                call: Call<List<UserModel>>,
-                response: Response<List<UserModel>>
-            ) {
-                if (response.isSuccessful) {
-
-                    Timber.d("callback success")
-                    val cards: List<UserModel>? = response.body()
-                    userCard.value = cards?.map {
-                        it.toCardUIModel(CellType.USER_CARD_CEL)
-                    }
-                }else {
-                    Log.d("flow", "$response.message()")
+    fun loadUserCard() = viewModelScope.launch {
+        getUserListUseCase()
+            .onSuccess {
+                Log.d("flow", "distance : ${it.get(0).distance}")
+                _userInfo.value = it.map { entity ->
+                    entity.toUiModel(CellType.USER_CARD_CEL)
                 }
             }
-            override fun onFailure(call: Call<List<UserModel>>, t: Throwable) {
-                Timber.tag("callback fail").e(t)
+            .onFailure {
+                Log.d("flow", "home failure")
+                Log.d("flow", "${it.message}")
             }
-        })
     }
 
-    fun addHateUser(position: Int) {
+    fun addHateUser(position: Int) = viewModelScope.launch{
         val map = HashMap<String, String>()
-        map["to_user_id"] = _userCard.value!![position].userId
-        val call = homeRepository.addUserInMyHateList(map)
+        map["to_user_id"] = _userInfo.value[position].userId
 
-        call.enqueue(object : Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                if (response.isSuccessful) {
-                    Timber.d("callback success")
-                }
+        addUserInMyHateListUseCase(map)
+            .onSuccess {
+                Log.d("flow", "message : ${it.message}, code : ${it.code}")
             }
-
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                Timber.tag("callback fail").e(t)
+            .onFailure {
+                Log.d("flow", "message : ${it.message}")
             }
-        })
     }
 
-    fun addLikeUser(position: Int) {
+    fun addLikeUser(position: Int) = viewModelScope.launch {
         val map = HashMap<String, String>()
-        map["to_user_id"] = _userCard.value!![position].userId
+        map["other_user_id"] = _userInfo.value[position].userId
 
-        val call = homeRepository.addUserInMyLikeList(map)
-        call.enqueue(object : Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                if (response.isSuccessful) {
-                    Timber.d("callback success")
-                    // 결과값에 따라서 매치되었다고 화면 표시
-                }
+        addUserInMyLikeListUseCase(map)
+            .onSuccess {
+                // UI state 최신화
+                Log.d("flow", "message : ${it.message}, code : ${it.code}")
             }
-
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                Timber.tag("callback fail").e(t)
+            .onFailure {
+                Log.d("flow", "message : ${it.message}")
             }
-        })
     }
 }

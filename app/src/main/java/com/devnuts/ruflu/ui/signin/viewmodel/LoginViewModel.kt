@@ -6,21 +6,13 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.devnuts.ruflu.data.api.UserService
-import com.devnuts.ruflu.data.api.request.signin.RequestLoginData
-import com.devnuts.ruflu.data.api.response.signin.ResponseLoginData
 import com.devnuts.ruflu.ui.model.signin.KakaoUser
-import com.devnuts.ruflu.util.RufluApp
-import com.devnuts.ruflu.util.SharedPreferenceToken
 import com.kakao.sdk.auth.*
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import timber.log.Timber
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
@@ -137,34 +129,34 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     // 서버 DB 저장 & 토큰 받아오기
     private fun postLogin() {
-        val requestLoginData =
-            RequestLoginData(oauthKey = kakaoUser.oauthKey, name = kakaoUser.name) // 전송할 데이터
-
-        val call: Call<ResponseLoginData> =
-            RufluApp.retrofit.create(UserService::class.java).postLogin(requestLoginData)
-
-        call.enqueue(object : Callback<ResponseLoginData> {
-            override fun onResponse(
-                call: Call<ResponseLoginData>,
-                response: Response<ResponseLoginData>
-            ) {
-                if (response.isSuccessful) {
-                    // token 값 저장
-                    SharedPreferenceToken.putSettingItem(
-                        getApplication<Application>().applicationContext,
-                        "USER_TOKEN",
-                        response.body()?.accessToken.toString()
-                    )
-                    isNew.value = response.body()?.isNewUser
-                } else {
-                    Timber.i("응답실패 : ${response.code()}, ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
-                Timber.i("error:$t")
-            }
-        })
+//        val requestLoginData =
+//            RequestLoginData(oauthKey = kakaoUser.oauthKey, name = kakaoUser.name) // 전송할 데이터
+//
+//        val call: Call<ResponseLoginData> =
+//            RufluApp.retrofit.create(UserService::class.java).postLogin(requestLoginData)
+//
+//        call.enqueue(object : Callback<ResponseLoginData> {
+//            override fun onResponse(
+//                call: Call<ResponseLoginData>,
+//                response: Response<ResponseLoginData>
+//            ) {
+//                if (response.isSuccessful) {
+//                    // token 값 저장
+//                    SharedPreferenceToken.putSettingItem(
+//                        getApplication<Application>().applicationContext,
+//                        "USER_TOKEN",
+//                        response.body()?.accessToken.toString()
+//                    )
+//                    isNew.value = response.body()?.isNewUser
+//                } else {
+//                    Timber.i("응답실패 : ${response.code()}, ${response.message()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
+//                Timber.i("error:$t")
+//            }
+//        })
     }
 
     /**

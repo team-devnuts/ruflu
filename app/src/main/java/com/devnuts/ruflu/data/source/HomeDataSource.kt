@@ -1,13 +1,18 @@
 package com.devnuts.ruflu.data.source
 
-import com.devnuts.ruflu.data.api.response.card.UserModel
+import com.devnuts.ruflu.data.api.response.NetworkResponse
+import com.devnuts.ruflu.data.api.response.home.UserListResponse
+import com.devnuts.ruflu.data.api.response.home.UserResponse
+import com.devnuts.ruflu.data.api.response.home.model.UserModel
+import com.devnuts.ruflu.domain.entities.UserEntity
 import retrofit2.Call
+import retrofit2.Response
 
 interface HomeDataSource {
 
-    fun getUserList(): Call<List<UserModel>>
+    suspend fun getUserList(): Result<List<UserEntity>>
 
-    fun addUserInMyHateList(userCard: HashMap<String, String>): Call<String>
+    suspend fun addUserInMyHateList(userCard: HashMap<String, String>): Result<NetworkResponse>
 
-    fun addUserInMyLikeList(userCard: HashMap<String, String>): Call<String>
+    suspend fun addUserInMyLikeList(userCard: HashMap<String, String>): Result<NetworkResponse>
 }

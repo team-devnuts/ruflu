@@ -14,32 +14,32 @@ class ChatViewModel : ViewModel() {
     private val repository = ChatRepository()
     private val _chatRoomList by lazy {
         MutableLiveData<ArrayList<ChatRoom>>().also {
-            getMyChattingRoomList()
+            //getMyChattingRoomList()
         }
     }
     val chatRoomList: MutableLiveData<ArrayList<ChatRoom>> get() = _chatRoomList
 
-    private fun getMyChattingRoomList() {
-        val call = repository.getMyChattingRoomList()
-
-        call.enqueue(object : Callback<List<ChatRoom>> {
-            override fun onResponse(
-                call: Call<List<ChatRoom>>,
-                response: Response<List<ChatRoom>>
-            ) {
-                if (response.isSuccessful) {
-                    Timber.d("Success Req []")
-                    val roomList: List<ChatRoom>? = response.body()
-                    _chatRoomList.value =
-                        if (roomList != null) roomList as ArrayList<ChatRoom> else ArrayList()
-                }
-            }
-
-            override fun onFailure(call: Call<List<ChatRoom>>, t: Throwable) {
-                Timber.tag(":: callback fail ::").e(t)
-            }
-        })
-    }
+//    private fun getMyChattingRoomList() {
+//        val call = repository.getMyChattingRoomList()
+//
+//        call.enqueue(object : Callback<List<ChatRoom>> {
+//            override fun onResponse(
+//                call: Call<List<ChatRoom>>,
+//                response: Response<List<ChatRoom>>
+//            ) {
+//                if (response.isSuccessful) {
+//                    Timber.d("Success Req []")
+//                    val roomList: List<ChatRoom>? = response.body()
+//                    _chatRoomList.value =
+//                        if (roomList != null) roomList as ArrayList<ChatRoom> else ArrayList()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<ChatRoom>>, t: Throwable) {
+//                Timber.tag(":: callback fail ::").e(t)
+//            }
+//        })
+//    }
 
     val getChatRoomByPos = { pos: Int -> _chatRoomList.value?.get(pos) }
 }

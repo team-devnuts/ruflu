@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.ui.signin.LoginActivity
-import com.devnuts.ruflu.util.RufluApp
+import com.devnuts.ruflu.RufluApp
 import java.util.*
 import kotlin.concurrent.schedule
 import timber.log.Timber

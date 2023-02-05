@@ -8,7 +8,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.util.RufluApp
+import com.devnuts.ruflu.RufluApp
 import timber.log.Timber
 
 class AppNotification(rufluApp: RufluApp) {

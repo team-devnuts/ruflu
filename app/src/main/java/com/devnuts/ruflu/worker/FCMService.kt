@@ -3,23 +3,27 @@ package com.devnuts.ruflu.worker
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.devnuts.ruflu.MainActivity
-import com.devnuts.ruflu.MainRepository
 import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
-import com.devnuts.ruflu.util.RufluApp
+import com.devnuts.ruflu.RufluApp
+import com.devnuts.ruflu.domain.repository.MainRepository
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
+import javax.inject.Inject
 
 class FCMService : FirebaseMessagingService() {
+    @Inject lateinit var repository: MainRepository
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Timber.tag("토큰").i(token)
+
+        Log.d("flow", "--------------->>>>>>>>${token}")
         sendRegistrationToServer(token)
     }
 
@@ -54,7 +58,7 @@ class FCMService : FirebaseMessagingService() {
     }
 
     private fun sendRegistrationToServer(token: String) {
-        val call = MainRepository().executeFcmServiceToken(token)
+        val call = repository.executeFcmServiceToken(token)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (!response.isSuccessful) {

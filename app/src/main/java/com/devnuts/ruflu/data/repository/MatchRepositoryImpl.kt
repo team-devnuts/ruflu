@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.data.repository
 
-import com.devnuts.ruflu.data.api.response.card.UserModel
+import com.devnuts.ruflu.data.api.response.home.model.UserModel
 import com.devnuts.ruflu.data.source.MatchDataSource
 import com.devnuts.ruflu.domain.repository.MatchRepository
 import retrofit2.Call

@@ -2,11 +2,13 @@ package com.devnuts.ruflu.ui.like.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
@@ -19,6 +21,7 @@ import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -33,7 +36,7 @@ class SomeFragment : Fragment() {
     private val someViewModel: SomeViewModel by viewModels()
 
     private val someAdapter: SwipeAdapter<Model> by lazy {
-        SwipeAdapter(object: ModelAdapterListener {
+        SwipeAdapter(object : ModelAdapterListener {
             override fun onClick(view: View, model: Model, position: Int) {
                 userDetailFragment = UserDetailFragment(model as UserUIModel)
 
@@ -54,7 +57,7 @@ class SomeFragment : Fragment() {
                     someViewModel.addUserInMyMatchList(someViewModel.getSomeUser(position)!!.userId)
                 }
                 // 현재 임시
-                someViewModel.someUser.value?.toMutableList()?.remove(someViewModel.getSomeUser(position))
+                //someViewModel.userInfo.value?.toMutableList()?.remove(someViewModel.getSomeUser(position))
             }
         })
     }
@@ -77,16 +80,25 @@ class SomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        binding.rvSome.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        binding.rvSome.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.rvSome.adapter = someAdapter
         val helper = ItemTouchHelper(SomeTouchHelperCallback(someAdapter))
         helper.attachToRecyclerView(binding.rvSome)
     }
 
     private fun initObserve() {
-        someViewModel.someUser.observe(viewLifecycleOwner) {
-            val model = it as List<Model>
-            someAdapter.submitList(model)
+        Log.d("flow", "SomeFragment IN!!!!!!")
+        this.lifecycleScope.launch {
+            someViewModel.getLikeMeUserList()
+        }
+
+        this.lifecycleScope.launch {
+            someViewModel.userInfo.collect {
+                //Log.d("flow", "${it.get(0).type}")
+                val model = it as List<Model>
+                someAdapter.submitList(model)
+            }
         }
     }
 

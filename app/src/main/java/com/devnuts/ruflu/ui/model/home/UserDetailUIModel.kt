@@ -5,7 +5,6 @@ import com.devnuts.ruflu.ui.model.Model
 
 class UserDetailUIModel(
     override val type: CellType,
-    val name: String,
+    val title: String,
     val value: String
-): Model(type) {
-}
+): Model(type)

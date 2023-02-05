@@ -12,6 +12,7 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.databinding.FragmentCardBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
@@ -20,6 +21,7 @@ import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.worker.CustomCardStackView
 import com.yuyakaido.android.cardstackview.*
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 
 
@@ -51,10 +53,8 @@ class CardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         initView()
         initObserve()
-
     }
 
     // 카트스택 뷰와 레이아웃 매니저 생성 메소드
@@ -77,13 +77,13 @@ class CardFragment : Fragment() {
             cardLikeBtn.visibility = View.GONE
             cardChatBtn.visibility = View.GONE
 
-            setBtnClick(cardHateBtn, Direction.Left)
-            setBtnClick(cardSkipBtn, Direction.Bottom)
-            setBtnClick(cardLikeBtn, Direction.Right)
+            setupButtonListener(cardHateBtn, Direction.Left)
+            setupButtonListener(cardSkipBtn, Direction.Bottom)
+            setupButtonListener(cardLikeBtn, Direction.Right)
         }
     }
 
-    private fun setBtnClick(btn: ImageButton, direction: Direction) {
+    private fun setupButtonListener(btn: ImageButton, direction: Direction) {
         btn.setOnClickListener {
             cardStackLayoutManager.setSwipeAnimationSetting(getSwipeSetting(direction))
             binding.rvCard.swipe()
@@ -91,8 +91,14 @@ class CardFragment : Fragment() {
     }
 
     private fun initObserve() {
-        viewModel.userCard.observe(this.viewLifecycleOwner) {
-            cardAdapter.submitList(it)
+        this.lifecycleScope.launch {
+            viewModel.userInfo.collect {
+                cardAdapter.submitList(it)
+            }
+        }
+
+        this.lifecycleScope.launch {
+            viewModel.loadUserCard()
         }
     }
 
@@ -110,6 +116,7 @@ class CardFragment : Fragment() {
             .build()
     }
 
+    /* 미사용 */
     private fun getRewindSetting(direction: Direction): RewindAnimationSetting {
         return RewindAnimationSetting.Builder()
             .setDirection(direction)

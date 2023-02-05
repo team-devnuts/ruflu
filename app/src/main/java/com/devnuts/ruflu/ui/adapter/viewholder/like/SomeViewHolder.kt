@@ -25,7 +25,7 @@ class SomeViewHolder(
             binding.civSome.setImageResource(R.drawable.noimg_fac)
 
         binding.nickName.text = model.nickName
-        binding.age.text = "${UserUtil.getAge(model.birth)}"
+        binding.age.text = "${UserUtil.getAge(model.age)}"
     }
 
     override fun bindViews(model: UserUIModel, adapterListener: ModelAdapterListener?) {
