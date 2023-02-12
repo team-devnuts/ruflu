@@ -1,6 +1,6 @@
 package com.devnuts.ruflu.ui.adapter
 
-import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
+import com.devnuts.ruflu.ui.some.SomeTouchHelperCallback
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 
