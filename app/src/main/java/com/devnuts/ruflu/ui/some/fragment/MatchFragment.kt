@@ -1,42 +1,40 @@
-package com.devnuts.ruflu.ui.like.fragment
+package com.devnuts.ruflu.ui.some.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentSomeBinding
-import com.devnuts.ruflu.ui.adapter.SwipeAdapter
+import com.devnuts.ruflu.databinding.FragmentLikeBinding
+import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.common.UserDetailFragment
-import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
-import com.devnuts.ruflu.ui.like.viewmodel.SomeViewModel
+import com.devnuts.ruflu.ui.some.viewmodel.MatchViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
-class SomeFragment : Fragment() {
+class MatchFragment : Fragment() {
     /* 정리 필요 */
     private lateinit var userDetailFragment: UserDetailFragment
     private lateinit var childFragmentTransaction: FragmentTransaction
     private lateinit var callback: OnBackPressedCallback
 
-    private var _binding: FragmentSomeBinding? = null
+    private var _binding: FragmentLikeBinding? = null
     val binding get() = _binding!!
-    private val someViewModel: SomeViewModel by viewModels()
+    private val matchViewModel: MatchViewModel by viewModels()
 
-    private val someAdapter: SwipeAdapter<Model> by lazy {
-        SwipeAdapter(object : ModelAdapterListener {
+    private val matchAdapter : ModelRecyclerViewAdapter<Model> by lazy {
+        ModelRecyclerViewAdapter(object : ModelAdapterListener{
             override fun onClick(view: View, model: Model, position: Int) {
                 userDetailFragment = UserDetailFragment(model as UserUIModel)
 
@@ -49,16 +47,14 @@ class SomeFragment : Fragment() {
                 binding.rlUserDetail.visibility = View.VISIBLE
             }
 
-            override fun onTouch(view: View, model: Model, event: MotionEvent) {}
+            override fun onTouch(view: View, model: Model, event: MotionEvent) {
+                TODO("Not yet implemented")
+            }
 
             override fun onSwipe(position: Int, direction: Int) {
-                /** 32 right 좋아요, 16 left  싫어요 **/
-                if (direction == 32) {
-                    someViewModel.addUserInMyMatchList(someViewModel.getSomeUser(position)!!.userId)
-                }
-                // 현재 임시
-                //someViewModel.userInfo.value?.toMutableList()?.remove(someViewModel.getSomeUser(position))
+                TODO("Not yet implemented")
             }
+
         })
     }
 
@@ -68,7 +64,7 @@ class SomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSomeBinding.inflate(inflater, container, false)
+        _binding = FragmentLikeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -80,25 +76,14 @@ class SomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        binding.rvSome.layoutManager =
-            LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        binding.rvSome.adapter = someAdapter
-        val helper = ItemTouchHelper(SomeTouchHelperCallback(someAdapter))
-        helper.attachToRecyclerView(binding.rvSome)
+        binding.rvLike.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        binding.rvLike.adapter = matchAdapter
     }
 
     private fun initObserve() {
-        Log.d("flow", "SomeFragment IN!!!!!!")
-        this.lifecycleScope.launch {
-            someViewModel.getLikeMeUserList()
-        }
-
-        this.lifecycleScope.launch {
-            someViewModel.userInfo.collect {
-                //Log.d("flow", "${it.get(0).type}")
-                val model = it as List<Model>
-                someAdapter.submitList(model)
-            }
+        matchViewModel.matchUser.observe(viewLifecycleOwner) {
+            val model = it as List<Model>
+            matchAdapter.submitList(model)
         }
     }
 
@@ -108,6 +93,7 @@ class SomeFragment : Fragment() {
         callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 Timber.d("onBackPressedCallback")
+                // 초기화 문제 처리 해야함.
                 childFragmentManager.beginTransaction().remove(userDetailFragment).commit()
 
                 binding.rlUserDetail.visibility = View.GONE

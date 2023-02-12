@@ -54,7 +54,9 @@ class CardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        viewModel.getUserCard()
         initObserve()
+
     }
 
     // 카트스택 뷰와 레이아웃 매니저 생성 메소드
@@ -92,13 +94,9 @@ class CardFragment : Fragment() {
 
     private fun initObserve() {
         this.lifecycleScope.launch {
-            viewModel.userInfo.collect {
+            viewModel.cardUiState.collect {
                 cardAdapter.submitList(it)
             }
-        }
-
-        this.lifecycleScope.launch {
-            viewModel.loadUserCard()
         }
     }
 
@@ -155,7 +153,7 @@ class CardFragment : Fragment() {
                 if (cardStackLayoutManager.topPosition == cardStackLayoutManager.itemCount) {
 
                     Thread.sleep(1000)
-                    viewModel.loadUserCard()
+                    viewModel.getUserCard()
                 }
             }
 

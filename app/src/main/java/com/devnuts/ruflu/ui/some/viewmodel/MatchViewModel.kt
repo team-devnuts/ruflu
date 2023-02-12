@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.like.viewmodel
+package com.devnuts.ruflu.ui.some.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

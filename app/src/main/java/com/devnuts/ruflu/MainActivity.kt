@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
 import com.devnuts.ruflu.ui.home.fragment.HomeFragment
-import com.devnuts.ruflu.ui.like.fragment.LikeFragment
+import com.devnuts.ruflu.ui.some.SomeFragment
 import com.devnuts.ruflu.ui.model.main.User
 import com.devnuts.ruflu.ui.mypage.fragment.MyPageFragment
 import com.devnuts.ruflu.worker.FusedLocationProvider
@@ -27,7 +27,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val homeFragment by lazy { HomeFragment() }
-    private val likeFragment by lazy { LikeFragment() }
+    private val likeFragment by lazy { SomeFragment() }
     private val chatFragment by lazy { ChatFragment() }
     private val myPageFragment by lazy { MyPageFragment() }
     private val mainViewModel: MainViewModel by viewModels()
@@ -59,8 +59,6 @@ class MainActivity : AppCompatActivity() {
 
         // GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(applicationContext)
         initLowerTab()
-
-        //RufluApp.sharedPreference.putSettingString("user_id", "1");
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {

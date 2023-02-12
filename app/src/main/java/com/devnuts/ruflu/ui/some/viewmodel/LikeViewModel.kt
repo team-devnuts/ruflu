@@ -1,31 +1,22 @@
-package com.devnuts.ruflu.ui.like.viewmodel
+package com.devnuts.ruflu.ui.some.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devnuts.ruflu.data.api.response.home.model.UserModel
-import com.devnuts.ruflu.data.api.response.home.model.toEntity
 import com.devnuts.ruflu.domain.entities.toUiModel
-import com.devnuts.ruflu.domain.repository.SomeRepository
-import com.devnuts.ruflu.domain.usecase.AddUserInMyLikeListUseCase
 import com.devnuts.ruflu.domain.usecase.AddUserInMyMatchListUseCase
 import com.devnuts.ruflu.domain.usecase.GetLikeMeListUseCase
 import com.devnuts.ruflu.ui.model.CellType
 import com.devnuts.ruflu.ui.model.home.UserUIModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class SomeViewModel @Inject constructor(
+class LikeViewModel @Inject constructor(
     private val getLikeMeListUseCase: GetLikeMeListUseCase,
     private val addUserInMyMatchListUseCase: AddUserInMyMatchListUseCase,
 ) : ViewModel() {
@@ -36,7 +27,6 @@ class SomeViewModel @Inject constructor(
     fun getLikeMeUserList() = viewModelScope.launch {
         getLikeMeListUseCase()
             .onSuccess {
-                Log.d("flow", "---------->>>>>>>$it")
                 _userInfo.value = it.map { entity ->
                     entity.toUiModel(CellType.SOME_LIKE_CEL)
                 }

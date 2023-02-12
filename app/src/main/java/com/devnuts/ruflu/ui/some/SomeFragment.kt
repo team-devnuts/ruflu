@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.like.fragment
+package com.devnuts.ruflu.ui.some
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.devnuts.ruflu.databinding.FragmentLikeBinding
-import com.devnuts.ruflu.ui.adapter.LikePagerAdapter
+import com.devnuts.ruflu.databinding.FragmentSomeBinding
+import com.devnuts.ruflu.ui.adapter.SomePagerAdapter
+import com.devnuts.ruflu.ui.some.fragment.LikeFragment
+import com.devnuts.ruflu.ui.some.fragment.MatchFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import dagger.hilt.android.AndroidEntryPoint
 
-class LikeFragment : Fragment() {
-    private var _binding: FragmentLikeBinding? = null
+class SomeFragment : Fragment() {
+    private var _binding: FragmentSomeBinding? = null
     val binding get() = _binding!!
 
     private val tabTextList = arrayListOf(TAB_ONE, TAB_TWO)
@@ -24,7 +25,7 @@ class LikeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLikeBinding.inflate(inflater, container, false)
+        _binding = FragmentSomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,30 +36,30 @@ class LikeFragment : Fragment() {
         initView()
     }
 
-    private fun setupAdapter(): LikePagerAdapter {
-        val likePagerAdapter = LikePagerAdapter(requireActivity())
-        likePagerAdapter.addFragment(SomeFragment())
-        likePagerAdapter.addFragment(MatchFragment())
+    private fun setupAdapter(): SomePagerAdapter {
+        val somePagerAdapter = SomePagerAdapter(requireActivity())
+        somePagerAdapter.addFragment(LikeFragment())
+        somePagerAdapter.addFragment(MatchFragment())
 
-        return likePagerAdapter
+        return somePagerAdapter
     }
 
     private fun initView() {
         with(binding) {
-            vp2Like.adapter = setupAdapter()
-            vp2Like.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            vp2Some.adapter = setupAdapter()
+            vp2Some.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                 }
             })
 
-            TabLayoutMediator(tlLike, vp2Like) { tab, position ->
+            TabLayoutMediator(tlSome, vp2Some) { tab, position ->
                 tab.text = tabTextList[position]
             }.attach()
 
-            tlLike.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            tlSome.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-                    vp2Like.currentItem = tab!!.position
+                    vp2Some.currentItem = tab!!.position
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -66,14 +67,14 @@ class LikeFragment : Fragment() {
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
             })
 
-            vp2Like.isUserInputEnabled = false
-            tlLike.getTabAt(position)?.select()
+            vp2Some.isUserInputEnabled = false
+            tlSome.getTabAt(position)?.select()
         }
     }
 
     override fun onPause() {
         super.onPause()
-        position = binding.tlLike.selectedTabPosition
+        position = binding.tlSome.selectedTabPosition
     }
 
     override fun onDestroyView() {
