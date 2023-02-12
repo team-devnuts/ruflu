@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.ui.like.fragment
+package com.devnuts.ruflu.ui.some.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -10,17 +10,12 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentSomeBinding
+import com.devnuts.ruflu.databinding.FragmentLikeBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
-import com.devnuts.ruflu.ui.adapter.SwipeAdapter
 import com.devnuts.ruflu.ui.common.UserDetailFragment
-import com.devnuts.ruflu.ui.like.listener.SomeTouchHelperCallback
-import com.devnuts.ruflu.ui.like.viewmodel.MatchViewModel
-import com.devnuts.ruflu.ui.like.viewmodel.SomeViewModel
+import com.devnuts.ruflu.ui.some.viewmodel.MatchViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
@@ -34,7 +29,7 @@ class MatchFragment : Fragment() {
     private lateinit var childFragmentTransaction: FragmentTransaction
     private lateinit var callback: OnBackPressedCallback
 
-    private var _binding: FragmentSomeBinding? = null
+    private var _binding: FragmentLikeBinding? = null
     val binding get() = _binding!!
     private val matchViewModel: MatchViewModel by viewModels()
 
@@ -69,7 +64,7 @@ class MatchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSomeBinding.inflate(inflater, container, false)
+        _binding = FragmentLikeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -81,8 +76,8 @@ class MatchFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        binding.rvSome.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        binding.rvSome.adapter = matchAdapter
+        binding.rvLike.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        binding.rvLike.adapter = matchAdapter
     }
 
     private fun initObserve() {
@@ -98,6 +93,7 @@ class MatchFragment : Fragment() {
         callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 Timber.d("onBackPressedCallback")
+                // 초기화 문제 처리 해야함.
                 childFragmentManager.beginTransaction().remove(userDetailFragment).commit()
 
                 binding.rlUserDetail.visibility = View.GONE
