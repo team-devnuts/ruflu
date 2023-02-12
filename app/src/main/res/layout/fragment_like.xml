@@ -1,59 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.fragment.HomeFragment"
-    android:background="#ffffff">
-    <LinearLayout
+    tools:context=".ui.some.fragment.LikeFragment">
+
+    <TextView
+        android:id="@+id/tb_some_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tab_top_layout"
-        android:orientation="horizontal"
-        android:background="@color/white"
-        android:weightSum="1"
-        android:elevation="5dp"
-        >
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tl_like"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:tabTextColor="@color/black"
-            android:layout_weight="0.3"
-            app:tabIndicatorHeight="2dp"
-            app:tabIndicatorColor="#FBC55E"
-            app:tabSelectedTextColor="#FBC55E"
-            >
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/some_title"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ruflu"
-                />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NearBy"
-                />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_like"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tb_some_title"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        </com.google.android.material.tabs.TabLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text=""
-            android:textColor="@color/black"
-            android:layout_weight="0.7"
-            />
-    </LinearLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_2_like"
+    <RelativeLayout
+        android:id="@+id/rl_user_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tab_top_layout"
-        android:layout_weight="1" />
+        android:background="@color/white"
+        android:visibility="gone" />
 
 </RelativeLayout>
