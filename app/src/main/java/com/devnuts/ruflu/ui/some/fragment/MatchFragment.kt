@@ -36,7 +36,7 @@ class MatchFragment : Fragment() {
     private val matchAdapter : ModelRecyclerViewAdapter<Model> by lazy {
         ModelRecyclerViewAdapter(object : ModelAdapterListener{
             override fun onClick(view: View, model: Model, position: Int) {
-                userDetailFragment = UserDetailFragment(model as UserUIModel)
+                userDetailFragment = UserDetailFragment((model as UserUIModel).userId)
 
                 childFragmentTransaction = childFragmentManager.beginTransaction()
                 childFragmentTransaction

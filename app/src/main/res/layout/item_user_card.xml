@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="user"
             type="com.devnuts.ruflu.ui.model.home.UserUIModel" />
@@ -77,8 +76,7 @@
                     android:id="@+id/LL_drawer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                </LinearLayout>
+                    android:orientation="vertical"></LinearLayout>
             </ScrollView>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

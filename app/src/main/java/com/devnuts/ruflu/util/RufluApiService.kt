@@ -2,8 +2,10 @@ package com.devnuts.ruflu.util
 
 import com.devnuts.ruflu.data.api.response.NetworkResponse
 import com.devnuts.ruflu.data.api.response.home.UserListResponse
+import com.devnuts.ruflu.data.api.response.home.UserResponse
 import com.devnuts.ruflu.data.api.response.home.model.UserModel
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -16,6 +18,9 @@ interface RufluApiService {
     @FormUrlEncoded
     @POST("home/hate")
     suspend fun addUserInMyHateList(@FieldMap param: HashMap<String, String>): Response<NetworkResponse>
+
+    @GET("main/user/{user_id}")
+    suspend fun getUserDetail(@Path("user_id") userId: String): Response<UserResponse>
 
     @FormUrlEncoded
     @POST("some/like")

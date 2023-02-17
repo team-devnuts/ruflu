@@ -6,6 +6,7 @@ import com.devnuts.ruflu.databinding.*
 import com.devnuts.ruflu.ui.adapter.viewholder.home.CardImageViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.home.CardViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.ModelViewHolder
+import com.devnuts.ruflu.ui.adapter.viewholder.common.DetailViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.like.MatchViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.like.SomeViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.onboarding.*
@@ -26,7 +27,7 @@ object ModelViewHolderMapper {
                 ItemUserCardBinding.inflate(inflater, parent, false)
             )
 
-            CellType.USER_CARD_IMAGE_CEL -> CardImageViewHolder(
+            CellType.IMAGE_CEL -> CardImageViewHolder(
                 ItemUserCardImagesBinding.inflate(inflater, parent, false)
             )
 
@@ -57,6 +58,10 @@ object ModelViewHolderMapper {
 
             CellType.SOME_MATCH_CEL -> MatchViewHolder(
                 ItemMatchUserBinding.inflate(inflater, parent, false)
+            )
+
+            CellType.DETAIL_CEL -> DetailViewHolder(
+                ItemUserDetailBinding.inflate(inflater, parent, false)
             )
 
             else -> throw java.lang.IllegalArgumentException("옳은 분기가 없습니다.")

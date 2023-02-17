@@ -1,21 +1,20 @@
 package com.devnuts.ruflu.domain.entities
 
 import com.devnuts.ruflu.ui.model.CellType
-import com.devnuts.ruflu.ui.model.home.UserImageUIModel
+import com.devnuts.ruflu.ui.model.home.ImageUIModel
 
-data class UserImageEntity (
+data class ImageEntity (
     val image: String
 )
 
 
 // Entity(Domain) -> Model(Data Layer)
-fun UserImageEntity.toModel() {
 
-}
+
 
 // Entity(Domain) -> UiModel(Presenter Layer)
-fun UserImageEntity.toUiModel() = UserImageUIModel(
-    type = CellType.USER_CARD_IMAGE_CEL,
+fun ImageEntity.toUiModel() = ImageUIModel(
+    type = CellType.IMAGE_CEL,
     image = image
 )
 

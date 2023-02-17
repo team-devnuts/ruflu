@@ -7,9 +7,8 @@
         <item name="colorOnPrimary">#FFF86F</item>
 
         <!-- Customize your theme here. -->
-
-
     </style>
+
 
     <style name="ProfileTextTitleStyle">
         <item name="android:textColor">@color/white</item>
@@ -18,6 +17,7 @@
         <item name="android:textSize">15dp</item>
         <item name="android:layout_marginBottom">10dp</item>
     </style>
+
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>

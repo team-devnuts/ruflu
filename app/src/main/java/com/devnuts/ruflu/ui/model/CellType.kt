@@ -3,12 +3,14 @@ package com.devnuts.ruflu.ui.model
 enum class CellType {
     /** Home **/
     USER_CARD_CEL,
-    USER_CARD_IMAGE_CEL,
-    USER_DETAIL_CEL,
+    IMAGE_CEL,
 
     /** Some **/
     SOME_LIKE_CEL,
     SOME_MATCH_CEL,
+
+    /** Detail **/
+    DETAIL_CEL,
 
     /** Chat **/
 

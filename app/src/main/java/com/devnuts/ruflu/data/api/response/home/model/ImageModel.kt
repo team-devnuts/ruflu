@@ -1,12 +1,12 @@
 package com.devnuts.ruflu.data.api.response.home.model
 
-import com.devnuts.ruflu.domain.entities.UserImageEntity
+import com.devnuts.ruflu.domain.entities.ImageEntity
 
-data class UserImageModel(
+data class ImageModel(
     val image: String
 )
 
 // Model(Data) -> Entity(Domain Layer)
-fun UserImageModel.toEntity() = UserImageEntity(
+fun ImageModel.toEntity() = ImageEntity(
     image = image
 )
