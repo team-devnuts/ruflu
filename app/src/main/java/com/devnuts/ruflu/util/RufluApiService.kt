@@ -35,7 +35,7 @@ interface RufluApiService {
     suspend fun addUserInMyMatchList(@Field("otherUserId") userId: String): Response<NetworkResponse>
 
     @GET("some/match")
-    fun getUserMatchedWithMeList(): Call<ArrayList<UserModel>>
+    suspend fun getUserMatchedWithMeList(): Response<UserListResponse>
 
     // 미완성 보류 (리턴값 response 객체로 수정)
     @PATCH("some/match")

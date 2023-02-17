@@ -1,12 +1,10 @@
 package com.devnuts.ruflu.di
 
 import com.devnuts.ruflu.data.repository.HomeRepositoryImpl
-import com.devnuts.ruflu.data.repository.MatchRepositoryImpl
 import com.devnuts.ruflu.data.repository.SomeRepositoryImpl
 import com.devnuts.ruflu.data.repository.MainRepositoryImpl
 import com.devnuts.ruflu.domain.repository.HomeRepository
 import com.devnuts.ruflu.domain.repository.MainRepository
-import com.devnuts.ruflu.domain.repository.MatchRepository
 import com.devnuts.ruflu.domain.repository.SomeRepository
 import dagger.Binds
 import dagger.Module
@@ -27,11 +25,6 @@ interface RepositoryModule {
     abstract fun bindSomeRepository(
         someRepositoryImpl: SomeRepositoryImpl
     ): SomeRepository
-
-    @Binds
-    abstract fun bindMatchRepository(
-        matchRepositoryImpl: MatchRepositoryImpl
-    ): MatchRepository
 
     @Binds
     abstract fun bindMainRepository(

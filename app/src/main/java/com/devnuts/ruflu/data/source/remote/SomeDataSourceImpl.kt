@@ -46,4 +46,22 @@ class SomeDataSourceImpl @Inject constructor(
     } catch (exception: Exception) {
         Result.failure<Nothing>(exception)
     }
+
+    override suspend fun getUserMatchedWithMeList(): Result<List<UserEntity>> = try {
+        val response = api.getUserMatchedWithMeList()
+        Log.d("flow", "여기까지도 안온다?")
+        if (response.isSuccessful) {
+            val body = response.body()
+            if (body != null) {
+                Log.d("flow", "${response.body()}")
+                Result.success(body.result.map { it.toEntity() })
+            } else {
+                Result.success(emptyList())
+            }
+        } else {
+            throw Exception()
+        }
+    } catch (exception: Exception) {
+        Result.failure<Nothing>(exception)
+    }
 }

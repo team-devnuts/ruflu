@@ -18,4 +18,8 @@ class SomeRepositoryImpl @Inject constructor(
     override suspend fun addUserInMyMatchList(userId: String): Result<NetworkResponse> {
         return someDataSource.addUserInMyMatchList(userId)
     }
+
+    override suspend fun getUserMatchedWithMeList(): Result<List<UserEntity>> {
+        return someDataSource.getUserMatchedWithMeList()
+    }
 }

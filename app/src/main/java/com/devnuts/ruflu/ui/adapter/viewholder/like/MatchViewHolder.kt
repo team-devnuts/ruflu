@@ -13,7 +13,7 @@ class MatchViewHolder(
     override fun bindData(model: UserUIModel) {
         binding.clvImage.tag = model.images[0]
         binding.tvNickName.text = model.nickName
-        binding.tvAge.text = UserUtil.getAge(model.age).toString()
+        binding.tvAge.text = model.age
     }
 
     override fun bindViews(model: UserUIModel, adapterListener: ModelAdapterListener?) {

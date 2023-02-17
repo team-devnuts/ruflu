@@ -35,8 +35,6 @@ class LikeViewModel @Inject constructor(
                 Log.d("flow", "some failure")
                 Log.d("flow", "${it.message}")
             }
-
-        Log.d("flow", "과연? ${userInfo.value}")
     }
 
     fun addUserInMyMatchList(userId: String) = viewModelScope.launch {
@@ -70,5 +68,5 @@ class LikeViewModel @Inject constructor(
 
     fun sendMessageAskingTalkToUser(user: UserModel?) {}
 
-    val getSomeUser = { pos: Int -> _userInfo.value.get(pos) }
+    val getSomeUser = { pos: Int -> _userInfo.value[pos] }
 }
