@@ -2,6 +2,7 @@ package com.devnuts.ruflu.data.repository
 
 import com.devnuts.ruflu.data.api.response.NetworkResponse
 import com.devnuts.ruflu.data.source.HomeDataSource
+import com.devnuts.ruflu.domain.entities.UserDetailEntity
 import com.devnuts.ruflu.domain.entities.UserEntity
 import com.devnuts.ruflu.domain.repository.HomeRepository
 import javax.inject.Inject
@@ -21,5 +22,9 @@ class HomeRepositoryImpl @Inject constructor(
 
     override suspend fun addUserInMyLikeList(userCard: HashMap<String, String>): Result<NetworkResponse> {
         return homeDataSource.addUserInMyLikeList(userCard)
+    }
+
+    override suspend fun getUserDetailInfo(userId: String): Result<UserDetailEntity> {
+        return homeDataSource.getUserDetailInfo(userId)
     }
 }

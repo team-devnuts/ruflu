@@ -1,17 +1,13 @@
 package com.devnuts.ruflu.domain.entities
 
-import com.devnuts.ruflu.data.api.response.home.model.UserDetailModel
-import com.devnuts.ruflu.data.api.response.home.model.UserModel
-import com.devnuts.ruflu.data.api.response.home.model.toEntity
 import com.devnuts.ruflu.ui.model.CellType
-import com.devnuts.ruflu.ui.model.home.UserImageUIModel
 import com.devnuts.ruflu.ui.model.home.UserUIModel
 
 data class UserEntity(
     val userId: String,
     val nickName: String,
     val age: String,
-    val images: List<UserImageEntity>,
+    val images: List<ImageEntity>,
     val distance: Float = 0F
 )
 

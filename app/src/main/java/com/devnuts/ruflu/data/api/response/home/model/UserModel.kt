@@ -11,7 +11,7 @@ data class UserModel(
     @SerializedName("user_id") val userId: String,
     @SerializedName("nick_name") val nickName: String,
     val birth: String,
-    val images: List<UserImageModel>,
+    val images: List<ImageModel>,
     val latitude: Double,
     val longitude: Double,
 )

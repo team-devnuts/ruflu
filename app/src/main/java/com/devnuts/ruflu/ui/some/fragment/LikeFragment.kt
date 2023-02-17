@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentLikeBinding
+import com.devnuts.ruflu.domain.usecase.GetUserDetailUseCase
 import com.devnuts.ruflu.ui.adapter.SwipeAdapter
 import com.devnuts.ruflu.ui.common.UserDetailFragment
 import com.devnuts.ruflu.ui.some.SomeTouchHelperCallback
@@ -37,7 +38,7 @@ class LikeFragment : Fragment() {
     private val likeAdapter: SwipeAdapter<Model> by lazy {
         SwipeAdapter(object : ModelAdapterListener {
             override fun onClick(view: View, model: Model, position: Int) {
-                userDetailFragment = UserDetailFragment(model as UserUIModel)
+                userDetailFragment = UserDetailFragment((model as UserUIModel).userId)
 
                 childFragmentTransaction = childFragmentManager.beginTransaction()
                 childFragmentTransaction

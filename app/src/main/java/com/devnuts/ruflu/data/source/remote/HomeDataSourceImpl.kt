@@ -4,6 +4,7 @@ import android.util.Log
 import com.devnuts.ruflu.data.api.response.NetworkResponse
 import com.devnuts.ruflu.data.api.response.home.model.toEntity
 import com.devnuts.ruflu.data.source.HomeDataSource
+import com.devnuts.ruflu.domain.entities.UserDetailEntity
 import com.devnuts.ruflu.domain.entities.UserEntity
 import com.devnuts.ruflu.util.RufluApiService
 import javax.inject.Inject
@@ -62,6 +63,30 @@ class HomeDataSourceImpl @Inject constructor(
             throw Exception()
         }
     } catch (exception: Exception) {
+        Result.failure<Nothing>(exception)
+    }
+
+    override suspend fun getUserDetailInfo(
+        userId: String
+    ): Result<UserDetailEntity> = try {
+        val response = api.getUserDetail(userId)
+        if (response.isSuccessful) {
+            val body = response.body()
+            if (body != null) {
+                Result.success((body.result).toEntity())
+
+            } else {
+                Log.d("flow", "무조건 뻑난다.")
+                Result.success(response.body()?.result!!.toEntity())
+            }
+        } else {
+            Log.d("flow", "response 실패.")
+            throw Exception()
+        }
+    } catch (exception: Exception) {
+        Log.d("flow", "${exception.message}")
+        Log.d("flow", "${exception.toString()}")
+        Log.d("flow", "${exception.cause}")
         Result.failure<Nothing>(exception)
     }
 }

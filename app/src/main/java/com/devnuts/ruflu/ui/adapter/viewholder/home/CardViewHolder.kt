@@ -8,9 +8,8 @@ import com.devnuts.ruflu.databinding.ItemUserCardBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.adapter.viewholder.ModelViewHolder
 import com.devnuts.ruflu.ui.model.Model
-import com.devnuts.ruflu.ui.model.home.UserImageUIModel
+import com.devnuts.ruflu.ui.model.home.ImageUIModel
 import com.devnuts.ruflu.ui.model.home.UserUIModel
-import com.devnuts.ruflu.util.UserUtil
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 
 class CardViewHolder(
@@ -39,7 +38,7 @@ class CardViewHolder(
         imagesAdapter.submitList(model.images)
     }
 
-    private val imagesAdapter: ModelRecyclerViewAdapter<UserImageUIModel> by lazy {
+    private val imagesAdapter: ModelRecyclerViewAdapter<ImageUIModel> by lazy {
         ModelRecyclerViewAdapter(object : ModelAdapterListener {
             override fun onClick(view: View, model: Model, position: Int) {}
 
