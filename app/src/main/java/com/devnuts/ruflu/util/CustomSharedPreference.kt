@@ -2,7 +2,6 @@ package com.devnuts.ruflu.util
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import android.content.Context.MODE_WORLD_READABLE
 import android.content.SharedPreferences
 
 class CustomSharedPreference(context: Context) {

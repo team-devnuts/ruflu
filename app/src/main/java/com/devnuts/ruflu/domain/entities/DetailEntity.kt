@@ -2,7 +2,6 @@ package com.devnuts.ruflu.domain.entities
 
 import com.devnuts.ruflu.ui.model.CellType
 import com.devnuts.ruflu.ui.model.home.DetailUIModel
-import com.devnuts.ruflu.ui.model.home.ImageUIModel
 
 data class DetailEntity(
     val title: String,

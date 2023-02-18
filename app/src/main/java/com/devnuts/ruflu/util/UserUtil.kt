@@ -13,11 +13,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
 import com.squareup.picasso.Picasso
+import timber.log.Timber
 import java.io.BufferedInputStream
 import java.net.URL
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import timber.log.Timber
 
 object UserUtil {
 

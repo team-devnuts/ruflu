@@ -2,12 +2,10 @@ package com.devnuts.ruflu.data.source.remote
 
 import android.util.Log
 import com.devnuts.ruflu.data.api.response.NetworkResponse
-import com.devnuts.ruflu.data.api.response.home.model.UserModel
 import com.devnuts.ruflu.data.api.response.home.model.toEntity
 import com.devnuts.ruflu.data.source.SomeDataSource
 import com.devnuts.ruflu.domain.entities.UserEntity
 import com.devnuts.ruflu.util.RufluApiService
-import retrofit2.Call
 import javax.inject.Inject
 
 class SomeDataSourceImpl @Inject constructor(

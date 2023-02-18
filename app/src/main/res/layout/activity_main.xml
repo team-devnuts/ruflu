@@ -8,16 +8,16 @@
     tools:context="com.devnuts.ruflu.MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/main_viewpager"
+        android:id="@+id/vp2_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/lower_tab"
+        android:layout_above="@+id/bnv_main"
 
         />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/lower_tab"
+        android:id="@+id/bnv_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

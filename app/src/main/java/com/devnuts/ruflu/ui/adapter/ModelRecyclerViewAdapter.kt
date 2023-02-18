@@ -1,7 +1,6 @@
 package com.devnuts.ruflu.ui.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.ui.adapter.viewholder.ModelViewHolder

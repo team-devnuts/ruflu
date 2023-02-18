@@ -3,7 +3,7 @@ package com.devnuts.ruflu.ui.onboarding
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.*
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.devnuts.ruflu.R
 

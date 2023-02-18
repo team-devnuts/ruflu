@@ -2,7 +2,10 @@ package com.devnuts.ruflu.ui.some.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -12,13 +15,12 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentLikeBinding
-import com.devnuts.ruflu.domain.usecase.GetUserDetailUseCase
 import com.devnuts.ruflu.ui.adapter.SwipeAdapter
 import com.devnuts.ruflu.ui.common.UserDetailFragment
-import com.devnuts.ruflu.ui.some.SomeTouchHelperCallback
-import com.devnuts.ruflu.ui.some.viewmodel.LikeViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserUIModel
+import com.devnuts.ruflu.ui.some.SomeTouchHelperCallback
+import com.devnuts.ruflu.ui.some.viewmodel.LikeViewModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

@@ -1,9 +1,9 @@
 package com.devnuts.ruflu.worker
 
-import java.text.SimpleDateFormat
 import okhttp3.Interceptor
 import okhttp3.Response
 import timber.log.Timber
+import java.text.SimpleDateFormat
 
 class LogInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {

@@ -3,9 +3,7 @@ package com.devnuts.ruflu.util
 import com.devnuts.ruflu.data.api.response.NetworkResponse
 import com.devnuts.ruflu.data.api.response.home.UserListResponse
 import com.devnuts.ruflu.data.api.response.home.UserResponse
-import com.devnuts.ruflu.data.api.response.home.model.UserModel
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*

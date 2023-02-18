@@ -1,7 +1,6 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.four
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -16,7 +15,6 @@ import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.adapter.itemDecoration.VerticalItemDecorator
 import com.devnuts.ruflu.ui.model.CellType
 import com.devnuts.ruflu.ui.model.Model
-import com.devnuts.ruflu.ui.model.onboarding.HeightUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 
 /* 온보딩 - 4 : 키  */

@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentOnboardingFancyBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter

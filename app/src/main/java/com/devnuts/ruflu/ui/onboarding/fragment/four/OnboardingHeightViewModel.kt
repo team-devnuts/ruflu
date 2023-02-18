@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.onboarding.HeightUIModel
-import com.devnuts.ruflu.ui.onboarding.fragment.two.OnboardingAgeViewModel
 
 class OnboardingHeightViewModel : ViewModel() {
 

@@ -1,8 +1,5 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.one
 
-import android.util.Log
-import android.view.MotionEvent
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

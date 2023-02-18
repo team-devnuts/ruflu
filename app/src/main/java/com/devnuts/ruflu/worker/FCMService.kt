@@ -3,12 +3,11 @@ package com.devnuts.ruflu.worker
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import com.devnuts.ruflu.MainActivity
-import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
 import com.devnuts.ruflu.RufluApp
 import com.devnuts.ruflu.domain.repository.MainRepository
+import com.devnuts.ruflu.ui.chat.fragment.ChatFragment
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import retrofit2.Call
@@ -20,18 +19,24 @@ import javax.inject.Inject
 class FCMService : FirebaseMessagingService() {
     @Inject lateinit var repository: MainRepository
 
+
+    /**
+     * 단말기 토큰이 바꼈을 시 할 작업
+     * 새로운 token 이 생성될 때마다 호출되 callback
+     */
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-
-        Log.d("flow", "--------------->>>>>>>>${token}")
         sendRegistrationToServer(token)
     }
 
+    /**
+     * 푸시 메시지 수신 시 할 잘업
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        // 앱이 foreground 상태에 있을 때 FCM 알림을 받았다면 onMessageReceived() 콜백 메소드가 호출됨으로써 FCM 알림이 대신된다.
+        // 앱이 foreground 상태에 있을 때 FCM 알림을 받았다면 onMessageReceived() 콜백 메소드가 호출 됨으로써 FCM 알림이 대신된다.
         Timber.tag("onMessageReceived 콜백").d("${remoteMessage.from}")
 
         // 메시지 유형이 데이터 메시지일 경우

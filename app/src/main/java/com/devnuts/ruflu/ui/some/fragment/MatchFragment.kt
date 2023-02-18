@@ -13,13 +13,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentLikeBinding
 import com.devnuts.ruflu.databinding.FragmentMatchBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.common.UserDetailFragment
-import com.devnuts.ruflu.ui.some.viewmodel.MatchViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserUIModel
+import com.devnuts.ruflu.ui.some.viewmodel.MatchViewModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

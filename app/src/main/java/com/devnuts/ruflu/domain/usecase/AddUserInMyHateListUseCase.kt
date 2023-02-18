@@ -2,7 +2,6 @@ package com.devnuts.ruflu.domain.usecase
 
 import com.devnuts.ruflu.data.api.response.NetworkResponse
 import com.devnuts.ruflu.domain.repository.HomeRepository
-import retrofit2.Response
 import javax.inject.Inject
 
 class AddUserInMyHateListUseCase @Inject constructor(

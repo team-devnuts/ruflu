@@ -1,8 +1,8 @@
 package com.devnuts.ruflu.di
 
 import com.devnuts.ruflu.data.repository.HomeRepositoryImpl
-import com.devnuts.ruflu.data.repository.SomeRepositoryImpl
 import com.devnuts.ruflu.data.repository.MainRepositoryImpl
+import com.devnuts.ruflu.data.repository.SomeRepositoryImpl
 import com.devnuts.ruflu.domain.repository.HomeRepository
 import com.devnuts.ruflu.domain.repository.MainRepository
 import com.devnuts.ruflu.domain.repository.SomeRepository

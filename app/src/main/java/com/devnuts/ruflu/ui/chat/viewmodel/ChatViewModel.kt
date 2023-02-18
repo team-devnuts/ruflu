@@ -4,11 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devnuts.ruflu.domain.repository.ChatRepository
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
-import kotlin.collections.ArrayList
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import timber.log.Timber
 
 class ChatViewModel : ViewModel() {
     private val repository = ChatRepository()
