@@ -1,7 +1,6 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.five
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -16,8 +15,6 @@ import com.devnuts.ruflu.databinding.FragmentOnboardingAcademyBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.model.CellType
 import com.devnuts.ruflu.ui.model.Model
-import com.devnuts.ruflu.ui.model.onboarding.AcademyUIModel
-import com.devnuts.ruflu.ui.model.onboarding.GenderUIModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 
 /* 온보딩 - 5 : 학력 */

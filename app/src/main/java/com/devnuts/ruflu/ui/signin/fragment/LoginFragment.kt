@@ -12,9 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentLoginBinding
-import com.devnuts.ruflu.ui.loading.SplashActivity
-import com.devnuts.ruflu.ui.onboarding.OnboardingActivity
-import com.devnuts.ruflu.ui.signin.LoginActivity
 import com.devnuts.ruflu.ui.signin.viewmodel.LoginViewModel
 import com.devnuts.ruflu.util.HashKey
 import java.util.regex.Matcher

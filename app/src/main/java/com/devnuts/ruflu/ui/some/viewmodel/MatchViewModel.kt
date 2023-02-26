@@ -1,51 +1,36 @@
 package com.devnuts.ruflu.ui.some.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.devnuts.ruflu.data.api.response.home.model.UserModel
-import com.devnuts.ruflu.domain.repository.MatchRepository
+import androidx.lifecycle.viewModelScope
+import com.devnuts.ruflu.domain.entities.toUiModel
+import com.devnuts.ruflu.domain.usecase.GetUserMatchedWithMeListUseCase
+import com.devnuts.ruflu.ui.model.CellType
+import com.devnuts.ruflu.ui.model.home.UserUIModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import timber.log.Timber
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MatchViewModel @Inject constructor(
-    private val matchRepository: MatchRepository
+    private val getUserMatchedWithMeListUseCase: GetUserMatchedWithMeListUseCase
 ) : ViewModel() {
 
-    private val _matchUser by lazy {
-        MutableLiveData<List<UserModel>>().also {
-            loadMatchUser()
-        }
-    }
-    val matchUser: MutableLiveData<List<UserModel>> get() = _matchUser
+    private val _matchInfo = MutableStateFlow<List<UserUIModel>>(emptyList())
+    val matchInfo = _matchInfo.asStateFlow()
 
-
-
-    private fun loadMatchUser() {
-        val call = matchRepository.getUserMatchedWithMeList()
-
-        call.enqueue(object : Callback<ArrayList<UserModel>> {
-            override fun onResponse(
-                call: Call<ArrayList<UserModel>>,
-                response: Response<ArrayList<UserModel>>
-            ) {
-                if (response.isSuccessful) {
-                    Timber.d("callback success")
-                    val nbUserList: ArrayList<UserModel>? = response.body()
-                    _matchUser.value =
-                        if (nbUserList != null) nbUserList as ArrayList<UserModel> else arrayListOf()
+    fun getUserMatchedWithMeList() = viewModelScope.launch {
+        getUserMatchedWithMeListUseCase().onSuccess {
+                _matchInfo.value = it.map { entity ->
+                    entity.toUiModel(CellType.SOME_MATCH_CEL)
                 }
             }
-
-            override fun onFailure(call: Call<ArrayList<UserModel>>, t: Throwable) {
-                Timber.tag(":: callback fail ::").e(t)
+            .onFailure {
+                Log.d("flow", "match failure")
+                Log.d("flow", "${it.message}")
             }
-        })
     }
-
-    val getMatchUser = { pos: Int -> _matchUser.value?.get(pos) }
+    val getMatchUser = { pos: Int -> _matchInfo.value[pos] }
 }

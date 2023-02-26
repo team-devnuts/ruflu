@@ -1,13 +1,8 @@
 package com.devnuts.ruflu.data.source
 
 import com.devnuts.ruflu.data.api.response.NetworkResponse
-import com.devnuts.ruflu.data.api.response.home.UserListResponse
-import com.devnuts.ruflu.data.api.response.home.UserResponse
-import com.devnuts.ruflu.data.api.response.home.model.UserModel
 import com.devnuts.ruflu.domain.entities.UserDetailEntity
 import com.devnuts.ruflu.domain.entities.UserEntity
-import retrofit2.Call
-import retrofit2.Response
 
 interface HomeDataSource {
 

@@ -3,9 +3,7 @@ package com.devnuts.ruflu.util
 import com.devnuts.ruflu.data.api.response.NetworkResponse
 import com.devnuts.ruflu.data.api.response.home.UserListResponse
 import com.devnuts.ruflu.data.api.response.home.UserResponse
-import com.devnuts.ruflu.data.api.response.home.model.UserModel
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -35,7 +33,7 @@ interface RufluApiService {
     suspend fun addUserInMyMatchList(@Field("otherUserId") userId: String): Response<NetworkResponse>
 
     @GET("some/match")
-    fun getUserMatchedWithMeList(): Call<ArrayList<UserModel>>
+    suspend fun getUserMatchedWithMeList(): Response<UserListResponse>
 
     // 미완성 보류 (리턴값 response 객체로 수정)
     @PATCH("some/match")

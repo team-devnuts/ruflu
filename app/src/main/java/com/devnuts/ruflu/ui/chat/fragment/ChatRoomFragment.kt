@@ -10,17 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.devnuts.ruflu.RufluApp
 import com.devnuts.ruflu.databinding.ItemMyChatRoomBinding
 import com.devnuts.ruflu.ui.adapter.MassagesAdapter
 import com.devnuts.ruflu.ui.chat.viewmodel.ChatSharedViewModel
 import com.devnuts.ruflu.ui.model.chat.ChatMessage
-import com.devnuts.ruflu.RufluApp
 import com.github.nkzawa.emitter.Emitter
-import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
-import java.net.URISyntaxException
 import org.json.JSONObject
 import timber.log.Timber
+import java.net.URISyntaxException
 
 class ChatRoomFragment : Fragment() {
     private lateinit var bind: ItemMyChatRoomBinding

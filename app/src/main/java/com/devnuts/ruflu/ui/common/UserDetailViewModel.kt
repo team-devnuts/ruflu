@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devnuts.ruflu.domain.entities.UserDetailEntity
 import com.devnuts.ruflu.domain.entities.toUiModel
 import com.devnuts.ruflu.domain.usecase.GetUserDetailUseCase
 import com.devnuts.ruflu.ui.model.CellType

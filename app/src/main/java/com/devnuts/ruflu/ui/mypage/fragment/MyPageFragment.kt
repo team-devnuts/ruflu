@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentMypageBinding
-import com.devnuts.ruflu.ui.mypage.viewmodel.MyPageViewModel
 
 class MyPageFragment : Fragment() {
     private var _binding: FragmentMypageBinding? = null

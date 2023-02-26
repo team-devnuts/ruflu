@@ -3,10 +3,10 @@ package com.devnuts.ruflu.util.mapper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.devnuts.ruflu.databinding.*
-import com.devnuts.ruflu.ui.adapter.viewholder.home.CardImageViewHolder
-import com.devnuts.ruflu.ui.adapter.viewholder.home.CardViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.ModelViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.common.DetailViewHolder
+import com.devnuts.ruflu.ui.adapter.viewholder.home.CardImageViewHolder
+import com.devnuts.ruflu.ui.adapter.viewholder.home.CardViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.like.MatchViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.like.SomeViewHolder
 import com.devnuts.ruflu.ui.adapter.viewholder.onboarding.*

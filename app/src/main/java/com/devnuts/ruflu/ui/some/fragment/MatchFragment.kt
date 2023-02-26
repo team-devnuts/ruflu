@@ -10,16 +10,18 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
-import com.devnuts.ruflu.databinding.FragmentLikeBinding
+import com.devnuts.ruflu.databinding.FragmentMatchBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.common.UserDetailFragment
-import com.devnuts.ruflu.ui.some.viewmodel.MatchViewModel
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.home.UserUIModel
+import com.devnuts.ruflu.ui.some.viewmodel.MatchViewModel
 import com.devnuts.ruflu.util.listener.ModelAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -29,7 +31,7 @@ class MatchFragment : Fragment() {
     private lateinit var childFragmentTransaction: FragmentTransaction
     private lateinit var callback: OnBackPressedCallback
 
-    private var _binding: FragmentLikeBinding? = null
+    private var _binding: FragmentMatchBinding? = null
     val binding get() = _binding!!
     private val matchViewModel: MatchViewModel by viewModels()
 
@@ -64,7 +66,7 @@ class MatchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLikeBinding.inflate(inflater, container, false)
+        _binding = FragmentMatchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -76,14 +78,20 @@ class MatchFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        binding.rvLike.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        binding.rvLike.adapter = matchAdapter
+        binding.rvMatch.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        binding.rvMatch.adapter = matchAdapter
     }
 
     private fun initObserve() {
-        matchViewModel.matchUser.observe(viewLifecycleOwner) {
-            val model = it as List<Model>
-            matchAdapter.submitList(model)
+        this.lifecycleScope.launch {
+            matchViewModel.getUserMatchedWithMeList()
+        }
+
+        this.lifecycleScope.launch {
+            matchViewModel.matchInfo.collect {
+                val model = it as List<Model>
+                matchAdapter.submitList(model)
+            }
         }
     }
 

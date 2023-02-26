@@ -1,10 +1,8 @@
 package com.devnuts.ruflu.di
 
 import com.devnuts.ruflu.data.source.HomeDataSource
-import com.devnuts.ruflu.data.source.MatchDataSource
 import com.devnuts.ruflu.data.source.SomeDataSource
 import com.devnuts.ruflu.data.source.remote.HomeDataSourceImpl
-import com.devnuts.ruflu.data.source.remote.MatchDataSourceImpl
 import com.devnuts.ruflu.data.source.remote.SomeDataSourceImpl
 import dagger.Binds
 import dagger.Module
@@ -24,9 +22,4 @@ interface DataSourceModule {
     abstract fun bindSomeDataSource(
         someDataSourceImpl: SomeDataSourceImpl
     ): SomeDataSource
-
-    @Binds
-    abstract fun bindMatchDataSource(
-        matchDataSourceImpl: MatchDataSourceImpl
-    ): MatchDataSource
 }

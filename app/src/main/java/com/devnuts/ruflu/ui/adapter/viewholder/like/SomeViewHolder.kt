@@ -14,7 +14,7 @@ class SomeViewHolder(
 
     override fun bindData(model: UserUIModel) {
         if (model.images.isNotEmpty()) {
-            UserUtil.setImageWithGlide(
+            UserUtil.setImageWithPiccaso(
                 itemView,
                 (model.images[0] as ImageUIModel).image,
                 binding.civSome

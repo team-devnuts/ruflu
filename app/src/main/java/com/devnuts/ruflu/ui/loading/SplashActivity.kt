@@ -4,11 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.devnuts.ruflu.MainActivity
-import com.devnuts.ruflu.ui.signin.LoginActivity
 import com.devnuts.ruflu.RufluApp
+import com.devnuts.ruflu.ui.signin.LoginActivity
+import timber.log.Timber
 import java.util.*
 import kotlin.concurrent.schedule
-import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

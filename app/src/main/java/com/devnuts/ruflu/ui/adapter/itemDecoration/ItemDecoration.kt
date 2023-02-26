@@ -5,8 +5,8 @@ import android.graphics.Rect
 import android.util.TypedValue
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.properties.Delegates
 import timber.log.Timber
+import kotlin.properties.Delegates
 
 class ItemDecoration(private val pActivity: Activity) : RecyclerView.ItemDecoration() {
 

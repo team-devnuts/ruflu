@@ -1,6 +1,5 @@
 package com.devnuts.ruflu
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
