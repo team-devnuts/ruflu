@@ -28,7 +28,6 @@ class CardViewModel @Inject constructor(
     fun getUserCard() = viewModelScope.launch {
         getUserListUseCase()
             .onSuccess {
-                Log.d("flow", "distance : ${it.get(0).distance}")
                 _cardUiState.value = it.map { entity ->
                     entity.toUiModel(CellType.USER_CARD_CEL)
                 }

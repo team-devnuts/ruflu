@@ -151,6 +151,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-messaging-directboot:23.1.1'
 
     //Circle ImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'

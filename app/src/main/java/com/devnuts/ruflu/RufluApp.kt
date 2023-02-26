@@ -2,7 +2,7 @@ package com.devnuts.ruflu
 
 import android.app.Application
 import com.devnuts.ruflu.util.CustomSharedPreference
-import com.devnuts.ruflu.worker.AppNotification
+import com.devnuts.ruflu.worker.alarm.AppNotification
 import com.kakao.sdk.common.KakaoSdk
 import dagger.hilt.android.HiltAndroidApp
 

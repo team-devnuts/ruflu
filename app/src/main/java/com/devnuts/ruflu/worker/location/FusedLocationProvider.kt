@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.worker
+package com.devnuts.ruflu.worker.location
 
 import android.Manifest
 import android.content.Context

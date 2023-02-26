@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -16,7 +17,7 @@ import com.devnuts.ruflu.ui.home.fragment.HomeFragment
 import com.devnuts.ruflu.ui.model.main.User
 import com.devnuts.ruflu.ui.mypage.fragment.MyPageFragment
 import com.devnuts.ruflu.ui.some.SomeFragment
-import com.devnuts.ruflu.worker.FusedLocationProvider
+import com.devnuts.ruflu.worker.location.FusedLocationProvider
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
@@ -90,9 +91,15 @@ class MainActivity : AppCompatActivity() {
      */
     private fun searchFCMToken() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) return@OnCompleteListener
+            if (!task.isSuccessful) {
+                Log.d("flow"," 토큰을 갱신한다.")
+                Log.d("flow", "====> ${task.exception}")
+                return@OnCompleteListener
+            }
+
             // Get new FCM registration token
             val token = task.result
+            Log.d("flow","====> t삽질? ${token}")
             sendRegistrationToServer(token)
         })
     }
@@ -141,6 +148,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val sendRegistrationToServer = fun(token: String) {
+        Log.d("flow", "remote 콜!")
         mainViewModel.executeFcmServiceToken(token)
     }
 

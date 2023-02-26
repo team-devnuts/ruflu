@@ -36,7 +36,7 @@ object RetrofitModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(converter)
-            .baseUrl("http://192.168.0.47:3000/api/")
+            .baseUrl("http://192.168.0.15:3000/api/")
             .build()
     }
 }

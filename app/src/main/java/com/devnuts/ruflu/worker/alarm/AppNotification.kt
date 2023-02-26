@@ -1,4 +1,4 @@
-package com.devnuts.ruflu.worker
+package com.devnuts.ruflu.worker.alarm
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -31,7 +31,6 @@ class AppNotification(rufluApp: RufluApp) {
     ) {
         Timber.tag("AppNotification")
             .d("${context.applicationInfo.className}, $title, $content, $pendingIntent")
-        // var msg = NotificationCompat.MessagingStyle.Message(content, )
 
         val builder = NotificationCompat.Builder(context, R.string.channel_id.toString())
             .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
@@ -46,6 +45,7 @@ class AppNotification(rufluApp: RufluApp) {
     }
 
     private fun createNotificationChannel(rufluApp: RufluApp) {
+        // 오래오 버전 이상부터 ChannelId 값이 필수가 됨
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = rufluApp.getString(R.string.channel_name)
             val descriptionText = rufluApp.getString(R.string.channel_description)
@@ -53,7 +53,6 @@ class AppNotification(rufluApp: RufluApp) {
                 description = descriptionText
             }
 
-            // Register the channel with the system
             notificationManager =
                 rufluApp.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
