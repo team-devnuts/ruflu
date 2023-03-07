@@ -3,6 +3,7 @@ package com.devnuts.ruflu.ui.signin.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.text.util.Linkify
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.MainActivity
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentLoginBinding
+import com.devnuts.ruflu.ui.onboarding.OnboardingActivity
+import com.devnuts.ruflu.ui.signin.LoginActivity
 import com.devnuts.ruflu.ui.signin.viewmodel.LoginViewModel
 import com.devnuts.ruflu.util.HashKey
 import java.util.regex.Matcher
@@ -43,7 +46,7 @@ class LoginFragment : Fragment() {
     private fun intentActivity() {
         viewModel.isNew.observe(viewLifecycleOwner) { isNew ->
             if (isNew) {
-                val intent = Intent(activity, MainActivity::class.java)
+                val intent = Intent(activity, OnboardingActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
             } else {
@@ -56,6 +59,7 @@ class LoginFragment : Fragment() {
 
     private fun kakaologin() {
         binding.btnKakaoLogin.setOnClickListener {
+            Log.d("ho", "kako login button clicked")
             viewModel.checkExistenceToken(requireContext())
         }
     }
