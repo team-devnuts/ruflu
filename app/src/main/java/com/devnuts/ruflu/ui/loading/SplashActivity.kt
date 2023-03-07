@@ -18,11 +18,11 @@ class SplashActivity : AppCompatActivity() {
 
         Timer().schedule(1000) {
             if (hasToken()) {
-                intent = Intent(applicationContext, LoginActivity::class.java)
+                intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
-                intent = Intent(applicationContext, LoginActivity::class.java)
+                intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
