@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentSmsAuthBinding
 import com.devnuts.ruflu.ui.signin.viewmodel.SMSViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SMSAuthFragment : Fragment() {
     private var _binding: FragmentSmsAuthBinding? = null
     private val binding get() = _binding!!
@@ -30,7 +32,7 @@ class SMSAuthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // back()
+        back()
         initializeViewBind()
         observeValue()
     }

@@ -3,6 +3,7 @@ package com.devnuts.ruflu.ui.signin.fragment
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -16,7 +17,9 @@ import androidx.navigation.fragment.findNavController
 import com.devnuts.ruflu.R
 import com.devnuts.ruflu.databinding.FragmentSmsBinding
 import com.devnuts.ruflu.ui.signin.viewmodel.SMSViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SMSFragment : Fragment() {
     private var _binding: FragmentSmsBinding? = null
     private val binding get() = _binding!!
@@ -47,6 +50,7 @@ class SMSFragment : Fragment() {
         binding.etPhoneNumber.addTextChangedListener {
             val phoneNumber: String = binding.etPhoneNumber.text.toString()
             val checkValidation: Boolean = viewModel.validatePhoneNumber(phoneNumber)
+            viewModel.setPhoneNumber(phoneNumber)
             binding.phoneAuthBtn.isSelected = checkValidation
         }
     }
@@ -62,6 +66,7 @@ class SMSFragment : Fragment() {
         })
 
         binding.phoneAuthBtn.setOnClickListener {
+            viewModel.sendPhoneNumber()
             findNavController().navigate(R.id.action_smsFragment_to_smsAuthFragment)
         }
     }

@@ -3,12 +3,19 @@ package com.devnuts.ruflu.util
 import com.devnuts.ruflu.data.api.response.NetworkResponse
 import com.devnuts.ruflu.data.api.response.home.UserListResponse
 import com.devnuts.ruflu.data.api.response.home.UserResponse
+import com.devnuts.ruflu.data.api.response.signin.ResponseAuthCode
 import com.devnuts.ruflu.ui.model.chat.ChatRoom
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 
 interface RufluApiService {
+
+    /** Login **/
+    @FormUrlEncoded
+    @POST("login/sms")
+    suspend fun sendUserPhoneNumber(@Field("phone_number") phoneNumber: String): Response<ResponseAuthCode>
+
     /** Home **/
     @GET("home/users") // 변경 예정 userList
     suspend fun getUserList(): Response<UserListResponse>

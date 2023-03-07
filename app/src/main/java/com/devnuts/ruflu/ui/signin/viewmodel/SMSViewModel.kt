@@ -1,15 +1,28 @@
 package com.devnuts.ruflu.ui.signin.viewmodel
 
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.EditText
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.devnuts.ruflu.BR
+import com.devnuts.ruflu.domain.usecase.SendUserAuthPhoneNumberUserCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import java.util.regex.Pattern
+import javax.inject.Inject
 
-class SMSViewModel : ViewModel() {
+@HiltViewModel
+class SMSViewModel @Inject constructor(
+    private val sendUserAuthPhoneNumberUserCase: SendUserAuthPhoneNumberUserCase
+) : ViewModel() {
+
+    private var _phoneNumber: String? = null
+    val phoneNumber get() = _phoneNumber
+
     private val verifyCode = arrayListOf("", "", "", "")
     val verifyCodeEtList = arrayListOf<EditText>()
 
@@ -104,6 +117,24 @@ class SMSViewModel : ViewModel() {
     private fun moveCursor(loc: Int) {
         verifyCodeEtList[loc].selectAll()
         verifyCodeEtList[loc].requestFocus()
+    }
+
+    fun setPhoneNumber(phoneNumber: String) {
+        _phoneNumber = phoneNumber
+    }
+
+    fun sendPhoneNumber() = viewModelScope.launch {
+        phoneNumber?.let {
+            val response = sendUserAuthPhoneNumberUserCase(it)
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body != null) {
+                    Log.d("ho", "${body.result}")
+                }
+            }else {
+                throw Exception("휴대폰 인증번호 받기 실패!!!!!!")
+            }
+        }
     }
 
     companion object {

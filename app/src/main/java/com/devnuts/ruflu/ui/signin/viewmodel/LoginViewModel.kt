@@ -3,9 +3,13 @@ package com.devnuts.ruflu.ui.signin.viewmodel
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.devnuts.ruflu.RufluApp
+import com.devnuts.ruflu.data.api.request.signin.RequestLoginData
+import com.devnuts.ruflu.data.api.response.signin.ResponseLoginData
 import com.devnuts.ruflu.ui.model.signin.KakaoUser
 import com.kakao.sdk.auth.*
 import com.kakao.sdk.auth.model.OAuthToken
@@ -13,6 +17,7 @@ import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
+import retrofit2.Call
 import timber.log.Timber
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
@@ -29,22 +34,22 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 if (error != null) {
                     if (error is KakaoSdkError) {
                         // access 토큰 갱신까지 실패한 것이기 때문에 refresh 토큰이 유효하지 않음, 로그인 필요
-                        Timber.e("로그인 필요 / $error.toString()")
+                        Log.d("ho", "로그인 필요 / $error.toString()")
                         loginKakaoUser(context)
                     } else {
                         // 기타 에러 (에러 시, 레퍼런스 참고해야할 것)
-                        Timber.e("기타 에러 / $error.toString()")
+                        Log.d("ho", "기타 에러 / $error.toString()")
                     }
                 } else {
                     // 토큰 유효성 체크 성공(필요 시 sdk 내부에서 토큰 갱신됨)
-                    Timber.i("로그인 성공 (필요 시 토큰 갱신) / $tokenInfo.toString()")
+                    Log.d("ho", "로그인 성공 (필요 시 토큰 갱신) / $tokenInfo.toString()")
                     // 토큰 갱신 API 호출 함수 구현 (USER_TOKEN 최신화 작업이 필요)
                     loginKakaoUser(context)
                 }
             }
         } else {
             // hasToken() API 의 결과가 false 라면 토큰이 없는 상태이므로 사용자가 로그인할 수 있도록 처리
-            Timber.i("로그인 필요")
+            Log.d("ho", "로그인 필요!!")
             loginKakaoUser(context)
         }
     }
@@ -93,11 +98,13 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
 
+
+
         if (LoginClient.instance.isKakaoTalkLoginAvailable(context)) {
-            Timber.i("카카오톡으로")
+            Log.d("ho", "카카오톡으로")
             LoginClient.instance.loginWithKakaoTalk(context, callback = callback)
         } else {
-            Timber.i("홈페이지로")
+            Log.d("ho", "홈페이지로")
             LoginClient.instance.loginWithKakaoAccount(context, callback = callback)
         }
     }
@@ -108,24 +115,25 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         // 사용자 정보 요청 (기본)
         UserApiClient.instance.me { user, error ->
             if (error != null) {
-                Timber.e("사용자 정보 요청 실패 / $error.toString()")
+                Log.d("ho", "사용자 정보 요청 실패 / $error.toString()")
             } else if (user != null) {
-                Timber.i(
+                Log.d("ho",
                     "사용자 정보 요청 성공" +
-                            "\n회원번호: ${user.id}" +
-                            "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
-                            "\n이메일: ${user.kakaoAccount?.email}" +
-                            "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}"
-                )
+                        "\n회원번호: ${user.id}" +
+                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                        "\n이메일: ${user.kakaoAccount?.email}" +
+                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
 
                 kakaoUser.name = user.kakaoAccount?.profile?.nickname.toString()
                 kakaoUser.oauthKey = user.id.toString()
-
                 // 서버에 요청
                 postLogin()
             }
         }
     }
+//1945513259
+//1945513259
+
 
     // 서버 DB 저장 & 토큰 받아오기
     private fun postLogin() {
