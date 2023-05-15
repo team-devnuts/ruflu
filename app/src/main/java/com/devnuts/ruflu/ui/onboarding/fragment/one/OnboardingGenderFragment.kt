@@ -1,16 +1,19 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.one
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.RufluApp
 import com.devnuts.ruflu.databinding.FragmentOnboardingGenderBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.model.CellType
@@ -23,7 +26,7 @@ class OnboardingGenderFragment : Fragment() {
     private var _binding: FragmentOnboardingGenderBinding? = null
     private val binding get() = _binding!!
     private val viewModel: OnboardingGenderViewModel by viewModels()
-
+    private var flag: Boolean = false
     private lateinit var genderLayoutManager: RecyclerView.LayoutManager
 
     private val genderAdapter: ModelRecyclerViewAdapter<Model> by lazy {
@@ -31,6 +34,7 @@ class OnboardingGenderFragment : Fragment() {
             override fun onClick(view: View, model: Model, position: Int) {
                 when (model.type) {
                     CellType.GENDER_CEL -> {
+                        flag = true
                         val rv = binding.rvGender
                         viewModel.genderSingleChoice(rv, position)
                     }
@@ -63,8 +67,6 @@ class OnboardingGenderFragment : Fragment() {
     }
 
     private fun initializeRecyclerView() {
-        binding.btnGender.isEnabled = false
-
         genderAdapter.submitList(
             listOf(
                 GenderUIModel(resourceId = R.drawable.onboarding_female_selector, name = "여성"),
@@ -98,6 +100,12 @@ class OnboardingGenderFragment : Fragment() {
 
     private fun setupNavigation() {
         binding.btnGender.setOnClickListener {
+            viewModel.gender.value?.let { value ->
+                RufluApp.sharedPreference.putSettingInt(
+                    "gender",
+                    value
+                )
+            }
             findNavController().navigate(R.id.action_genderFragment_to_ageFragment)
         }
     }
@@ -105,5 +113,9 @@ class OnboardingGenderFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private val TAG = "Lifecycle"
     }
 }

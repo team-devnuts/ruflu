@@ -1,6 +1,7 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.five
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.RufluApp
 import com.devnuts.ruflu.databinding.FragmentOnboardingAcademyBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.model.CellType
@@ -91,6 +93,11 @@ class OnboardingAcademyFragment : Fragment() {
 
     private fun setupNavigation() {
         binding.btnAcademy.setOnClickListener {
+            RufluApp.sharedPreference.putSettingString(
+                "academy",
+                "${viewModel.academy.value?.let { it -> viewModel.academyInfo[it] }}"
+            )
+
             findNavController().navigate(R.id.action_academyFragment_to_jobFragment)
         }
     }

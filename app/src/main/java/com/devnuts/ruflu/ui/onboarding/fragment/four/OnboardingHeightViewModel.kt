@@ -1,5 +1,6 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.four
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,11 +16,13 @@ class OnboardingHeightViewModel : ViewModel() {
         _height.value = position
 
         val heightRange = mutableListOf<HeightUIModel>()
+
         for (i in MIN..MAX) {
             heightRange.add(HeightUIModel(height = i, isSelected = false))
-            if (position == i - MIN) heightRange[position].isSelected = true
+            if (position == i - MIN) {
+                heightRange[position].isSelected = true
+            }
         }
-
         return heightRange
     }
 
