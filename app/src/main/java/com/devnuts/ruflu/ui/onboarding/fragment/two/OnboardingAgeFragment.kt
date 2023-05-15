@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.RufluApp
 import com.devnuts.ruflu.databinding.FragmentOnboardingAgeBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.adapter.itemDecoration.VerticalItemDecorator
@@ -86,6 +87,7 @@ class OnboardingAgeFragment : Fragment() {
 
     private fun setupNavigation() {
         binding.btnAge.setOnClickListener {
+            RufluApp.sharedPreference.putSettingString("age", "${viewModel.age.value?.plus(20)}")
             findNavController().navigate(R.id.action_ageFragment_to_nickNameFragment)
         }
     }

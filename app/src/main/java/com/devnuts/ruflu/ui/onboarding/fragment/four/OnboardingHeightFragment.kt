@@ -1,6 +1,7 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.four
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devnuts.ruflu.R
+import com.devnuts.ruflu.RufluApp
 import com.devnuts.ruflu.databinding.FragmentOnboardingHeightBinding
 import com.devnuts.ruflu.ui.adapter.ModelRecyclerViewAdapter
 import com.devnuts.ruflu.ui.adapter.itemDecoration.VerticalItemDecorator
@@ -78,7 +80,6 @@ class OnboardingHeightFragment : Fragment() {
         binding.btnHeight.isEnabled = false
 
         heightAdapter.submitList(viewModel.initHeight(-1))
-
         with(binding.rvHeight) {
             adapter = heightAdapter
             layoutManager =
@@ -89,6 +90,7 @@ class OnboardingHeightFragment : Fragment() {
 
     private fun setupNavigation() {
         binding.btnHeight.setOnClickListener {
+            RufluApp.sharedPreference.putSettingString("height", "${viewModel.height.value?.plus(120)}")
             findNavController().navigate(R.id.action_heightFragment_to_academyFragment)
         }
     }

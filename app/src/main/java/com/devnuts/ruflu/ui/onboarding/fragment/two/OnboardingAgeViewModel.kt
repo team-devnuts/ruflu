@@ -1,8 +1,10 @@
 package com.devnuts.ruflu.ui.onboarding.fragment.two
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.devnuts.ruflu.RufluApp
 import com.devnuts.ruflu.ui.model.Model
 import com.devnuts.ruflu.ui.model.onboarding.AgeUIModel
 
@@ -17,7 +19,11 @@ class OnboardingAgeViewModel : ViewModel() {
         val ageRange = mutableListOf<AgeUIModel>()
         for (i in MIN..MAX) {
             ageRange.add(AgeUIModel(age = i, isSelected = false))
-            if (position == i - MIN) ageRange[position].isSelected = true
+            if (position == i - MIN) {
+                RufluApp.sharedPreference.putSettingString("age", "${position+20}")
+                ageRange[position].isSelected = true
+            }
+
         }
 
         return ageRange
